@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+<div class="relative min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <!-- 
+      Fondo de Atletas (Desde Internet)
+      CAMBIO AQUÍ: Ahora carga desde una URL externa.
+      Simplemente reemplaza la URL dentro de las comillas url('...') por la que tú quieras.
+    -->
+    <div class="absolute inset-0 z-0" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7JWoDhdscUjLrQN6iqKerme1yy7-msHf1uB1NiILqNYlOkWZr5Cd8P2SfQI85bqMWO4CdanMOoB5WsvlGWVZLz2TsGzaGe8gdHM7g7LPxk93u9gJsxYZq81WddJXWv_M8gNMU8CUZLLg/s1600/65591412.wPaGxmkS.P7267968970'); background-size: cover; background-position: center; background-attachment: fixed;">
+        <!-- 
+          Velo oscuro y desenfoque
+        -->
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+    </div>
+    
+    <div class="relative z-10 w-full max-w-md bg-white rounded-lg shadow-xl p-8 space-y-6">
+        <div class="flex flex-col items-center">
+            <!-- 
+              Logo IRDEBG GUÁRICO
+            -->
+            <img class="h-20 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="IRDEBG GUÁRICO">
+            
+            <!-- Botones LOGIN / REGISTER (CAMBIO DE ACTIVO) -->
+            <div class="mt-6 flex justify-center w-full max-w-xs border-2 border-gray-200 rounded-lg overflow-hidden">
+                <a href="{{ url_for('login') }}" class="flex-1 py-2 text-center text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200">
+                    LOGIN
+                </a>
+                <a href="{{ url_for('register') }}" class="flex-1 py-2 text-center text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
+                    REGISTER
+                </a>
+            </div>
+
+            <p class="mt-8 text-sm text-gray-500">Crea tu cuenta con tu email:</p>
+
+        </div>
+
+        <form class="space-y-4" action="{{ url_for('register') }}" method="POST">
+            <!-- CAMPO AÑADIDO: Nombre -->
+            <div>
+                <label for="nombre" class="sr-only">Nombre</label>
+                <input id="nombre" name="nombre" type="text" autocomplete="given-name" required 
+                       class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                       placeholder="Nombre">
+            </div>
+            <!-- CAMPO AÑADIDO: Apellido -->
+            <div>
+                <label for="apellido" class="sr-only">Apellido</label>
+                <input id="apellido" name="apellido" type="text" autocomplete="family-name" required 
+                       class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                       placeholder="Apellido">
+            </div>
+            <div>
+                <label for="email" class="sr-only">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required 
+                       class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                       placeholder="Email">
+            </div>
+            <div>
+                <label for="password" class="sr-only">Contraseña</label>
+                <input id="password" name="password" type="password" autocomplete="new-password" required 
+                       class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                       placeholder="Contraseña">
+            </div>
+
+            <!-- Espacio para que el botón no quede pegado -->
+            <div class="py-2"></div>
+
+            <div>
+                <button type="submit" 
+                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    CREAR CUENTA
+                </button>
+            </div>
+        </form>
+
+        <div class="text-center text-sm text-gray-500">
+            ¿Ya tienes cuenta? 
+            <a href="{{ url_for('login') }}" class="font-medium text-blue-600 hover:text-blue-500">
+                Inicia sesión
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

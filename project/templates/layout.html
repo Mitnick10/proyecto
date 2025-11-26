@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-slate-50">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dashboard{% endblock %} - Becas IRDEBG</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo.jpg') }}" type="image/x-icon">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            900: '#0f172a', // Slate 900
+                            800: '#1e293b', // Slate 800
+                            600: '#2563eb', // Blue 600
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="h-full font-sans text-slate-600">
+    <div class="min-h-full flex flex-col">
+
+        <!-- Navbar Principal -->
+        <nav class="bg-brand-900 border-b border-slate-700 sticky top-0 z-40 shadow-md">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="flex h-16 items-center justify-between">
+
+                    <!-- Lado Izquierdo: Logo y Menú -->
+                    <div class="flex items-center gap-8">
+                        <div class="flex-shrink-0 flex items-center gap-2">
+                            <!-- LOGO EN TEXTO ROJO (Como pediste) -->
+                            <a href="{{ url_for('dashboard.index') }}"
+                                class="text-3xl font-black tracking-tighter text-red-600 select-none hover:text-red-500 transition-colors no-underline"
+                                style="text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                                IRDEBG
+                            </a>
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="flex items-baseline space-x-4">
+                                <!-- Definimos estilos para activo e inactivo -->
+                                {% set active_class = 'bg-slate-800 text-white px-3 py-2 rounded-md text-sm font-medium
+                                transition-colors border border-slate-600 shadow-sm' %}
+                                {% set inactive_class = 'text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2
+                                rounded-md text-sm font-medium transition-colors border border-transparent' %}
+
+                                <a href="{{ url_for('dashboard.index') }}"
+                                    class="{{ active_class if request.endpoint == 'dashboard.index' else inactive_class }}">
+                                    Inicio
+                                </a>
+                                <a href="{{ url_for('dashboard.lista_becas') }}"
+                                    class="{{ active_class if 'becas' in request.endpoint and 'nueva' not in request.endpoint else inactive_class }}">
+                                    Atletas
+                                </a>
+                                <a href="{{ url_for('dashboard.mi_cuenta') }}"
+                                    class="{{ active_class if request.endpoint == 'dashboard.mi_cuenta' else inactive_class }}">
+                                    Mi Cuenta
+                                </a>
+
+                                <!-- ENLACE GESTIÓN USUARIOS: SOLO SUPERADMIN -->
+                                {% if user_role == 'superadmin' %}
+                                <a href="{{ url_for('dashboard.lista_usuarios') }}"
+                                    class="{{ active_class if request.endpoint == 'dashboard.lista_usuarios' else inactive_class }} text-purple-300 border-purple-500/30 hover:bg-purple-900/30 hover:text-purple-200">
+                                    Gestión Usuarios
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lado Derecho: Info Usuario y Salir -->
+                    <div class="hidden md:block">
+                        <div class="ml-4 flex items-center md:ml-6 gap-4">
+
+                            <!-- Info del Usuario -->
+                            <div class="text-right hidden sm:block">
+                                <span class="block text-white text-sm font-semibold leading-tight">
+                                    {{ first_name | default('Usuario') }}
+                                </span>
+                                <!-- ROL (Badge pequeño debajo del nombre) -->
+                                <span class="block text-xs text-blue-400 font-bold uppercase tracking-wider">
+                                    {{ user_role }}
+                                </span>
+                            </div>
+
+                            <!-- Botón Salir -->
+                            <a href="{{ url_for('logout') }}"
+                                class="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 transition-colors flex items-center gap-2"
+                                title="Cerrar Sesión">
+                                <i class="fa-solid fa-right-from-bracket"></i> Salir
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mensajes Flash Flotantes -->
+        <div class="fixed top-20 right-4 z-50 w-full max-w-sm pointer-events-none">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            {% set styles = {
+            'success': 'bg-green-50 text-green-800 border-green-200',
+            'error': 'bg-red-50 text-red-800 border-red-200',
+            'warning': 'bg-yellow-50 text-yellow-800 border-yellow-200'
+            } %}
+            {% set current_style = styles[category] if category in styles else styles['success'] %}
+
+            <div
+                class="{{ current_style }} border shadow-lg rounded-lg p-4 mb-3 pointer-events-auto flex items-start animate-fade-in-down">
+                <i class="fa-solid fa-circle-info mt-0.5 mr-2 opacity-75"></i>
+                <p class="text-sm font-medium">{{ message }}</p>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+
+        <!-- Header de la Página -->
+        <header class="bg-white shadow-sm">
+            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 flex justify-between items-center">
+                <h1 class="text-2xl font-bold tracking-tight text-slate-900">
+                    {% block header %}{% endblock %}
+                </h1>
+                <!-- Espacio para acciones extra en el header -->
+                <div id="header-actions"></div>
+            </div>
+        </header>
+
+        <!-- Contenido Principal -->
+        <main class="flex-1">
+            <div class="mx-auto max-w-7xl py-8 px-4 sm:px-6 lg:px-8">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-slate-200 mt-auto">
+            <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+                <p class="text-center text-xs text-slate-400">&copy; 2025 IRDEBG Guárico. Todos los derechos reservados.
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

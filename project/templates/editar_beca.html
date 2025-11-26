@@ -1,0 +1,337 @@
+{% extends "layout.html" %}
+
+{% block title %}Editar Ficha{% endblock %}
+{% block header %}Ficha Técnica del Atleta{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto space-y-8">
+
+    <!-- FORMULARIO DE EDICIÓN COMPLETO -->
+    <form action="{{ url_for('dashboard.editar_beca', beca_id=beca.id) }}" method="POST" enctype="multipart/form-data">
+        <div class="bg-white shadow-lg ring-1 ring-slate-900/5 rounded-xl overflow-hidden">
+            
+            <div class="px-6 py-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+                <h3 class="text-lg font-bold text-slate-900">Datos del Atleta</h3>
+                <span class="px-3 py-1 rounded-full text-xs font-bold uppercase {{ 'bg-green-100 text-green-800' if beca.estatus == 'Activo' else 'bg-yellow-100 text-yellow-800' }}">
+                    {{ beca.estatus }}
+                </span>
+            </div>
+            
+            <div class="p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- COLUMNA 1: FOTO -->
+                <div class="lg:col-span-3 flex flex-col items-center space-y-4">
+                    <div class="w-48 h-48 rounded-lg bg-slate-100 border-4 border-white shadow-md overflow-hidden relative group">
+                        {% if beca.foto %}
+                            <img id="preview" src="{{ beca.foto }}" class="w-full h-full object-cover">
+                        {% else %}
+                            <img id="preview" src="#" class="w-full h-full object-cover hidden">
+                            <div id="placeholder" class="w-full h-full flex flex-col items-center justify-center text-slate-400">
+                                <i class="fa-solid fa-user text-5xl mb-2"></i>
+                                <span class="text-xs font-bold uppercase">Sin Foto</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <label class="cursor-pointer w-full text-center py-2 px-4 border border-slate-300 rounded-md text-xs font-bold text-slate-600 bg-slate-50 hover:bg-white hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-camera mr-1"></i> Cambiar Foto
+                        <input type="file" name="foto" accept="image/*" onchange="loadFile(event)" class="hidden">
+                    </label>
+                </div>
+
+                <!-- COLUMNA 2: DATOS -->
+                <div class="lg:col-span-9 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- 1. IDENTIFICACIÓN -->
+                    <div class="md:col-span-2 pb-4 border-b border-slate-100">
+                        <div class="flex justify-between items-center mb-3">
+                            <h4 class="text-xs font-black text-blue-900 uppercase tracking-wider">Identificación</h4>
+                            <label class="flex items-center cursor-pointer relative">
+                                <input type="checkbox" name="es_menor" id="checkMenor" class="sr-only" onchange="toggleRepresentante()" {% if beca.es_menor %}checked{% endif %}>
+                                <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 peer-checked:bg-blue-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+                                <span class="ml-3 text-sm font-medium text-gray-900 select-none">¿Es menor?</span>
+                            </label>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="md:col-span-2">
+                                <label class="block text-xs font-bold text-slate-500">Nombres</label>
+                                <input type="text" name="nombre" value="{{ beca.nombre }}" class="w-full mt-1 rounded border-slate-300 text-sm">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-xs font-bold text-slate-500">Apellidos</label>
+                                <input type="text" name="apellido" value="{{ beca.apellido }}" class="w-full mt-1 rounded border-slate-300 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500">Cédula</label>
+                                <input type="text" name="cedula" value="{{ beca.cedula }}" class="w-full mt-1 rounded border-slate-300 text-sm font-mono">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500">F. Nacimiento</label>
+                                <input type="date" name="fecha_nacimiento" value="{{ beca.fecha_nacimiento }}" class="w-full mt-1 rounded border-slate-300 text-sm">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-xs font-bold text-slate-500">Lugar de Nacimiento</label>
+                                <input type="text" name="lugar_nacimiento" value="{{ beca.lugar_nacimiento }}" class="w-full mt-1 rounded border-slate-300 text-sm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECCIÓN REPRESENTANTE -->
+                    <div id="divRepresentante" class="md:col-span-2 border-b border-slate-100 pb-4 {% if not beca.es_menor %}hidden{% endif %} bg-blue-50 p-4 rounded-lg border border-blue-100 transition-all">
+                        <h4 class="text-xs font-black text-blue-900 uppercase tracking-wider mb-3 flex items-center">
+                            <i class="fa-solid fa-users mr-2"></i> Representante Legal
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="md:col-span-3">
+                                <label class="block text-xs font-bold text-slate-500">Nombre Completo</label>
+                                <input type="text" name="representante_nombre" value="{{ beca.representante_nombre }}" class="w-full mt-1 rounded border-blue-200 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500">Cédula</label>
+                                <input type="text" name="representante_cedula" value="{{ beca.representante_cedula }}" class="w-full mt-1 rounded border-blue-200 text-sm">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-xs font-bold text-slate-500">Parentesco</label>
+                                <select name="representante_parentesco" class="w-full mt-1 rounded border-blue-200 text-sm">
+                                    <option value="">{{ beca.representante_parentesco }}</option>
+                                    <option>Madre</option><option>Padre</option><option>Abuelo/a</option><option>Tío/a</option><option>Tutor Legal</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. DATOS DEPORTIVOS -->
+                    <div class="md:col-span-2 pb-4 border-b border-slate-100">
+                        <h4 class="text-xs font-black text-blue-900 uppercase tracking-wider mb-4">Datos Deportivos</h4>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="md:col-span-2">
+                                <label class="block text-xs font-bold text-slate-500">Disciplina</label>
+                                <select name="disciplina" class="w-full mt-1 rounded border-slate-300 text-sm">
+                                    <option>{{ beca.disciplina }}</option>
+                                    {% for d in ['Atletismo', 'Baloncesto', 'Béisbol', 'Boxeo', 'Ciclismo', 'Fútbol', 'Gimnasia', 'Natación', 'Taekwondo', 'Tenis de Campo', 'Tenis de Mesa', 'Voleibol', 'Otros'] %}
+                                    <option>{{ d }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-xs font-bold text-slate-500">Especialidad</label>
+                                <input type="text" name="especialidad" value="{{ beca.especialidad }}" class="w-full mt-1 rounded border-slate-300 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500">Categoría</label>
+                                <input type="text" name="categoria" value="{{ beca.categoria }}" class="w-full mt-1 rounded border-slate-300 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500">Tipo de Beca</label>
+                                <select name="tipo_beca" class="w-full mt-1 rounded border-slate-300 text-sm">
+                                    <option>{{ beca.tipo_beca }}</option>
+                                    <option>Alto Rendimiento</option><option>Talento Deportivo</option><option>Apoyo Económico</option><option>Otro</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500">Estatus</label>
+                                <select name="estatus" class="w-full mt-1 rounded border-slate-300 text-sm font-bold text-blue-700">
+                                    <option {% if beca.estatus == 'Activo' %}selected{% endif %}>Activo</option>
+                                    <option {% if beca.estatus == 'Inactivo' %}selected{% endif %}>Inactivo</option>
+                                    <option {% if beca.estatus == 'En Revisión' %}selected{% endif %}>En Revisión</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. ANTROPOMETRÍA -->
+                    <div class="md:col-span-2 pb-4 border-b border-slate-100">
+                        <h4 class="text-xs font-black text-blue-900 uppercase tracking-wider mb-4">Antropometría</h4>
+                        <div class="grid grid-cols-3 md:grid-cols-6 gap-4">
+                            <div><label class="block text-[10px] font-bold text-slate-500 uppercase">Edad</label><input type="number" name="edad" value="{{ beca.edad }}" class="w-full mt-1 rounded border-slate-300 text-sm"></div>
+                            <div><label class="block text-[10px] font-bold text-slate-500 uppercase">Sexo</label><select name="sexo" class="w-full mt-1 rounded border-slate-300 text-sm"><option>{{ beca.sexo }}</option><option>Masculino</option><option>Femenino</option></select></div>
+                            <div><label class="block text-[10px] font-bold text-slate-500 uppercase">G. Sangre</label><input type="text" name="sangre" value="{{ beca.sangre }}" class="w-full mt-1 rounded border-slate-300 text-sm"></div>
+                            <div><label class="block text-[10px] font-bold text-slate-500 uppercase">Peso (Kg)</label><input type="text" name="peso" value="{{ beca.peso }}" class="w-full mt-1 rounded border-slate-300 text-sm"></div>
+                            <div><label class="block text-[10px] font-bold text-slate-500 uppercase">Estatura (m)</label><input type="text" name="estatura" value="{{ beca.estatura }}" class="w-full mt-1 rounded border-slate-300 text-sm"></div>
+                        </div>
+                    </div>
+
+                    <!-- 4. TALLAS -->
+                    <div class="md:col-span-2 pb-4 border-b border-slate-100">
+                        <h4 class="text-xs font-black text-blue-900 uppercase tracking-wider mb-4">Tallas</h4>
+                        <div class="grid grid-cols-3 md:grid-cols-6 gap-4 bg-slate-50 p-4 rounded-lg border border-slate-200">
+                            <div><label class="block text-[10px] font-bold text-slate-500 uppercase">Zapato</label><input type="text" name="talla_zapato" value="{{ beca.talla_zapato }}" class="w-full mt-1 rounded border-slate-300 text-sm text-center"></div>
+                            <div><label class="block text-[10px] font-bold text-slate-500 uppercase">Franela</label><input type="text" name="talla_franela" value="{{ beca.talla_franela }}" class="w-full mt-1 rounded border-slate-300 text-sm text-center"></div>
+                            <div><label class="block text-[10px] font-bold text-slate-500 uppercase">Short</label><input type="text" name="talla_short" value="{{ beca.talla_short }}" class="w-full mt-1 rounded border-slate-300 text-sm text-center"></div>
+                            <div><label class="block text-[10px] font-bold text-slate-500 uppercase">Chemise</label><input type="text" name="talla_chemise" value="{{ beca.talla_chemise }}" class="w-full mt-1 rounded border-slate-300 text-sm text-center"></div>
+                            <div><label class="block text-[10px] font-bold text-slate-500 uppercase">Mono</label><input type="text" name="talla_mono" value="{{ beca.talla_mono }}" class="w-full mt-1 rounded border-slate-300 text-sm text-center"></div>
+                            <div><label class="block text-[10px] font-bold text-slate-500 uppercase">Compe.</label><input type="text" name="talla_competencia" value="{{ beca.talla_competencia }}" class="w-full mt-1 rounded border-slate-300 text-sm text-center"></div>
+                        </div>
+                    </div>
+
+                    <!-- 5. INFORMACIÓN MÉDICA -->
+                    <div class="md:col-span-2">
+                        <h4 class="text-xs font-black text-blue-900 uppercase tracking-wider mb-4">Información Adicional</h4>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                            <label class="flex items-center gap-2"><select name="usa_lentes" class="border-slate-300 rounded py-0 px-1 text-xs"><option>{{ beca.usa_lentes or 'No' }}</option><option>Si</option><option>No</option></select> Usa Lentes</label>
+                            <label class="flex items-center gap-2"><select name="usa_bucal" class="border-slate-300 rounded py-0 px-1 text-xs"><option>{{ beca.usa_bucal or 'No' }}</option><option>Si</option><option>No</option></select> Prot. Bucal</label>
+                            <label class="flex items-center gap-2"><select name="usa_munequera" class="border-slate-300 rounded py-0 px-1 text-xs"><option>{{ beca.usa_munequera or 'No' }}</option><option>Si</option><option>No</option></select> Muñequera</label>
+                            <label class="flex items-center gap-2"><select name="usa_rodilleras" class="border-slate-300 rounded py-0 px-1 text-xs"><option>{{ beca.usa_rodilleras or 'No' }}</option><option>Si</option><option>No</option></select> Rodilleras</label>
+                            <label class="flex items-center gap-2"><select name="dieta_deportiva" class="border-slate-300 rounded py-0 px-1 text-xs"><option>{{ beca.dieta_deportiva or 'No' }}</option><option>Si</option><option>No</option></select> Dieta Dep.</label>
+                            <label class="flex items-center gap-2"><select name="control_medico" class="border-slate-300 rounded py-0 px-1 text-xs"><option>{{ beca.control_medico or 'No' }}</option><option>Si</option><option>No</option></select> Ctrl. Médico</label>
+                            <label class="flex items-center gap-2"><select name="estudio_social" class="border-slate-300 rounded py-0 px-1 text-xs"><option>{{ beca.estudio_social or 'No' }}</option><option>Si</option><option>No</option></select> Est. Social</label>
+                        </div>
+                    </div>
+
+                    <!-- 6. CONTACTO -->
+                    <div class="md:col-span-2 pt-4 border-t border-slate-100">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div><label class="block text-xs font-bold text-slate-500">Municipio</label>
+                            <select name="municipio" class="w-full mt-1 rounded border-slate-300 text-sm">
+                                <option>{{ beca.municipio }}</option>
+                                {% for m in ['Roscio', 'Ortiz', 'Mellado', 'Miranda', 'Infante', 'Monagas', 'Ribas', 'Zaraza', 'Las Mercedes', 'El Socorro', 'Guayabal', 'Cabruta', 'Santa María de Ipire', 'Chaguaramas', 'San Gerónimo de Guayabal'] %}
+                                <option>{{ m }}</option>
+                                {% endfor %}
+                            </select></div>
+                            <div><label class="block text-xs font-bold text-slate-500">Dirección</label><input type="text" name="direccion" value="{{ beca.direccion }}" class="w-full mt-1 rounded border-slate-300 text-sm"></div>
+                            <div><label class="block text-xs font-bold text-slate-500">Teléfono</label><input type="text" name="telefono" value="{{ beca.telefono }}" class="w-full mt-1 rounded border-slate-300 text-sm"></div>
+                            <div><label class="block text-xs font-bold text-slate-500">Email</label><input type="email" name="email" value="{{ beca.email }}" class="w-full mt-1 rounded border-slate-300 text-sm"></div>
+                            <div class="md:col-span-2">
+                                <label id="labelCuenta" class="block text-xs font-bold text-slate-500 {{ 'text-blue-600' if beca.es_menor else '' }}">
+                                    {% if beca.es_menor %}Cuenta Bancaria (Representante){% else %}Cuenta Bancaria (Atleta){% endif %}
+                                </label>
+                                <input type="text" name="cuenta_bancaria" value="{{ beca.cuenta_bancaria }}" class="w-full mt-1 rounded border-slate-300 text-sm font-mono bg-slate-50">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 flex flex-row-reverse">
+                <button type="submit" class="inline-flex justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500">
+                    Guardar Cambios
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <!-- SECCIÓN 2: MEDALLAS -->
+    <div class="bg-white shadow-sm ring-1 ring-slate-900/5 rounded-xl overflow-hidden border border-slate-100">
+        <div class="px-4 py-4 border-b border-slate-100 bg-yellow-50 flex justify-between items-center">
+            <h3 class="font-bold text-slate-800">Medallas y Logros</h3>
+            <i class="fa-solid fa-medal text-yellow-600"></i>
+        </div>
+        <div class="p-6">
+            <form action="{{ url_for('dashboard.agregar_medalla', beca_id=beca.id) }}" method="POST" class="flex gap-2 mb-4">
+                <select name="tipo_medalla" class="rounded border-slate-300 text-sm"><option>Oro</option><option>Plata</option><option>Bronce</option></select>
+                <input type="text" name="competicion" placeholder="Evento / Competencia" class="rounded border-slate-300 text-sm flex-1">
+                <input type="date" name="fecha" class="rounded border-slate-300 text-sm">
+                <button type="submit" class="bg-slate-800 text-white px-4 rounded text-sm font-bold">+</button>
+            </form>
+            
+            <ul class="space-y-2">
+                {% for m in medallas %}
+                <li class="flex justify-between items-center text-sm bg-slate-50 p-3 rounded border border-slate-100">
+                    <span class="font-medium">
+                        <i class="fa-solid fa-circle text-[10px] mr-2 {{ 'text-yellow-400' if m.tipo_medalla == 'Oro' else 'text-gray-400' if m.tipo_medalla == 'Plata' else 'text-orange-400' }}"></i>
+                        {{ m.tipo_medalla }} en {{ m.competicion }} <span class="text-slate-400 text-xs ml-2">({{ m.fecha }})</span>
+                    </span>
+                    <form action="{{ url_for('dashboard.eliminar_medalla', medalla_id=m.id) }}" method="POST" onsubmit="return confirm('¿Borrar?');">
+                        <input type="hidden" name="atleta_id" value="{{ beca.id }}">
+                        <button class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 3: DOCUMENTOS DIGITALES (NUEVA) -->
+    <div class="bg-white shadow-sm ring-1 ring-slate-900/5 rounded-xl overflow-hidden border border-slate-100">
+        <div class="px-4 py-4 border-b border-slate-100 bg-blue-50 flex justify-between items-center">
+            <h3 class="font-bold text-slate-800">Documentos Digitales</h3>
+            <i class="fa-solid fa-file-pdf text-blue-600"></i>
+        </div>
+        <div class="p-6">
+            <!-- Formulario Subir PDF -->
+            <form action="{{ url_for('dashboard.subir_documento', beca_id=beca.id) }}" method="POST" enctype="multipart/form-data" class="flex flex-col md:flex-row gap-3 mb-6 bg-slate-50 p-4 rounded border border-slate-200">
+                <div class="flex-1">
+                    <label class="block text-xs font-bold text-slate-500 mb-1">Nombre del Documento</label>
+                    <select name="nombre_doc" class="w-full rounded border-slate-300 text-sm">
+                        <option>Cédula de Identidad</option>
+                        <option>Partida de Nacimiento</option>
+                        <option>Síntesis Curricular</option>
+                        <option>Cédula del Representante</option>
+                        <option>Constancia de Residencia</option>
+                        <option>Otro</option>
+                    </select>
+                </div>
+                <div class="flex-1">
+                    <label class="block text-xs font-bold text-slate-500 mb-1">Archivo PDF</label>
+                    <input type="file" name="archivo_pdf" accept=".pdf" required class="block w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200">
+                </div>
+                <div class="flex items-end">
+                    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-bold hover:bg-blue-700 w-full md:w-auto">
+                        <i class="fa-solid fa-upload mr-1"></i> Subir
+                    </button>
+                </div>
+            </form>
+            
+            <!-- Lista de Documentos -->
+            {% if documentos %}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {% for doc in documentos %}
+                <div class="flex justify-between items-center p-3 border border-slate-200 rounded hover:bg-slate-50 transition-colors">
+                    <div class="flex items-center overflow-hidden">
+                        <i class="fa-solid fa-file-pdf text-red-500 text-xl mr-3"></i>
+                        <div class="truncate">
+                            <p class="font-semibold text-sm text-slate-800 truncate">{{ doc.nombre }}</p>
+                            <p class="text-xs text-slate-400">Subido: {{ doc.created_at[:10] }}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 ml-2">
+                        <a href="{{ doc.archivo }}" download="{{ doc.nombre }}.pdf" class="text-blue-500 hover:text-blue-700 p-1" title="Descargar">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                        <form action="{{ url_for('dashboard.eliminar_documento', doc_id=doc.id) }}" method="POST" onsubmit="return confirm('¿Borrar documento?');">
+                            <input type="hidden" name="atleta_id" value="{{ beca.id }}">
+                            <button type="submit" class="text-slate-400 hover:text-red-600 p-1" title="Eliminar">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="text-center py-8 text-slate-400 italic bg-slate-50 rounded border border-dashed border-slate-200">
+                <i class="fa-regular fa-folder-open text-2xl mb-2 opacity-50"></i>
+                <p>No hay documentos cargados.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+
+<script>
+    var loadFile = function(event) {
+        var preview = document.getElementById('preview');
+        var placeholder = document.getElementById('placeholder');
+        preview.src = URL.createObjectURL(event.target.files[0]);
+        preview.classList.remove('hidden');
+        if(placeholder) placeholder.classList.add('hidden');
+    };
+
+    function toggleRepresentante() {
+        var check = document.getElementById('checkMenor');
+        var div = document.getElementById('divRepresentante');
+        var labelCuenta = document.getElementById('labelCuenta');
+
+        if (check.checked) {
+            div.classList.remove('hidden');
+            labelCuenta.textContent = "Cuenta Bancaria (Del Representante)";
+            labelCuenta.classList.add('text-blue-600');
+        } else {
+            div.classList.add('hidden');
+            labelCuenta.textContent = "Cuenta Bancaria (Del Atleta)";
+            labelCuenta.classList.remove('text-blue-600');
+        }
+    }
+</script>
+{% endblock %}
