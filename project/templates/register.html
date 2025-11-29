@@ -14,11 +14,11 @@
             <img class="h-20 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="IRDEBG GUÁRICO">
 
             <div class="mt-6 flex justify-center w-full max-w-xs border-2 border-gray-200 rounded-lg overflow-hidden">
-                <a href="{{ url_for('login') }}"
+                <a href="{{ url_for('auth.login') }}"
                     class="flex-1 py-2 text-center text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200">
                     LOGIN
                 </a>
-                <a href="{{ url_for('register') }}"
+                <a href="{{ url_for('auth.register') }}"
                     class="flex-1 py-2 text-center text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
                     REGISTER
                 </a>
@@ -27,7 +27,7 @@
             <p class="mt-8 text-sm text-gray-500">Crea tu cuenta con tu email:</p>
         </div>
 
-        <form class="space-y-4" action="{{ url_for('register') }}" method="POST" id="registerForm">
+        <form class="space-y-4" action="{{ url_for('auth.register') }}" method="POST" id="registerForm">
             <div>
                 <label for="nombre" class="sr-only">Nombre</label>
                 <input id="nombre" name="nombre" type="text" autocomplete="given-name" required
@@ -117,7 +117,7 @@
 
         <div class="text-center text-sm text-gray-500">
             ¿Ya tienes cuenta?
-            <a href="{{ url_for('login') }}" class="font-medium text-blue-600 hover:text-blue-500">
+            <a href="{{ url_for('auth.login') }}" class="font-medium text-blue-600 hover:text-blue-500">
                 Inicia sesión
             </a>
         </div>

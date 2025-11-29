@@ -2827,3 +2827,419 @@ jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endfor'. Jinja w
 2025-11-28 19:59:06,021 - __main__ - INFO - Aplicación Flask inicializada correctamente
 2025-11-28 19:59:06,042 - werkzeug - WARNING -  * Debugger is active!
 2025-11-28 19:59:06,045 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-11-28 21:00:26,745 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\app.py', reloading
+2025-11-28 21:00:26,813 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-11-28 21:00:27,045 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\flask\\__init__.py', reloading
+2025-11-28 21:00:27,062 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\flask\\app.py', reloading
+2025-11-28 21:00:27,073 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\flask\\templating.py', reloading
+2025-11-28 21:00:27,080 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\flask\\globals.py', reloading
+2025-11-28 21:00:27,087 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\flask\\wrappers.py', reloading
+2025-11-28 21:00:27,108 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\werkzeug\\__init__.py', reloading
+2025-11-28 21:00:27,115 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\werkzeug\\wrappers\\__init__.py', reloading
+2025-11-28 21:00:27,145 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\werkzeug\\utils.py', reloading
+2025-11-28 21:00:27,155 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\typing.py', reloading
+2025-11-28 21:00:27,169 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\flask\\helpers.py', reloading
+2025-11-28 21:00:27,178 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\werkzeug\\exceptions.py', reloading
+2025-11-28 21:00:27,187 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\gotrue\\__init__.py', reloading
+2025-11-28 21:00:27,191 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\gotrue\\errors.py', reloading
+2025-11-28 21:00:27,198 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\dotenv\\__init__.py', reloading
+2025-11-28 21:00:27,203 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\dotenv\\main.py', reloading
+2025-11-28 21:00:27,211 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\config\\supabase_client.py', reloading
+2025-11-28 21:00:27,215 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\supabase\\__init__.py', reloading
+2025-11-28 21:00:27,220 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\supabase\\_sync\\__init__.py', reloading
+2025-11-28 21:00:27,222 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\supabase\\_sync\\client.py', reloading
+2025-11-28 21:00:27,352 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\flask\\blueprints.py', reloading
+2025-11-28 21:00:27,360 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\utils\\decorators.py', reloading
+2025-11-28 21:00:27,363 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\utils\\password_strength.py', reloading
+2025-11-28 21:00:27,991 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-11-28 21:00:30,318 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:00:30,342 - werkzeug - WARNING -  * Debugger is active!
+2025-11-28 21:00:30,347 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-11-28 21:02:55,655 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:02:55,691 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-11-28 21:02:55,691 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-28 21:02:55,708 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-11-28 21:02:57,094 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:02:57,111 - werkzeug - WARNING -  * Debugger is active!
+2025-11-28 21:02:57,115 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-11-28 21:08:25,315 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:08:25] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-28 21:08:26,384 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=refresh_token "HTTP/2 400 Bad Request"
+2025-11-28 21:08:26,387 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:08:26] "[32mGET /dashboard/ HTTP/1.1[0m" 302 -
+2025-11-28 21:08:26,446 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:08:26] "GET /login HTTP/1.1" 200 -
+2025-11-28 21:08:26,774 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:08:26] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 21:08:29,687 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:08:29] "GET /register HTTP/1.1" 200 -
+2025-11-28 21:08:29,779 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:08:29] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 21:08:57,133 - __main__ - INFO - Contraseña válida con nivel de fortaleza: 100/100
+2025-11-28 21:08:57,683 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/signup "HTTP/2 200 OK"
+2025-11-28 21:08:57,697 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:08:57] "[32mPOST /register HTTP/1.1[0m" 302 -
+2025-11-28 21:08:57,711 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:08:57] "GET /login HTTP/1.1" 200 -
+2025-11-28 21:08:57,831 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:08:57] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 21:16:41,541 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\app.py', reloading
+2025-11-28 21:16:41,542 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\app.py', reloading
+2025-11-28 21:16:41,543 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\app.py', reloading
+2025-11-28 21:16:41,823 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-11-28 21:21:01,657 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:21:01,682 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-11-28 21:21:01,682 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-28 21:21:01,697 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-11-28 21:21:03,051 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:21:03,069 - werkzeug - WARNING -  * Debugger is active!
+2025-11-28 21:21:03,073 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-11-28 21:21:41,990 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:21:41] "GET /register HTTP/1.1" 200 -
+2025-11-28 21:21:42,249 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:21:42] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 21:22:02,671 - __main__ - INFO - Contraseña válida con nivel de fortaleza: 100/100
+2025-11-28 21:22:03,491 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/signup "HTTP/2 200 OK"
+2025-11-28 21:22:03,508 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:22:03] "[32mPOST /register HTTP/1.1[0m" 302 -
+2025-11-28 21:22:03,532 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:22:03] "GET /login HTTP/1.1" 200 -
+2025-11-28 21:22:03,649 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:22:03] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 21:25:10,087 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:25:10] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-28 21:25:10,094 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:25:10] "GET /login HTTP/1.1" 200 -
+2025-11-28 21:25:33,417 - __main__ - INFO - Contraseña válida con nivel de fortaleza: 100/100
+2025-11-28 21:25:34,532 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/signup "HTTP/2 400 Bad Request"
+2025-11-28 21:25:34,533 - __main__ - ERROR - Error inesperado durante el registro: Email address "debug_test_123@example.com" is invalid
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\supabase_auth\_sync\gotrue_base_api.py", line 73, in _request
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '400 Bad Request' for url 'https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/signup'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\UUARIO\Desktop\proyecto\project\app.py", line 173, in register
+    auth_response = supabase.auth.sign_up({
+        "email": email,
+    ...<7 lines>...
+        }
+    })
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\supabase_auth\_sync\gotrue_client.py", line 228, in sign_up
+    response = self._request(
+        "POST",
+    ...<9 lines>...
+        redirect_to=redirect_to,
+    )
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\supabase_auth\_sync\gotrue_base_api.py", line 76, in _request
+    raise handle_exception(e)  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+supabase_auth.errors.AuthApiError: Email address "debug_test_123@example.com" is invalid
+2025-11-28 21:25:34,538 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\supabase_auth\\_sync\\gotrue_client.py', reloading
+2025-11-28 21:25:34,544 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\supabase_auth\\_sync\\gotrue_base_api.py', reloading
+2025-11-28 21:25:34,544 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:25:34] "POST /register HTTP/1.1" 200 -
+2025-11-28 21:25:34,545 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\httpx\\_models.py', reloading
+2025-11-28 21:25:35,672 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-11-28 21:25:37,152 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:25:37,174 - werkzeug - WARNING -  * Debugger is active!
+2025-11-28 21:25:37,177 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-11-28 21:28:38,478 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\postgrest\\__init__.py', reloading
+2025-11-28 21:28:38,650 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-11-28 21:28:40,184 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:28:40,202 - werkzeug - WARNING -  * Debugger is active!
+2025-11-28 21:28:40,206 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-11-28 21:31:52,463 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:31:52] "GET /register HTTP/1.1" 200 -
+2025-11-28 21:31:52,742 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:31:52] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 21:32:11,264 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:32:11] "POST /register HTTP/1.1" 200 -
+2025-11-28 21:32:11,368 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:32:11] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 21:32:18,081 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:32:18] "POST /register HTTP/1.1" 200 -
+2025-11-28 21:32:18,197 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:32:18] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 21:33:40,601 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\app.py', reloading
+2025-11-28 21:33:40,602 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\app.py', reloading
+2025-11-28 21:33:41,059 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-11-28 21:39:04,090 - project.app - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:39:30,284 - project.app - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:39:55,519 - project.app - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:42:31,734 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:42:31,779 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-11-28 21:42:31,780 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-28 21:42:31,805 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-11-28 21:42:33,254 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:42:33,271 - werkzeug - WARNING -  * Debugger is active!
+2025-11-28 21:42:33,276 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-11-28 21:42:36,323 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:42:36] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-28 21:42:36,410 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\jinja2\\environment.py', reloading
+2025-11-28 21:42:36,495 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\werkzeug\\routing\\map.py', reloading
+2025-11-28 21:42:36,525 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:42:36] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+2025-11-28 21:42:36,830 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:42:36] "GET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-11-28 21:42:36,834 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:42:36] "GET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-11-28 21:42:36,925 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:42:36] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-11-28 21:42:37,151 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:42:37] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-11-28 21:42:37,540 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-11-28 21:42:40,451 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:42:40,474 - werkzeug - WARNING -  * Debugger is active!
+2025-11-28 21:42:40,478 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-11-28 21:43:55,655 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\app.py', reloading
+2025-11-28 21:43:55,656 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\app.py', reloading
+2025-11-28 21:43:55,657 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\app.py', reloading
+2025-11-28 21:43:55,658 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\app.py', reloading
+2025-11-28 21:43:56,788 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-11-28 21:43:58,565 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:43:58,583 - werkzeug - WARNING -  * Debugger is active!
+2025-11-28 21:43:58,587 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-11-28 21:45:08,570 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\app.py', reloading
+2025-11-28 21:45:08,572 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\app.py', reloading
+2025-11-28 21:45:08,573 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\app.py', reloading
+2025-11-28 21:45:09,002 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-11-28 21:45:11,766 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:45:11,784 - werkzeug - WARNING -  * Debugger is active!
+2025-11-28 21:45:11,788 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-11-28 21:46:37,828 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\app.py', reloading
+2025-11-28 21:46:37,829 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\app.py', reloading
+2025-11-28 21:46:38,108 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-11-28 21:46:40,031 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:46:40,047 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:46:40,069 - werkzeug - WARNING -  * Debugger is active!
+2025-11-28 21:46:40,073 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-11-28 21:47:41,072 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:47:41] "POST /register HTTP/1.1" 200 -
+2025-11-28 21:47:41,312 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:47:41] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 21:47:45,018 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:47:45] "GET /login HTTP/1.1" 200 -
+2025-11-28 21:47:45,101 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:47:45] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 21:47:46,679 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:47:46] "GET /register HTTP/1.1" 200 -
+2025-11-28 21:47:46,782 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:47:46] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 21:48:16,035 - __main__ - INFO - Contraseña válida con nivel de fortaleza: 100/100
+2025-11-28 21:48:17,111 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/signup "HTTP/2 200 OK"
+2025-11-28 21:48:17,126 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:48:17] "[32mPOST /register HTTP/1.1[0m" 302 -
+2025-11-28 21:48:17,141 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:48:17] "GET /login HTTP/1.1" 200 -
+2025-11-28 21:48:17,264 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:48:17] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 21:50:30,326 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\utils\\validaciones.py', reloading
+2025-11-28 21:50:30,327 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\utils\\optimizaciones_avanzadas.py', reloading
+2025-11-28 21:50:30,328 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\utils\\optimizaciones.py', reloading
+2025-11-28 21:50:30,779 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-11-28 21:50:33,100 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:50:33,113 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:50:33,136 - werkzeug - WARNING -  * Debugger is active!
+2025-11-28 21:50:33,140 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-11-28 21:52:58,119 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\auth.py', reloading
+2025-11-28 21:52:58,298 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\auth.py', reloading
+2025-11-28 21:52:58,299 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\auth.py', reloading
+2025-11-28 21:52:58,301 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\auth.py', reloading
+2025-11-28 21:52:58,561 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-11-28 21:53:00,428 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:53:00,439 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 21:53:00,464 - werkzeug - WARNING -  * Debugger is active!
+2025-11-28 21:53:00,469 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-11-28 21:55:15,452 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:55:15] "[35m[1mGET /register HTTP/1.1[0m" 500 -
+2025-11-28 21:55:15,705 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:55:15] "GET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-11-28 21:55:15,737 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:55:15] "GET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-11-28 21:55:15,777 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:55:15] "GET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-11-28 21:55:15,967 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 21:55:15] "[36mGET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-11-28 21:56:00,288 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\app.py', reloading
+2025-11-28 21:56:00,963 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-11-28 22:01:40,060 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 22:01:40,096 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-11-28 22:01:40,096 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-28 22:01:40,124 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-11-28 22:01:41,523 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 22:01:41,542 - werkzeug - WARNING -  * Debugger is active!
+2025-11-28 22:01:41,545 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-11-28 22:01:44,203 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:01:44] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-28 22:01:44,289 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:01:44] "GET /login HTTP/1.1" 200 -
+2025-11-28 22:01:44,592 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:01:44] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 22:01:46,894 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:01:46] "[35m[1mGET /register HTTP/1.1[0m" 500 -
+2025-11-28 22:01:46,981 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:01:46] "[36mGET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-11-28 22:01:47,002 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:01:47] "[36mGET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-11-28 22:01:47,035 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:01:47] "[36mGET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-11-28 22:03:49,694 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:03:49] "[35m[1mGET /register HTTP/1.1[0m" 500 -
+2025-11-28 22:03:49,771 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:03:49] "[36mGET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-11-28 22:03:49,784 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:03:49] "[36mGET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-11-28 22:03:49,822 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:03:49] "[36mGET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-11-28 22:03:49,895 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:03:49] "[36mGET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-11-28 22:04:03,851 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 22:04:03,882 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-11-28 22:04:03,883 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-28 22:04:03,904 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-11-28 22:04:05,276 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 22:04:05,293 - werkzeug - WARNING -  * Debugger is active!
+2025-11-28 22:04:05,296 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-11-28 22:04:06,446 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:04:06] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-28 22:04:06,531 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:04:06] "GET /login HTTP/1.1" 200 -
+2025-11-28 22:04:06,785 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:04:06] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 22:04:07,927 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:04:07] "[35m[1mGET /register HTTP/1.1[0m" 500 -
+2025-11-28 22:04:08,018 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:04:08] "[36mGET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-11-28 22:04:08,032 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:04:08] "[36mGET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-11-28 22:04:08,161 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:04:08] "[36mGET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-11-28 22:04:52,687 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\utils\\decorators.py', reloading
+2025-11-28 22:04:52,687 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\utils\\decorators.py', reloading
+2025-11-28 22:04:52,688 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\utils\\decorators.py', reloading
+2025-11-28 22:04:53,541 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-11-28 22:04:55,664 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 22:04:55,691 - werkzeug - WARNING -  * Debugger is active!
+2025-11-28 22:04:55,697 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-11-28 22:05:55,722 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:05:55] "[35m[1mGET /register HTTP/1.1[0m" 500 -
+2025-11-28 22:05:56,003 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:05:56] "[36mGET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-11-28 22:05:56,006 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:05:56] "[36mGET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-11-28 22:05:56,029 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:05:56] "[36mGET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-11-28 22:05:56,106 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:05:56] "[36mGET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-11-28 22:06:12,532 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 22:06:12,563 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-11-28 22:06:12,563 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-28 22:06:12,582 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-11-28 22:06:14,049 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 22:06:14,065 - werkzeug - WARNING -  * Debugger is active!
+2025-11-28 22:06:14,068 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-11-28 22:06:15,466 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:06:15] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-28 22:06:15,517 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:06:15] "GET /login HTTP/1.1" 200 -
+2025-11-28 22:06:15,716 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:06:15] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 22:06:16,682 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:06:16] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-28 22:06:16,716 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:06:16] "GET /login HTTP/1.1" 200 -
+2025-11-28 22:06:17,129 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:06:17] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 22:06:20,011 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:06:20] "[35m[1mGET /register HTTP/1.1[0m" 500 -
+2025-11-28 22:06:20,092 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:06:20] "[36mGET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-11-28 22:06:20,114 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:06:20] "[36mGET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-11-28 22:06:20,133 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:06:20] "[36mGET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-11-28 22:06:20,283 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:06:20] "[36mGET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-11-28 22:06:35,213 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/2 400 Bad Request"
+2025-11-28 22:06:35,215 - blueprints.auth - ERROR - Error inesperado durante el inicio de sesión: Invalid login credentials
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\supabase_auth\_sync\gotrue_base_api.py", line 73, in _request
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '400 Bad Request' for url 'https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\auth.py", line 33, in login
+    auth_response = supabase.auth.sign_in_with_password({
+        "email": email,
+        "password": password
+    })
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\supabase_auth\_sync\gotrue_client.py", line 288, in sign_in_with_password
+    response = self._request(
+        "POST",
+    ...<9 lines>...
+        query=QueryParams(grant_type="password"),
+    )
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\supabase_auth\_sync\gotrue_base_api.py", line 76, in _request
+    raise handle_exception(e)  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+supabase_auth.errors.AuthApiError: Invalid login credentials
+2025-11-28 22:06:35,227 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:06:35] "POST /login HTTP/1.1" 200 -
+2025-11-28 22:06:35,296 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:06:35] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 22:06:50,927 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/2 400 Bad Request"
+2025-11-28 22:06:50,928 - blueprints.auth - ERROR - Error inesperado durante el inicio de sesión: Invalid login credentials
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\supabase_auth\_sync\gotrue_base_api.py", line 73, in _request
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '400 Bad Request' for url 'https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\auth.py", line 33, in login
+    auth_response = supabase.auth.sign_in_with_password({
+        "email": email,
+        "password": password
+    })
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\supabase_auth\_sync\gotrue_client.py", line 288, in sign_in_with_password
+    response = self._request(
+        "POST",
+    ...<9 lines>...
+        query=QueryParams(grant_type="password"),
+    )
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\supabase_auth\_sync\gotrue_base_api.py", line 76, in _request
+    raise handle_exception(e)  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+supabase_auth.errors.AuthApiError: Invalid login credentials
+2025-11-28 22:06:50,933 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:06:50] "POST /login HTTP/1.1" 200 -
+2025-11-28 22:06:50,987 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:06:50] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 22:08:24,385 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:08:24] "[35m[1mGET /register HTTP/1.1[0m" 500 -
+2025-11-28 22:08:24,510 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:08:24] "[36mGET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-11-28 22:08:24,522 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:08:24] "[36mGET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-11-28 22:08:24,685 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:08:24] "[36mGET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-11-28 22:08:24,956 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:08:24] "[36mGET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-11-28 22:08:29,233 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:08:29] "[35m[1mGET /register HTTP/1.1[0m" 500 -
+2025-11-28 22:08:29,325 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:08:29] "[36mGET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-11-28 22:08:29,330 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:08:29] "[36mGET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-11-28 22:08:29,401 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:08:29] "[36mGET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-11-28 22:09:33,977 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 22:09:34,616 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-11-28 22:09:34,616 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-28 22:09:34,619 - werkzeug - INFO -  * Restarting with stat
+2025-11-28 22:09:36,074 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 22:09:36,129 - werkzeug - WARNING -  * Debugger is active!
+2025-11-28 22:09:36,135 - werkzeug - INFO -  * Debugger PIN: 107-177-601
+2025-11-28 22:09:55,349 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:09:55] "[35m[1mGET /register HTTP/1.1[0m" 500 -
+2025-11-28 22:10:17,367 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:10:17] "[35m[1mGET /register HTTP/1.1[0m" 500 -
+2025-11-28 22:10:17,709 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:10:17] "[36mGET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-11-28 22:10:17,800 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:10:17] "GET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-11-28 22:10:17,902 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:10:17] "GET /register?__debugger__=yes&cmd=resource&f=console.png&s=NRr6OvP5PNZ2yEHAvTHz HTTP/1.1" 200 -
+2025-11-28 22:13:33,999 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 22:13:34,033 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-11-28 22:13:34,033 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-28 22:13:34,061 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-11-28 22:13:35,497 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-11-28 22:13:35,515 - werkzeug - WARNING -  * Debugger is active!
+2025-11-28 22:13:35,518 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-11-28 22:13:36,632 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:13:36] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-28 22:13:36,669 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:13:36] "GET /login HTTP/1.1" 200 -
+2025-11-28 22:13:36,822 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:13:36] "GET /static/logo.png HTTP/1.1" 200 -
+2025-11-28 22:13:40,107 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:13:40] "GET /register HTTP/1.1" 200 -
+2025-11-28 22:13:40,200 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:13:40] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 22:14:13,564 - blueprints.auth - INFO - Contraseña válida con nivel de fortaleza: 100/100
+2025-11-28 22:14:14,475 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/signup "HTTP/1.1 200 OK"
+2025-11-28 22:14:14,487 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:14:14] "[32mPOST /register HTTP/1.1[0m" 302 -
+2025-11-28 22:14:14,504 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:14:14] "GET /login HTTP/1.1" 200 -
+2025-11-28 22:14:14,672 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:14:14] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 22:14:44,386 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/1.1 400 Bad Request"
+2025-11-28 22:14:44,387 - blueprints.auth - WARNING - Intento de login fallido para email: escoyon@gmail.com
+2025-11-28 22:14:44,389 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:14:44] "POST /login HTTP/1.1" 200 -
+2025-11-28 22:14:44,457 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:14:44] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 22:14:56,842 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/1.1 400 Bad Request"
+2025-11-28 22:14:56,844 - blueprints.auth - WARNING - Intento de login fallido para email: escoyon@gmail.com
+2025-11-28 22:14:56,845 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:14:56] "POST /login HTTP/1.1" 200 -
+2025-11-28 22:14:56,909 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:14:56] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 22:15:12,307 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/1.1 400 Bad Request"
+2025-11-28 22:15:12,309 - blueprints.auth - WARNING - Intento de login fallido para email: escoyon@gmail.com
+2025-11-28 22:15:12,311 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:15:12] "POST /login HTTP/1.1" 200 -
+2025-11-28 22:15:12,380 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:15:12] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 22:15:14,687 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:15:14] "GET /register HTTP/1.1" 200 -
+2025-11-28 22:15:14,786 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:15:14] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 22:15:16,836 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:15:16] "GET /login HTTP/1.1" 200 -
+2025-11-28 22:15:16,957 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:15:16] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 22:15:18,161 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:15:18] "GET /forgot-password HTTP/1.1" 200 -
+2025-11-28 22:15:18,256 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:15:18] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 22:15:22,824 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/recover?redirect_to=http%3A%2F%2F127.0.0.1%3A5000%2Freset-password "HTTP/1.1 200 OK"
+2025-11-28 22:15:22,826 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:15:22] "[32mPOST /forgot-password HTTP/1.1[0m" 302 -
+2025-11-28 22:15:22,840 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:15:22] "GET /login HTTP/1.1" 200 -
+2025-11-28 22:15:22,948 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:15:22] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 22:16:58,657 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:16:58] "GET /reset-password HTTP/1.1" 200 -
+2025-11-28 22:16:58,801 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:16:58] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 22:17:13,703 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-11-28 22:17:14,165 - httpx - INFO - HTTP Request: PUT https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-11-28 22:17:14,444 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/logout "HTTP/1.1 204 No Content"
+2025-11-28 22:17:14,447 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:17:14] "[32mPOST /reset-password HTTP/1.1[0m" 302 -
+2025-11-28 22:17:14,460 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:17:14] "GET /login HTTP/1.1" 200 -
+2025-11-28 22:17:14,586 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:17:14] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-11-28 22:17:26,923 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/1.1 200 OK"
+2025-11-28 22:17:28,552 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/profiles?select=role&id=eq.5d64a797-d269-49ea-8edf-727ccd17dbf6 "HTTP/1.1 200 OK"
+2025-11-28 22:17:28,573 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:17:28] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-11-28 22:17:28,874 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-11-28 22:17:29,165 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-11-28 22:17:30,599 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/1.1 200 OK"
+2025-11-28 22:17:30,941 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/1.1 200 OK"
+2025-11-28 22:17:31,203 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/1.1 200 OK"
+2025-11-28 22:17:31,285 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:17:31] "GET /dashboard/ HTTP/1.1" 200 -
+2025-11-28 22:17:31,390 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:17:31] "GET /static/css/custom-alerts.css HTTP/1.1" 200 -
+2025-11-28 22:17:31,397 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:17:31] "GET /static/js/custom-alerts.js HTTP/1.1" 200 -
+2025-11-28 22:18:01,519 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-11-28 22:18:01,796 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-11-28 22:18:01,806 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:18:01] "GET /dashboard/cuenta HTTP/1.1" 200 -
+2025-11-28 22:18:01,878 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:18:01] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-11-28 22:18:01,898 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:18:01] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -

@@ -24,11 +24,11 @@
 
             <!-- Botones LOGIN / REGISTER -->
             <div class="mt-6 flex justify-center w-full max-w-xs border-2 border-gray-200 rounded-lg overflow-hidden">
-                <a href="{{ url_for('login') }}"
+                <a href="{{ url_for('auth.login') }}"
                     class="flex-1 py-2 text-center text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
                     LOGIN
                 </a>
-                <a href="{{ url_for('register') }}"
+                <a href="{{ url_for('auth.register') }}"
                     class="flex-1 py-2 text-center text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200">
                     REGISTER
                 </a>
@@ -45,7 +45,7 @@
             <p class="mt-4 text-sm text-gray-500">or:</p>
         </div>
 
-        <form class="space-y-4" action="{{ url_for('login') }}" method="POST">
+        <form class="space-y-4" action="{{ url_for('auth.login') }}" method="POST">
             <div>
                 <label for="email" class="sr-only">Email or username</label>
                 <input id="email" name="email" type="email" autocomplete="email" required
@@ -69,7 +69,8 @@
                 </div>
 
                 <div class="text-sm">
-                    <a href="{{ url_for('forgot_password') }}" class="font-medium text-blue-600 hover:text-blue-500">
+                    <a href="{{ url_for('auth.forgot_password') }}"
+                        class="font-medium text-blue-600 hover:text-blue-500">
                         Forgot password?
                     </a>
                 </div>
@@ -85,7 +86,7 @@
 
         <div class="text-center text-sm text-gray-500">
             Not a member?
-            <a href="{{ url_for('register') }}" class="font-medium text-blue-600 hover:text-blue-500">
+            <a href="{{ url_for('auth.register') }}" class="font-medium text-blue-600 hover:text-blue-500">
                 Register
             </a>
         </div>

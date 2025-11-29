@@ -145,7 +145,7 @@ def index():
     except Exception as e:
         logger.error(f"Error cargando dashboard: {e}", exc_info=True)
         session.clear()
-        return redirect(url_for('login'))
+        return redirect(url_for('auth.login'))
 
 # --- RUTA LISTADO DE ATLETAS CON PAGINACIÓN ---
 @dashboard_blueprint.route('/becas')

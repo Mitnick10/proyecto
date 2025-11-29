@@ -12,7 +12,7 @@ def login_required(f):
         # 1. Verificar si hay sesión básica en Flask
         if 'user_id' not in session:
             flash('Debes iniciar sesión.', 'warning')
-            return redirect(url_for('login'))
+            return redirect(url_for('auth.login'))
         
         # 2. Restaurar la sesión en Supabase (Token)
         try:
@@ -44,11 +44,11 @@ def login_required(f):
             print(f"Sesión expirada: {e}")
             session.clear()
             flash('Tu sesión ha expirado.', 'warning')
-            return redirect(url_for('login'))
+            return redirect(url_for('auth.login'))
         except Exception as e:
             print(f"Error inesperado: {e}")
             session.clear()
-            return redirect(url_for('login'))
+            return redirect(url_for('auth.login'))
 
         return f(*args, **kwargs)
     return decorated_function
