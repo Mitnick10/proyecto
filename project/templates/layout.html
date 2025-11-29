@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Dashboard{% endblock %} - Becas IRDEBG</title>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='logo.jpg') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo.png') }}" type="image/png">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Alertas Personalizadas -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom-alerts.css') }}">
 
     <script>
         tailwind.config = {
@@ -18,9 +21,9 @@
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
                         brand: {
-                            900: '#0f172a', // Slate 900
-                            800: '#1e293b', // Slate 800
-                            600: '#2563eb', // Blue 600
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            600: '#2563eb',
                         }
                     }
                 }
@@ -40,7 +43,6 @@
                     <!-- Lado Izquierdo: Logo y Menú -->
                     <div class="flex items-center gap-8">
                         <div class="flex-shrink-0 flex items-center gap-2">
-                            <!-- LOGO EN TEXTO ROJO (Como pediste) -->
                             <a href="{{ url_for('dashboard.index') }}"
                                 class="text-3xl font-black tracking-tighter text-red-600 select-none hover:text-red-500 transition-colors no-underline"
                                 style="text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
@@ -49,7 +51,6 @@
                         </div>
                         <div class="hidden md:block">
                             <div class="flex items-baseline space-x-4">
-                                <!-- Definimos estilos para activo e inactivo -->
                                 {% set active_class = 'bg-slate-800 text-white px-3 py-2 rounded-md text-sm font-medium
                                 transition-colors border border-slate-600 shadow-sm' %}
                                 {% set inactive_class = 'text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2
@@ -68,7 +69,6 @@
                                     Mi Cuenta
                                 </a>
 
-                                <!-- ENLACE GESTIÓN USUARIOS: SOLO SUPERADMIN -->
                                 {% if user_role == 'superadmin' %}
                                 <a href="{{ url_for('dashboard.lista_usuarios') }}"
                                     class="{{ active_class if request.endpoint == 'dashboard.lista_usuarios' else inactive_class }} text-purple-300 border-purple-500/30 hover:bg-purple-900/30 hover:text-purple-200">
@@ -82,19 +82,15 @@
                     <!-- Lado Derecho: Info Usuario y Salir -->
                     <div class="hidden md:block">
                         <div class="ml-4 flex items-center md:ml-6 gap-4">
-
-                            <!-- Info del Usuario -->
                             <div class="text-right hidden sm:block">
                                 <span class="block text-white text-sm font-semibold leading-tight">
                                     {{ first_name | default('Usuario') }}
                                 </span>
-                                <!-- ROL (Badge pequeño debajo del nombre) -->
                                 <span class="block text-xs text-blue-400 font-bold uppercase tracking-wider">
                                     {{ user_role }}
                                 </span>
                             </div>
 
-                            <!-- Botón Salir -->
                             <a href="{{ url_for('logout') }}"
                                 class="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 transition-colors flex items-center gap-2"
                                 title="Cerrar Sesión">
@@ -134,7 +130,6 @@
                 <h1 class="text-2xl font-bold tracking-tight text-slate-900">
                     {% block header %}{% endblock %}
                 </h1>
-                <!-- Espacio para acciones extra en el header -->
                 <div id="header-actions"></div>
             </div>
         </header>
@@ -154,6 +149,9 @@
             </div>
         </footer>
     </div>
+
+    <!-- Script de Alertas Personalizadas -->
+    <script src="{{ url_for('static', filename='js/custom-alerts.js') }}"></script>
 </body>
 
 </html>

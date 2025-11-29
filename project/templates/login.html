@@ -6,8 +6,6 @@
 <div class="relative min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <!-- 
       Fondo de Atletas (Desde Internet)
-      CAMBIO AQUÍ: Ahora carga desde una URL externa, igual que el registro.
-      Puedes cambiar la URL dentro de las comillas por la imagen que prefieras.
     -->
     <div class="absolute inset-0 z-0"
         style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7JWoDhdscUjLrQN6iqKerme1yy7-msHf1uB1NiILqNYlOkWZr5Cd8P2SfQI85bqMWO4CdanMOoB5WsvlGWVZLz2TsGzaGe8gdHM7g7LPxk93u9gJsxYZq81WddJXWv_M8gNMU8CUZLLg/s1600/65591412.wPaGxmkS.P7267968970'); background-size: cover; background-position: center; background-attachment: fixed;">
@@ -71,7 +69,7 @@
                 </div>
 
                 <div class="text-sm">
-                    <a href="#" class="font-medium text-blue-600 hover:text-blue-500">
+                    <a href="{{ url_for('forgot_password') }}" class="font-medium text-blue-600 hover:text-blue-500">
                         Forgot password?
                     </a>
                 </div>

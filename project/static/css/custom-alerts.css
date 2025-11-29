@@ -1,0 +1,252 @@
+/**
+ * Sistema de Alertas Modernas y Elegantes
+ * Diseño profesional centrado en pantalla
+ */
+
+/* ============================================
+   OVERLAY (Fondo oscuro)
+   ============================================ */
+.custom-alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.custom-alert-overlay.hiding {
+    animation: fadeOut 0.2s ease forwards;
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; }
+}
+
+/* ============================================
+   MODAL PRINCIPAL
+   ============================================ */
+.custom-alert-modal {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    max-width: 450px;
+    width: 90%;
+    padding: 0;
+    transform: scale(0.7);
+    opacity: 0;
+    animation: popIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    overflow: hidden;
+}
+
+@keyframes popIn {
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.custom-alert-modal.hiding {
+    animation: popOut 0.2s ease forwards;
+}
+
+@keyframes popOut {
+    to {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   HEADER CON ICONO
+   ============================================ */
+.custom-alert-header {
+    padding: 30px 30px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+}
+
+.custom-alert-header.success {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.custom-alert-header.error {
+    background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+}
+
+.custom-alert-header.warning {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.custom-alert-header.info {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.custom-alert-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    animation: bounceIn 0.6s ease;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.custom-alert-title {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   CONTENIDO
+   ============================================ */
+.custom-alert-body {
+    padding: 30px;
+    text-align: center;
+}
+
+.custom-alert-message {
+    color: #4a5568;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    white-space: pre-line;
+}
+
+/* ============================================
+   BOTONES
+   ============================================ */
+.custom-alert-footer {
+    padding: 0 30px 30px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.custom-alert-btn {
+    padding: 12px 32px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 120px;
+}
+
+.custom-alert-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.custom-alert-btn:active {
+    transform: translateY(0);
+}
+
+.custom-alert-btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.custom-alert-btn-primary.success {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.custom-alert-btn-primary.error {
+    background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+}
+
+.custom-alert-btn-primary.warning {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.custom-alert-btn-primary.info {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.custom-alert-btn-secondary {
+    background: #e2e8f0;
+    color: #4a5568;
+}
+
+.custom-alert-btn-secondary:hover {
+    background: #cbd5e0;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 640px) {
+    .custom-alert-modal {
+        max-width: 95%;
+    }
+    
+    .custom-alert-header {
+        padding: 24px 20px 16px;
+    }
+    
+    .custom-alert-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+    }
+    
+    .custom-alert-title {
+        font-size: 20px;
+    }
+    
+    .custom-alert-body {
+        padding: 20px;
+    }
+    
+    .custom-alert-message {
+        font-size: 14px;
+    }
+    
+    .custom-alert-footer {
+        padding: 0 20px 20px;
+        flex-direction: column;
+    }
+    
+    .custom-alert-btn {
+        width: 100%;
+    }
+}
+
+/* ============================================
+   ANIMACIÓN DE PULSO (OPCIONAL)
+   ============================================ */
+.custom-alert-icon.pulse {
+    animation: bounceIn 0.6s ease, pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
