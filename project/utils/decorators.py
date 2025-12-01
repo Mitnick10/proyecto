@@ -6,6 +6,7 @@ from gotrue.errors import AuthApiError
 def login_required(f):
     """
     Verifica sesión, restaura conexión Supabase y asegura que el ROL exista.
+    Previene mezcla de roles validando que el usuario de Supabase coincida con la sesión.
     """
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -18,27 +19,41 @@ def login_required(f):
         try:
             access_token = session.get('access_token')
             refresh_token = session.get('refresh_token')
+            user_id_session = session.get('user_id')
             
             if access_token and refresh_token:
                 supabase.auth.set_session(access_token, refresh_token)
+                
+                # SEGURIDAD: Verificar que el usuario autenticado coincide con la sesión
+                current_user = supabase.auth.get_user()
+                if current_user and current_user.user:
+                    if current_user.user.id != user_id_session:
+                        # El usuario de Supabase no coincide con la sesión de Flask
+                        print(f"⚠️ SECURITY: User mismatch! Supabase: {current_user.user.id} != Session: {user_id_session}")
+                        session.clear()
+                        flash('Sesión inválida. Por favor inicia sesión nuevamente.', 'error')
+                        return redirect(url_for('auth.login'))
             else:
                 raise ValueError("Tokens no encontrados")
 
-            # 3. --- RECUPERACIÓN DE ROL DE EMERGENCIA ---
-            # Si por alguna razón se borró el rol de la sesión, lo buscamos de nuevo.
+            # 3. RECUPERACIÓN DE ROL CON VALIDACIÓN DE SEGURIDAD
             if 'role' not in session or not session['role']:
-                print(f"DEBUG: Rol perdido para {session['user_id']}. Recuperando...")
+                print(f"DEBUG: Rol perdido para {user_id_session}. Recuperando de forma segura...")
                 try:
-                    profile = supabase.table('profiles').select('role').eq('id', session['user_id']).single().execute()
-                    if profile.data:
-                        session['role'] = profile.data['role']
-                        print(f"DEBUG: Rol recuperado -> {session['role']}")
+                    profile = supabase.table('profiles').select('role').eq('id', user_id_session).single().execute()
+                    if profile.data and profile.data.get('role'):
+                        new_role = profile.data['role']
+                        session['role'] = new_role
+                        print(f"DEBUG: Rol recuperado correctamente para {user_id_session} -> {new_role}")
                     else:
+                        print(f"⚠️ No se encontró rol para {user_id_session}, asignando 'usuario' por defecto")
                         session['role'] = 'usuario'
                 except Exception as e:
-                    print(f"Error recuperando rol: {e}")
-                    session['role'] = 'usuario' # Fallback seguro
-            # ---------------------------------------------
+                    print(f"❌ Error recuperando rol: {e}")
+                    # Por seguridad, cerrar sesión si hay error
+                    session.clear()
+                    flash('Error de autenticación. Por favor inicia sesión nuevamente.', 'error')
+                    return redirect(url_for('auth.login'))
                 
         except (AuthApiError, ValueError) as e:
             print(f"Sesión expirada: {e}")

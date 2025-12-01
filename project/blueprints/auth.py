@@ -38,13 +38,19 @@ def login():
             user_id = auth_response.session.user.id
             
             # 2. BUSCAR ROL EN LA TABLA PROFILES
+            logger.info(f"🔍 Buscando rol para user_id: {user_id}")
             profile_response = supabase.table('profiles').select('role').eq('id', user_id).execute()
+            
+            # Log detallado de la respuesta
+            logger.info(f"📋 Respuesta de profiles: {profile_response.data}")
             
             # Verificamos si encontró datos
             if profile_response.data and len(profile_response.data) > 0:
                 user_role = profile_response.data[0]['role']
+                logger.info(f"✅ Rol encontrado en BD: {user_role} para {email}")
             else:
                 user_role = 'usuario'
+                logger.warning(f"⚠️ No se encontró rol para {email}, asignando 'usuario' por defecto")
 
             # 3. Guardar todo en la sesión de Flask
             session['user_id'] = user_id
@@ -52,7 +58,8 @@ def login():
             session['refresh_token'] = auth_response.session.refresh_token
             session['role'] = user_role
             
-            flash(f'Bienvenido/a. Rol: {user_role.upper()}', 'success')
+            logger.info(f"💾 Sesión guardada - user_id: {user_id}, role: {user_role}")
+            flash(f'Bienvenido/a {email}. Rol: {user_role.upper()}', 'success')
             return redirect(url_for('dashboard.index'))
 
         except AuthApiError as e:

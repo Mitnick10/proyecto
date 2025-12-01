@@ -2,10 +2,10 @@ import base64
 import logging
 import uuid
 from datetime import datetime, timedelta
-from flask import Blueprint, render_template, request, redirect, url_for, flash, session
+from flask import Blueprint, render_template, request, redirect, url_for, flash, session, jsonify
 from config.supabase_client import supabase
 from utils.decorators import login_required, superadmin_required
-from utils.validaciones import validar_datos_atleta, sanitizar_input, normalizar_estatura
+from utils.validaciones import validar_datos_atleta, sanitizar_input
 
 # Configurar logger
 logger = logging.getLogger(__name__)
@@ -51,8 +51,75 @@ def upload_file(file, bucket, folder=""):
 def procesar_imagen(file):
     """Wrapper para subir imágenes al bucket 'avatars'."""
     return upload_file(file, 'avatars')
+
+def procesar_pdf(file):
+    """Wrapper para subir documentos al bucket 'documentos'."""
+    return upload_file(file, 'documentos')
+
+# --- HELPER PARA RECOLECTAR DATOS DEL FORMULARIO ---
+def obtener_datos_formulario(req):
+    """Extrae todos los campos del formulario para crear o editar."""
+    datos = {
+        'nombre': sanitizar_input(req.form.get('nombre')),
+        'apellido': sanitizar_input(req.form.get('apellido')),
+        'cedula': req.form.get('cedula'),
+        'edad': req.form.get('edad') or None,
+        'sexo': req.form.get('sexo'),
+        'email': req.form.get('email'),
+        'telefono': req.form.get('telefono'),
+        'estatus': req.form.get('estatus'),
+        'cuenta_bancaria': req.form.get('cuenta_bancaria'),
+        'es_menor': True if req.form.get('es_menor') == 'on' else False,
+        'representante_nombre': sanitizar_input(req.form.get('representante_nombre')),
+        'representante_cedula': req.form.get('representante_cedula'),
+        'representante_parentesco': sanitizar_input(req.form.get('representante_parentesco')),
+        'municipio': sanitizar_input(req.form.get('municipio')),
+        'lugar_nacimiento': sanitizar_input(req.form.get('lugar_nacimiento')),
+        'direccion': sanitizar_input(req.form.get('direccion')),
+        'fecha_nacimiento': req.form.get('fecha_nacimiento') or None,
+        'disciplina': req.form.get('disciplina'),
+        'especialidad': sanitizar_input(req.form.get('especialidad')),
+        'categoria': req.form.get('categoria'),
+        'tipo_beca': req.form.get('tipo_beca'),
+        'sangre': req.form.get('sangre'),
+        'peso': req.form.get('peso'),
+        'estatura': req.form.get('estatura'),
+        'talla_zapato': req.form.get('talla_zapato'),
+        'talla_franela': req.form.get('talla_franela'),
+        'talla_short': req.form.get('talla_short'),
+        'talla_chemise': req.form.get('talla_chemise'),
+        'talla_mono': req.form.get('talla_mono'),
+        'talla_competencia': req.form.get('talla_competencia'),
+        'usa_lentes': req.form.get('usa_lentes'),
+        'usa_bucal': req.form.get('usa_bucal'),
+        'usa_munequera': req.form.get('usa_munequera'),
+        'usa_rodilleras': req.form.get('usa_rodilleras'),
+        'dieta_deportiva': req.form.get('dieta_deportiva'),
+        'control_medico': req.form.get('control_medico'),
+        'estudio_social': req.form.get('estudio_social'),
+    }
+    return datos
+
+# --- CONTEXT PROCESSOR ---
+@dashboard_blueprint.context_processor
+def inject_role():
     """Inyecta el rol del usuario en todas las plantillas."""
-    return dict(user_role=session.get('role', 'usuario'))
+    role = session.get('role', 'usuario')
+    print(f"🔍 DEBUG Context Processor - Rol inyectado: {role}")  # DEBUG
+    return dict(user_role=role)
+
+# --- RUTA DE DEBUG ---
+@dashboard_blueprint.route('/debug/session')
+@login_required
+def debug_session():
+    """Ver contenido de la sesión actual."""
+    session_data = {
+        'user_id': session.get('user_id'),
+        'role': session.get('role'),
+        'has_access_token': bool(session.get('access_token')),
+        'all_session_keys': list(session.keys())
+    }
+    return jsonify(session_data)
 
 # --- RUTA HOME (INICIO) CON CACHÉ ---
 @dashboard_blueprint.route('/')
@@ -213,7 +280,7 @@ def editar_beca(beca_id):
             if not es_valido:
                 for error in errores:
                     flash(error, 'error')
-                return redirect(url_for('dashboard.editar_beca', beca_id=beca_id))
+                return redirect(url_for('dashboard editar_beca', beca_id=beca_id))
             
             foto_b64 = procesar_imagen(request.files.get('foto'))
             if foto_b64:
