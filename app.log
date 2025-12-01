@@ -5229,3 +5229,417 @@ supabase_auth.errors.AuthApiError: Invalid login credentials
 2025-12-01 15:31:05,122 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:31:05] "GET /dashboard/ HTTP/1.1" 200 -
 2025-12-01 15:31:05,218 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:31:05] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
 2025-12-01 15:31:05,236 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:31:05] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 15:41:16,340 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:41:16] "[32mGET / HTTP/1.1[0m" 302 -
+2025-12-01 15:41:16,831 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:41:16,963 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:41:17,070 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:41:19,052 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/1.1 200 OK"
+2025-12-01 15:41:19,195 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/1.1 200 OK"
+2025-12-01 15:41:19,316 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/1.1 206 Partial Content"
+2025-12-01 15:41:19,367 - blueprints.dashboard - ERROR - Error cargando dashboard: Encountered unknown tag 'endif'.
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 155, in index
+    return render_template('dashboard_home.html',
+                           first_name=first_name,
+                           atletas_count=contadores['atletas'],
+                           revision_count=contadores['revision'],
+                           medallas_count=contadores['medallas'])
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\flask\templating.py", line 152, in render_template
+    return _render(app, template, context)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\flask\templating.py", line 133, in _render
+    rv = template.render(context)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\UUARIO\Desktop\proyecto\project\templates\dashboard_home.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\UUARIO\Desktop\proyecto\project\templates\layout.html", line 88, in template
+    {% endif %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endif'.
+2025-12-01 15:41:19,529 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:41:19] "[32mGET /dashboard/ HTTP/1.1[0m" 302 -
+2025-12-01 15:41:19,563 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:41:19] "GET /login HTTP/1.1" 200 -
+2025-12-01 15:41:19,766 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:41:19] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 15:43:06,854 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/1.1 200 OK"
+2025-12-01 15:43:08,723 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/profiles?select=role&id=eq.16bfbabc-1f5f-478b-b7e6-d62fe77f1b14 "HTTP/1.1 200 OK"
+2025-12-01 15:43:08,762 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:43:08] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-12-01 15:43:08,888 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:43:08,998 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:43:09,104 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:43:10,732 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/1.1 200 OK"
+2025-12-01 15:43:10,896 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/1.1 200 OK"
+2025-12-01 15:43:11,208 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/1.1 206 Partial Content"
+2025-12-01 15:43:11,243 - blueprints.dashboard - ERROR - Error cargando dashboard: Encountered unknown tag 'endif'.
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 155, in index
+    return render_template('dashboard_home.html',
+                           first_name=first_name,
+                           atletas_count=contadores['atletas'],
+                           revision_count=contadores['revision'],
+                           medallas_count=contadores['medallas'])
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\flask\templating.py", line 152, in render_template
+    return _render(app, template, context)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\flask\templating.py", line 133, in _render
+    rv = template.render(context)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\UUARIO\Desktop\proyecto\project\templates\dashboard_home.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\UUARIO\Desktop\proyecto\project\templates\layout.html", line 88, in template
+    {% endif %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endif'.
+2025-12-01 15:43:11,252 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:43:11] "[32mGET /dashboard/ HTTP/1.1[0m" 302 -
+2025-12-01 15:43:11,275 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:43:11] "GET /login HTTP/1.1" 200 -
+2025-12-01 15:43:11,427 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:43:11] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 15:44:24,910 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/1.1 200 OK"
+2025-12-01 15:44:26,444 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/profiles?select=role&id=eq.16bfbabc-1f5f-478b-b7e6-d62fe77f1b14 "HTTP/1.1 200 OK"
+2025-12-01 15:44:26,491 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:44:26] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-12-01 15:44:26,626 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:44:26,744 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:44:26,861 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:44:28,621 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/1.1 200 OK"
+2025-12-01 15:44:29,005 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/1.1 200 OK"
+2025-12-01 15:44:29,210 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/1.1 206 Partial Content"
+2025-12-01 15:44:29,234 - blueprints.dashboard - ERROR - Error cargando dashboard: Encountered unknown tag 'endif'.
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 155, in index
+    return render_template('dashboard_home.html',
+                           first_name=first_name,
+                           atletas_count=contadores['atletas'],
+                           revision_count=contadores['revision'],
+                           medallas_count=contadores['medallas'])
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\flask\templating.py", line 152, in render_template
+    return _render(app, template, context)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\flask\templating.py", line 133, in _render
+    rv = template.render(context)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\UUARIO\Desktop\proyecto\project\templates\dashboard_home.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\UUARIO\Desktop\proyecto\project\templates\layout.html", line 88, in template
+    {% endif %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endif'.
+2025-12-01 15:44:29,246 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:44:29] "[32mGET /dashboard/ HTTP/1.1[0m" 302 -
+2025-12-01 15:44:29,275 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:44:29] "GET /login HTTP/1.1" 200 -
+2025-12-01 15:44:29,442 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:44:29] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 15:44:45,492 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/1.1 200 OK"
+2025-12-01 15:44:47,232 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/profiles?select=role&id=eq.16bfbabc-1f5f-478b-b7e6-d62fe77f1b14 "HTTP/1.1 200 OK"
+2025-12-01 15:44:47,271 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:44:47] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-12-01 15:44:47,400 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:44:47,510 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:44:47,618 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:44:47,629 - blueprints.dashboard - ERROR - Error cargando dashboard: Encountered unknown tag 'endif'.
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 155, in index
+    return render_template('dashboard_home.html',
+                           first_name=first_name,
+                           atletas_count=contadores['atletas'],
+                           revision_count=contadores['revision'],
+                           medallas_count=contadores['medallas'])
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\flask\templating.py", line 152, in render_template
+    return _render(app, template, context)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\flask\templating.py", line 133, in _render
+    rv = template.render(context)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\UUARIO\Desktop\proyecto\project\templates\dashboard_home.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\UUARIO\Desktop\proyecto\project\templates\layout.html", line 88, in template
+    {% endif %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endif'.
+2025-12-01 15:44:47,636 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:44:47] "[32mGET /dashboard/ HTTP/1.1[0m" 302 -
+2025-12-01 15:44:47,650 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:44:47] "GET /login HTTP/1.1" 200 -
+2025-12-01 15:44:47,764 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:44:47] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 15:45:37,114 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/1.1 400 Bad Request"
+2025-12-01 15:45:37,134 - blueprints.auth - WARNING - Intento de login fallido para email: yondavier@gmail.com
+2025-12-01 15:45:37,144 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:45:37] "POST /login HTTP/1.1" 200 -
+2025-12-01 15:45:37,297 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:45:37] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 15:45:50,005 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/1.1 200 OK"
+2025-12-01 15:45:52,051 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/profiles?select=role&id=eq.55465ed4-7b48-4f24-80a0-d56f268fdee2 "HTTP/1.1 200 OK"
+2025-12-01 15:45:52,094 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:45:52] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-12-01 15:45:52,226 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:45:52,346 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:45:52,480 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:45:54,407 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/1.1 200 OK"
+2025-12-01 15:45:54,596 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/1.1 200 OK"
+2025-12-01 15:45:54,815 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/1.1 206 Partial Content"
+2025-12-01 15:45:54,827 - blueprints.dashboard - ERROR - Error cargando dashboard: Encountered unknown tag 'endif'.
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 155, in index
+    return render_template('dashboard_home.html',
+                           first_name=first_name,
+                           atletas_count=contadores['atletas'],
+                           revision_count=contadores['revision'],
+                           medallas_count=contadores['medallas'])
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\flask\templating.py", line 152, in render_template
+    return _render(app, template, context)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\flask\templating.py", line 133, in _render
+    rv = template.render(context)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\UUARIO\Desktop\proyecto\project\templates\dashboard_home.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\UUARIO\Desktop\proyecto\project\templates\layout.html", line 88, in template
+    {% endif %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endif'.
+2025-12-01 15:45:54,834 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:45:54] "[32mGET /dashboard/ HTTP/1.1[0m" 302 -
+2025-12-01 15:45:54,849 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:45:54] "GET /login HTTP/1.1" 200 -
+2025-12-01 15:45:54,972 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:45:54] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 15:46:06,592 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/1.1 200 OK"
+2025-12-01 15:46:08,177 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/profiles?select=role&id=eq.16bfbabc-1f5f-478b-b7e6-d62fe77f1b14 "HTTP/1.1 200 OK"
+2025-12-01 15:46:08,221 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:46:08] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-12-01 15:46:08,343 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:46:08,447 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:46:08,559 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:46:08,575 - blueprints.dashboard - ERROR - Error cargando dashboard: Encountered unknown tag 'endif'.
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 155, in index
+    return render_template('dashboard_home.html',
+                           first_name=first_name,
+                           atletas_count=contadores['atletas'],
+                           revision_count=contadores['revision'],
+                           medallas_count=contadores['medallas'])
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\flask\templating.py", line 152, in render_template
+    return _render(app, template, context)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\flask\templating.py", line 133, in _render
+    rv = template.render(context)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\UUARIO\Desktop\proyecto\project\templates\dashboard_home.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\UUARIO\Desktop\proyecto\project\templates\layout.html", line 88, in template
+    {% endif %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endif'.
+2025-12-01 15:46:08,582 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:46:08] "[32mGET /dashboard/ HTTP/1.1[0m" 302 -
+2025-12-01 15:46:08,597 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:46:08] "GET /login HTTP/1.1" 200 -
+2025-12-01 15:46:08,737 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:46:08] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 15:47:16,862 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\config\\supabase_client.py', reloading
+2025-12-01 15:47:17,367 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/1.1 200 OK"
+2025-12-01 15:47:18,015 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 15:47:19,299 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/profiles?select=role&id=eq.16bfbabc-1f5f-478b-b7e6-d62fe77f1b14 "HTTP/1.1 200 OK"
+2025-12-01 15:47:19,373 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:47:19] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-12-01 15:47:19,525 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:47:19,659 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:47:19,874 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:47:21,668 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/1.1 200 OK"
+2025-12-01 15:47:21,873 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/1.1 200 OK"
+2025-12-01 15:47:22,004 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/1.1 206 Partial Content"
+2025-12-01 15:47:22,031 - blueprints.dashboard - ERROR - Error cargando dashboard: Encountered unknown tag 'endif'.
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 155, in index
+    return render_template('dashboard_home.html',
+                           first_name=first_name,
+                           atletas_count=contadores['atletas'],
+                           revision_count=contadores['revision'],
+                           medallas_count=contadores['medallas'])
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\flask\templating.py", line 152, in render_template
+    return _render(app, template, context)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\flask\templating.py", line 133, in _render
+    rv = template.render(context)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\UUARIO\Desktop\proyecto\project\templates\dashboard_home.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\UUARIO\Desktop\proyecto\project\templates\layout.html", line 88, in template
+    {% endif %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endif'.
+2025-12-01 15:47:22,045 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:47:22] "[32mGET /dashboard/ HTTP/1.1[0m" 302 -
+2025-12-01 15:47:22,081 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:47:22] "GET /login HTTP/1.1" 200 -
+2025-12-01 15:47:22,263 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:47:22] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 15:47:23,949 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 15:47:24,015 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 15:47:24,027 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 15:47:56,073 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\utils\\decorators.py', reloading
+2025-12-01 15:47:56,482 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 15:47:59,496 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 15:47:59,528 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 15:47:59,534 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 15:50:39,434 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\auth.py', reloading
+2025-12-01 15:50:40,184 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 15:50:42,956 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 15:50:42,992 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 15:50:42,997 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 15:50:45,938 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\auth.py', reloading
+2025-12-01 15:50:45,940 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\auth.py', reloading
+2025-12-01 15:50:45,941 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\auth.py', reloading
+2025-12-01 15:50:46,295 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 15:50:47,424 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\auth.py', reloading
+2025-12-01 15:50:47,878 - werkzeug - INFO -  * Restarting with stat
+2025-12-01 15:50:49,144 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 15:50:49,184 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 15:50:49,191 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 15:50:50,727 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 15:50:50,838 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 15:50:50,846 - werkzeug - INFO -  * Debugger PIN: 107-177-601
+2025-12-01 15:52:29,954 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/1.1 200 OK"
+2025-12-01 15:52:31,521 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/profiles?select=role&id=eq.16bfbabc-1f5f-478b-b7e6-d62fe77f1b14 "HTTP/1.1 200 OK"
+2025-12-01 15:52:31,561 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:52:31] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-12-01 15:52:31,705 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:52:31,822 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:52:31,941 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:52:33,622 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/1.1 200 OK"
+2025-12-01 15:52:33,870 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/1.1 200 OK"
+2025-12-01 15:52:33,991 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/1.1 206 Partial Content"
+2025-12-01 15:52:34,029 - blueprints.dashboard - ERROR - Error cargando dashboard: Encountered unknown tag 'endif'.
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 155, in index
+    return render_template('dashboard_home.html',
+                           first_name=first_name,
+                           atletas_count=contadores['atletas'],
+                           revision_count=contadores['revision'],
+                           medallas_count=contadores['medallas'])
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\flask\templating.py", line 152, in render_template
+    return _render(app, template, context)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\flask\templating.py", line 133, in _render
+    rv = template.render(context)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\UUARIO\Desktop\proyecto\project\templates\dashboard_home.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\UUARIO\Desktop\proyecto\project\templates\layout.html", line 88, in template
+    {% endif %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endif'.
+2025-12-01 15:52:34,040 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:52:34] "[32mGET /dashboard/ HTTP/1.1[0m" 302 -
+2025-12-01 15:52:34,094 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:52:34] "GET /login HTTP/1.1" 200 -
+2025-12-01 15:52:34,530 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:52:34] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 15:53:15,898 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 15:53:15,964 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-01 15:53:15,965 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-12-01 15:53:16,002 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 15:53:19,693 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 15:53:19,744 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 15:53:19,755 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 15:53:27,937 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/1.1 200 OK"
+2025-12-01 15:53:29,540 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/profiles?select=role&id=eq.16bfbabc-1f5f-478b-b7e6-d62fe77f1b14 "HTTP/1.1 200 OK"
+2025-12-01 15:53:29,621 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:53:29] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-12-01 15:53:29,768 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:53:29,882 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:53:29,990 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:53:30,001 - blueprints.dashboard - ERROR - Error cargando dashboard: Encountered unknown tag 'endif'.
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 155, in index
+    return render_template('dashboard_home.html',
+                           first_name=first_name,
+                           atletas_count=contadores['atletas'],
+                           revision_count=contadores['revision'],
+                           medallas_count=contadores['medallas'])
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\flask\templating.py", line 152, in render_template
+    return _render(app, template, context)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\flask\templating.py", line 133, in _render
+    rv = template.render(context)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\UUARIO\Desktop\proyecto\project\templates\dashboard_home.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\UUARIO\Desktop\proyecto\project\templates\layout.html", line 88, in template
+    {% endif %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endif'.
+2025-12-01 15:53:30,007 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:53:30] "[32mGET /dashboard/ HTTP/1.1[0m" 302 -
+2025-12-01 15:53:30,022 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:53:30] "GET /login HTTP/1.1" 200 -
+2025-12-01 15:53:30,139 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:53:30] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 15:59:35,915 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/1.1 200 OK"
+2025-12-01 15:59:37,650 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/profiles?select=role&id=eq.16bfbabc-1f5f-478b-b7e6-d62fe77f1b14 "HTTP/1.1 200 OK"
+2025-12-01 15:59:37,726 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:59:37] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-12-01 15:59:37,857 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:59:37,969 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:59:38,078 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:59:40,116 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/1.1 200 OK"
+2025-12-01 15:59:40,227 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/1.1 200 OK"
+2025-12-01 15:59:40,333 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/1.1 206 Partial Content"
+2025-12-01 15:59:40,430 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:59:40] "GET /dashboard/ HTTP/1.1" 200 -
+2025-12-01 15:59:40,581 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:59:40] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 15:59:40,587 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:59:40] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 15:59:49,988 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:59:50,091 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:59:50,197 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:59:50,213 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:59:50] "GET /dashboard/cuenta HTTP/1.1" 200 -
+2025-12-01 15:59:50,332 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:59:50] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 15:59:50,349 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:59:50] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 15:59:56,457 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:59:56,568 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:59:58,187 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/profiles?select=%2A&order=email "HTTP/1.1 200 OK"
+2025-12-01 15:59:58,237 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:59:58] "GET /dashboard/usuarios HTTP/1.1" 200 -
+2025-12-01 15:59:58,776 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:59:58] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 15:59:58,799 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:59:58] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 16:00:29,474 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 16:00:29,581 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 16:00:29,692 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 16:00:29,696 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 16:00:29] "GET /dashboard/cuenta HTTP/1.1" 200 -
+2025-12-01 16:00:29,803 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 16:00:29] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 16:00:29,834 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 16:00:29] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 16:00:55,140 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 16:00:55,275 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 16:00:55,389 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 16:00:55,522 - httpx - INFO - HTTP Request: PUT https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 16:00:55,530 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 16:00:55] "[32mPOST /dashboard/cuenta HTTP/1.1[0m" 302 -
+2025-12-01 16:00:55,668 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 16:00:55,789 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 16:00:55,915 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 16:00:55,924 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 16:00:55] "GET /dashboard/cuenta HTTP/1.1" 200 -
+2025-12-01 16:00:56,022 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 16:00:56] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 16:00:56,025 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 16:00:56] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 16:01:05,173 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 16:01:05,294 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 16:01:07,175 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/profiles?select=%2A&order=email "HTTP/1.1 200 OK"
+2025-12-01 16:01:07,186 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 16:01:07] "GET /dashboard/usuarios HTTP/1.1" 200 -
+2025-12-01 16:01:07,289 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 16:01:07] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 16:01:07,304 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 16:01:07] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 16:01:46,346 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 16:01:46,461 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 16:01:46,570 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 16:01:46,575 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 16:01:46] "GET /dashboard/cuenta HTTP/1.1" 200 -
+2025-12-01 16:01:46,684 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 16:01:46] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 16:01:46,705 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 16:01:46] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -

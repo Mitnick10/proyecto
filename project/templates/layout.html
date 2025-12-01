@@ -30,104 +30,59 @@
             }
         }
     </script>
+    <style>
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutRight {
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes progress {
+            from {
+                width: 100%;
+            }
+
+            to {
+                width: 0%;
+            }
+        }
+
+        .animate-progress {
+            animation: progress 5s linear forwards;
+        }
+    </style>
 </head>
 
-<body class="h-full font-sans text-slate-600">
+<body class="h-full font-sans">
     <div class="min-h-full flex flex-col">
 
-        <!-- Navbar Principal -->
-        <nav class="bg-brand-900 border-b border-slate-700 sticky top-0 z-40 shadow-md">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="flex h-16 items-center justify-between">
-
-                    <!-- Lado Izquierdo: Logo y Menú -->
-                    <div class="flex items-center gap-8">
-                        <div class="flex-shrink-0 flex items-center gap-2">
-                            <a href="{{ url_for('dashboard.index') }}"
-                                class="text-3xl font-black tracking-tighter text-red-600 select-none hover:text-red-500 transition-colors no-underline"
-                                style="text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
-                                IRDEBG
-                            </a>
-                        </div>
-                        <div class="hidden md:block">
-                            <div class="flex items-baseline space-x-4">
-                                {% set active_class = 'bg-slate-800 text-white px-3 py-2 rounded-md text-sm font-medium
-                                transition-colors border border-slate-600 shadow-sm' %}
-                                {% set inactive_class = 'text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2
-                                rounded-md text-sm font-medium transition-colors border border-transparent' %}
-
-                                <a href="{{ url_for('dashboard.index') }}"
-                                    class="{{ active_class if request.endpoint == 'dashboard.index' else inactive_class }}">
-                                    Inicio
-                                </a>
-                                <a href="{{ url_for('dashboard.lista_becas') }}"
-                                    class="{{ active_class if 'becas' in request.endpoint and 'nueva' not in request.endpoint else inactive_class }}">
-                                    Atletas
-                                </a>
-                                <a href="{{ url_for('dashboard.mi_cuenta') }}"
-                                    class="{{ active_class if request.endpoint == 'dashboard.mi_cuenta' else inactive_class }}">
-                                    Mi Cuenta
-                                </a>
-
-                                {% if user_role == 'superadmin' %}
-                                <a href="{{ url_for('dashboard.lista_usuarios') }}"
-                                    class="{{ active_class if request.endpoint == 'dashboard.lista_usuarios' else inactive_class }} text-purple-300 border-purple-500/30 hover:bg-purple-900/30 hover:text-purple-200">
-                                    Gestión Usuarios
-                                </a>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Lado Derecho: Info Usuario y Salir -->
-                    <div class="hidden md:block">
-                        <div class="ml-4 flex items-center md:ml-6 gap-4">
-                            <div class="text-right hidden sm:block">
-                                <span class="block text-white text-sm font-semibold leading-tight">
-                                    {{ first_name | default('Usuario') }}
-                                </span>
-                                <span class="block text-xs text-blue-400 font-bold uppercase tracking-wider">
-                                    {{ user_role }}
-                                </span>
-                            </div>
-
-                            <a href="{{ url_for('auth.logout') }}"
-                                class="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 transition-colors flex items-center gap-2"
-                                title="Cerrar Sesión">
-                                <i class="fa-solid fa-right-from-bracket"></i> Salir
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Mensajes Flash Elegantes -->
-        <div class="fixed top-20 right-4 z-50 w-full max-w-md pointer-events-none space-y-3">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
+        <!-- Mensajes Flash -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="fixed top-4 right-4 z-50 flex flex-col gap-3 w-full max-w-sm pointer-events-none">
             {% for category, message in messages %}
             {% set config = {
-            'success': {
-            'bg': 'bg-gradient-to-r from-emerald-500 to-teal-600',
-            'icon': 'fa-circle-check',
-            'iconBg': 'bg-white/20'
-            },
-            'error': {
-            'bg': 'bg-gradient-to-r from-red-500 to-rose-600',
-            'icon': 'fa-circle-xmark',
-            'iconBg': 'bg-white/20'
-            },
-            'warning': {
-            'bg': 'bg-gradient-to-r from-amber-500 to-orange-600',
-            'icon': 'fa-triangle-exclamation',
-            'iconBg': 'bg-white/20'
-            },
-            'info': {
-            'bg': 'bg-gradient-to-r from-blue-500 to-cyan-600',
-            'icon': 'fa-info-circle',
-            'iconBg': 'bg-white/20'
-            }
+            'success': {'bg': 'bg-gradient-to-r from-emerald-500 to-teal-600', 'icon': 'fa-circle-check', 'iconBg':
+            'bg-white/20'},
+            'error': {'bg': 'bg-gradient-to-r from-red-500 to-rose-600', 'icon': 'fa-circle-xmark', 'iconBg':
+            'bg-white/20'},
+            'warning': {'bg': 'bg-gradient-to-r from-amber-500 to-orange-600', 'icon': 'fa-triangle-exclamation',
+            'iconBg': 'bg-white/20'},
+            'info': {'bg': 'bg-gradient-to-r from-blue-500 to-cyan-600', 'icon': 'fa-info-circle', 'iconBg':
+            'bg-white/20'}
             } %}
             {% set current = config[category] if category in config else config['info'] %}
 
@@ -135,84 +90,116 @@
                 style="animation: slideInRight 0.5s ease-out;">
                 <div class="{{ current.bg }} rounded-xl shadow-2xl overflow-hidden">
                     <div class="p-4 flex items-start gap-3">
-                        <!-- Icono -->
                         <div class="{{ current.iconBg }} rounded-lg p-2.5 flex-shrink-0">
                             <i class="fa-solid {{ current.icon }} text-white text-xl"></i>
                         </div>
-
-                        <!-- Contenido -->
                         <div class="flex-1 pt-0.5">
-                            <p class="text-white font-semibold text-sm leading-relaxed drop-shadow-sm">
-                                {{ message }}
-                            </p>
+                            <p class="text-white font-semibold text-sm leading-relaxed drop-shadow-sm">{{ message }}</p>
                         </div>
-
-                        <!-- Botón cerrar -->
                         <button
                             onclick="this.closest('div[style*=slideInRight]').style.animation='slideOutRight 0.3s ease-in'; setTimeout(() => this.closest('div[style*=slideInRight]').remove(), 300)"
                             class="flex-shrink-0 text-white/80 hover:text-white transition-colors p-1">
                             <i class="fa-solid fa-xmark text-lg"></i>
                         </button>
                     </div>
-
-                    <!-- Barra de progreso -->
                     <div class="h-1 bg-white/20">
                         <div class="h-full bg-white/40 animate-progress"></div>
                     </div>
                 </div>
             </div>
             {% endfor %}
-            {% endif %}
-            {% endwith %}
         </div>
+        {% endif %}
+        {% endwith %}
 
-        <style>
-            @keyframes slideInRight {
-                from {
-                    transform: translateX(400px);
-                    opacity: 0;
-                }
+        <!-- Navbar -->
+        <nav class="bg-slate-900 border-b border-slate-800">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="flex h-16 items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="h-8 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="IRDEBG">
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="ml-10 flex items-baseline space-x-4">
+                                <a href="{{ url_for('dashboard.index') }}"
+                                    class="text-slate-300 hover:bg-slate-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Inicio</a>
+                                <a href="{{ url_for('dashboard.lista_becas') }}"
+                                    class="text-slate-300 hover:bg-slate-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Atletas</a>
+                                {% if user_role == 'superadmin' %}
+                                <a href="{{ url_for('dashboard.lista_usuarios') }}"
+                                    class="text-slate-300 hover:bg-slate-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Usuarios</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-4 flex items-center md:ml-6">
+                            <div class="relative ml-3">
+                                <div>
+                                    <a href="{{ url_for('dashboard.mi_cuenta') }}"
+                                        class="flex max-w-xs items-center rounded-full bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-800">
+                                        <span class="sr-only">Abrir menú de usuario</span>
+                                        <div
+                                            class="h-8 w-8 rounded-full bg-slate-700 flex items-center justify-center text-white font-bold">
+                                            <i class="fa-solid fa-user"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <a href="{{ url_for('auth.logout') }}" class="ml-4 text-slate-300 hover:text-white"
+                                title="Cerrar Sesión">
+                                <i class="fa-solid fa-right-from-bracket text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
 
-                to {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-            }
+                    <!-- Botón Menú Móvil -->
+                    <div class="-mr-2 flex md:hidden">
+                        <button type="button"
+                            onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+                            class="inline-flex items-center justify-center rounded-md bg-slate-800 p-2 text-slate-400 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-800">
+                            <span class="sr-only">Abrir menú principal</span>
+                            <i class="fa-solid fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-            @keyframes slideOutRight {
-                to {
-                    transform: translateX(400px);
-                    opacity: 0;
-                }
-            }
-
-            @keyframes progress {
-                from {
-                    width: 100%;
-                }
-
-                to {
-                    width: 0%;
-                }
-            }
-
-            .animate-progress {
-                animation: progress 5s linear forwards;
-            }
-        </style>
-
-        <!-- Auto-cerrar notificaciones después de 5 segundos -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const notifications = document.querySelectorAll('div[style*="slideInRight"]');
-                notifications.forEach((notif, index) => {
-                    setTimeout(() => {
-                        notif.style.animation = 'slideOutRight 0.3s ease-in';
-                        setTimeout(() => notif.remove(), 300);
-                    }, 5000 + (index * 500)); // Escalonado si hay múltiples
-                });
-            });
-        </script>
+            <!-- Menú Móvil -->
+            <div class="hidden md:hidden" id="mobile-menu">
+                <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+                    <a href="{{ url_for('dashboard.index') }}"
+                        class="text-slate-300 hover:bg-slate-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Inicio</a>
+                    <a href="{{ url_for('dashboard.lista_becas') }}"
+                        class="text-slate-300 hover:bg-slate-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Atletas</a>
+                    {% if user_role == 'superadmin' %}
+                    <a href="{{ url_for('dashboard.lista_usuarios') }}"
+                        class="text-slate-300 hover:bg-slate-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Usuarios</a>
+                    {% endif %}
+                </div>
+                <div class="border-t border-slate-700 pb-3 pt-4">
+                    <div class="flex items-center px-5">
+                        <div class="flex-shrink-0">
+                            <div
+                                class="h-10 w-10 rounded-full bg-slate-700 flex items-center justify-center text-white font-bold">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="ml-3">
+                            <div class="text-base font-medium leading-none text-white">Mi Cuenta</div>
+                            <div class="text-sm font-medium leading-none text-slate-400">{{ session.get('email', '') }}
+                            </div>
+                        </div>
+                        <a href="{{ url_for('auth.logout') }}"
+                            class="ml-auto flex-shrink-0 rounded-full bg-slate-800 p-1 text-slate-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-800">
+                            <span class="sr-only">Cerrar Sesión</span>
+                            <i class="fa-solid fa-right-from-bracket text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
 
         <!-- Header de la Página -->
         <header class="bg-white shadow-sm">
@@ -241,7 +228,17 @@
     </div>
 
     <!-- Script de Alertas Personalizadas -->
-    <script src="{{ url_for('static', filename='js/custom-alerts.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const notifications = document.querySelectorAll('div[style*="slideInRight"]');
+            notifications.forEach((notif, index) => {
+                setTimeout(() => {
+                    notif.style.animation = 'slideOutRight 0.3s ease-in';
+                    setTimeout(() => notif.remove(), 300);
+                }, 5000 + (index * 500));
+            });
+        });
+    </script>
 </body>
 
 </html>

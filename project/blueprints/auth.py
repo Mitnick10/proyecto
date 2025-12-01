@@ -63,8 +63,13 @@ def login():
             return redirect(url_for('dashboard.index'))
 
         except AuthApiError as e:
-            logger.warning(f"Intento de login fallido para email: {email}")
-            flash('Email o contraseña incorrectos.', 'error')
+            logger.warning(f"Intento de login fallido para email {email}: {e.message}")
+            if "Email not confirmed" in e.message:
+                flash('Tu correo electrónico no ha sido confirmado. Por favor revisa tu bandeja de entrada.', 'warning')
+            elif "Invalid login credentials" in e.message:
+                flash('Email o contraseña incorrectos.', 'error')
+            else:
+                flash(f'Error de autenticación: {e.message}', 'error')
         except Exception as e:
             logger.error(f"Error inesperado durante el inicio de sesión: {e}", exc_info=True)
             flash(f'Error inesperado durante el inicio de sesión.', 'error')
