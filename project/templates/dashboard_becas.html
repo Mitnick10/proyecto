@@ -144,7 +144,7 @@
                                 {% if user_role == 'superadmin' %}
                                 <form action="{{ url_for('dashboard.eliminar_beca', beca_id=beca.id) }}" method="POST"
                                     class="inline"
-                                    onsubmit="return confirm('¿Estás seguro de eliminar a este atleta?');">
+                                    onsubmit="confirmarEliminar('atleta', '{{ beca.nombre }} {{ beca.apellido }}');">
                                     <button type="submit" class="text-red-600 hover:text-red-900">Borrar</button>
                                 </form>
                                 {% endif %}

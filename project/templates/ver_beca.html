@@ -287,7 +287,7 @@
 
                             {% if user_role in ['admin', 'superadmin'] %}
                             <form action="{{ url_for('dashboard.eliminar_documento', doc_id=doc.id) }}" method="POST"
-                                onsubmit="return confirm('¿Borrar documento?');">
+                                onsubmit="confirmarEliminar('documento');">
                                 <input type="hidden" name="atleta_id" value="{{ beca.id }}">
                                 <button type="submit" class="text-slate-400 hover:text-red-600"><i
                                         class="fa-solid fa-trash"></i></button>

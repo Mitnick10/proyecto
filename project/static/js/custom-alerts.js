@@ -238,6 +238,12 @@ async function confirmarEliminar(tipo = 'atleta', nombre = '') {
         'documento': {
             title: '¿Eliminar Documento?',
             message: 'El archivo PDF será eliminado permanentemente.\n\n¿Continuar?'
+        },
+        'usuario': {
+            title: '¿Eliminar Usuario?',
+            message: nombre ? 
+                `Se eliminará el acceso al sistema para:\n${nombre}\n\n¿Estás seguro?` : 
+                'Se eliminará este usuario permanentemente.\n\n¿Estás seguro?'
         }
     };
 

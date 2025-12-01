@@ -5133,3 +5133,99 @@ supabase_auth.errors.AuthApiError: Invalid login credentials
 2025-12-01 15:06:49,803 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:06:49] "GET /dashboard/ HTTP/1.1" 200 -
 2025-12-01 15:06:50,001 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:06:50] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
 2025-12-01 15:06:50,029 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:06:50] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 15:11:51,828 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 403 Forbidden"
+2025-12-01 15:11:51,833 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:11:51] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-12-01 15:11:51,849 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:11:51] "GET /login HTTP/1.1" 200 -
+2025-12-01 15:11:51,981 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:11:51] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 15:12:06,674 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/1.1 400 Bad Request"
+2025-12-01 15:12:06,675 - blueprints.auth - WARNING - Intento de login fallido para email: yondavier@gmail.com
+2025-12-01 15:12:06,677 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:12:06] "POST /login HTTP/1.1" 200 -
+2025-12-01 15:12:06,778 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:12:06] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 15:12:17,531 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/1.1 200 OK"
+2025-12-01 15:12:19,126 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/profiles?select=role&id=eq.16bfbabc-1f5f-478b-b7e6-d62fe77f1b14 "HTTP/1.1 200 OK"
+2025-12-01 15:12:19,162 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:12:19] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-12-01 15:12:19,302 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:12:19,681 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:12:19,790 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:12:21,335 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/1.1 200 OK"
+2025-12-01 15:12:21,459 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/1.1 200 OK"
+2025-12-01 15:12:21,582 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/1.1 206 Partial Content"
+2025-12-01 15:12:21,588 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:12:21] "GET /dashboard/ HTTP/1.1" 200 -
+2025-12-01 15:12:21,700 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:12:21] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 15:12:21,737 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:12:21] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 15:13:51,820 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\app.py', reloading
+2025-12-01 15:13:53,001 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 15:13:56,140 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 15:13:56,180 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 15:13:56,189 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 15:23:26,268 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:23:26] "[32mGET / HTTP/1.1[0m" 302 -
+2025-12-01 15:23:27,134 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:23:27,260 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:23:27,393 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:23:29,694 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/1.1 200 OK"
+2025-12-01 15:23:29,910 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/1.1 200 OK"
+2025-12-01 15:23:30,096 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/1.1 206 Partial Content"
+2025-12-01 15:23:30,216 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:23:30] "GET /dashboard/ HTTP/1.1" 200 -
+2025-12-01 15:23:30,412 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:23:30] "GET /static/css/custom-alerts.css HTTP/1.1" 200 -
+2025-12-01 15:23:30,412 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:23:30] "GET /static/js/custom-alerts.js HTTP/1.1" 200 -
+2025-12-01 15:23:38,212 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:23:38,361 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:23:40,025 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&order=id.desc "HTTP/1.1 206 Partial Content"
+2025-12-01 15:23:40,199 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=disciplina&limit=1000 "HTTP/1.1 200 OK"
+2025-12-01 15:23:40,324 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:23:40] "GET /dashboard/becas HTTP/1.1" 200 -
+2025-12-01 15:23:40,423 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:23:40] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 15:23:40,521 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:23:40] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 15:29:59,913 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:30:00,061 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:30:01,629 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&order=id.desc "HTTP/1.1 206 Partial Content"
+2025-12-01 15:30:01,789 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=disciplina&limit=1000 "HTTP/1.1 200 OK"
+2025-12-01 15:30:01,866 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:30:01] "GET /dashboard/becas HTTP/1.1" 200 -
+2025-12-01 15:30:01,971 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:30:01] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 15:30:01,979 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:30:01] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 15:30:02,847 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:30:02] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 15:30:21,867 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:30:21,992 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:30:23,795 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.671 "HTTP/1.1 200 OK"
+2025-12-01 15:30:23,997 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.671&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 15:30:24,203 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.671&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 15:30:24,350 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:30:24] "GET /dashboard/becas/editar/671 HTTP/1.1" 200 -
+2025-12-01 15:30:24,434 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:30:24] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 15:30:24,449 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:30:24] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 15:30:24,879 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:30:25,003 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:30:26,657 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.671 "HTTP/1.1 200 OK"
+2025-12-01 15:30:26,799 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.671&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 15:30:26,958 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.671&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 15:30:26,963 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:30:26] "GET /dashboard/becas/editar/671 HTTP/1.1" 200 -
+2025-12-01 15:30:48,199 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:30:48,329 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:30:48,333 - blueprints.dashboard - INFO - === SUBIR DOCUMENTO - Beca ID: 671 ===
+2025-12-01 15:30:48,359 - blueprints.dashboard - INFO - Files: ['archivo_pdf'], Form: ['nombre_doc']
+2025-12-01 15:30:48,373 - blueprints.dashboard - INFO - Procesando PDF: cedula.pdf
+2025-12-01 15:30:50,599 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/797fe996-97de-40f0-8a5e-876fcd7be4f4.pdf "HTTP/2 200 OK"
+2025-12-01 15:30:50,605 - blueprints.dashboard - INFO - PDF procesado, URL: https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v...
+2025-12-01 15:30:52,567 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos "HTTP/1.1 201 Created"
+2025-12-01 15:30:52,609 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:30:52] "[32mPOST /dashboard/becas/671/subir_documento HTTP/1.1[0m" 302 -
+2025-12-01 15:30:52,752 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:30:52,872 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:30:54,375 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.671 "HTTP/1.1 200 OK"
+2025-12-01 15:30:54,503 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.671&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 15:30:54,664 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.671&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 15:30:54,670 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:30:54] "GET /dashboard/becas/editar/671 HTTP/1.1" 200 -
+2025-12-01 15:30:54,778 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:30:54] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 15:30:54,803 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:30:54] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 15:30:55,141 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:30:55,268 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:30:56,900 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.671 "HTTP/1.1 200 OK"
+2025-12-01 15:30:57,186 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.671&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 15:30:57,332 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.671&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 15:30:57,337 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:30:57] "GET /dashboard/becas/editar/671 HTTP/1.1" 200 -
+2025-12-01 15:31:02,890 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:31:03,024 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:31:03,143 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 15:31:04,855 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/1.1 200 OK"
+2025-12-01 15:31:04,997 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/1.1 200 OK"
+2025-12-01 15:31:05,117 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/1.1 206 Partial Content"
+2025-12-01 15:31:05,122 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:31:05] "GET /dashboard/ HTTP/1.1" 200 -
+2025-12-01 15:31:05,218 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:31:05] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 15:31:05,236 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 15:31:05] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -

@@ -102,27 +102,117 @@
             </div>
         </nav>
 
-        <!-- Mensajes Flash Flotantes -->
-        <div class="fixed top-20 right-4 z-50 w-full max-w-sm pointer-events-none">
+        <!-- Mensajes Flash Elegantes -->
+        <div class="fixed top-20 right-4 z-50 w-full max-w-md pointer-events-none space-y-3">
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
             {% for category, message in messages %}
-            {% set styles = {
-            'success': 'bg-green-50 text-green-800 border-green-200',
-            'error': 'bg-red-50 text-red-800 border-red-200',
-            'warning': 'bg-yellow-50 text-yellow-800 border-yellow-200'
+            {% set config = {
+            'success': {
+            'bg': 'bg-gradient-to-r from-emerald-500 to-teal-600',
+            'icon': 'fa-circle-check',
+            'iconBg': 'bg-white/20'
+            },
+            'error': {
+            'bg': 'bg-gradient-to-r from-red-500 to-rose-600',
+            'icon': 'fa-circle-xmark',
+            'iconBg': 'bg-white/20'
+            },
+            'warning': {
+            'bg': 'bg-gradient-to-r from-amber-500 to-orange-600',
+            'icon': 'fa-triangle-exclamation',
+            'iconBg': 'bg-white/20'
+            },
+            'info': {
+            'bg': 'bg-gradient-to-r from-blue-500 to-cyan-600',
+            'icon': 'fa-info-circle',
+            'iconBg': 'bg-white/20'
+            }
             } %}
-            {% set current_style = styles[category] if category in styles else styles['success'] %}
+            {% set current = config[category] if category in config else config['info'] %}
 
-            <div
-                class="{{ current_style }} border shadow-lg rounded-lg p-4 mb-3 pointer-events-auto flex items-start animate-fade-in-down">
-                <i class="fa-solid fa-circle-info mt-0.5 mr-2 opacity-75"></i>
-                <p class="text-sm font-medium">{{ message }}</p>
+            <div class="pointer-events-auto transform transition-all duration-500 ease-out hover:scale-105"
+                style="animation: slideInRight 0.5s ease-out;">
+                <div class="{{ current.bg }} rounded-xl shadow-2xl overflow-hidden">
+                    <div class="p-4 flex items-start gap-3">
+                        <!-- Icono -->
+                        <div class="{{ current.iconBg }} rounded-lg p-2.5 flex-shrink-0">
+                            <i class="fa-solid {{ current.icon }} text-white text-xl"></i>
+                        </div>
+
+                        <!-- Contenido -->
+                        <div class="flex-1 pt-0.5">
+                            <p class="text-white font-semibold text-sm leading-relaxed drop-shadow-sm">
+                                {{ message }}
+                            </p>
+                        </div>
+
+                        <!-- Botón cerrar -->
+                        <button
+                            onclick="this.closest('div[style*=slideInRight]').style.animation='slideOutRight 0.3s ease-in'; setTimeout(() => this.closest('div[style*=slideInRight]').remove(), 300)"
+                            class="flex-shrink-0 text-white/80 hover:text-white transition-colors p-1">
+                            <i class="fa-solid fa-xmark text-lg"></i>
+                        </button>
+                    </div>
+
+                    <!-- Barra de progreso -->
+                    <div class="h-1 bg-white/20">
+                        <div class="h-full bg-white/40 animate-progress"></div>
+                    </div>
+                </div>
             </div>
             {% endfor %}
             {% endif %}
             {% endwith %}
         </div>
+
+        <style>
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+
+            @keyframes slideOutRight {
+                to {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+            }
+
+            @keyframes progress {
+                from {
+                    width: 100%;
+                }
+
+                to {
+                    width: 0%;
+                }
+            }
+
+            .animate-progress {
+                animation: progress 5s linear forwards;
+            }
+        </style>
+
+        <!-- Auto-cerrar notificaciones después de 5 segundos -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const notifications = document.querySelectorAll('div[style*="slideInRight"]');
+                notifications.forEach((notif, index) => {
+                    setTimeout(() => {
+                        notif.style.animation = 'slideOutRight 0.3s ease-in';
+                        setTimeout(() => notif.remove(), 300);
+                    }, 5000 + (index * 500)); // Escalonado si hay múltiples
+                });
+            });
+        </script>
 
         <!-- Header de la Página -->
         <header class="bg-white shadow-sm">

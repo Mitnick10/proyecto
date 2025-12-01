@@ -7,7 +7,8 @@
 <div class="max-w-6xl mx-auto space-y-8">
 
     <!-- FORMULARIO DE EDICIÓN COMPLETO -->
-    <form action="{{ url_for('dashboard.editar_beca', beca_id=beca.id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ url_for('dashboard.editar_beca', beca_id=beca.id) }}" method="POST" enctype="multipart/form-data"
+        onsubmit="confirmarGuardar('guardar')">
         <div class="bg-white shadow-lg ring-1 ring-slate-900/5 rounded-xl overflow-hidden">
 
             <div class="px-6 py-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
@@ -349,7 +350,7 @@
                                 m.fecha }})</span>
                         </span>
                         <form action="{{ url_for('dashboard.eliminar_medalla', medalla_id=m.id) }}" method="POST"
-                            onsubmit="return confirm('¿Borrar medalla?');">
+                            onsubmit="confirmarEliminar('medalla');">
                             <input type="hidden" name="atleta_id" value="{{ beca.id }}">
                             <button class="text-red-400 hover:text-red-600 transition-colors"><i
                                     class="fa-solid fa-trash"></i></button>
@@ -415,7 +416,7 @@
                                 <i class="fa-solid fa-download"></i>
                             </a>
                             <form action="{{ url_for('dashboard.eliminar_documento', doc_id=doc.id) }}" method="POST"
-                                onsubmit="return confirm('¿Borrar documento?');">
+                                onsubmit="confirmarEliminar('documento');">
                                 <input type="hidden" name="atleta_id" value="{{ beca.id }}">
                                 <button type="submit" class="text-slate-400 hover:text-red-600 p-1" title="Eliminar">
                                     <i class="fa-solid fa-trash"></i>
