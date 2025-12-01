@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
 from config.supabase_client import supabase
 from utils.decorators import login_required, superadmin_required
-from utils.validaciones import validar_datos_atleta, sanitizar_input
+from utils.validaciones import validar_datos_atleta, sanitizar_input, normalizar_estatura
 
 # Configurar logger
 logger = logging.getLogger(__name__)
@@ -46,63 +46,11 @@ def upload_file(file, bucket, folder=""):
         return public_url
     except Exception as e:
         logger.error(f"Error subiendo archivo a {bucket}: {e}")
-        return None
+        raise e
 
 def procesar_imagen(file):
     """Wrapper para subir imágenes al bucket 'avatars'."""
     return upload_file(file, 'avatars')
-
-def procesar_pdf(file):
-    """Wrapper para subir documentos al bucket 'documentos'."""
-    return upload_file(file, 'documentos')
-
-# --- HELPER PARA RECOLECTAR DATOS DEL FORMULARIO ---
-def obtener_datos_formulario(req):
-    """Extrae todos los campos del formulario para crear o editar."""
-    datos = {
-        'nombre': sanitizar_input(req.form.get('nombre')),
-        'apellido': sanitizar_input(req.form.get('apellido')),
-        'cedula': req.form.get('cedula'),
-        'edad': req.form.get('edad') or None,
-        'sexo': req.form.get('sexo'),
-        'email': req.form.get('email'),
-        'telefono': req.form.get('telefono'),
-        'estatus': req.form.get('estatus'),
-        'cuenta_bancaria': req.form.get('cuenta_bancaria'),
-        'es_menor': True if req.form.get('es_menor') == 'on' else False,
-        'representante_nombre': sanitizar_input(req.form.get('representante_nombre')),
-        'representante_cedula': req.form.get('representante_cedula'),
-        'representante_parentesco': sanitizar_input(req.form.get('representante_parentesco')),
-        'municipio': sanitizar_input(req.form.get('municipio')),
-        'lugar_nacimiento': sanitizar_input(req.form.get('lugar_nacimiento')),
-        'direccion': sanitizar_input(req.form.get('direccion')),
-        'fecha_nacimiento': req.form.get('fecha_nacimiento') or None,
-        'disciplina': req.form.get('disciplina'),
-        'especialidad': sanitizar_input(req.form.get('especialidad')),
-        'categoria': req.form.get('categoria'),
-        'tipo_beca': req.form.get('tipo_beca'),
-        'sangre': req.form.get('sangre'),
-        'peso': req.form.get('peso'),
-        'estatura': req.form.get('estatura'),
-        'talla_zapato': req.form.get('talla_zapato'),
-        'talla_franela': req.form.get('talla_franela'),
-        'talla_short': req.form.get('talla_short'),
-        'talla_chemise': req.form.get('talla_chemise'),
-        'talla_mono': req.form.get('talla_mono'),
-        'talla_competencia': req.form.get('talla_competencia'),
-        'usa_lentes': req.form.get('usa_lentes'),
-        'usa_bucal': req.form.get('usa_bucal'),
-        'usa_munequera': req.form.get('usa_munequera'),
-        'usa_rodilleras': req.form.get('usa_rodilleras'),
-        'dieta_deportiva': req.form.get('dieta_deportiva'),
-        'control_medico': req.form.get('control_medico'),
-        'estudio_social': req.form.get('estudio_social'),
-    }
-    return datos
-
-# --- CONTEXT PROCESSOR ---
-@dashboard_blueprint.context_processor
-def inject_role():
     """Inyecta el rol del usuario en todas las plantillas."""
     return dict(user_role=session.get('role', 'usuario'))
 
@@ -347,25 +295,37 @@ def eliminar_medalla(medalla_id):
 @login_required
 def subir_documento(beca_id):
     try:
+        logger.info(f"=== SUBIR DOCUMENTO - Beca ID: {beca_id} ===")
+        logger.info(f"Files: {list(request.files.keys())}, Form: {list(request.form.keys())}")
+        
         archivo = request.files.get('archivo_pdf')
         nombre_doc = sanitizar_input(request.form.get('nombre_doc'))
+        
         if not archivo or not nombre_doc:
-            flash('Debes seleccionar un archivo y un nombre.', 'error')
+            logger.warning(f"Faltan datos: archivo={archivo}, nombre_doc={nombre_doc}")
+            msg = 'Faltan datos: '
+            if not archivo: msg += 'No se recibió el archivo. '
+            if not nombre_doc: msg += 'No se recibió el nombre del documento.'
+            flash(msg, 'error')
         else:
-            pdf_b64 = procesar_pdf(archivo)
-            if pdf_b64:
+            logger.info(f"Procesando PDF: {archivo.filename}")
+            pdf_url = procesar_pdf(archivo)
+            if pdf_url:
+                logger.info(f"PDF procesado, URL: {pdf_url[:50]}...")
                 supabase.table('documentos').insert({
                     'atleta_id': beca_id,
                     'nombre': nombre_doc,
-                    'archivo': pdf_b64
+                    'archivo': pdf_url
                 }).execute()
-                logger.info(f"Documento subido al atleta ID {beca_id}: {nombre_doc}")
+                logger.info(f"✓ Documento insertado para beca ID {beca_id}")
                 flash('Documento subido correctamente.', 'success')
             else:
+                logger.error("procesar_pdf retornó None")
                 flash('Error al procesar el archivo PDF.', 'error')
     except Exception as e: 
         logger.error(f"Error al subir documento: {e}", exc_info=True)
         flash(f'Error al subir: {e}', 'error')
+    
     return redirect(url_for('dashboard.editar_beca', beca_id=beca_id))
 
 @dashboard_blueprint.route('/documentos/eliminar/<int:doc_id>', methods=['POST'])
@@ -392,6 +352,7 @@ def lista_usuarios():
     except Exception as e:
         logger.error(f"Error al cargar usuarios: {e}", exc_info=True)
         return redirect(url_for('dashboard.index'))
+
 @dashboard_blueprint.route('/usuarios/cambiar_rol', methods=['POST'])
 @login_required
 @superadmin_required

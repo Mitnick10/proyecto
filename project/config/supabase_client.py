@@ -15,6 +15,7 @@ try:
     
     # Intentar usar la Service Key primero para evitar problemas de RLS en el backend
     service_key = os.environ.get('SUPABASE_SERVICE_KEY')
+    
     key_to_use = service_key if service_key else SUPABASE_KEY
     
     supabase = create_client(SUPABASE_URL, key_to_use)

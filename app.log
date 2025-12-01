@@ -3243,3 +3243,1601 @@ supabase_auth.errors.AuthApiError: Invalid login credentials
 2025-11-28 22:18:01,806 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:18:01] "GET /dashboard/cuenta HTTP/1.1" 200 -
 2025-11-28 22:18:01,878 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:18:01] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
 2025-11-28 22:18:01,898 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 22:18:01] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 11:50:39,483 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 11:50:39,532 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-01 11:50:39,532 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-12-01 11:50:39,568 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 11:50:40,926 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 11:50:40,948 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 11:50:40,952 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 11:50:51,468 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:50:51] "[32mGET / HTTP/1.1[0m" 302 -
+2025-12-01 11:50:51,473 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:50:51] "[32mGET / HTTP/1.1[0m" 302 -
+2025-12-01 11:50:51,604 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:50:51] "GET /login HTTP/1.1" 200 -
+2025-12-01 11:50:51,623 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:50:51] "GET /login HTTP/1.1" 200 -
+2025-12-01 11:50:51,910 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:50:51] "GET /static/logo.png HTTP/1.1" 200 -
+2025-12-01 11:50:51,918 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:50:51] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 11:50:52,666 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:50:52] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-12-01 11:50:52,688 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:50:52] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-12-01 11:51:03,595 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/2 200 OK"
+2025-12-01 11:51:04,959 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/profiles?select=role&id=eq.16bfbabc-1f5f-478b-b7e6-d62fe77f1b14 "HTTP/2 200 OK"
+2025-12-01 11:51:04,976 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:51:04] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-12-01 11:51:05,113 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 11:51:05,226 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 11:51:06,471 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/2 200 OK"
+2025-12-01 11:51:06,653 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/2 200 OK"
+2025-12-01 11:51:06,818 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/2 200 OK"
+2025-12-01 11:51:06,855 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:51:06] "GET /dashboard/ HTTP/1.1" 200 -
+2025-12-01 11:51:06,962 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:51:06] "GET /static/js/custom-alerts.js HTTP/1.1" 200 -
+2025-12-01 11:51:06,964 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:51:06] "GET /static/css/custom-alerts.css HTTP/1.1" 200 -
+2025-12-01 11:51:09,346 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 11:51:10,656 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&order=id.desc&offset=0&limit=20 "HTTP/2 206 Partial Content"
+2025-12-01 11:51:10,842 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=disciplina&limit=1000 "HTTP/2 200 OK"
+2025-12-01 11:51:10,917 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:51:10] "GET /dashboard/becas HTTP/1.1" 200 -
+2025-12-01 11:51:10,976 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:51:10] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 11:51:10,999 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:51:10] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 11:52:05,328 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 11:52:06,680 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&order=id.desc&offset=0&limit=20 "HTTP/2 200 OK"
+2025-12-01 11:52:06,880 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=disciplina&limit=1000 "HTTP/2 200 OK"
+2025-12-01 11:52:06,883 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:52:06] "GET /dashboard/becas HTTP/1.1" 200 -
+2025-12-01 11:52:06,943 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:52:06] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 11:52:06,946 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:52:06] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 11:52:07,261 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:52:07] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 11:52:27,718 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 11:52:27,749 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:52:27] "GET /dashboard/becas/nueva HTTP/1.1" 200 -
+2025-12-01 11:52:27,827 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:52:27] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 11:52:27,833 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:52:27] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 11:52:28,103 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 11:52:28,107 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:52:28] "GET /dashboard/becas/nueva HTTP/1.1" 200 -
+2025-12-01 11:57:22,537 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 11:57:23,837 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/avatars/266dda21-58f9-45bc-8151-db59b64584bd.jpg "HTTP/2 400 Bad Request"
+2025-12-01 11:57:23,840 - blueprints.dashboard - ERROR - Error subiendo archivo a avatars: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 11:57:24,992 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas "HTTP/2 201 Created"
+2025-12-01 11:57:24,994 - blueprints.dashboard - INFO - Atleta registrado: yonathan ddavier Espinoza Corrales
+2025-12-01 11:57:24,997 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:57:24] "[32mPOST /dashboard/becas/nueva HTTP/1.1[0m" 302 -
+2025-12-01 11:57:25,127 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 11:57:26,099 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&order=id.desc&offset=0&limit=20 "HTTP/2 200 OK"
+2025-12-01 11:57:26,275 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=disciplina&limit=1000 "HTTP/2 200 OK"
+2025-12-01 11:57:26,282 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:57:26] "GET /dashboard/becas HTTP/1.1" 200 -
+2025-12-01 11:57:26,365 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:57:26] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 11:57:26,369 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:57:26] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 11:57:29,224 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 11:57:30,310 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 11:57:30,443 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 11:57:30,584 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166 "HTTP/2 200 OK"
+2025-12-01 11:57:30,676 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:57:30] "GET /dashboard/becas/ver/166 HTTP/1.1" 200 -
+2025-12-01 11:57:30,736 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:57:30] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 11:57:30,742 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 11:57:30] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:01:20,490 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 12:01:20,495 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 12:01:20,498 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 12:01:20,972 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 12:02:50,148 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 12:02:50,519 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-01 12:02:50,519 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-12-01 12:02:50,522 - werkzeug - INFO -  * Restarting with stat
+2025-12-01 12:02:51,886 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 12:02:51,941 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 12:02:51,946 - werkzeug - INFO -  * Debugger PIN: 107-177-601
+2025-12-01 12:02:53,718 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 12:02:54,356 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 12:02:54,479 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:02:54,597 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 12:02:54,645 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:02:54] "GET /dashboard/becas/ver/166 HTTP/1.1" 200 -
+2025-12-01 12:02:54,804 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:02:54] "GET /static/css/custom-alerts.css HTTP/1.1" 200 -
+2025-12-01 12:02:54,829 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:02:54] "GET /static/js/custom-alerts.js HTTP/1.1" 200 -
+2025-12-01 12:02:55,460 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:02:55] "GET /static/logo.png HTTP/1.1" 200 -
+2025-12-01 12:03:01,043 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 12:03:01,931 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 12:03:02,052 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:03:02,168 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 12:03:02,172 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:03:02] "GET /dashboard/becas/ver/166 HTTP/1.1" 200 -
+2025-12-01 12:03:02,252 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:03:02] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:03:02,253 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:03:02] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:03:02,470 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:03:02] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 12:03:14,898 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 12:03:15,915 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 12:03:16,096 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:03:16,238 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:03:16,354 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:03:16] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 12:03:16,415 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:03:16] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:03:16,433 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:03:16] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:03:16,583 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 12:03:17,817 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 12:03:18,012 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:03:18,342 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:03:18,349 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:03:18] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 12:03:50,463 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:03:50] "[32mPOST /dashboard/becas/editar/166 HTTP/1.1[0m" 302 -
+2025-12-01 12:03:50,500 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:03:50] "GET /login HTTP/1.1" 200 -
+2025-12-01 12:03:50,594 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:03:50] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 12:04:02,291 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/1.1 200 OK"
+2025-12-01 12:04:04,091 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/profiles?select=role&id=eq.16bfbabc-1f5f-478b-b7e6-d62fe77f1b14 "HTTP/1.1 200 OK"
+2025-12-01 12:04:04,098 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:04:04] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-12-01 12:04:04,456 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 12:04:04,599 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 12:04:06,560 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/1.1 200 OK"
+2025-12-01 12:04:06,745 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/1.1 200 OK"
+2025-12-01 12:04:06,918 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/1.1 200 OK"
+2025-12-01 12:04:06,948 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:04:06] "GET /dashboard/ HTTP/1.1" 200 -
+2025-12-01 12:04:07,043 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:04:07] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:04:07,054 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:04:07] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:04:11,254 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 12:04:12,416 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&order=id.desc "HTTP/1.1 200 OK"
+2025-12-01 12:04:12,551 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=disciplina&limit=1000 "HTTP/1.1 200 OK"
+2025-12-01 12:04:12,617 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:04:12] "GET /dashboard/becas HTTP/1.1" 200 -
+2025-12-01 12:04:12,682 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:04:12] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:04:12,695 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:04:12] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:04:14,579 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 12:04:15,803 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 12:04:15,924 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:04:16,099 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 12:04:16,101 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:04:16] "GET /dashboard/becas/ver/166 HTTP/1.1" 200 -
+2025-12-01 12:04:16,183 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:04:16] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:04:16,204 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:04:16] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:04:21,370 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 12:04:22,407 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 12:04:22,542 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:04:22,658 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:04:22,661 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:04:22] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 12:04:22,721 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:04:22] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:04:22,733 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:04:22] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:04:22,879 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 12:04:23,912 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 12:04:24,031 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:04:24,150 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:04:24,155 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:04:24] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 12:04:36,434 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 12:04:36,453 - blueprints.dashboard - ERROR - Error al guardar cambios: name 'procesar_imagen' is not defined
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 266, in editar_beca
+    foto_b64 = procesar_imagen(request.files.get('foto'))
+               ^^^^^^^^^^^^^^^
+NameError: name 'procesar_imagen' is not defined
+2025-12-01 12:04:37,522 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 12:04:37,635 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:04:37,754 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:04:37,758 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:04:37] "POST /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 12:04:37,827 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:04:37] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:04:37,839 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:04:37] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:04:37,967 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 12:04:39,040 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 12:04:39,187 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:04:39,305 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:04:39,307 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:04:39] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 12:05:10,302 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 12:05:10,469 - werkzeug - INFO -  * Restarting with stat
+2025-12-01 12:05:12,088 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 12:05:12,141 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 12:05:12,144 - werkzeug - INFO -  * Debugger PIN: 107-177-601
+2025-12-01 12:05:28,870 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 12:05:30,781 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/avatars/38b5d586-da77-4936-9999-31075297a6b2.jpg "HTTP/2 200 OK"
+2025-12-01 12:05:32,388 - httpx - INFO - HTTP Request: PATCH https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 12:05:32,393 - blueprints.dashboard - INFO - Ficha actualizada: ID 166
+2025-12-01 12:05:32,396 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:05:32] "[32mPOST /dashboard/becas/editar/166 HTTP/1.1[0m" 302 -
+2025-12-01 12:05:32,577 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 12:05:34,164 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 12:05:34,408 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:05:34,884 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:05:34,957 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:05:34] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 12:05:35,190 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:05:35] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:05:35,192 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:05:35] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:05:46,231 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 12:05:48,262 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/avatars/474e1e2a-8c38-4b23-9d35-a15d593b09f7.jpg "HTTP/2 200 OK"
+2025-12-01 12:05:49,726 - httpx - INFO - HTTP Request: PATCH https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 12:05:49,750 - blueprints.dashboard - INFO - Ficha actualizada: ID 166
+2025-12-01 12:05:49,756 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:05:49] "[32mPOST /dashboard/becas/editar/166 HTTP/1.1[0m" 302 -
+2025-12-01 12:05:50,000 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 12:05:51,794 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 12:05:52,057 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:05:52,257 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:05:52,260 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:05:52] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 12:05:52,393 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:05:52] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:05:52,436 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:05:52] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:05:53,606 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:05:53] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 12:05:54,873 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 12:05:56,800 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&order=id.desc "HTTP/1.1 200 OK"
+2025-12-01 12:05:57,516 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=disciplina&limit=1000 "HTTP/1.1 200 OK"
+2025-12-01 12:05:57,604 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:05:57] "GET /dashboard/becas HTTP/1.1" 200 -
+2025-12-01 12:05:57,661 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:05:57] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:05:57,677 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:05:57] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:06:00,382 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 12:06:01,810 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 12:06:01,920 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:06:02,030 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 12:06:02,150 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:06:02] "GET /dashboard/becas/ver/166 HTTP/1.1" 200 -
+2025-12-01 12:06:02,222 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:06:02] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:06:02,240 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:06:02] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:06:23,659 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 12:06:23,671 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:06:23] "[32mPOST /dashboard/becas/166/subir_documento HTTP/1.1[0m" 302 -
+2025-12-01 12:06:23,789 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 12:06:24,850 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 12:06:24,972 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:06:25,078 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 12:06:25,085 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:06:25] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 12:06:25,165 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:06:25] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:06:25,174 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:06:25] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:08:13,008 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 12:08:13,168 - werkzeug - INFO -  * Restarting with stat
+2025-12-01 12:15:06,236 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 12:15:06,279 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-01 12:15:06,279 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-12-01 12:15:06,345 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 12:15:07,678 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 12:15:07,700 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 12:15:07,704 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 12:15:13,595 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:15:13] "[32mGET / HTTP/1.1[0m" 302 -
+2025-12-01 12:15:14,292 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 12:15:14,407 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 12:15:15,671 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/2 200 OK"
+2025-12-01 12:15:15,860 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/2 200 OK"
+2025-12-01 12:15:16,018 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/2 200 OK"
+2025-12-01 12:15:16,195 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:15:16] "GET /dashboard/ HTTP/1.1" 200 -
+2025-12-01 12:15:16,394 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:15:16] "GET /static/css/custom-alerts.css HTTP/1.1" 200 -
+2025-12-01 12:15:16,395 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:15:16] "GET /static/js/custom-alerts.js HTTP/1.1" 200 -
+2025-12-01 12:15:16,716 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:15:16] "GET /static/logo.png HTTP/1.1" 200 -
+2025-12-01 12:15:19,123 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 12:15:20,822 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&order=id.desc&offset=0&limit=20 "HTTP/2 200 OK"
+2025-12-01 12:15:20,980 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=disciplina&limit=1000 "HTTP/2 200 OK"
+2025-12-01 12:15:21,039 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:15:21] "GET /dashboard/becas HTTP/1.1" 200 -
+2025-12-01 12:15:21,108 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:15:21] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:15:21,111 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:15:21] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:15:23,956 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 12:15:25,011 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 12:15:25,178 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 12:15:25,338 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166 "HTTP/2 200 OK"
+2025-12-01 12:15:25,386 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:15:25] "GET /dashboard/becas/ver/166 HTTP/1.1" 200 -
+2025-12-01 12:15:25,444 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:15:25] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:15:25,460 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:15:25] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:15:35,789 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 12:15:35,794 - blueprints.dashboard - INFO - Subiendo documento. Files: dict_keys(['archivo']), Form: dict_keys(['nombre_doc'])
+2025-12-01 12:15:35,795 - blueprints.dashboard - WARNING - Faltan datos: archivo=None, nombre_doc=Cédula
+2025-12-01 12:15:35,797 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:15:35] "[32mPOST /dashboard/becas/166/subir_documento HTTP/1.1[0m" 302 -
+2025-12-01 12:15:35,922 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 12:15:36,941 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 12:15:37,108 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 12:15:37,274 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 12:15:37,331 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:15:37] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 12:15:37,402 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:15:37] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:15:37,407 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:15:37] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:17:26,143 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 12:17:27,241 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas "HTTP/2 201 Created"
+2025-12-01 12:17:27,244 - blueprints.dashboard - INFO - Medalla agregada al atleta ID 166
+2025-12-01 12:17:27,248 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:17:27] "[32mPOST /dashboard/becas/166/agregar_medalla HTTP/1.1[0m" 302 -
+2025-12-01 12:17:27,380 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 12:17:28,382 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 12:17:28,497 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 12:17:28,628 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 12:17:28,630 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:17:28] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 12:17:28,714 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:17:28] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:17:28,729 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:17:28] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:17:58,160 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 12:17:58,459 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 12:23:08,603 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 12:23:08,649 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-01 12:23:08,650 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-12-01 12:23:08,678 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 12:23:10,038 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 12:23:10,060 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 12:23:10,065 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 12:23:11,557 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 12:23:12,776 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 12:23:12,903 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 12:23:13,067 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 12:23:13,151 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:23:13] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 12:23:13,369 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:23:13] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:23:13,377 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:23:13] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:23:13,733 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:23:13] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 12:23:27,064 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 12:23:27,073 - blueprints.dashboard - INFO - Subiendo documento. Files: dict_keys(['archivo_pdf']), Form: dict_keys(['nombre_doc'])
+2025-12-01 12:23:28,397 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/db1cde54-d026-4280-886a-7ae72dd92e73.pdf "HTTP/2 400 Bad Request"
+2025-12-01 12:23:28,399 - blueprints.dashboard - ERROR - Error subiendo archivo a documentos: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 12:23:28,400 - blueprints.dashboard - ERROR - Error al subir documento: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 78, in _request
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '400 Bad Request' for url 'https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/db1cde54-d026-4280-886a-7ae72dd92e73.pdf'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 364, in subir_documento
+    pdf_b64 = procesar_pdf(archivo)
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 61, in procesar_pdf
+    return upload_file(file, 'documentos')
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 49, in upload_file
+    raise e
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 38, in upload_file
+    supabase.storage.from_(bucket).upload(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        path=filename,
+        ^^^^^^^^^^^^^^
+        file=file_content,
+        ^^^^^^^^^^^^^^^^^^
+        file_options={"content-type": mime_type}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 566, in upload
+    return self._upload_or_update("POST", path_parts, file, file_options)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 538, in _upload_or_update
+    response = self._request(
+        method, ["object", self.id, *path], files=files, headers=headers, data=_data
+    )
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 81, in _request
+    raise StorageApiError(
+        resp["message"], resp["error"], resp["statusCode"]
+    ) from exc
+storage3.exceptions.StorageApiError: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 12:23:28,452 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\storage3\\_sync\\file_api.py', reloading
+2025-12-01 12:23:28,489 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:23:28] "[32mPOST /dashboard/becas/166/subir_documento HTTP/1.1[0m" 302 -
+2025-12-01 12:23:28,490 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\httpx\\_models.py', reloading
+2025-12-01 12:23:28,615 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 12:23:29,375 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 12:23:31,671 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 12:23:31,705 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 12:23:31,712 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 12:23:32,005 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 12:23:33,005 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 12:23:33,130 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 12:23:33,247 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 12:23:33,334 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:23:33] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 12:23:33,544 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:23:33] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:23:33,546 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:23:33] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:25:01,259 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\config\\supabase_client.py', reloading
+2025-12-01 12:25:01,260 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\config\\supabase_client.py', reloading
+2025-12-01 12:25:01,261 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\config\\supabase_client.py', reloading
+2025-12-01 12:25:02,212 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 12:25:03,756 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 12:25:03,783 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 12:25:03,794 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 12:25:16,424 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\config\\supabase_client.py', reloading
+2025-12-01 12:25:16,426 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\config\\supabase_client.py', reloading
+2025-12-01 12:25:17,008 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 12:29:40,083 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 12:29:40,153 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-01 12:29:40,154 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-12-01 12:29:40,193 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 12:29:42,986 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 12:29:43,021 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 12:29:43,026 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 12:29:45,279 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 12:29:46,802 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 12:29:46,917 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 12:29:47,030 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 12:29:47,191 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:29:47] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 12:29:47,616 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:29:47] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:29:47,619 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:29:47] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:29:48,995 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:29:48] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 12:30:03,717 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 12:30:03,742 - blueprints.dashboard - INFO - Subiendo documento. Files: dict_keys(['archivo_pdf']), Form: dict_keys(['nombre_doc'])
+2025-12-01 12:30:05,922 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/fdca1ce5-44cb-48f7-9a55-5c15514293ad.pdf "HTTP/2 400 Bad Request"
+2025-12-01 12:30:05,925 - blueprints.dashboard - ERROR - Error subiendo archivo a documentos: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 12:30:05,926 - blueprints.dashboard - ERROR - Error al subir documento: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 78, in _request
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '400 Bad Request' for url 'https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/fdca1ce5-44cb-48f7-9a55-5c15514293ad.pdf'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 364, in subir_documento
+    pdf_b64 = procesar_pdf(archivo)
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 61, in procesar_pdf
+    return upload_file(file, 'documentos')
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 49, in upload_file
+    raise e
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 38, in upload_file
+    supabase.storage.from_(bucket).upload(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        path=filename,
+        ^^^^^^^^^^^^^^
+        file=file_content,
+        ^^^^^^^^^^^^^^^^^^
+        file_options={"content-type": mime_type}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 566, in upload
+    return self._upload_or_update("POST", path_parts, file, file_options)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 538, in _upload_or_update
+    response = self._request(
+        method, ["object", self.id, *path], files=files, headers=headers, data=_data
+    )
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 81, in _request
+    raise StorageApiError(
+        resp["message"], resp["error"], resp["statusCode"]
+    ) from exc
+storage3.exceptions.StorageApiError: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 12:30:05,950 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:30:05] "[32mPOST /dashboard/becas/166/subir_documento HTTP/1.1[0m" 302 -
+2025-12-01 12:30:06,095 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 12:30:07,427 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 12:30:07,558 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 12:30:07,685 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 12:30:07,693 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:30:07] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 12:30:07,882 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:30:07] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:30:07,907 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:30:07] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:31:28,905 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\mailbox.py', reloading
+2025-12-01 12:31:29,779 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 12:31:32,556 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 12:31:32,596 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 12:31:32,605 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 12:34:48,752 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 12:34:48,768 - blueprints.dashboard - INFO - Subiendo documento. Files: dict_keys(['archivo_pdf']), Form: dict_keys(['nombre_doc'])
+2025-12-01 12:34:51,619 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/214296a8-7ab8-4849-beb0-4667bb3d14ad.pdf "HTTP/2 400 Bad Request"
+2025-12-01 12:34:51,622 - blueprints.dashboard - ERROR - Error subiendo archivo a documentos: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 12:34:51,623 - blueprints.dashboard - ERROR - Error al subir documento: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 78, in _request
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '400 Bad Request' for url 'https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/214296a8-7ab8-4849-beb0-4667bb3d14ad.pdf'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 364, in subir_documento
+    pdf_b64 = procesar_pdf(archivo)
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 61, in procesar_pdf
+    return upload_file(file, 'documentos')
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 49, in upload_file
+    raise e
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 38, in upload_file
+    supabase.storage.from_(bucket).upload(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        path=filename,
+        ^^^^^^^^^^^^^^
+        file=file_content,
+        ^^^^^^^^^^^^^^^^^^
+        file_options={"content-type": mime_type}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 566, in upload
+    return self._upload_or_update("POST", path_parts, file, file_options)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 538, in _upload_or_update
+    response = self._request(
+        method, ["object", self.id, *path], files=files, headers=headers, data=_data
+    )
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 81, in _request
+    raise StorageApiError(
+        resp["message"], resp["error"], resp["statusCode"]
+    ) from exc
+storage3.exceptions.StorageApiError: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 12:34:51,646 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:34:51] "[32mPOST /dashboard/becas/166/subir_documento HTTP/1.1[0m" 302 -
+2025-12-01 12:34:51,798 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 12:34:53,271 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 12:34:53,398 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 12:34:53,521 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 12:34:53,680 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:34:53] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 12:34:54,252 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:34:54] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:34:54,256 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:34:54] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:36:11,045 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 12:36:11,123 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-01 12:36:11,123 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-12-01 12:36:11,161 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 12:36:13,773 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 12:36:13,810 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 12:36:13,815 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 12:36:46,172 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 12:36:46,179 - blueprints.dashboard - INFO - Subiendo documento. Files: dict_keys(['archivo_pdf']), Form: dict_keys(['nombre_doc'])
+2025-12-01 12:37:27,198 - blueprints.dashboard - ERROR - Error subiendo archivo a documentos: timed out
+2025-12-01 12:37:27,199 - blueprints.dashboard - ERROR - Error al subir documento: timed out
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 364, in subir_documento
+    pdf_b64 = procesar_pdf(archivo)
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 61, in procesar_pdf
+    return upload_file(file, 'documentos')
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 49, in upload_file
+    raise e
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 38, in upload_file
+    supabase.storage.from_(bucket).upload(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        path=filename,
+        ^^^^^^^^^^^^^^
+        file=file_content,
+        ^^^^^^^^^^^^^^^^^^
+        file_options={"content-type": mime_type}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 566, in upload
+    return self._upload_or_update("POST", path_parts, file, file_options)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 538, in _upload_or_update
+    response = self._request(
+        method, ["object", self.id, *path], files=files, headers=headers, data=_data
+    )
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 70, in _request
+    response = self._client.request(
+        method,
+    ...<4 lines>...
+        **kwargs,
+    )
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout: timed out
+2025-12-01 12:37:27,278 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\httpx\\_client.py', reloading
+2025-12-01 12:37:27,514 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:37:27] "[32mPOST /dashboard/becas/166/subir_documento HTTP/1.1[0m" 302 -
+2025-12-01 12:37:27,515 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\httpx\\_transports\\default.py', reloading
+2025-12-01 12:37:27,516 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\contextlib.py', reloading
+2025-12-01 12:37:27,518 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py', reloading
+2025-12-01 12:37:27,520 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\httpcore\\_sync\\connection.py', reloading
+2025-12-01 12:37:27,522 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\httpcore\\_backends\\sync.py', reloading
+2025-12-01 12:37:27,526 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\httpcore\\_exceptions.py', reloading
+2025-12-01 12:37:28,501 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 12:37:32,801 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 12:37:32,856 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 12:37:32,864 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 12:37:39,200 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 12:37:41,179 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 12:37:41,316 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 12:37:41,448 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 12:37:41,616 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:37:41] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 12:37:42,032 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:37:42] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 12:37:42,033 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 12:37:42] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 12:58:52,048 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 12:58:52,051 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\config\\supabase_client.py', reloading
+2025-12-01 12:58:52,052 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\app.py', reloading
+2025-12-01 12:58:52,200 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\utils\\validaciones.py', reloading
+2025-12-01 12:58:52,744 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 12:58:54,304 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 12:58:54,324 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 12:58:54,329 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 13:01:57,030 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:01:59,179 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 13:01:59,380 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:01:59,592 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:01:59,780 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:01:59] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 13:02:00,214 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:02:00] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:02:00,215 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:02:00] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:02:01,471 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:02:01] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 13:02:11,161 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:02:11,177 - blueprints.dashboard - INFO - Subiendo documento. Files: dict_keys(['archivo_pdf']), Form: dict_keys(['nombre_doc'])
+2025-12-01 13:02:12,965 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/febdd352-c1b2-4f84-b931-b6e5f70ce98e.pdf "HTTP/2 400 Bad Request"
+2025-12-01 13:02:12,967 - blueprints.dashboard - ERROR - Error subiendo archivo a documentos: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 13:02:12,968 - blueprints.dashboard - ERROR - Error al subir documento: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 78, in _request
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '400 Bad Request' for url 'https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/febdd352-c1b2-4f84-b931-b6e5f70ce98e.pdf'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 364, in subir_documento
+    pdf_b64 = procesar_pdf(archivo)
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 61, in procesar_pdf
+    return upload_file(file, 'documentos')
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 49, in upload_file
+    raise e
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 38, in upload_file
+    supabase.storage.from_(bucket).upload(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        path=filename,
+        ^^^^^^^^^^^^^^
+        file=file_content,
+        ^^^^^^^^^^^^^^^^^^
+        file_options={"content-type": mime_type}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 566, in upload
+    return self._upload_or_update("POST", path_parts, file, file_options)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 538, in _upload_or_update
+    response = self._request(
+        method, ["object", self.id, *path], files=files, headers=headers, data=_data
+    )
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 81, in _request
+    raise StorageApiError(
+        resp["message"], resp["error"], resp["statusCode"]
+    ) from exc
+storage3.exceptions.StorageApiError: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 13:02:12,979 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\storage3\\_sync\\file_api.py', reloading
+2025-12-01 13:02:12,999 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:02:12] "[32mPOST /dashboard/becas/166/subir_documento HTTP/1.1[0m" 302 -
+2025-12-01 13:02:13,429 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 13:02:17,203 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 13:02:17,256 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 13:02:17,264 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 13:02:17,577 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:02:19,078 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 13:02:19,451 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:02:19,656 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:02:19,878 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:02:19] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 13:02:20,306 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:02:20] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:02:20,310 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:02:20] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:02:48,713 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 13:02:48,781 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-01 13:02:48,782 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-12-01 13:02:48,815 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 13:02:51,892 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 13:02:51,951 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 13:02:51,962 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 13:02:52,029 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:02:52] "[32mGET / HTTP/1.1[0m" 302 -
+2025-12-01 13:02:52,273 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:02:52,404 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:02:53,621 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/2 200 OK"
+2025-12-01 13:02:53,860 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/2 200 OK"
+2025-12-01 13:02:54,012 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/2 200 OK"
+2025-12-01 13:02:54,148 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:02:54] "GET /dashboard/ HTTP/1.1" 200 -
+2025-12-01 13:02:54,494 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:02:54] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:02:54,495 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:02:54] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:03:02,021 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:03:03,511 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&order=id.desc&offset=0&limit=20 "HTTP/2 200 OK"
+2025-12-01 13:03:03,706 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=disciplina&limit=1000 "HTTP/2 200 OK"
+2025-12-01 13:03:03,896 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:03:03] "GET /dashboard/becas HTTP/1.1" 200 -
+2025-12-01 13:03:04,105 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:03:04] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:03:04,131 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:03:04] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:03:06,888 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:03:08,382 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 13:03:08,526 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:03:08,660 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166 "HTTP/2 200 OK"
+2025-12-01 13:03:08,797 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:03:08] "GET /dashboard/becas/ver/166 HTTP/1.1" 200 -
+2025-12-01 13:03:08,984 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:03:08] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:03:08,991 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:03:08] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:03:31,091 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:03:31,107 - blueprints.dashboard - INFO - Subiendo documento. Files: dict_keys(['archivo']), Form: dict_keys(['nombre_doc'])
+2025-12-01 13:03:31,110 - blueprints.dashboard - WARNING - Faltan datos: archivo=None, nombre_doc=Cédula
+2025-12-01 13:03:31,115 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:03:31] "[32mPOST /dashboard/becas/166/subir_documento HTTP/1.1[0m" 302 -
+2025-12-01 13:03:31,283 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:03:33,086 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 13:03:33,226 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:03:33,365 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:03:33,513 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:03:33] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 13:03:33,663 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:03:33] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:03:33,675 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:03:33] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:03:52,745 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=refresh_token "HTTP/2 200 OK"
+2025-12-01 13:03:52,882 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=refresh_token "HTTP/2 200 OK"
+2025-12-01 13:08:11,368 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=refresh_token "HTTP/2 400 Bad Request"
+2025-12-01 13:08:11,374 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:08:11] "[32mGET /dashboard/becas/editar/166 HTTP/1.1[0m" 302 -
+2025-12-01 13:08:11,550 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:08:11] "GET /login HTTP/1.1" 200 -
+2025-12-01 13:08:11,626 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:08:11] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 13:08:26,320 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/2 200 OK"
+2025-12-01 13:08:27,525 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/profiles?select=role&id=eq.16bfbabc-1f5f-478b-b7e6-d62fe77f1b14 "HTTP/2 200 OK"
+2025-12-01 13:08:27,531 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:08:27] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-12-01 13:08:27,660 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:08:27,765 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:08:28,779 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/2 200 OK"
+2025-12-01 13:08:28,910 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/2 200 OK"
+2025-12-01 13:08:29,022 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/2 200 OK"
+2025-12-01 13:08:29,029 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:08:29] "GET /dashboard/ HTTP/1.1" 200 -
+2025-12-01 13:08:29,118 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:08:29] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:08:29,132 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:08:29] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:08:29,351 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:08:29] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 13:08:59,209 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:09:00,231 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&order=id.desc&offset=0&limit=20 "HTTP/2 200 OK"
+2025-12-01 13:09:00,361 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=disciplina&limit=1000 "HTTP/2 200 OK"
+2025-12-01 13:09:00,367 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:09:00] "GET /dashboard/becas HTTP/1.1" 200 -
+2025-12-01 13:09:00,430 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:09:00] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:09:00,443 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:09:00] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:09:03,262 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:09:04,351 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 13:09:04,480 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:09:04,604 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:09:04,611 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:09:04] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 13:09:04,681 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:09:04] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:09:04,698 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:09:04] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:09:20,691 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:09:20,698 - blueprints.dashboard - INFO - Subiendo documento. Files: dict_keys(['archivo_pdf']), Form: dict_keys(['nombre_doc'])
+2025-12-01 13:09:21,962 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/2edb401a-ef2f-4e2a-b036-0c9a23fc39a6.pdf "HTTP/2 400 Bad Request"
+2025-12-01 13:09:21,965 - blueprints.dashboard - ERROR - Error subiendo archivo a documentos: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 13:09:21,966 - blueprints.dashboard - ERROR - Error al subir documento: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 78, in _request
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '400 Bad Request' for url 'https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/2edb401a-ef2f-4e2a-b036-0c9a23fc39a6.pdf'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 364, in subir_documento
+    pdf_b64 = procesar_pdf(archivo)
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 61, in procesar_pdf
+    return upload_file(file, 'documentos')
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 49, in upload_file
+    raise e
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 38, in upload_file
+    supabase.storage.from_(bucket).upload(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        path=filename,
+        ^^^^^^^^^^^^^^
+        file=file_content,
+        ^^^^^^^^^^^^^^^^^^
+        file_options={"content-type": mime_type}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 566, in upload
+    return self._upload_or_update("POST", path_parts, file, file_options)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 538, in _upload_or_update
+    response = self._request(
+        method, ["object", self.id, *path], files=files, headers=headers, data=_data
+    )
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 81, in _request
+    raise StorageApiError(
+        resp["message"], resp["error"], resp["statusCode"]
+    ) from exc
+storage3.exceptions.StorageApiError: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 13:09:21,985 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:09:21] "[32mPOST /dashboard/becas/166/subir_documento HTTP/1.1[0m" 302 -
+2025-12-01 13:09:22,130 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:09:47,186 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 13:09:47,364 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:09:47,498 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:09:47,505 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:09:47] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 13:09:47,582 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:09:47] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:09:47,595 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:09:47] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:12:47,877 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:12:55,942 - httpx - INFO - HTTP Request: PATCH https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?id=eq.166 "HTTP/2 200 OK"
+2025-12-01 13:12:55,946 - blueprints.dashboard - INFO - Ficha actualizada: ID 166
+2025-12-01 13:12:55,949 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:12:55] "[32mPOST /dashboard/becas/editar/166 HTTP/1.1[0m" 302 -
+2025-12-01 13:12:56,168 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:12:57,130 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 13:12:57,250 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:12:57,374 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:12:57,382 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:12:57] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 13:12:57,467 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:12:57] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:12:57,469 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:12:57] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:14:34,408 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:14:34,429 - blueprints.dashboard - INFO - Subiendo documento. Files: dict_keys(['archivo_pdf']), Form: dict_keys(['nombre_doc'])
+2025-12-01 13:14:43,029 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/969d49a7-8b9c-4c5e-9cc3-7496a5601152.pdf "HTTP/2 400 Bad Request"
+2025-12-01 13:14:43,030 - blueprints.dashboard - ERROR - Error subiendo archivo a documentos: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 13:14:43,031 - blueprints.dashboard - ERROR - Error al subir documento: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 78, in _request
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '400 Bad Request' for url 'https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/969d49a7-8b9c-4c5e-9cc3-7496a5601152.pdf'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 364, in subir_documento
+    pdf_b64 = procesar_pdf(archivo)
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 61, in procesar_pdf
+    return upload_file(file, 'documentos')
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 49, in upload_file
+    raise e
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 38, in upload_file
+    supabase.storage.from_(bucket).upload(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        path=filename,
+        ^^^^^^^^^^^^^^
+        file=file_content,
+        ^^^^^^^^^^^^^^^^^^
+        file_options={"content-type": mime_type}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 566, in upload
+    return self._upload_or_update("POST", path_parts, file, file_options)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 538, in _upload_or_update
+    response = self._request(
+        method, ["object", self.id, *path], files=files, headers=headers, data=_data
+    )
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 81, in _request
+    raise StorageApiError(
+        resp["message"], resp["error"], resp["statusCode"]
+    ) from exc
+storage3.exceptions.StorageApiError: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 13:14:43,036 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:14:43] "[32mPOST /dashboard/becas/166/subir_documento HTTP/1.1[0m" 302 -
+2025-12-01 13:14:44,312 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:14:48,113 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:14:48,118 - blueprints.dashboard - INFO - Subiendo documento. Files: dict_keys(['archivo_pdf']), Form: dict_keys(['nombre_doc'])
+2025-12-01 13:14:49,467 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/5317880a-d7a8-4d0c-8dd2-2f67eff8aec6.pdf "HTTP/2 400 Bad Request"
+2025-12-01 13:14:49,468 - blueprints.dashboard - ERROR - Error subiendo archivo a documentos: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 13:14:49,468 - blueprints.dashboard - ERROR - Error al subir documento: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 78, in _request
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '400 Bad Request' for url 'https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/5317880a-d7a8-4d0c-8dd2-2f67eff8aec6.pdf'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 364, in subir_documento
+    pdf_b64 = procesar_pdf(archivo)
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 61, in procesar_pdf
+    return upload_file(file, 'documentos')
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 49, in upload_file
+    raise e
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 38, in upload_file
+    supabase.storage.from_(bucket).upload(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        path=filename,
+        ^^^^^^^^^^^^^^
+        file=file_content,
+        ^^^^^^^^^^^^^^^^^^
+        file_options={"content-type": mime_type}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 566, in upload
+    return self._upload_or_update("POST", path_parts, file, file_options)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 538, in _upload_or_update
+    response = self._request(
+        method, ["object", self.id, *path], files=files, headers=headers, data=_data
+    )
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 81, in _request
+    raise StorageApiError(
+        resp["message"], resp["error"], resp["statusCode"]
+    ) from exc
+storage3.exceptions.StorageApiError: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 13:14:49,474 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:14:49] "[32mPOST /dashboard/becas/166/subir_documento HTTP/1.1[0m" 302 -
+2025-12-01 13:14:49,599 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:14:51,761 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 13:14:51,922 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:14:52,074 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:14:52,082 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:14:52] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 13:14:52,166 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:14:52] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:14:52,172 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:14:52] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:14:52,347 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 13:14:52,517 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:14:52,640 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:14:52,651 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:14:52] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 13:16:29,747 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:16:37,868 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 13:16:37,986 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:16:38,104 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:16:38,106 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:16:38] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 13:16:38,183 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:16:38] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:16:38,187 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:16:38] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:16:38,613 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:16:38] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 13:16:49,258 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:16:49,266 - blueprints.dashboard - INFO - Subiendo documento. Files: dict_keys(['archivo_pdf']), Form: dict_keys(['nombre_doc'])
+2025-12-01 13:16:50,576 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/48fad5a8-fe1e-43ab-b6aa-2f2bd211f993.pdf "HTTP/2 400 Bad Request"
+2025-12-01 13:16:50,578 - blueprints.dashboard - ERROR - Error subiendo archivo a documentos: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 13:16:50,580 - blueprints.dashboard - ERROR - Error al subir documento: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 78, in _request
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '400 Bad Request' for url 'https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/48fad5a8-fe1e-43ab-b6aa-2f2bd211f993.pdf'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 364, in subir_documento
+    pdf_b64 = procesar_pdf(archivo)
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 61, in procesar_pdf
+    return upload_file(file, 'documentos')
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 49, in upload_file
+    raise e
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 38, in upload_file
+    supabase.storage.from_(bucket).upload(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        path=filename,
+        ^^^^^^^^^^^^^^
+        file=file_content,
+        ^^^^^^^^^^^^^^^^^^
+        file_options={"content-type": mime_type}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 566, in upload
+    return self._upload_or_update("POST", path_parts, file, file_options)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 538, in _upload_or_update
+    response = self._request(
+        method, ["object", self.id, *path], files=files, headers=headers, data=_data
+    )
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 81, in _request
+    raise StorageApiError(
+        resp["message"], resp["error"], resp["statusCode"]
+    ) from exc
+storage3.exceptions.StorageApiError: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 13:16:50,592 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:16:50] "[32mPOST /dashboard/becas/166/subir_documento HTTP/1.1[0m" 302 -
+2025-12-01 13:16:50,726 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:16:51,721 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 13:16:51,840 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:16:51,952 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:16:51,957 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:16:51] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 13:16:52,049 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:16:52] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:16:52,055 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:16:52] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:22:28,540 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\pathlib\\_local.py', reloading
+2025-12-01 13:22:28,559 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\pathlib\\_abc.py', reloading
+2025-12-01 13:22:29,018 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 13:22:30,414 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 13:22:30,437 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 13:22:30,442 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 13:23:37,376 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 13:23:37,408 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-01 13:23:37,409 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-12-01 13:23:37,430 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 13:23:38,805 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 13:23:38,824 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 13:23:38,827 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 13:24:23,623 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:24:24,813 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 13:24:24,938 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:24:25,059 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:24:25,153 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:24:25] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 13:24:25,378 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:24:25] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:24:25,385 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:24:25] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:24:25,810 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:24:25] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 13:24:39,410 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:24:39,422 - blueprints.dashboard - INFO - Subiendo documento. Files: dict_keys(['archivo_pdf']), Form: dict_keys(['nombre_doc'])
+2025-12-01 13:24:40,784 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/80b83cd1-2ce7-45a9-b277-448a6c2180a1.pdf "HTTP/2 400 Bad Request"
+2025-12-01 13:24:40,788 - blueprints.dashboard - ERROR - Error subiendo archivo a documentos: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 13:24:40,790 - blueprints.dashboard - ERROR - Error al subir documento: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 78, in _request
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '400 Bad Request' for url 'https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/80b83cd1-2ce7-45a9-b277-448a6c2180a1.pdf'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 364, in subir_documento
+    pdf_b64 = procesar_pdf(archivo)
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 61, in procesar_pdf
+    return upload_file(file, 'documentos')
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 49, in upload_file
+    raise e
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 38, in upload_file
+    supabase.storage.from_(bucket).upload(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        path=filename,
+        ^^^^^^^^^^^^^^
+        file=file_content,
+        ^^^^^^^^^^^^^^^^^^
+        file_options={"content-type": mime_type}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 566, in upload
+    return self._upload_or_update("POST", path_parts, file, file_options)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 538, in _upload_or_update
+    response = self._request(
+        method, ["object", self.id, *path], files=files, headers=headers, data=_data
+    )
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 81, in _request
+    raise StorageApiError(
+        resp["message"], resp["error"], resp["statusCode"]
+    ) from exc
+storage3.exceptions.StorageApiError: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 13:24:40,817 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:24:40] "[32mPOST /dashboard/becas/166/subir_documento HTTP/1.1[0m" 302 -
+2025-12-01 13:24:40,948 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:24:41,953 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 13:24:42,092 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:24:42,244 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:24:42,251 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:24:42] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 13:24:42,341 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:24:42] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:24:42,349 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:24:42] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:25:25,960 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 13:25:25,961 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 13:25:25,961 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 13:25:26,318 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 13:32:11,885 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 13:32:11,919 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-01 13:32:11,919 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-12-01 13:32:11,934 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 13:32:13,250 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 13:32:13,268 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 13:32:13,271 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 13:32:16,653 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:32:18,029 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 13:32:18,303 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:32:18,500 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:32:18,607 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:32:18] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 13:32:18,937 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:32:18] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:32:18,950 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:32:18] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:32:19,381 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:32:19] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 13:32:33,211 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:32:33,228 - blueprints.dashboard - INFO - Subiendo documento. Files: dict_keys(['archivo_pdf']), Form: dict_keys(['nombre_doc'])
+2025-12-01 13:32:34,564 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/495c1e94-acf6-414a-8bab-136d55dfd7ec.pdf "HTTP/2 400 Bad Request"
+2025-12-01 13:32:34,566 - blueprints.dashboard - ERROR - Error subiendo archivo a documentos: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 13:32:34,567 - blueprints.dashboard - ERROR - Error al subir documento: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 78, in _request
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '400 Bad Request' for url 'https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/495c1e94-acf6-414a-8bab-136d55dfd7ec.pdf'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 360, in subir_documento
+    pdf_b64 = procesar_pdf(archivo)
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 57, in procesar_pdf
+    return upload_file(file, 'documentos')
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 49, in upload_file
+    raise e
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 38, in upload_file
+    supabase.storage.from_(bucket).upload(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        path=filename,
+        ^^^^^^^^^^^^^^
+        file=file_content,
+        ^^^^^^^^^^^^^^^^^^
+        file_options={"content-type": mime_type}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 566, in upload
+    return self._upload_or_update("POST", path_parts, file, file_options)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 538, in _upload_or_update
+    response = self._request(
+        method, ["object", self.id, *path], files=files, headers=headers, data=_data
+    )
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 81, in _request
+    raise StorageApiError(
+        resp["message"], resp["error"], resp["statusCode"]
+    ) from exc
+storage3.exceptions.StorageApiError: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 13:32:34,584 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:32:34] "[32mPOST /dashboard/becas/166/subir_documento HTTP/1.1[0m" 302 -
+2025-12-01 13:32:34,720 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:32:35,822 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 13:32:36,010 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:32:36,192 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:32:36,200 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:32:36] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 13:32:36,281 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:32:36] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:32:36,292 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:32:36] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:32:52,427 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\datetime.py', reloading
+2025-12-01 13:32:52,544 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\config\\supabase_client.py', reloading
+2025-12-01 13:32:52,552 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\utils\\decorators.py', reloading
+2025-12-01 13:32:52,555 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\utils\\validaciones.py', reloading
+2025-12-01 13:32:53,544 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 13:32:54,938 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 13:32:54,957 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 13:32:54,962 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 13:32:59,344 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\auth.py', reloading
+2025-12-01 13:32:59,347 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\utils\\optimizaciones.py', reloading
+2025-12-01 13:32:59,348 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\utils\\optimizaciones_avanzadas.py', reloading
+2025-12-01 13:32:59,349 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\utils\\password_strength.py', reloading
+2025-12-01 13:33:00,134 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 13:33:01,497 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 13:33:01,516 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 13:33:01,520 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 13:33:12,411 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\storage3\\__init__.py', reloading
+2025-12-01 13:33:12,432 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\storage3\\_sync\\__init__.py', reloading
+2025-12-01 13:33:12,457 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\storage3\\_sync\\client.py', reloading
+2025-12-01 13:33:12,485 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\storage3\\_sync\\bucket.py', reloading
+2025-12-01 13:33:12,696 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 13:33:14,100 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 13:33:14,116 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 13:33:14,120 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 13:33:22,267 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\werkzeug\\datastructures\\__init__.py', reloading
+2025-12-01 13:33:23,366 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 13:33:24,740 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 13:33:24,762 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 13:33:24,765 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 13:33:25,193 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\_pydatetime.py', reloading
+2025-12-01 13:33:25,980 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 13:33:27,546 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 13:33:27,571 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 13:33:27,574 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 13:33:37,248 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\flask\\scaffold.py', reloading
+2025-12-01 13:33:37,276 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\os.py', reloading
+2025-12-01 13:33:37,725 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 13:33:39,322 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 13:33:39,341 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 13:33:39,345 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 13:39:48,800 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:40:14,138 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 13:40:14,333 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:40:14,502 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:40:14,579 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:40:14] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 13:40:14,783 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:40:14] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:40:14,784 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:40:14] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:40:17,993 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:40:17] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 13:40:49,788 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:40:49,794 - blueprints.dashboard - INFO - Subiendo documento. Files: dict_keys(['archivo_pdf']), Form: dict_keys(['nombre_doc'])
+2025-12-01 13:40:51,165 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/52d0814e-1dea-4ea0-bf1c-3c6123c147ed.pdf "HTTP/2 400 Bad Request"
+2025-12-01 13:40:51,168 - blueprints.dashboard - ERROR - Error subiendo archivo a documentos: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 13:40:51,169 - blueprints.dashboard - ERROR - Error al subir documento: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 78, in _request
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '400 Bad Request' for url 'https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/52d0814e-1dea-4ea0-bf1c-3c6123c147ed.pdf'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 360, in subir_documento
+    pdf_b64 = procesar_pdf(archivo)
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 57, in procesar_pdf
+    return upload_file(file, 'documentos')
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 49, in upload_file
+    raise e
+  File "c:\Users\UUARIO\Desktop\proyecto\project\blueprints\dashboard.py", line 38, in upload_file
+    supabase.storage.from_(bucket).upload(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        path=filename,
+        ^^^^^^^^^^^^^^
+        file=file_content,
+        ^^^^^^^^^^^^^^^^^^
+        file_options={"content-type": mime_type}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 566, in upload
+    return self._upload_or_update("POST", path_parts, file, file_options)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 538, in _upload_or_update
+    response = self._request(
+        method, ["object", self.id, *path], files=files, headers=headers, data=_data
+    )
+  File "C:\Users\UUARIO\AppData\Local\Programs\Python\Python313\Lib\site-packages\storage3\_sync\file_api.py", line 81, in _request
+    raise StorageApiError(
+        resp["message"], resp["error"], resp["statusCode"]
+    ) from exc
+storage3.exceptions.StorageApiError: {'statusCode': 403, 'error': Unauthorized, 'message': new row violates row-level security policy}
+2025-12-01 13:40:51,179 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\storage3\\_sync\\file_api.py', reloading
+2025-12-01 13:40:51,197 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:40:51] "[32mPOST /dashboard/becas/166/subir_documento HTTP/1.1[0m" 302 -
+2025-12-01 13:40:51,199 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\httpx\\_models.py', reloading
+2025-12-01 13:40:51,332 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:40:51,693 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 13:40:53,857 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 13:40:53,888 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 13:40:53,894 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 13:40:54,186 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-12-01 13:40:55,218 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/2 200 OK"
+2025-12-01 13:40:55,357 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:40:55,478 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/2 200 OK"
+2025-12-01 13:40:55,559 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:40:55] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 13:40:55,758 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:40:55] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:40:55,764 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:40:55] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:44:27,350 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 13:44:27,351 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 13:44:27,353 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 13:44:27,626 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 13:49:39,870 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 13:49:40,280 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-01 13:49:40,280 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-12-01 13:49:40,283 - werkzeug - INFO -  * Restarting with stat
+2025-12-01 13:49:41,975 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 13:49:42,035 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 13:49:42,039 - werkzeug - INFO -  * Debugger PIN: 107-177-601
+2025-12-01 13:49:47,315 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 13:49:47,347 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-01 13:49:47,347 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-12-01 13:49:47,366 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 13:49:49,484 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 13:49:49,526 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 13:49:49,533 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 13:49:50,859 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:49:52,006 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 13:49:52,124 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 13:49:52,239 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 13:49:52,358 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:49:52] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 13:49:52,646 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:49:52] "GET /static/js/custom-alerts.js HTTP/1.1" 200 -
+2025-12-01 13:49:52,652 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:49:52] "GET /static/css/custom-alerts.css HTTP/1.1" 200 -
+2025-12-01 13:49:53,072 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:49:53] "GET /static/logo.png HTTP/1.1" 200 -
+2025-12-01 13:50:04,599 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:50:04,601 - blueprints.dashboard - INFO - === SUBIR DOCUMENTO - Beca ID: 166 ===
+2025-12-01 13:50:04,606 - blueprints.dashboard - INFO - Files: ['archivo_pdf'], Form: ['nombre_doc']
+2025-12-01 13:50:04,607 - blueprints.dashboard - INFO - Procesando PDF: cedula.pdf
+2025-12-01 13:50:06,232 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/documentos/c398a713-5036-4059-b398-d3932f882412.pdf "HTTP/2 200 OK"
+2025-12-01 13:50:06,239 - blueprints.dashboard - INFO - PDF procesado, URL: https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v...
+2025-12-01 13:50:07,350 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos "HTTP/1.1 201 Created"
+2025-12-01 13:50:07,598 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:50:07] "[32mPOST /dashboard/becas/166/subir_documento HTTP/1.1[0m" 302 -
+2025-12-01 13:50:07,718 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:50:08,855 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 13:50:08,956 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 13:50:09,082 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 13:50:09,085 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:50:09] "GET /dashboard/becas/editar/166 HTTP/1.1" 200 -
+2025-12-01 13:50:09,185 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:50:09] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:50:09,191 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:50:09] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:50:31,604 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:50:32,562 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&order=id.desc "HTTP/1.1 200 OK"
+2025-12-01 13:50:32,675 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=disciplina&limit=1000 "HTTP/1.1 200 OK"
+2025-12-01 13:50:32,736 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:50:32] "GET /dashboard/becas HTTP/1.1" 200 -
+2025-12-01 13:50:32,813 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:50:32] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:50:32,823 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:50:32] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:50:38,198 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:50:39,350 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 13:50:39,500 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.166&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 13:50:39,617 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.166 "HTTP/1.1 200 OK"
+2025-12-01 13:50:39,698 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:50:39] "GET /dashboard/becas/ver/166 HTTP/1.1" 200 -
+2025-12-01 13:50:39,752 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:50:39] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:50:39,765 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:50:39] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:55:11,727 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:55:11] "[32mGET /dashboard/becas HTTP/1.1[0m" 302 -
+2025-12-01 13:55:11,766 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:55:11] "GET /login HTTP/1.1" 200 -
+2025-12-01 13:55:11,859 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:55:11] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 13:55:24,556 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/1.1 200 OK"
+2025-12-01 13:55:25,880 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/profiles?select=role&id=eq.16bfbabc-1f5f-478b-b7e6-d62fe77f1b14 "HTTP/1.1 200 OK"
+2025-12-01 13:55:25,886 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:55:25] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-12-01 13:55:26,013 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:55:26,132 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:55:32,493 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/1.1 200 OK"
+2025-12-01 13:55:32,617 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/1.1 200 OK"
+2025-12-01 13:55:32,730 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/1.1 200 OK"
+2025-12-01 13:55:32,745 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:55:32] "GET /dashboard/ HTTP/1.1" 200 -
+2025-12-01 13:55:32,843 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:55:32] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:55:32,855 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:55:32] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:55:45,878 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:55:45] "[32mGET /dashboard/becas HTTP/1.1[0m" 302 -
+2025-12-01 13:55:45,889 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:55:45] "GET /login HTTP/1.1" 200 -
+2025-12-01 13:55:45,996 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:55:45] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 13:56:12,078 - blueprints.auth - ERROR - Error inesperado durante el inicio de sesión: timed out
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\gotrue\_sync\gotrue_base_api.py", line 106, in _request
+    response = self._http_client.request(
+        method,
+    ...<3 lines>...
+        json=model_dump(body) if isinstance(body, BaseModel) else body,
+    )
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\UUARIO\Desktop\proyecto\project\blueprints\auth.py", line 33, in login
+    auth_response = supabase.auth.sign_in_with_password({
+        "email": email,
+        "password": password
+    })
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\gotrue\_sync\gotrue_client.py", line 213, in sign_in_with_password
+    response = self._request(
+        "POST",
+    ...<12 lines>...
+        xform=parse_auth_response,
+    )
+  File "C:\Users\UUARIO\AppData\Roaming\Python\Python314\site-packages\gotrue\_sync\gotrue_base_api.py", line 118, in _request
+    raise handle_exception(e)
+gotrue.errors.AuthRetryableError: timed out
+2025-12-01 13:56:12,298 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:56:12] "POST /login HTTP/1.1" 200 -
+2025-12-01 13:56:12,356 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:56:12] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 13:56:33,399 - httpx - INFO - HTTP Request: POST https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/token?grant_type=password "HTTP/1.1 200 OK"
+2025-12-01 13:56:34,588 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/profiles?select=role&id=eq.16bfbabc-1f5f-478b-b7e6-d62fe77f1b14 "HTTP/1.1 200 OK"
+2025-12-01 13:56:34,604 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:56:34] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-12-01 13:56:34,748 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:56:34,858 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:56:36,039 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/1.1 200 OK"
+2025-12-01 13:56:36,183 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/1.1 200 OK"
+2025-12-01 13:56:36,312 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/1.1 200 OK"
+2025-12-01 13:56:36,315 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:56:36] "GET /dashboard/ HTTP/1.1" 200 -
+2025-12-01 13:56:36,401 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:56:36] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:56:36,416 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:56:36] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:56:39,216 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:56:40,431 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&order=id.desc "HTTP/1.1 206 Partial Content"
+2025-12-01 13:56:40,572 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=disciplina&limit=1000 "HTTP/1.1 200 OK"
+2025-12-01 13:56:40,580 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:56:40] "GET /dashboard/becas HTTP/1.1" 200 -
+2025-12-01 13:56:40,666 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:56:40] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:56:40,678 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:56:40] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:56:52,350 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:56:53,622 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&order=id.desc "HTTP/1.1 206 Partial Content"
+2025-12-01 13:56:53,743 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=disciplina&limit=1000 "HTTP/1.1 200 OK"
+2025-12-01 13:56:53,751 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:56:53] "GET /dashboard/becas?page=26 HTTP/1.1" 200 -
+2025-12-01 13:56:53,833 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:56:53] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:56:53,856 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:56:53] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:56:58,356 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:56:59,616 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&order=id.desc "HTTP/1.1 206 Partial Content"
+2025-12-01 13:56:59,731 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=disciplina&limit=1000 "HTTP/1.1 200 OK"
+2025-12-01 13:56:59,737 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:56:59] "GET /dashboard/becas?page=24 HTTP/1.1" 200 -
+2025-12-01 13:56:59,812 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:56:59] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:56:59,832 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:56:59] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:57:01,685 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:57:02,540 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&disciplina=eq.Arquer%C3%ADa&order=id.desc "HTTP/1.1 206 Partial Content"
+2025-12-01 13:57:02,671 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=disciplina&limit=1000 "HTTP/1.1 200 OK"
+2025-12-01 13:57:02,689 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:57:02] "GET /dashboard/becas?disciplina=Arquería HTTP/1.1" 200 -
+2025-12-01 13:57:02,765 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:57:02] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:57:02,782 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:57:02] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:57:30,283 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:57:31,416 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.670 "HTTP/1.1 200 OK"
+2025-12-01 13:57:31,552 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.670&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 13:57:31,675 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.670 "HTTP/1.1 200 OK"
+2025-12-01 13:57:31,678 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:57:31] "GET /dashboard/becas/ver/670 HTTP/1.1" 200 -
+2025-12-01 13:57:31,751 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:57:31] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:57:31,772 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:57:31] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:58:06,166 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:58:07,324 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.670 "HTTP/1.1 200 OK"
+2025-12-01 13:58:07,448 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.670&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 13:58:07,584 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.670&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 13:58:07,587 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:58:07] "GET /dashboard/becas/editar/670 HTTP/1.1" 200 -
+2025-12-01 13:58:07,655 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:58:07] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:58:07,663 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:58:07] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:58:07,829 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:58:08,976 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.670 "HTTP/1.1 200 OK"
+2025-12-01 13:58:09,155 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.670&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 13:58:09,305 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.670&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 13:58:09,307 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:58:09] "GET /dashboard/becas/editar/670 HTTP/1.1" 200 -
+2025-12-01 13:59:10,920 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:59:10,928 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:59:10] "[32mPOST /dashboard/becas/editar/670 HTTP/1.1[0m" 302 -
+2025-12-01 13:59:11,053 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:59:12,245 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.670 "HTTP/1.1 200 OK"
+2025-12-01 13:59:12,369 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.670&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 13:59:12,488 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.670&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 13:59:12,492 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:59:12] "GET /dashboard/becas/editar/670 HTTP/1.1" 200 -
+2025-12-01 13:59:12,582 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:59:12] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:59:12,587 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:59:12] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:59:12,712 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:59:13,856 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.670 "HTTP/1.1 200 OK"
+2025-12-01 13:59:13,986 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.670&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 13:59:14,099 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.670&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 13:59:14,102 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:59:14] "GET /dashboard/becas/editar/670 HTTP/1.1" 200 -
+2025-12-01 13:59:30,644 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:59:31,797 - httpx - INFO - HTTP Request: PATCH https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?id=eq.670 "HTTP/1.1 200 OK"
+2025-12-01 13:59:31,813 - blueprints.dashboard - INFO - Ficha actualizada: ID 670
+2025-12-01 13:59:31,815 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:59:31] "[32mPOST /dashboard/becas/editar/670 HTTP/1.1[0m" 302 -
+2025-12-01 13:59:31,939 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:59:33,204 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.670 "HTTP/1.1 200 OK"
+2025-12-01 13:59:33,336 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.670&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 13:59:33,469 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.670&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 13:59:33,473 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:59:33] "GET /dashboard/becas/editar/670 HTTP/1.1" 200 -
+2025-12-01 13:59:33,570 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:59:33] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 13:59:33,572 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:59:33] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 13:59:33,708 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 13:59:34,774 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.670 "HTTP/1.1 200 OK"
+2025-12-01 13:59:34,913 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.670&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 13:59:35,046 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.670&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 13:59:35,049 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 13:59:35] "GET /dashboard/becas/editar/670 HTTP/1.1" 200 -
+2025-12-01 14:01:22,881 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\utils\\validaciones.py', reloading
+2025-12-01 14:01:22,883 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\utils\\validaciones.py', reloading
+2025-12-01 14:01:22,986 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\Desktop\\proyecto\\project\\utils\\validaciones.py', reloading
+2025-12-01 14:01:23,236 - werkzeug - INFO -  * Restarting with stat
+2025-12-01 14:01:23,466 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 14:01:25,141 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 14:01:25,251 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 14:01:25,254 - werkzeug - INFO -  * Debugger PIN: 107-177-601
+2025-12-01 14:01:25,437 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 14:01:25,466 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 14:01:25,470 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 14:01:58,539 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 14:01:58,540 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 14:01:58,540 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 14:01:58,809 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 14:01:59,334 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 14:01:59,502 - werkzeug - INFO -  * Restarting with stat
+2025-12-01 14:02:00,744 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 14:02:00,769 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 14:02:00,774 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 14:02:01,309 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 14:02:01,362 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 14:02:01,366 - werkzeug - INFO -  * Debugger PIN: 107-177-601
+2025-12-01 14:02:14,908 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 14:02:14,909 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 14:02:14,910 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 14:02:15,821 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUARIO\\Desktop\\proyecto\\project\\blueprints\\dashboard.py', reloading
+2025-12-01 14:02:16,029 - werkzeug - INFO -  * Restarting with stat
+2025-12-01 14:02:16,057 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 14:02:18,035 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 14:02:18,045 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 14:02:18,068 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 14:02:18,073 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 14:02:18,091 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 14:02:18,094 - werkzeug - INFO -  * Debugger PIN: 107-177-601
+2025-12-01 14:11:08,598 - werkzeug - INFO -  * Detected change in 'c:\\Users\\UUARIO\\Desktop\\proyecto\\project\\app.py', reloading
+2025-12-01 14:11:09,258 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 14:11:55,934 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 14:11:55,978 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-01 14:11:55,979 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-12-01 14:11:56,022 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-12-01 14:11:57,536 - __main__ - INFO - Aplicación Flask inicializada correctamente
+2025-12-01 14:11:57,556 - werkzeug - WARNING -  * Debugger is active!
+2025-12-01 14:11:57,559 - werkzeug - INFO -  * Debugger PIN: 981-168-126
+2025-12-01 14:12:00,254 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:12:00] "[32mGET / HTTP/1.1[0m" 302 -
+2025-12-01 14:12:00,732 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 14:12:00,859 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 14:12:02,383 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/1.1 200 OK"
+2025-12-01 14:12:02,561 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/1.1 200 OK"
+2025-12-01 14:12:02,707 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/1.1 200 OK"
+2025-12-01 14:12:02,756 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:12:02] "GET /dashboard/ HTTP/1.1" 200 -
+2025-12-01 14:12:03,151 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:12:03] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 14:12:03,156 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:12:03] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 14:12:15,452 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 14:12:16,760 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&order=id.desc "HTTP/1.1 206 Partial Content"
+2025-12-01 14:12:16,925 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=disciplina&limit=1000 "HTTP/1.1 200 OK"
+2025-12-01 14:12:17,026 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:12:17] "GET /dashboard/becas HTTP/1.1" 200 -
+2025-12-01 14:12:17,183 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:12:17] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 14:12:17,215 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:12:17] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 14:14:52,553 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 14:14:52,661 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 14:14:53,921 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/1.1 200 OK"
+2025-12-01 14:14:54,039 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/1.1 200 OK"
+2025-12-01 14:14:54,152 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/1.1 206 Partial Content"
+2025-12-01 14:14:54,158 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:14:54] "GET /dashboard/ HTTP/1.1" 200 -
+2025-12-01 14:14:54,224 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:14:54] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 14:14:54,237 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:14:54] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 14:14:54,552 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:14:54] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 14:15:21,741 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 14:15:22,887 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&order=id.desc "HTTP/1.1 206 Partial Content"
+2025-12-01 14:15:23,003 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=disciplina&limit=1000 "HTTP/1.1 200 OK"
+2025-12-01 14:15:23,010 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:15:23] "GET /dashboard/becas HTTP/1.1" 200 -
+2025-12-01 14:15:23,088 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:15:23] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 14:15:23,096 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:15:23] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 14:15:25,436 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 14:15:26,636 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.672 "HTTP/1.1 200 OK"
+2025-12-01 14:15:26,749 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.672&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 14:15:26,860 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.672 "HTTP/1.1 200 OK"
+2025-12-01 14:15:26,900 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:15:26] "GET /dashboard/becas/ver/672 HTTP/1.1" 200 -
+2025-12-01 14:15:26,966 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:15:26] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 14:15:26,986 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:15:26] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 14:17:54,418 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 14:17:55,594 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.672 "HTTP/1.1 200 OK"
+2025-12-01 14:17:55,727 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.672&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 14:17:55,845 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.672 "HTTP/1.1 200 OK"
+2025-12-01 14:17:55,850 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:17:55] "GET /dashboard/becas/ver/672 HTTP/1.1" 200 -
+2025-12-01 14:17:55,947 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:17:55] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 14:17:55,955 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:17:55] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 14:17:56,284 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:17:56] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-12-01 14:18:27,161 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 14:18:28,373 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&order=id.desc "HTTP/1.1 206 Partial Content"
+2025-12-01 14:18:28,498 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=disciplina&limit=1000 "HTTP/1.1 200 OK"
+2025-12-01 14:18:28,505 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:18:28] "GET /dashboard/becas HTTP/1.1" 200 -
+2025-12-01 14:18:28,579 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:18:28] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 14:18:28,606 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:18:28] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 14:18:31,533 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 14:18:32,697 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=%2A&id=eq.670 "HTTP/1.1 200 OK"
+2025-12-01 14:18:32,820 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=%2A&atleta_id=eq.670&order=created_at.desc "HTTP/1.1 200 OK"
+2025-12-01 14:18:32,941 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/documentos?select=%2A&atleta_id=eq.670 "HTTP/1.1 200 OK"
+2025-12-01 14:18:32,944 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:18:32] "GET /dashboard/becas/ver/670 HTTP/1.1" 200 -
+2025-12-01 14:18:33,016 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:18:33] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 14:18:33,020 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:18:33] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -
+2025-12-01 14:18:55,178 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 14:18:55,289 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+2025-12-01 14:18:56,516 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.Activo "HTTP/1.1 200 OK"
+2025-12-01 14:18:56,630 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/becas?select=id&estatus=eq.En+Revisi%C3%B3n "HTTP/1.1 200 OK"
+2025-12-01 14:18:56,743 - httpx - INFO - HTTP Request: GET https://phxqpgxydxylpfsfjfwg.supabase.co/rest/v1/medallas?select=id "HTTP/1.1 206 Partial Content"
+2025-12-01 14:18:56,753 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:18:56] "GET /dashboard/ HTTP/1.1" 200 -
+2025-12-01 14:18:56,813 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:18:56] "[36mGET /static/css/custom-alerts.css HTTP/1.1[0m" 304 -
+2025-12-01 14:18:56,833 - werkzeug - INFO - 127.0.0.1 - - [01/Dec/2025 14:18:56] "[36mGET /static/js/custom-alerts.js HTTP/1.1[0m" 304 -

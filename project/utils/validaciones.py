@@ -93,24 +93,68 @@ def validar_peso(peso: str) -> Tuple[bool, Optional[str]]:
 
 def validar_estatura(estatura: str) -> Tuple[bool, Optional[str]]:
     """
-    Valida que la estatura sea un número entre 0.5 y 2.5 metros.
+    Valida la estatura y la normaliza a centímetros.
+    Acepta tanto metros (ej: 1.75) como centímetros (ej: 175).
     
     Args:
-        estatura: String con la estatura a validar
+        estatura: String con la estatura a validar (metros o centímetros)
         
     Returns:
         Tuple (es_valido, mensaje_error)
+        
+    Ejemplos:
+        validar_estatura("1.75") -> Detecta metros, convierte a 175 cm
+        validar_estatura("175") -> Ya está en centímetros
+        validar_estatura("2.10") -> Detecta metros, convierte a 210 cm
     """
     if not estatura:
         return True, None  # La estatura puede ser opcional
     
     try:
         estatura_float = float(estatura)
-        if estatura_float < 0.5 or estatura_float > 2.5:
-            return False, "La estatura debe estar entre 0.5 y 2.5 metros"
+        
+        # Determinar si está en metros o centímetros
+        # Si el valor es <= 3, asumimos que está en metros
+        if estatura_float <= 3:
+            # Convertir metros a centímetros
+            estatura_cm = estatura_float * 100
+        else:
+            # Ya está en centímetros
+            estatura_cm = estatura_float
+        
+        # Validar rango razonable (50 cm a 250 cm)
+        if estatura_cm < 50 or estatura_cm > 250:
+            return False, "La estatura debe estar entre 50 cm (0.5 m) y 250 cm (2.5 m)"
+        
         return True, None
     except ValueError:
         return False, "La estatura debe ser un número válido"
+
+
+def normalizar_estatura(estatura: str) -> int:
+    """
+    Normaliza la estatura a centímetros.
+    Si está en metros (<=3), convierte a centímetros.
+    
+    Args:
+        estatura: String con la estatura
+        
+    Returns:
+        Entero con la estatura en centímetros
+    """
+    if not estatura:
+        return None
+    
+    try:
+        estatura_float = float(estatura)
+        
+        # Si el valor es <= 3, asumimos que está en metros
+        if estatura_float <= 3:
+            return int(estatura_float * 100)
+        else:
+            return int(estatura_float)
+    except:
+        return None
 
 
 def validar_telefono(telefono: str) -> Tuple[bool, Optional[str]]:
