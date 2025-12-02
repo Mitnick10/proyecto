@@ -1,35 +1,12 @@
 <!DOCTYPE html>
-<html lang="es" class="h-full bg-slate-50">
+<html lang="es" class="h-full bg-gray-100">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Dashboard{% endblock %} - Becas IRDEBG</title>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='logo.png') }}" type="image/png">
-    <!-- Tailwind CSS -->
+    <title>{% block title %}Dashboard{% endblock %} - IRDEBG</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Alertas Personalizadas -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom-alerts.css') }}">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
-                    colors: {
-                        brand: {
-                            900: '#0f172a',
-                            800: '#1e293b',
-                            600: '#2563eb',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <style>
         @keyframes slideInRight {
             from {
@@ -64,7 +41,6 @@
             animation: progress 5s linear forwards;
         }
     </style>
-    <script src="{{ url_for('static', filename='js/confirmations.js') }}" defer></script>
 </head>
 
 <body class="h-full font-sans">
@@ -228,7 +204,7 @@
         </footer>
     </div>
 
-    <!-- Script de Alertas Personalizadas -->
+    <!-- Script SOLO para auto-dismiss de notificaciones -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const notifications = document.querySelectorAll('div[style*="slideInRight"]');
@@ -238,43 +214,7 @@
                     setTimeout(() => notif.remove(), 300);
                 }, 5000 + (index * 500));
             });
-
-            // Función para confirmar eliminación
-            function confirmarEliminar(tipo, nombre) {
-                if (nombre) {
-                    return confirm('¿Estás seguro de que deseas eliminar ' + tipo + ': ' + nombre + '?');
-                }
-                return confirm('¿Estás seguro de que deseas eliminar este ' + tipo + '?');
-            }
-
-            // Función para confirmar guardado
-            function confirmarGuardar(tipo) {
-                if (tipo === 'crear') {
-                    return confirm('¿Confirmas que deseas crear este nuevo registro?');
-                } else if (tipo === 'guardar') {
-                    return confirm('¿Confirmas que deseas guardar los cambios?');
-                }
-                return true;
-            }
         });
-
-        // Función para confirmar eliminación
-        function confirmarEliminar(tipo, nombre) {
-            if (nombre) {
-                return confirm('¿Estás seguro de que deseas eliminar ' + tipo + ': ' + nombre + '?');
-            }
-            return confirm('¿Estás seguro de que deseas eliminar este ' + tipo + '?');
-        }
-
-        // Función para confirmar guardado
-        function confirmarGuardar(tipo) {
-            if (tipo === 'crear') {
-                return confirm('¿Confirmas que deseas crear este nuevo registro?');
-            } else if (tipo === 'guardar') {
-                return confirm('¿Confirmas que deseas guardar los cambios?');
-            }
-            return true;
-        }
     </script>
 </body>
 

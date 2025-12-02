@@ -1,253 +1,235 @@
 {% extends "layout.html" %}
 
-{% block title %}Nuevo Atleta{% endblock %}
-{% block header %}Registrar Nuevo Atleta{% endblock %}
+<div class="p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-{% block content %}
-<div class="max-w-6xl mx-auto">
-    <form action="{{ url_for('dashboard.crear_beca') }}" method="POST" enctype="multipart/form-data"
-        onsubmit="confirmarGuardar('crear')">
-        <div class="bg-white shadow-lg ring-1 ring-slate-900/5 rounded-xl overflow-hidden">
-
-            <div class="px-6 py-4 border-b border-slate-100 bg-slate-50">
-                <h3 class="text-lg font-bold text-slate-900">Registro de Nuevo Atleta</h3>
-            </div>
-
-            <div class="p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
-
-                <!-- COLUMNA 1: FOTO -->
-                <div class="lg:col-span-3 flex flex-col items-center space-y-4">
-                    <div
-                        class="w-48 h-48 rounded-lg bg-slate-100 border-4 border-white shadow-md overflow-hidden relative group">
-                        <img id="preview" src="#" class="w-full h-full object-cover hidden">
-                        <div id="placeholder" class="w-full h-full flex items-center justify-center text-slate-300">
-                            <i class="fa-solid fa-user text-6xl"></i>
-                        </div>
-                    </div>
-                    <label
-                        class="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-semibold transition-colors">
-                        <i class="fa-solid fa-camera mr-2"></i> Seleccionar Foto
-                        <input type="file" name="foto" accept="image/*" class="hidden" onchange="loadFile(event)">
-                    </label>
-                </div>
-
-                <!-- COLUMNA 2: DATOS DEL FORMULARIO -->
-                <div class="lg:col-span-9 grid grid-cols-1 md:grid-cols-2 gap-6">
-
-                    <!-- 1. IDENTIFICACIÓN Y REPRESENTANTE -->
-                    <div class="md:col-span-2 border-b border-slate-100 pb-4">
-                        <div class="flex justify-between items-center mb-3">
-                            <h4 class="text-xs font-black text-blue-900 uppercase tracking-wider flex items-center">
-                                <i class="fa-solid fa-id-card mr-2"></i> Identificación
-                            </h4>
-                            <!-- SWITCH MENOR DE EDAD -->
-                            <label class="flex items-center cursor-pointer relative">
-                                <input type="checkbox" name="es_menor" id="checkMenor" class="sr-only"
-                                    onchange="toggleRepresentante()">
-                                <div
-                                    class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
-                                </div>
-                                <span class="ml-3 text-sm font-medium text-gray-900 select-none">¿Es menor de
-                                    edad?</span>
-                            </label>
-                        </div>
-
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <div class="md:col-span-2"><input type="text" name="nombre" required placeholder="Nombres"
-                                    class="w-full rounded border-slate-300 text-sm"></div>
-                            <div class="md:col-span-2"><input type="text" name="apellido" required
-                                    placeholder="Apellidos" class="w-full rounded border-slate-300 text-sm"></div>
-                            <div><input type="text" name="cedula" required placeholder="Cédula Atleta"
-                                    class="w-full rounded border-slate-300 text-sm"></div>
-                            <div><input type="date" name="fecha_nacimiento"
-                                    class="w-full rounded border-slate-300 text-sm" title="Fecha de Nacimiento"></div>
-                            <div class="md:col-span-2"><input type="text" name="lugar_nacimiento"
-                                    placeholder="Lugar de Nacimiento" class="w-full rounded border-slate-300 text-sm">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- SECCIÓN REPRESENTANTE -->
-                    <div id="divRepresentante"
-                        class="md:col-span-2 border-b border-slate-100 pb-4 hidden bg-blue-50 p-4 rounded-lg border border-blue-100 transition-all">
-                        <h4 class="text-xs font-black text-blue-900 uppercase tracking-wider mb-3 flex items-center">
-                            <i class="fa-solid fa-users mr-2"></i> Datos del Representante Legal
-                        </h4>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div class="md:col-span-3">
-                                <input type="text" name="representante_nombre"
-                                    placeholder="Nombre y Apellido del Representante"
-                                    class="w-full rounded border-blue-200 text-sm">
-                            </div>
-                            <input type="text" name="representante_cedula" placeholder="Cédula Representante"
-                                class="w-full rounded border-blue-200 text-sm">
-                            <select name="representante_parentesco" class="w-full rounded border-blue-200 text-sm">
-                                <option value="">Parentesco...</option>
-                                <option>Madre</option>
-                                <option>Padre</option>
-                                <option>Abuelo/a</option>
-                                <option>Tío/a</option>
-                                <option>Tutor Legal</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- 2. DEPORTES -->
-                    <div class="md:col-span-2 border-b border-slate-100 pb-4">
-                        <h4 class="text-xs font-black text-blue-900 uppercase tracking-wider mb-3">Deportes</h4>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <select name="disciplina" class="md:col-span-2 w-full rounded border-slate-300 text-sm">
-                                <option value="">Disciplina...</option>
-                                {% for d in ['Atletismo', 'Baloncesto', 'Béisbol', 'Boxeo', 'Ciclismo', 'Fútbol',
-                                'Gimnasia', 'Natación', 'Taekwondo', 'Tenis de Campo', 'Tenis de Mesa', 'Voleibol',
-                                'Otros'] %}
-                                <option>{{ d }}</option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" name="especialidad" placeholder="Especialidad"
-                                class="w-full rounded border-slate-300 text-sm">
-                            <input type="text" name="categoria" placeholder="Categoría"
-                                class="w-full rounded border-slate-300 text-sm">
-                            <select name="tipo_beca" class="w-full rounded border-slate-300 text-sm">
-                                <option value="">Tipo Beca...</option>
-                                <option>Alto Rendimiento</option>
-                                <option>Talento Deportivo</option>
-                                <option>Apoyo Económico</option>
-                                <option>Otro</option>
-                            </select>
-                            <select name="estatus"
-                                class="w-full rounded border-slate-300 text-sm font-medium text-blue-600">
-                                <option>Activo</option>
-                                <option>En Revisión</option>
-                                <option>Inactivo</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- 3. ANTROPOMETRÍA -->
-                    <div class="md:col-span-2 border-b border-slate-100 pb-4">
-                        <h4 class="text-xs font-black text-blue-900 uppercase tracking-wider mb-3">Antropometría</h4>
-                        <div class="grid grid-cols-3 md:grid-cols-6 gap-4">
-                            <input type="number" name="edad" placeholder="Edad"
-                                class="w-full rounded border-slate-300 text-sm">
-                            <select name="sexo" class="w-full rounded border-slate-300 text-sm">
-                                <option value="">Sexo</option>
-                                <option>Masculino</option>
-                                <option>Femenino</option>
-                            </select>
-                            <input type="text" name="sangre" placeholder="G. Sangre"
-                                class="w-full rounded border-slate-300 text-sm">
-                            <input type="text" name="peso" placeholder="Peso (kg)"
-                                class="w-full rounded border-slate-300 text-sm">
-                            <input type="text" name="estatura" placeholder="Estatura (m)"
-                                class="w-full rounded border-slate-300 text-sm">
-                        </div>
-                    </div>
-
-                    <!-- 4. TALLAS -->
-                    <div class="md:col-span-2 border-b border-slate-100 pb-4">
-                        <h4 class="text-xs font-black text-blue-900 uppercase tracking-wider mb-3">Tallas / Uniformidad
-                        </h4>
-                        <div class="grid grid-cols-3 md:grid-cols-6 gap-2">
-                            <input type="text" name="talla_zapato" placeholder="Zapato"
-                                class="rounded border-slate-300 text-xs text-center">
-                            <input type="text" name="talla_franela" placeholder="Franela"
-                                class="rounded border-slate-300 text-xs text-center">
-                            <input type="text" name="talla_short" placeholder="Short"
-                                class="rounded border-slate-300 text-xs text-center">
-                            <input type="text" name="talla_chemise" placeholder="Chemise"
-                                class="rounded border-slate-300 text-xs text-center">
-                            <input type="text" name="talla_mono" placeholder="Mono"
-                                class="rounded border-slate-300 text-xs text-center">
-                            <input type="text" name="talla_competencia" placeholder="Competencia"
-                                class="rounded border-slate-300 text-xs text-center">
-                        </div>
-                    </div>
-
-                    <!-- 5. INFORMACIÓN MÉDICA -->
-                    <div class="md:col-span-2 border-b border-slate-100 pb-4">
-                        <h4 class="text-xs font-black text-blue-900 uppercase tracking-wider mb-3">Información Médica y
-                            Otros</h4>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
-                            <label class="flex items-center gap-2"><select name="usa_lentes"
-                                    class="border-slate-300 rounded py-0 px-1">
-                                    <option>No</option>
-                                    <option>Si</option>
-                                </select> Usa Lentes</label>
-                            <label class="flex items-center gap-2"><select name="usa_bucal"
-                                    class="border-slate-300 rounded py-0 px-1">
-                                    <option>No</option>
-                                    <option>Si</option>
-                                </select> Prot. Bucal</label>
-                            <label class="flex items-center gap-2"><select name="usa_munequera"
-                                    class="border-slate-300 rounded py-0 px-1">
-                                    <option>No</option>
-                                    <option>Si</option>
-                                </select> Muñequera</label>
-                            <label class="flex items-center gap-2"><select name="usa_rodilleras"
-                                    class="border-slate-300 rounded py-0 px-1">
-                                    <option>No</option>
-                                    <option>Si</option>
-                                </select> Rodilleras</label>
-                            <label class="flex items-center gap-2"><select name="dieta_deportiva"
-                                    class="border-slate-300 rounded py-0 px-1">
-                                    <option>No</option>
-                                    <option>Si</option>
-                                </select> Dieta Dep.</label>
-                            <label class="flex items-center gap-2"><select name="control_medico"
-                                    class="border-slate-300 rounded py-0 px-1">
-                                    <option>No</option>
-                                    <option>Si</option>
-                                </select> Ctrl. Médico</label>
-                            <label class="flex items-center gap-2"><select name="estudio_social"
-                                    class="border-slate-300 rounded py-0 px-1">
-                                    <option>No</option>
-                                    <option>Si</option>
-                                </select> Est. Social</label>
-                        </div>
-                    </div>
-
-                    <!-- 6. CONTACTO Y UBICACIÓN -->
-                    <div class="md:col-span-2 pt-2">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <select name="municipio" class="w-full rounded border-slate-300 text-sm">
-                                <option value="">Municipio...</option>
-                                {% for m in ['Roscio', 'Ortiz', 'Mellado', 'Miranda', 'Infante', 'Monagas', 'Ribas',
-                                'Zaraza', 'Las Mercedes', 'El Socorro', 'Guayabal', 'Cabruta', 'Santa María de Ipire',
-                                'Chaguaramas', 'San Gerónimo de Guayabal'] %}
-                                <option>{{ m }}</option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" name="direccion" placeholder="Dirección de Habitación"
-                                class="w-full rounded border-slate-300 text-sm">
-                            <input type="text" name="telefono" placeholder="Teléfono"
-                                class="w-full rounded border-slate-300 text-sm">
-                            <input type="email" name="email" placeholder="Correo Electrónico"
-                                class="w-full rounded border-slate-300 text-sm">
-
-                            <!-- CUENTA BANCARIA DINÁMICA -->
-                            <div class="md:col-span-2">
-                                <label id="labelCuenta" class="block text-xs font-bold text-slate-500 mb-1">Cuenta
-                                    Bancaria (Del Atleta)</label>
-                                <input type="text" name="cuenta_bancaria" placeholder="0000-0000-00-0000000000"
-                                    class="w-full rounded border-slate-300 text-sm font-mono bg-slate-50 focus:ring-blue-500 focus:border-blue-500">
-                                <p id="noteCuenta" class="text-[10px] text-slate-400 mt-1 hidden">Esta cuenta debe estar
-                                    a nombre del representante legal registrado arriba.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="bg-gray-50 px-4 py-3 sm:px-6 flex flex-row-reverse">
-                <button type="submit"
-                    class="inline-flex justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500">
-                    ✅ Registrar Atleta
-                </button>
+    <!-- COLUMNA 1: FOTO -->
+    <div class="lg:col-span-3 flex flex-col items-center space-y-4">
+        <div class="w-48 h-48 rounded-lg bg-slate-100 border-4 border-white shadow-md overflow-hidden relative group">
+            <img id="preview" src="#" class="w-full h-full object-cover hidden">
+            <div id="placeholder" class="w-full h-full flex items-center justify-center text-slate-300">
+                <i class="fa-solid fa-user text-6xl"></i>
             </div>
         </div>
-    </form>
+        <label
+            class="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-semibold transition-colors">
+            <i class="fa-solid fa-camera mr-2"></i> Seleccionar Foto
+            <input type="file" name="foto" accept="image/*" class="hidden" onchange="loadFile(event)">
+        </label>
+    </div>
+
+    <!-- COLUMNA 2: DATOS DEL FORMULARIO -->
+    <div class="lg:col-span-9 grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- 1. IDENTIFICACIÓN Y REPRESENTANTE -->
+        <div class="md:col-span-2 border-b border-slate-100 pb-4">
+            <div class="flex justify-between items-center mb-3">
+                <h4 class="text-xs font-black text-blue-900 uppercase tracking-wider flex items-center">
+                    <i class="fa-solid fa-id-card mr-2"></i> Identificación
+                </h4>
+                <!-- SWITCH MENOR DE EDAD -->
+                <label class="flex items-center cursor-pointer relative">
+                    <input type="checkbox" name="es_menor" id="checkMenor" class="sr-only"
+                        onchange="toggleRepresentante()">
+                    <div
+                        class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
+                    </div>
+                    <span class="ml-3 text-sm font-medium text-gray-900 select-none">¿Es menor de
+                        edad?</span>
+                </label>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="md:col-span-2"><input type="text" name="nombre" required placeholder="Nombres"
+                        class="w-full rounded border-slate-300 text-sm"></div>
+                <div class="md:col-span-2"><input type="text" name="apellido" required placeholder="Apellidos"
+                        class="w-full rounded border-slate-300 text-sm"></div>
+                <div><input type="text" name="cedula" required placeholder="Cédula Atleta"
+                        class="w-full rounded border-slate-300 text-sm"></div>
+                <div><input type="date" name="fecha_nacimiento" class="w-full rounded border-slate-300 text-sm"
+                        title="Fecha de Nacimiento"></div>
+                <div class="md:col-span-2"><input type="text" name="lugar_nacimiento" placeholder="Lugar de Nacimiento"
+                        class="w-full rounded border-slate-300 text-sm">
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN REPRESENTANTE -->
+        <div id="divRepresentante"
+            class="md:col-span-2 border-b border-slate-100 pb-4 hidden bg-blue-50 p-4 rounded-lg border border-blue-100 transition-all">
+            <h4 class="text-xs font-black text-blue-900 uppercase tracking-wider mb-3 flex items-center">
+                <i class="fa-solid fa-users mr-2"></i> Datos del Representante Legal
+            </h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="md:col-span-3">
+                    <input type="text" name="representante_nombre" placeholder="Nombre y Apellido del Representante"
+                        class="w-full rounded border-blue-200 text-sm">
+                </div>
+                <input type="text" name="representante_cedula" placeholder="Cédula Representante"
+                    class="w-full rounded border-blue-200 text-sm">
+                <select name="representante_parentesco" class="w-full rounded border-blue-200 text-sm">
+                    <option value="">Parentesco...</option>
+                    <option>Madre</option>
+                    <option>Padre</option>
+                    <option>Abuelo/a</option>
+                    <option>Tío/a</option>
+                    <option>Tutor Legal</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- 2. DEPORTES -->
+        <div class="md:col-span-2 border-b border-slate-100 pb-4">
+            <h4 class="text-xs font-black text-blue-900 uppercase tracking-wider mb-3">Deportes</h4>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <select name="disciplina" class="md:col-span-2 w-full rounded border-slate-300 text-sm">
+                    <option value="">Disciplina...</option>
+                    {% for d in ['Atletismo', 'Baloncesto', 'Béisbol', 'Boxeo', 'Ciclismo', 'Fútbol',
+                    'Gimnasia', 'Natación', 'Taekwondo', 'Tenis de Campo', 'Tenis de Mesa', 'Voleibol',
+                    'Otros'] %}
+                    <option>{{ d }}</option>
+                    {% endfor %}
+                </select>
+                <input type="text" name="especialidad" placeholder="Especialidad"
+                    class="w-full rounded border-slate-300 text-sm">
+                <input type="text" name="categoria" placeholder="Categoría"
+                    class="w-full rounded border-slate-300 text-sm">
+                <select name="tipo_beca" class="w-full rounded border-slate-300 text-sm">
+                    <option value="">Tipo Beca...</option>
+                    <option>Alto Rendimiento</option>
+                    <option>Talento Deportivo</option>
+                    <option>Apoyo Económico</option>
+                    <option>Otro</option>
+                </select>
+                <select name="estatus" class="w-full rounded border-slate-300 text-sm font-medium text-blue-600">
+                    <option>Activo</option>
+                    <option>En Revisión</option>
+                    <option>Inactivo</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- 3. ANTROPOMETRÍA -->
+        <div class="md:col-span-2 border-b border-slate-100 pb-4">
+            <h4 class="text-xs font-black text-blue-900 uppercase tracking-wider mb-3">Antropometría</h4>
+            <div class="grid grid-cols-3 md:grid-cols-6 gap-4">
+                <input type="number" name="edad" placeholder="Edad" class="w-full rounded border-slate-300 text-sm">
+                <select name="sexo" class="w-full rounded border-slate-300 text-sm">
+                    <option value="">Sexo</option>
+                    <option>Masculino</option>
+                    <option>Femenino</option>
+                </select>
+                <input type="text" name="sangre" placeholder="G. Sangre"
+                    class="w-full rounded border-slate-300 text-sm">
+                <input type="text" name="peso" placeholder="Peso (kg)" class="w-full rounded border-slate-300 text-sm">
+                <input type="text" name="estatura" placeholder="Estatura (m)"
+                    class="w-full rounded border-slate-300 text-sm">
+            </div>
+        </div>
+
+        <!-- 4. TALLAS -->
+        <div class="md:col-span-2 border-b border-slate-100 pb-4">
+            <h4 class="text-xs font-black text-blue-900 uppercase tracking-wider mb-3">Tallas / Uniformidad
+            </h4>
+            <div class="grid grid-cols-3 md:grid-cols-6 gap-2">
+                <input type="text" name="talla_zapato" placeholder="Zapato"
+                    class="rounded border-slate-300 text-xs text-center">
+                <input type="text" name="talla_franela" placeholder="Franela"
+                    class="rounded border-slate-300 text-xs text-center">
+                <input type="text" name="talla_short" placeholder="Short"
+                    class="rounded border-slate-300 text-xs text-center">
+                <input type="text" name="talla_chemise" placeholder="Chemise"
+                    class="rounded border-slate-300 text-xs text-center">
+                <input type="text" name="talla_mono" placeholder="Mono"
+                    class="rounded border-slate-300 text-xs text-center">
+                <input type="text" name="talla_competencia" placeholder="Competencia"
+                    class="rounded border-slate-300 text-xs text-center">
+            </div>
+        </div>
+
+        <!-- 5. INFORMACIÓN MÉDICA -->
+        <div class="md:col-span-2 border-b border-slate-100 pb-4">
+            <h4 class="text-xs font-black text-blue-900 uppercase tracking-wider mb-3">Información Médica y
+                Otros</h4>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+                <label class="flex items-center gap-2"><select name="usa_lentes"
+                        class="border-slate-300 rounded py-0 px-1">
+                        <option>No</option>
+                        <option>Si</option>
+                    </select> Usa Lentes</label>
+                <label class="flex items-center gap-2"><select name="usa_bucal"
+                        class="border-slate-300 rounded py-0 px-1">
+                        <option>No</option>
+                        <option>Si</option>
+                    </select> Prot. Bucal</label>
+                <label class="flex items-center gap-2"><select name="usa_munequera"
+                        class="border-slate-300 rounded py-0 px-1">
+                        <option>No</option>
+                        <option>Si</option>
+                    </select> Muñequera</label>
+                <label class="flex items-center gap-2"><select name="usa_rodilleras"
+                        class="border-slate-300 rounded py-0 px-1">
+                        <option>No</option>
+                        <option>Si</option>
+                    </select> Rodilleras</label>
+                <label class="flex items-center gap-2"><select name="dieta_deportiva"
+                        class="border-slate-300 rounded py-0 px-1">
+                        <option>No</option>
+                        <option>Si</option>
+                    </select> Dieta Dep.</label>
+                <label class="flex items-center gap-2"><select name="control_medico"
+                        class="border-slate-300 rounded py-0 px-1">
+                        <option>No</option>
+                        <option>Si</option>
+                    </select> Ctrl. Médico</label>
+                <label class="flex items-center gap-2"><select name="estudio_social"
+                        class="border-slate-300 rounded py-0 px-1">
+                        <option>No</option>
+                        <option>Si</option>
+                    </select> Est. Social</label>
+            </div>
+        </div>
+
+        <!-- 6. CONTACTO Y UBICACIÓN -->
+        <div class="md:col-span-2 pt-2">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <select name="municipio" class="w-full rounded border-slate-300 text-sm">
+                    <option value="">Municipio...</option>
+                    {% for m in ['Roscio', 'Ortiz', 'Mellado', 'Miranda', 'Infante', 'Monagas', 'Ribas',
+                    'Zaraza', 'Las Mercedes', 'El Socorro', 'Guayabal', 'Cabruta', 'Santa María de Ipire',
+                    'Chaguaramas', 'San Gerónimo de Guayabal'] %}
+                    <option>{{ m }}</option>
+                    {% endfor %}
+                </select>
+                <input type="text" name="direccion" placeholder="Dirección de Habitación"
+                    class="w-full rounded border-slate-300 text-sm">
+                <input type="text" name="telefono" placeholder="Teléfono"
+                    class="w-full rounded border-slate-300 text-sm">
+                <input type="email" name="email" placeholder="Correo Electrónico"
+                    class="w-full rounded border-slate-300 text-sm">
+
+                <!-- CUENTA BANCARIA DINÁMICA -->
+                <div class="md:col-span-2">
+                    <label id="labelCuenta" class="block text-xs font-bold text-slate-500 mb-1">Cuenta
+                        Bancaria (Del Atleta)</label>
+                    <input type="text" name="cuenta_bancaria" placeholder="0000-0000-00-0000000000"
+                        class="w-full rounded border-slate-300 text-sm font-mono bg-slate-50 focus:ring-blue-500 focus:border-blue-500">
+                    <p id="noteCuenta" class="text-[10px] text-slate-400 mt-1 hidden">Esta cuenta debe estar
+                        a nombre del representante legal registrado arriba.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="bg-gray-50 px-4 py-3 sm:px-6 flex flex-row-reverse">
+    <button type="submit"
+        class="inline-flex justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500">
+        ✅ Registrar Atleta
+    </button>
+</div>
+</div>
+</form>
 </div>
 
 <script>

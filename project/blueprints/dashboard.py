@@ -26,6 +26,8 @@ def procesar_imagen(file):
     if not file or not file.filename:
         return None
     try:
+        # Asegurar que estamos al inicio del archivo
+        file.seek(0)
         # Leemos los bytes de la imagen
         file_data = file.read()
         # Convertimos a base64
@@ -43,6 +45,7 @@ def procesar_pdf(file):
     if not file or not file.filename:
         return None
     try:
+        file.seek(0)
         file_data = file.read()
         encoded_pdf = base64.b64encode(file_data).decode('utf-8')
         # Forzamos el tipo application/pdf
@@ -251,22 +254,45 @@ def mi_cuenta():
 @dashboard_blueprint.route('/becas/nueva', methods=['GET', 'POST'])
 @login_required
 def crear_beca():
+    print("="*50)
+    print("DEBUG: CREAR_BECA INICIADO")
+    print(f"DEBUG: Método: {request.method}")
+    
     if request.method == 'POST':
         try:
+            print("DEBUG: Procesando POST")
+            print(f"DEBUG: request.files: {request.files}")
+            print(f"DEBUG: request.form keys: {request.form.keys()}")
+            
             # 1. Recolectar todos los datos del formulario usando el helper
             datos = obtener_datos_formulario(request)
+            print(f"DEBUG: Datos recolectados: {list(datos.keys())}")
             
             # 2. Procesar Foto
-            foto_b64 = procesar_imagen(request.files.get('foto'))
+            file = request.files.get('foto')
+            print(f"DEBUG CREAR: Archivo recibido: {file}")
+            if file:
+                print(f"DEBUG CREAR: Filename: {file.filename}")
+                print(f"DEBUG CREAR: Content-Type: {file.content_type}")
+            
+            foto_b64 = procesar_imagen(file)
+            print(f"DEBUG CREAR: Resultado procesar_imagen: {foto_b64[:100] if foto_b64 else 'None'}...")
+            
             if foto_b64:
                 datos['foto'] = foto_b64
+                print(f"DEBUG: Foto length: {len(foto_b64)}")
             
             # 3. Insertar en BD
-            supabase.table('becas').insert(datos).execute()
+            print("DEBUG: Intentando insertar en BD...")
+            result = supabase.table('becas').insert(datos).execute()
+            print(f"DEBUG: Insert exitoso, data: {result.data}")
+            
             flash('Atleta registrado exitosamente.', 'success')
             return redirect(url_for('dashboard.lista_becas'))
         except Exception as e: 
-            print(f"Error crear_beca: {e}")
+            print(f"ERROR en crear_beca: {e}")
+            import traceback
+            traceback.print_exc()
             flash(f'Error al registrar: {e}', 'error')
     return render_template('crear_beca.html')
 
@@ -501,9 +527,17 @@ def editar_beca(beca_id):
             datos = obtener_datos_formulario(request)
             
             # Procesar Foto Nueva (si se subió una)
-            foto_b64 = procesar_imagen(request.files.get('foto'))
+            file = request.files.get('foto')
+            print(f"DEBUG: Archivo recibido: {file}")
+            if file:
+                print(f"DEBUG: Filename: {file.filename}")
+            
+            foto_b64 = procesar_imagen(file)
+            print(f"DEBUG: Resultado procesar_imagen: {foto_b64[:50] if foto_b64 else 'None'}")
+            
             if foto_b64:
                 datos['foto'] = foto_b64
+                print("DEBUG: Foto agregada a datos para update")
             
             supabase.table('becas').update(datos).eq('id', beca_id).execute()
             flash('Ficha actualizada correctamente.', 'success')
