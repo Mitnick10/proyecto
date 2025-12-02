@@ -645,7 +645,10 @@ def lista_usuarios():
     try:
         usuarios = supabase.table('profiles').select('*').order('email').execute().data
         return render_template('dashboard_usuarios.html', usuarios=usuarios)
-    except: return redirect(url_for('dashboard.index'))
+    except Exception as e:
+        logger.error(f"Error cargando usuarios: {e}", exc_info=True)
+        flash(f'Error al cargar usuarios: {e}', 'error')
+        return redirect(url_for('dashboard.index'))
 
 @dashboard_blueprint.route('/usuarios/cambiar_rol', methods=['POST'])
 @login_required
@@ -659,5 +662,25 @@ def cambiar_rol():
         else:
             supabase.table('profiles').update({'role': role}).eq('id', uid).execute()
             flash('Rol actualizado.', 'success')
-    except: flash('Error al cambiar rol.', 'error')
+    except Exception as e:
+        logger.error(f"Error cambiando rol: {e}")
+        flash('Error al cambiar rol.', 'error')
+    return redirect(url_for('dashboard.lista_usuarios'))
+
+@dashboard_blueprint.route('/usuarios/eliminar', methods=['POST'])
+@login_required
+@superadmin_required
+def eliminar_usuario():
+    uid = request.form.get('user_id')
+    try:
+        if uid == session.get('user_id'):
+            flash('No puedes eliminar tu propia cuenta.', 'error')
+        else:
+            # Nota: Esto solo elimina el perfil. Para eliminar el usuario de Auth se requiere Service Key y:
+            # supabase.auth.admin.delete_user(uid)
+            supabase.table('profiles').delete().eq('id', uid).execute()
+            flash('Usuario eliminado (Perfil).', 'success')
+    except Exception as e:
+        logger.error(f"Error eliminando usuario: {e}")
+        flash(f'Error al eliminar usuario: {e}', 'error')
     return redirect(url_for('dashboard.lista_usuarios'))
