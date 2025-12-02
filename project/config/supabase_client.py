@@ -6,6 +6,7 @@ load_dotenv()
 
 SUPABASE_URL = os.environ.get('SUPABASE_URL')
 SUPABASE_KEY = os.environ.get('SUPABASE_KEY')
+SUPABASE_SERVICE_KEY = os.environ.get('SUPABASE_SERVICE_KEY')
 
 supabase: Client = None
 
@@ -17,6 +18,11 @@ try:
     service_key = os.environ.get('SUPABASE_SERVICE_KEY')
     
     key_to_use = service_key if service_key else SUPABASE_KEY
+    
+    if service_key:
+        print("✅ Usando SERVICE ROLE KEY (RLS deshabilitado)")
+    else:
+        print("⚠️ Usando ANON KEY (RLS habilitado)")
     
     supabase = create_client(SUPABASE_URL, key_to_use)
     print("Conexión (compartida) con Supabase inicializada.")

@@ -64,6 +64,7 @@
             animation: progress 5s linear forwards;
         }
     </style>
+    <script src="{{ url_for('static', filename='js/confirmations.js') }}" defer></script>
 </head>
 
 <body class="h-full font-sans">
@@ -237,7 +238,43 @@
                     setTimeout(() => notif.remove(), 300);
                 }, 5000 + (index * 500));
             });
+
+            // Función para confirmar eliminación
+            function confirmarEliminar(tipo, nombre) {
+                if (nombre) {
+                    return confirm('¿Estás seguro de que deseas eliminar ' + tipo + ': ' + nombre + '?');
+                }
+                return confirm('¿Estás seguro de que deseas eliminar este ' + tipo + '?');
+            }
+
+            // Función para confirmar guardado
+            function confirmarGuardar(tipo) {
+                if (tipo === 'crear') {
+                    return confirm('¿Confirmas que deseas crear este nuevo registro?');
+                } else if (tipo === 'guardar') {
+                    return confirm('¿Confirmas que deseas guardar los cambios?');
+                }
+                return true;
+            }
         });
+
+        // Función para confirmar eliminación
+        function confirmarEliminar(tipo, nombre) {
+            if (nombre) {
+                return confirm('¿Estás seguro de que deseas eliminar ' + tipo + ': ' + nombre + '?');
+            }
+            return confirm('¿Estás seguro de que deseas eliminar este ' + tipo + '?');
+        }
+
+        // Función para confirmar guardado
+        function confirmarGuardar(tipo) {
+            if (tipo === 'crear') {
+                return confirm('¿Confirmas que deseas crear este nuevo registro?');
+            } else if (tipo === 'guardar') {
+                return confirm('¿Confirmas que deseas guardar los cambios?');
+            }
+            return true;
+        }
     </script>
 </body>
 

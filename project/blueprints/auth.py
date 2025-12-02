@@ -76,6 +76,80 @@ def login():
     
     return render_template('login.html')
 
+@auth_blueprint.route('/login/phone', methods=['POST'])
+def login_phone():
+    """Maneja el inicio de sesión con teléfono (envío de OTP)."""
+    if not supabase:
+        abort(503)
+
+    phone = request.form.get('phone')
+    if not phone:
+        flash('Por favor ingresa tu número de teléfono.', 'error')
+        return redirect(url_for('auth.login'))
+
+    try:
+        # Enviar OTP por SMS
+        supabase.auth.sign_in_with_otp({"phone": phone})
+        flash(f'Código enviado a {phone}.', 'success')
+        return render_template('verify_otp.html', phone=phone)
+
+    except AuthApiError as e:
+        logger.warning(f"Error al enviar OTP a {phone}: {e.message}")
+        flash(f'Error al enviar código: {e.message}', 'error')
+        return redirect(url_for('auth.login'))
+    except Exception as e:
+        logger.error(f"Error inesperado en login_phone: {e}", exc_info=True)
+        flash('Error inesperado al intentar enviar el código.', 'error')
+        return redirect(url_for('auth.login'))
+
+@auth_blueprint.route('/login/verify', methods=['POST'])
+def verify_otp():
+    """Verifica el OTP enviado al teléfono."""
+    if not supabase:
+        abort(503)
+
+    phone = request.form.get('phone')
+    token = request.form.get('token')
+
+    if not phone or not token:
+        flash('Teléfono y código son requeridos.', 'error')
+        return redirect(url_for('auth.login'))
+
+    try:
+        # Verificar OTP
+        auth_response = supabase.auth.verify_otp({
+            "phone": phone,
+            "token": token,
+            "type": "sms"
+        })
+
+        user_id = auth_response.session.user.id
+
+        # Buscar rol (similar al login normal)
+        profile_response = supabase.table('profiles').select('role').eq('id', user_id).execute()
+        if profile_response.data and len(profile_response.data) > 0:
+            user_role = profile_response.data[0]['role']
+        else:
+            user_role = 'usuario'
+
+        # Guardar sesión
+        session['user_id'] = user_id
+        session['access_token'] = auth_response.session.access_token
+        session['refresh_token'] = auth_response.session.refresh_token
+        session['role'] = user_role
+
+        flash(f'Bienvenido/a. Rol: {user_role.upper()}', 'success')
+        return redirect(url_for('dashboard.index'))
+
+    except AuthApiError as e:
+        logger.warning(f"Error al verificar OTP para {phone}: {e.message}")
+        flash(f'Código inválido o expirado: {e.message}', 'error')
+        return render_template('verify_otp.html', phone=phone)
+    except Exception as e:
+        logger.error(f"Error inesperado en verify_otp: {e}", exc_info=True)
+        flash('Error inesperado al verificar el código.', 'error')
+        return redirect(url_for('auth.login'))
+
 @auth_blueprint.route('/register', methods=['GET', 'POST'])
 def register():
     """Maneja el registro de un nuevo usuario con validación avanzada de contraseña."""
@@ -84,6 +158,7 @@ def register():
             abort(503)
             
         email = request.form.get('email')
+        phone = request.form.get('phone')
         password = request.form.get('password')
         confirm_password = request.form.get('confirm_password')
         nombre = request.form.get('nombre')
@@ -128,13 +203,34 @@ def register():
                     "data": {
                         "first_name": nombre,
                         "last_name": apellido,
-                        "full_name": f"{nombre} {apellido}"
+                        "full_name": f"{nombre} {apellido}",
+                        # Guardamos el teléfono en metadata también por si acaso
+                        "phone": phone
                     }
                 }
             })
             
             if auth_response.user:
-                flash('✅ ¡Registro exitoso! Tu contraseña es segura. Por favor inicia sesión.', 'success')
+                # Si hay sesión (auto-confirm enabled o similar), intentamos verificar el teléfono
+                if auth_response.session:
+                    try:
+                        # Esto enviará un OTP al teléfono
+                        supabase.auth.update_user({"phone": phone})
+                        
+                        # Intentamos guardar en profiles también
+                        try:
+                            supabase.table('profiles').update({"phone": phone}).eq('id', auth_response.user.id).execute()
+                        except Exception as e:
+                            logger.warning(f"No se pudo actualizar phone en profiles: {e}")
+
+                        flash('✅ Registro exitoso. Se ha enviado un código a tu teléfono para verificarlo.', 'success')
+                        return render_template('verify_otp.html', phone=phone, type='phone_change')
+                    except Exception as e:
+                        logger.warning(f"No se pudo enviar OTP al teléfono tras registro: {e}")
+                        flash('Registro exitoso. Por favor inicia sesión.', 'success')
+                        return redirect(url_for('auth.login'))
+                
+                flash('✅ ¡Registro exitoso! Por favor verifica tu correo electrónico.', 'success')
                 return redirect(url_for('auth.login'))
             else:
                 flash('Registro procesado. Por favor verifica tu correo.', 'warning')
@@ -148,6 +244,39 @@ def register():
             flash(f'Error inesperado durante el registro.', 'error')
 
     return render_template('register.html')
+
+@auth_blueprint.route('/verify/phone-change', methods=['POST'])
+def verify_phone_change():
+    """Verifica el cambio de teléfono (usado en registro)."""
+    if not supabase:
+        abort(503)
+
+    phone = request.form.get('phone')
+    token = request.form.get('token')
+
+    if not phone or not token:
+        flash('Teléfono y código son requeridos.', 'error')
+        return render_template('verify_otp.html', phone=phone, type='phone_change')
+
+    try:
+        # Verificar OTP de cambio de teléfono
+        response = supabase.auth.verify_otp({
+            "phone": phone,
+            "token": token,
+            "type": "phone_change"
+        })
+        
+        flash('✅ Teléfono verificado exitosamente. ¡Bienvenido!', 'success')
+        return redirect(url_for('dashboard.index'))
+
+    except AuthApiError as e:
+        logger.warning(f"Error al verificar teléfono {phone}: {e.message}")
+        flash(f'Código inválido o expirado: {e.message}', 'error')
+        return render_template('verify_otp.html', phone=phone, type='phone_change')
+    except Exception as e:
+        logger.error(f"Error inesperado en verify_phone_change: {e}", exc_info=True)
+        flash('Error inesperado al verificar el código.', 'error')
+        return redirect(url_for('auth.login'))
 
 @auth_blueprint.route('/forgot-password', methods=['GET', 'POST'])
 def forgot_password():
@@ -164,6 +293,8 @@ def forgot_password():
         try:
             # Enviar correo de recuperación
             redirect_url = request.url_root.rstrip('/') + url_for('auth.reset_password')
+            logger.info(f"🔗 Generando URL de recuperación: {redirect_url}")
+            
             supabase.auth.reset_password_email(email, options={'redirect_to': redirect_url})
             
             flash('Si el correo existe, recibirás un enlace para restablecer tu contraseña.', 'success')
@@ -171,6 +302,7 @@ def forgot_password():
             
         except AuthApiError as e:
             logger.warning(f"Error al solicitar recuperación para {email}: {e}")
+            # Por seguridad, mostramos el mismo mensaje
             flash('Si el correo existe, recibirás un enlace para restablecer tu contraseña.', 'success')
         except Exception as e:
             logger.error(f"Error inesperado en forgot_password: {e}", exc_info=True)
