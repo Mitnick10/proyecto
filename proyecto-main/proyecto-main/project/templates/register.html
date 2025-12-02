@@ -1,0 +1,291 @@
+{% extends "base.html" %}
+
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+<div class="relative min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="absolute inset-0 z-0"
+        style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7JWoDhdscUjLrQN6iqKerme1yy7-msHf1uB1NiILqNYlOkWZr5Cd8P2SfQI85bqMWO4CdanMOoB5WsvlGWVZLz2TsGzaGe8gdHM7g7LPxk93u9gJsxYZq81WddJXWv_M8gNMU8CUZLLg/s1600/65591412.wPaGxmkS.P7267968970'); background-size: cover; background-position: center; background-attachment: fixed;">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-md bg-white rounded-lg shadow-xl p-8 space-y-6">
+        <div class="flex flex-col items-center">
+            <img class="h-20 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="IRDEBG GUÁRICO">
+
+            <div class="mt-6 flex justify-center w-full max-w-xs border-2 border-gray-200 rounded-lg overflow-hidden">
+                <a href="{{ url_for('auth.login') }}"
+                    class="flex-1 py-2 text-center text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200">
+                    LOGIN
+                </a>
+                <a href="{{ url_for('auth.register') }}"
+                    class="flex-1 py-2 text-center text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
+                    REGISTER
+                </a>
+            </div>
+
+            <p class="mt-8 text-sm text-gray-500">Crea tu cuenta con tu email:</p>
+        </div>
+
+        <form class="space-y-4" action="{{ url_for('auth.register') }}" method="POST" id="registerForm">
+            <div>
+                <label for="nombre" class="sr-only">Nombre</label>
+                <input id="nombre" name="nombre" type="text" autocomplete="given-name" required
+                    class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    placeholder="Nombre">
+            </div>
+
+            <div>
+                <label for="apellido" class="sr-only">Apellido</label>
+                <input id="apellido" name="apellido" type="text" autocomplete="family-name" required
+                    class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    placeholder="Apellido">
+            </div>
+
+            <div>
+                <label for="phone" class="sr-only">Teléfono</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" required
+                    class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    placeholder="Teléfono (ej. +584121234567)">
+            </div>
+
+            <div>
+                <label for="email" class="sr-only">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required
+                    class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    placeholder="Email">
+            </div>
+
+            <div>
+                <label for="password" class="sr-only">Contraseña</label>
+                <input id="password" name="password" type="password" autocomplete="new-password" required minlength="6"
+                    class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    placeholder="Contraseña">
+
+                <!-- NUEVO: Indicador de fortaleza de contraseña -->
+                <div id="strengthIndicator" class="mt-2 hidden">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-xs text-gray-600">Fortaleza:</span>
+                        <span id="strengthText" class="text-xs font-semibold"></span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div id="strengthBar" class="h-2 rounded-full transition-all duration-300" style="width: 0%">
+                        </div>
+                    </div>
+
+                    <!-- Checks de requisitos -->
+                    <div class="mt-2 space-y-1 text-xs">
+                        <div id="check-length" class="flex items-center text-gray-500">
+                            <span class="mr-2">○</span>
+                            <span>Mínimo 6 caracteres</span>
+                        </div>
+                        <div id="check-lower" class="flex items-center text-gray-500">
+                            <span class="mr-2">○</span>
+                            <span>Al menos una minúscula (a-z)</span>
+                        </div>
+                        <div id="check-upper" class="flex items-center text-gray-500">
+                            <span class="mr-2">○</span>
+                            <span>Al menos una MAYÚSCULA (A-Z)</span>
+                        </div>
+                        <div id="check-number" class="flex items-center text-gray-500">
+                            <span class="mr-2">○</span>
+                            <span>Al menos un número (0-9)</span>
+                        </div>
+                        <div id="check-special" class="flex items-center text-gray-400">
+                            <span class="mr-2">○</span>
+                            <span>Caracteres especiales (opcional, suma puntos)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label for="confirm_password" class="sr-only">Confirmar Contraseña</label>
+                <input id="confirm_password" name="confirm_password" type="password" autocomplete="new-password"
+                    required minlength="6"
+                    class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    placeholder="Confirmar Contraseña">
+
+                <!-- NUEVO: Indicador de coincidencia -->
+                <div id="matchIndicator" class="mt-1 hidden text-xs">
+                    <span id="matchText"></span>
+                </div>
+            </div>
+
+            <div class="py-2"></div>
+
+            <div>
+                <button type="submit" id="submitBtn"
+                    class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed">
+                    CREAR CUENTA
+                </button>
+            </div>
+        </form>
+
+        <div class="text-center text-sm text-gray-500">
+            ¿Ya tienes cuenta?
+            <a href="{{ url_for('auth.login') }}" class="font-medium text-blue-600 hover:text-blue-500">
+                Inicia sesión
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript para validación en tiempo real -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirm_password');
+        const strengthIndicator = document.getElementById('strengthIndicator');
+        const strengthBar = document.getElementById('strengthBar');
+        const strengthText = document.getElementById('strengthText');
+        const matchIndicator = document.getElementById('matchIndicator');
+        const matchText = document.getElementById('matchText');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Checks de requisitos
+        const checks = {
+            length: document.getElementById('check-length'),
+            lower: document.getElementById('check-lower'),
+            upper: document.getElementById('check-upper'),
+            number: document.getElementById('check-number'),
+            special: document.getElementById('check-special')
+        };
+
+        // Función para calcular fortaleza de contraseña
+        function checkPasswordStrength(pwd) {
+            let score = 0;
+            const requirements = {
+                length: pwd.length >= 6,
+                lower: /[a-z]/.test(pwd),
+                upper: /[A-Z]/.test(pwd),
+                number: /\d/.test(pwd),
+                special: /[!@#$%^&*(),.?":{}|<>]/.test(pwd)
+            };
+
+            // Calcular puntos
+            if (requirements.length) score += 20;
+            if (pwd.length >= 8) score += 10;
+            if (pwd.length >= 12) score += 10;
+            if (requirements.lower) score += 15;
+            if (requirements.upper) score += 15;
+            if (requirements.number) score += 15;
+            if (requirements.special) score += 15;
+
+            return { score: Math.min(score, 100), requirements };
+        }
+
+        // Función para actualizar UI de checks
+        function updateChecks(requirements) {
+            Object.keys(checks).forEach(key => {
+                const isValid = requirements[key];
+                const checkEl = checks[key];
+
+                if (isValid) {
+                    checkEl.classList.remove('text-gray-500');
+                    checkEl.classList.add('text-green-600', 'font-semibold');
+                    checkEl.querySelector('span:first-child').textContent = '✓';
+                } else {
+                    checkEl.classList.remove('text-green-600', 'font-semibold');
+                    checkEl.classList.add('text-gray-500');
+                    checkEl.querySelector('span:first-child').textContent = '○';
+                }
+            });
+        }
+
+        // Evento: al escribir en contraseña
+        password.addEventListener('input', function () {
+            const pwd = this.value;
+
+            if (pwd.length > 0) {
+                strengthIndicator.classList.remove('hidden');
+                const { score, requirements } = checkPasswordStrength(pwd);
+
+                // Actualizar barra de progreso
+                strengthBar.style.width = score + '%';
+
+                // Actualizar color y texto
+                let color, text;
+                if (score < 30) {
+                    color = '#ef4444'; // red
+                    text = 'Muy débil';
+                } else if (score < 50) {
+                    color = '#f97316'; // orange
+                    text = 'Débil';
+                } else if (score < 70) {
+                    color = '#eab308'; // yellow
+                    text = 'Media';
+                } else if (score < 90) {
+                    color = '#84cc16'; // lime
+                    text = 'Fuerte';
+                } else {
+                    color = '#22c55e'; // green
+                    text = 'Muy fuerte';
+                }
+
+                strengthBar.style.backgroundColor = color;
+                strengthText.textContent = text;
+                strengthText.style.color = color;
+
+                // Actualizar checks
+                updateChecks(requirements);
+            } else {
+                strengthIndicator.classList.add('hidden');
+            }
+
+            // Verificar coincidencia si ya hay texto en confirm
+            if (confirmPassword.value.length > 0) {
+                checkPasswordMatch();
+            }
+        });
+
+        // Función para verificar coincidencia
+        function checkPasswordMatch() {
+            const pwd = password.value;
+            const confirm = confirmPassword.value;
+
+            if (confirm.length > 0) {
+                matchIndicator.classList.remove('hidden');
+
+                if (pwd === confirm) {
+                    matchText.textContent = '✓ Las contraseñas coinciden';
+                    matchText.className = 'text-green-600 font-semibold';
+                    submitBtn.disabled = false;
+                } else {
+                    matchText.textContent = '✗ Las contraseñas no coinciden';
+                    matchText.className = 'text-red-600';
+                    submitBtn.disabled = true;
+                }
+            } else {
+                matchIndicator.classList.add('hidden');
+                submitBtn.disabled = false;
+            }
+        }
+
+        // Evento: al escribir en confirmar contraseña
+        confirmPassword.addEventListener('input', checkPasswordMatch);
+
+        // Validación final antes de enviar
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            const pwd = password.value;
+            const confirm = confirmPassword.value;
+
+            if (pwd !== confirm) {
+                e.preventDefault();
+                alert('Las contraseñas no coinciden');
+                return false;
+            }
+
+            const { score, requirements } = checkPasswordStrength(pwd);
+            const allRequired = requirements.length && requirements.lower &&
+                requirements.upper && requirements.number;
+
+            if (!allRequired) {
+                e.preventDefault();
+                alert('La contraseña no cumple con todos los requisitos de seguridad');
+                return false;
+            }
+        });
+    });
+</script>
+{% endblock %}

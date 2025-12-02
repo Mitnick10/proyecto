@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-gray-100">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dashboard{% endblock %} - IRDEBG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutRight {
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes progress {
+            from {
+                width: 100%;
+            }
+
+            to {
+                width: 0%;
+            }
+        }
+
+        .animate-progress {
+            animation: progress 5s linear forwards;
+        }
+    </style>
+</head>
+
+<body class="h-full font-sans">
+    <div class="min-h-full flex flex-col">
+
+        <!-- Mensajes Flash -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="fixed top-4 right-4 z-50 flex flex-col gap-3 w-full max-w-sm pointer-events-none">
+            {% for category, message in messages %}
+            {% set config = {
+            'success': {'bg': 'bg-gradient-to-r from-emerald-500 to-teal-600', 'icon': 'fa-circle-check', 'iconBg':
+            'bg-white/20'},
+            'error': {'bg': 'bg-gradient-to-r from-red-500 to-rose-600', 'icon': 'fa-circle-xmark', 'iconBg':
+            'bg-white/20'},
+            'warning': {'bg': 'bg-gradient-to-r from-amber-500 to-orange-600', 'icon': 'fa-triangle-exclamation',
+            'iconBg': 'bg-white/20'},
+            'info': {'bg': 'bg-gradient-to-r from-blue-500 to-cyan-600', 'icon': 'fa-info-circle', 'iconBg':
+            'bg-white/20'}
+            } %}
+            {% set current = config[category] if category in config else config['info'] %}
+
+            <div class="pointer-events-auto transform transition-all duration-500 ease-out hover:scale-105"
+                style="animation: slideInRight 0.5s ease-out;">
+                <div class="{{ current.bg }} rounded-xl shadow-2xl overflow-hidden">
+                    <div class="p-4 flex items-start gap-3">
+                        <div class="{{ current.iconBg }} rounded-lg p-2.5 flex-shrink-0">
+                            <i class="fa-solid {{ current.icon }} text-white text-xl"></i>
+                        </div>
+                        <div class="flex-1 pt-0.5">
+                            <p class="text-white font-semibold text-sm leading-relaxed drop-shadow-sm">{{ message }}</p>
+                        </div>
+                        <button
+                            onclick="this.closest('div[style*=slideInRight]').style.animation='slideOutRight 0.3s ease-in'; setTimeout(() => this.closest('div[style*=slideInRight]').remove(), 300)"
+                            class="flex-shrink-0 text-white/80 hover:text-white transition-colors p-1">
+                            <i class="fa-solid fa-xmark text-lg"></i>
+                        </button>
+                    </div>
+                    <div class="h-1 bg-white/20">
+                        <div class="h-full bg-white/40 animate-progress"></div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <!-- Navbar -->
+        <nav class="bg-slate-900 border-b border-slate-800">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="flex h-16 items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="h-8 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="IRDEBG">
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="ml-10 flex items-baseline space-x-4">
+                                <a href="{{ url_for('dashboard.index') }}"
+                                    class="text-slate-300 hover:bg-slate-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Inicio</a>
+                                <a href="{{ url_for('dashboard.lista_becas') }}"
+                                    class="text-slate-300 hover:bg-slate-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Atletas</a>
+                                {% if user_role == 'superadmin' %}
+                                <a href="{{ url_for('dashboard.lista_usuarios') }}"
+                                    class="text-slate-300 hover:bg-slate-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Usuarios</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-4 flex items-center md:ml-6">
+                            <div class="relative ml-3">
+                                <div>
+                                    <a href="{{ url_for('dashboard.mi_cuenta') }}"
+                                        class="flex max-w-xs items-center rounded-full bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-800">
+                                        <span class="sr-only">Abrir menú de usuario</span>
+                                        <div
+                                            class="h-8 w-8 rounded-full bg-slate-700 flex items-center justify-center text-white font-bold">
+                                            <i class="fa-solid fa-user"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <a href="{{ url_for('auth.logout') }}" class="ml-4 text-slate-300 hover:text-white"
+                                title="Cerrar Sesión">
+                                <i class="fa-solid fa-right-from-bracket text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Botón Menú Móvil -->
+                    <div class="-mr-2 flex md:hidden">
+                        <button type="button"
+                            onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+                            class="inline-flex items-center justify-center rounded-md bg-slate-800 p-2 text-slate-400 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-800">
+                            <span class="sr-only">Abrir menú principal</span>
+                            <i class="fa-solid fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menú Móvil -->
+            <div class="hidden md:hidden" id="mobile-menu">
+                <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+                    <a href="{{ url_for('dashboard.index') }}"
+                        class="text-slate-300 hover:bg-slate-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Inicio</a>
+                    <a href="{{ url_for('dashboard.lista_becas') }}"
+                        class="text-slate-300 hover:bg-slate-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Atletas</a>
+                    {% if user_role == 'superadmin' %}
+                    <a href="{{ url_for('dashboard.lista_usuarios') }}"
+                        class="text-slate-300 hover:bg-slate-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Usuarios</a>
+                    {% endif %}
+                </div>
+                <div class="border-t border-slate-700 pb-3 pt-4">
+                    <div class="flex items-center px-5">
+                        <div class="flex-shrink-0">
+                            <div
+                                class="h-10 w-10 rounded-full bg-slate-700 flex items-center justify-center text-white font-bold">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="ml-3">
+                            <div class="text-base font-medium leading-none text-white">Mi Cuenta</div>
+                            <div class="text-sm font-medium leading-none text-slate-400">{{ session.get('email', '') }}
+                            </div>
+                        </div>
+                        <a href="{{ url_for('auth.logout') }}"
+                            class="ml-auto flex-shrink-0 rounded-full bg-slate-800 p-1 text-slate-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-800">
+                            <span class="sr-only">Cerrar Sesión</span>
+                            <i class="fa-solid fa-right-from-bracket text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Header de la Página -->
+        <header class="bg-white shadow-sm">
+            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 flex justify-between items-center">
+                <h1 class="text-2xl font-bold tracking-tight text-slate-900">
+                    {% block header %}{% endblock %}
+                </h1>
+                <div id="header-actions"></div>
+            </div>
+        </header>
+
+        <!-- Contenido Principal -->
+        <main class="flex-1">
+            <div class="mx-auto max-w-7xl py-8 px-4 sm:px-6 lg:px-8">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-slate-200 mt-auto">
+            <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+                <p class="text-center text-xs text-slate-400">&copy; 2025 IRDEBG Guárico. Todos los derechos reservados.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Script SOLO para auto-dismiss de notificaciones -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const notifications = document.querySelectorAll('div[style*="slideInRight"]');
+            notifications.forEach((notif, index) => {
+                setTimeout(() => {
+                    notif.style.animation = 'slideOutRight 0.3s ease-in';
+                    setTimeout(() => notif.remove(), 300);
+                }, 5000 + (index * 500));
+            });
+        });
+    </script>
+</body>
+
+</html>
