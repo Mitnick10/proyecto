@@ -158,7 +158,6 @@ def register():
             abort(503)
             
         email = request.form.get('email')
-        phone = request.form.get('phone')
         password = request.form.get('password')
         confirm_password = request.form.get('confirm_password')
         nombre = request.form.get('nombre')
@@ -203,33 +202,12 @@ def register():
                     "data": {
                         "first_name": nombre,
                         "last_name": apellido,
-                        "full_name": f"{nombre} {apellido}",
-                        # Guardamos el teléfono en metadata también por si acaso
-                        "phone": phone
+                        "full_name": f"{nombre} {apellido}"
                     }
                 }
             })
             
             if auth_response.user:
-                # Si hay sesión (auto-confirm enabled o similar), intentamos verificar el teléfono
-                if auth_response.session:
-                    try:
-                        # Esto enviará un OTP al teléfono
-                        supabase.auth.update_user({"phone": phone})
-                        
-                        # Intentamos guardar en profiles también
-                        try:
-                            supabase.table('profiles').update({"phone": phone}).eq('id', auth_response.user.id).execute()
-                        except Exception as e:
-                            logger.warning(f"No se pudo actualizar phone en profiles: {e}")
-
-                        flash('✅ Registro exitoso. Se ha enviado un código a tu teléfono para verificarlo.', 'success')
-                        return render_template('verify_otp.html', phone=phone, type='phone_change')
-                    except Exception as e:
-                        logger.warning(f"No se pudo enviar OTP al teléfono tras registro: {e}")
-                        flash('Registro exitoso. Por favor inicia sesión.', 'success')
-                        return redirect(url_for('auth.login'))
-                
                 flash('✅ ¡Registro exitoso! Por favor verifica tu correo electrónico.', 'success')
                 return redirect(url_for('auth.login'))
             else:

@@ -1,0 +1,326 @@
+/**
+ * Sistema de Alertas Modernas y Elegantes
+ * Diseño Premium con Glassmorphism
+ */
+
+/* ============================================
+   OVERLAY (Fondo oscuro con blur)
+   ============================================ */
+.custom-alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    /* Slate-900 con opacidad */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.custom-alert-overlay.hiding {
+    animation: fadeOut 0.2s ease forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   MODAL PRINCIPAL
+   ============================================ */
+.custom-alert-modal {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
+    box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 8px 10px -6px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    max-width: 420px;
+    width: 90%;
+    padding: 0;
+    transform: scale(0.95) translateY(10px);
+    opacity: 0;
+    animation: modalEnter 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    overflow: hidden;
+    position: relative;
+}
+
+@keyframes modalEnter {
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.custom-alert-modal.hiding {
+    animation: modalExit 0.2s ease forwards;
+}
+
+@keyframes modalExit {
+    to {
+        transform: scale(0.95) translateY(10px);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   HEADER CON ICONO
+   ============================================ */
+.custom-alert-header {
+    padding: 32px 32px 16px;
+    text-align: center;
+    position: relative;
+}
+
+/* Gradientes sutiles para el fondo del icono */
+.custom-alert-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(180deg, rgba(248, 250, 252, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    z-index: -1;
+}
+
+.custom-alert-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    position: relative;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Colores e Iconos Específicos */
+.custom-alert-header.success .custom-alert-icon {
+    background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+    color: #16a34a;
+    border: 4px solid #f0fdf4;
+}
+
+.custom-alert-header.error .custom-alert-icon {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    color: #dc2626;
+    border: 4px solid #fef2f2;
+}
+
+.custom-alert-header.warning .custom-alert-icon {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    color: #d97706;
+    border: 4px solid #fffbeb;
+}
+
+.custom-alert-header.info .custom-alert-icon {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    color: #2563eb;
+    border: 4px solid #eff6ff;
+}
+
+.custom-alert-header.question .custom-alert-icon {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    color: #475569;
+    border: 4px solid #f8fafc;
+}
+
+.custom-alert-title {
+    color: #0f172a;
+    font-size: 22px;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+}
+
+/* ============================================
+   CONTENIDO
+   ============================================ */
+.custom-alert-body {
+    padding: 8px 32px 24px;
+    text-align: center;
+}
+
+.custom-alert-message {
+    color: #64748b;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+    white-space: pre-line;
+    font-weight: 500;
+}
+
+/* ============================================
+   BOTONES
+   ============================================ */
+.custom-alert-footer {
+    padding: 0 32px 32px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.custom-alert-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 110px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.custom-alert-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.custom-alert-btn:active {
+    transform: translateY(0);
+}
+
+/* Botones Primarios por Tipo */
+.custom-alert-btn-primary.success {
+    background: #16a34a;
+    color: white;
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2);
+}
+
+.custom-alert-btn-primary.success:hover {
+    background: #15803d;
+}
+
+.custom-alert-btn-primary.error {
+    background: #dc2626;
+    color: white;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+}
+
+.custom-alert-btn-primary.error:hover {
+    background: #b91c1c;
+}
+
+.custom-alert-btn-primary.warning {
+    background: #d97706;
+    color: white;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.2);
+}
+
+.custom-alert-btn-primary.warning:hover {
+    background: #b45309;
+}
+
+.custom-alert-btn-primary.info {
+    background: #2563eb;
+    color: white;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.custom-alert-btn-primary.info:hover {
+    background: #1d4ed8;
+}
+
+.custom-alert-btn-primary.question {
+    background: #0f172a;
+    color: white;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+}
+
+.custom-alert-btn-primary.question:hover {
+    background: #1e293b;
+}
+
+/* Botón Secundario */
+.custom-alert-btn-secondary {
+    background: #f1f5f9;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+}
+
+.custom-alert-btn-secondary:hover {
+    background: #e2e8f0;
+    color: #475569;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 640px) {
+    .custom-alert-modal {
+        max-width: 90%;
+        border-radius: 20px;
+    }
+
+    .custom-alert-header {
+        padding: 24px 20px 12px;
+    }
+
+    .custom-alert-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+    }
+
+    .custom-alert-title {
+        font-size: 20px;
+    }
+
+    .custom-alert-body {
+        padding: 8px 20px 20px;
+    }
+
+    .custom-alert-footer {
+        padding: 0 20px 20px;
+        flex-direction: column-reverse;
+    }
+
+    .custom-alert-btn {
+        width: 100%;
+        padding: 14px;
+    }
+}
+
+/* ============================================
+   ANIMACIONES EXTRA
+   ============================================ */
+.pulse {
+    animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+}

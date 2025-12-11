@@ -4,6 +4,9 @@
 {% block header %}Listado de Atletas{% endblock %}
 
 {% block content %}
+<!-- Variables de permisos -->
+{% set canEdit = user_role in ['admin', 'superadmin'] %}
+
 <div class="space-y-6">
 
     <!-- Barra de Acciones y Filtros -->
@@ -12,8 +15,12 @@
 
         <!-- Buscador y Filtro -->
         <div class="flex flex-1 w-full md:w-auto gap-4 items-center overflow-hidden">
-            <!-- Buscador Visual -->
-            <div class="relative w-full md:w-64 flex-shrink-0">
+            <!-- Buscador Funcional -->
+            <form method="GET" action="{{ url_for('dashboard.lista_becas') }}"
+                class="relative w-full md:w-64 flex-shrink-0">
+                {% if current_filter %}
+                <input type="hidden" name="disciplina" value="{{ current_filter }}">
+                {% endif %}
                 <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                     <svg class="h-5 w-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
@@ -21,15 +28,24 @@
                             clip-rule="evenodd" />
                     </svg>
                 </div>
-                <input type="text"
-                    class="block w-full rounded-md border-0 py-1.5 pl-10 text-slate-900 ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                <input type="text" name="buscar" value="{{ current_search or '' }}"
+                    class="block w-full rounded-md border-0 py-1.5 pl-10 pr-10 text-slate-900 ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                     placeholder="Buscar nombre...">
-            </div>
+                {% if current_search %}
+                <a href="{{ url_for('dashboard.lista_becas', disciplina=current_filter) }}"
+                    class="absolute inset-y-0 right-0 flex items-center pr-3 text-slate-400 hover:text-slate-600">
+                    <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+                {% endif %}
+            </form>
 
             <!-- Filtro Visual de Disciplinas -->
             <div class="w-full overflow-x-auto pb-2">
                 <div class="flex gap-3 min-w-max">
-                    <!-- Opción: Todas -->
                     <a href="{{ url_for('dashboard.lista_becas') }}"
                         class="flex flex-col items-center justify-center w-24 h-24 rounded-xl border-2 transition-all duration-200 group
                        {{ 'border-blue-600 bg-blue-50 text-blue-700 shadow-md' if not current_filter or current_filter == 'Todas' else 'border-slate-200 bg-white text-slate-500 hover:border-blue-300 hover:shadow-sm' }}">
@@ -38,7 +54,6 @@
                         <span class="text-xs font-semibold text-center leading-tight">Todas</span>
                     </a>
 
-                    <!-- Iterar Disciplinas -->
                     {% for d in disciplinas %}
                     {% set icon_class = 'fa-person-running' %}
                     {% if 'Futbol' in d or 'Fútbol' in d %}{% set icon_class = 'fa-futbol' %}
@@ -68,8 +83,8 @@
             </div>
         </div>
 
-        <!-- Botón Nuevo: SOLO ADMIN O SUPERADMIN -->
-        {% if user_role in ['admin', 'superadmin'] %}
+        <!-- Botón Nuevo -->
+        {% if canEdit %}
         <a href="{{ url_for('dashboard.crear_beca') }}"
             class="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors whitespace-nowrap flex-shrink-0">
             <svg class="-ml-0.5 mr-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -82,172 +97,386 @@
         {% endif %}
     </div>
 
-    <!-- Tabla en Tarjeta -->
-    <div class="bg-white shadow-sm ring-1 ring-slate-900/5 rounded-xl overflow-hidden">
-        <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-slate-200">
-                <thead class="bg-slate-50">
-                    <tr>
-                        <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
-                            Nombre / Email</th>
-                        <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
-                            Cédula</th>
-                        <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
-                            Disciplina</th>
-                        <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
-                            Estatus</th>
-                        <th scope="col" class="relative px-6 py-3"><span class="sr-only">Acciones</span></th>
-                    </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-slate-200">
-                    {% for beca in becas %}
-                    <tr class="hover:bg-slate-50 transition-colors">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div
-                                    class="h-10 w-10 flex-shrink-0 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 font-bold">
-                                    {{ beca.nombre[0] }}{{ beca.apellido[0] }}
-                                </div>
-                                <div class="ml-4">
-                                    <div class="text-sm font-medium text-slate-900">
-                                        <a href="{{ url_for('dashboard.ver_beca', beca_id=beca.id) }}"
-                                            class="hover:text-blue-600 hover:underline transition-colors cursor-pointer"
-                                            title="Ver Ficha Completa">
-                                            {{ beca.nombre }} {{ beca.apellido }}
-                                        </a>
-                                    </div>
-                                    <div class="text-sm text-slate-500">{{ beca.email }}</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600">{{ beca.cedula }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600">{{ beca.disciplina }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset 
-                                {% if beca.estatus == 'Activo' %}bg-green-50 text-green-700 ring-green-600/20
-                                {% elif beca.estatus == 'Inactivo' %}bg-red-50 text-red-700 ring-red-600/20
-                                {% else %}bg-yellow-50 text-yellow-800 ring-yellow-600/20{% endif %}">
-                                {{ beca.estatus }}
-                            </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <div class="flex justify-end gap-3 items-center">
-                                {% if user_role in ['admin', 'superadmin'] %}
-                                <a href="{{ url_for('dashboard.editar_beca', beca_id=beca.id) }}"
-                                    class="text-blue-600 hover:text-blue-900 font-semibold">Editar</a>
-                                {% endif %}
+    <!-- ============================================
+         LAYOUT DE 3 COLUMNAS CON GALERÍA
+         ============================================ -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-                                {% if user_role == 'superadmin' %}
-                                <form action="{{ url_for('dashboard.eliminar_beca', beca_id=beca.id) }}" method="POST"
-                                    class="inline"
-                                    onsubmit="confirmarEliminar('atleta', '{{ beca.nombre }} {{ beca.apellido }}');">
-                                    <button type="submit" class="text-red-600 hover:text-red-900">Borrar</button>
-                                </form>
-                                {% endif %}
+        <!-- ========== COLUMNA IZQUIERDA - GALERÍA (20-25%) ========== -->
+        <div class="hidden lg:block lg:col-span-2">
+            <div class="sticky top-4 flex flex-col gap-4 gallery-parallax" data-speed="0.3">
+                {% for i in range(1, 4) %}
+                <div
+                    class="gallery-card group relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4] bg-gradient-to-br from-slate-100 to-slate-200">
+                    <!-- Imagen -->
+                    <img src="{{ gallery_images['left_' ~ i] if gallery_images and gallery_images['left_' ~ i] else url_for('static', filename='demos/placeholder-athlete-' ~ i ~ '.jpg') }}"
+                        alt="Atleta destacado {{ i }}"
+                        class="gallery-img w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <!-- Placeholder si no hay imagen -->
+                    <div class="absolute inset-0 flex-col items-center justify-center text-slate-400 hidden">
+                        <i class="fa-solid fa-image text-4xl mb-2"></i>
+                        <span class="text-sm font-medium">Sin imagen</span>
+                    </div>
+
+                    <!-- Overlay de edición (Solo Admins) -->
+                    {% if canEdit %}
+                    <div class="gallery-overlay absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center cursor-pointer"
+                        onclick="triggerGalleryUpload('left_{{ i }}')">
+                        <div
+                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <div
+                                class="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-3 mx-auto border-2 border-white/40">
+                                <i class="fa-solid fa-camera text-white text-xl"></i>
                             </div>
-                        </td>
-                    </tr>
-                    {% else %}
-                    <tr>
-                        <td colspan="5" class="px-6 py-12 text-center text-slate-500">
-                            <p class="text-base">No se encontraron atletas.</p>
-                            {% if current_filter and current_filter != 'Todas' %}
-                            <p class="text-sm mt-1">Intenta seleccionar "Todas las Disciplinas".</p>
-                            {% elif user_role in ['admin', 'superadmin'] %}
-                            <p class="text-sm mt-1">Comienza agregando uno nuevo.</p>
-                            {% endif %}
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                            <span class="text-white font-semibold text-sm">Cambiar Foto</span>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Badge inferior -->
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
+                        <span class="text-white text-xs font-semibold uppercase tracking-wider">Atleta Destacado</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
 
-        <!-- Paginación -->
-        {% if total_pages > 1 %}
-        <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
-            <div class="flex flex-1 justify-between sm:hidden">
-                {% if page > 1 %}
-                <a href="{{ url_for('dashboard.lista_becas', page=page-1, disciplina=current_filter) }}"
-                    class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Anterior</a>
-                {% else %}
-                <span
-                    class="relative inline-flex items-center rounded-md border border-gray-300 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-400 cursor-not-allowed">Anterior</span>
-                {% endif %}
+        <!-- ========== COLUMNA CENTRAL - TABLA (50-60%) ========== -->
+        <div class="lg:col-span-8">
+            <div class="bg-white shadow-sm ring-1 ring-slate-900/5 rounded-xl overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-slate-200">
+                        <thead class="bg-slate-50">
+                            <tr>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                    Nombre / Email</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                    Cédula</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                    Disciplina</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                    Estatus</th>
+                                <th scope="col" class="relative px-6 py-3"><span class="sr-only">Acciones</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-slate-200">
+                            {% for beca in becas %}
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div
+                                            class="h-10 w-10 flex-shrink-0 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold shadow-md">
+                                            {{ beca.nombre[0] }}{{ beca.apellido[0] }}
+                                        </div>
+                                        <div class="ml-4">
+                                            <div class="text-sm font-medium text-slate-900">
+                                                <a href="{{ url_for('dashboard.ver_beca', beca_id=beca.id) }}"
+                                                    class="hover:text-blue-600 hover:underline transition-colors cursor-pointer"
+                                                    title="Ver Ficha Completa">
+                                                    {{ beca.nombre }} {{ beca.apellido }}
+                                                </a>
+                                            </div>
+                                            <div class="text-sm text-slate-500">{{ beca.email }}</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600">{{ beca.cedula }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600">{{ beca.disciplina }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset 
+                                        {% if beca.estatus == 'Activo' %}bg-green-50 text-green-700 ring-green-600/20
+                                        {% elif beca.estatus == 'Inactivo' %}bg-red-50 text-red-700 ring-red-600/20
+                                        {% else %}bg-yellow-50 text-yellow-800 ring-yellow-600/20{% endif %}">
+                                        {{ beca.estatus }}
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <div class="flex justify-end gap-3 items-center">
+                                        {% if canEdit %}
+                                        <a href="{{ url_for('dashboard.editar_beca', beca_id=beca.id) }}"
+                                            class="text-blue-600 hover:text-blue-900 font-semibold">Editar</a>
+                                        {% endif %}
 
-                {% if page < total_pages %} <a
-                    href="{{ url_for('dashboard.lista_becas', page=page+1, disciplina=current_filter) }}"
-                    class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
-                    Siguiente</a>
-                    {% else %}
-                    <span
-                        class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-400 cursor-not-allowed">Siguiente</span>
-                    {% endif %}
-            </div>
-            <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-                <div>
-                    <p class="text-sm text-gray-700">
-                        Mostrando página <span class="font-medium">{{ page }}</span> de <span class="font-medium">{{
-                            total_pages }}</span>
-                        (<span class="font-medium">{{ total }}</span> resultados)
-                    </p>
+                                        {% if user_role == 'superadmin' %}
+                                        <form action="{{ url_for('dashboard.eliminar_beca', beca_id=beca.id) }}"
+                                            method="POST" class="inline"
+                                            onsubmit="confirmarEliminar('atleta', '{{ beca.nombre }} {{ beca.apellido }}');">
+                                            <button type="submit"
+                                                class="text-red-600 hover:text-red-900">Borrar</button>
+                                        </form>
+                                        {% endif %}
+                                    </div>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="5" class="px-6 py-12 text-center text-slate-500">
+                                    <div class="flex flex-col items-center">
+                                        <i class="fa-solid fa-users-slash text-4xl text-slate-300 mb-3"></i>
+                                        <p class="text-base">No se encontraron atletas.</p>
+                                        {% if current_filter and current_filter != 'Todas' %}
+                                        <p class="text-sm mt-1">Intenta seleccionar "Todas las Disciplinas".</p>
+                                        {% elif canEdit %}
+                                        <p class="text-sm mt-1">Comienza agregando uno nuevo.</p>
+                                        {% endif %}
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
-                <div>
-                    <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-                        <!-- Botón Anterior -->
+
+                <!-- Paginación -->
+                {% if total_pages > 1 %}
+                <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
+                    <div class="flex flex-1 justify-between sm:hidden">
                         {% if page > 1 %}
-                        <a href="{{ url_for('dashboard.lista_becas', page=page-1, disciplina=current_filter) }}"
-                            class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
-                            <span class="sr-only">Anterior</span>
-                            <i class="fa-solid fa-chevron-left h-5 w-5 flex items-center justify-center"></i>
-                        </a>
+                        <a href="{{ url_for('dashboard.lista_becas', page=page-1, disciplina=current_filter, buscar=current_search) }}"
+                            class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Anterior</a>
                         {% else %}
                         <span
-                            class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-300 ring-1 ring-inset ring-gray-300 cursor-not-allowed">
-                            <span class="sr-only">Anterior</span>
-                            <i class="fa-solid fa-chevron-left h-5 w-5 flex items-center justify-center"></i>
-                        </span>
+                            class="relative inline-flex items-center rounded-md border border-gray-300 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-400 cursor-not-allowed">Anterior</span>
                         {% endif %}
 
-                        <!-- Números de Página -->
-                        {% for p in range(1, total_pages + 1) %}
-                        {% if p == page %}
-                        <span aria-current="page"
-                            class="relative z-10 inline-flex items-center bg-blue-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">{{
-                            p }}</span>
-                        {% elif p == 1 or p == total_pages or (p >= page - 2 and p <= page + 2) %} <a
-                            href="{{ url_for('dashboard.lista_becas', page=p, disciplina=current_filter) }}"
-                            class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
-                            {{ p }}</a>
-                            {% elif p == page - 3 or p == page + 3 %}
+                        {% if page < total_pages %} <a
+                            href="{{ url_for('dashboard.lista_becas', page=page+1, disciplina=current_filter, buscar=current_search) }}"
+                            class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
+                            Siguiente</a>
+                            {% else %}
                             <span
-                                class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0">...</span>
+                                class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-400 cursor-not-allowed">Siguiente</span>
                             {% endif %}
-                            {% endfor %}
-
-                            <!-- Botón Siguiente -->
-                            {% if page < total_pages %} <a
-                                href="{{ url_for('dashboard.lista_becas', page=page+1, disciplina=current_filter) }}"
-                                class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
-                                <span class="sr-only">Siguiente</span>
-                                <i class="fa-solid fa-chevron-right h-5 w-5 flex items-center justify-center"></i>
+                    </div>
+                    <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+                        <div>
+                            <p class="text-sm text-gray-700">
+                                Mostrando página <span class="font-medium">{{ page }}</span> de <span
+                                    class="font-medium">{{ total_pages }}</span>
+                                (<span class="font-medium">{{ total }}</span> resultados)
+                            </p>
+                        </div>
+                        <div>
+                            <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                                {% if page > 1 %}
+                                <a href="{{ url_for('dashboard.lista_becas', page=page-1, disciplina=current_filter, buscar=current_search) }}"
+                                    class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                                    <span class="sr-only">Anterior</span>
+                                    <i class="fa-solid fa-chevron-left h-5 w-5 flex items-center justify-center"></i>
                                 </a>
                                 {% else %}
                                 <span
-                                    class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-300 ring-1 ring-inset ring-gray-300 cursor-not-allowed">
-                                    <span class="sr-only">Siguiente</span>
-                                    <i class="fa-solid fa-chevron-right h-5 w-5 flex items-center justify-center"></i>
+                                    class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-300 ring-1 ring-inset ring-gray-300 cursor-not-allowed">
+                                    <span class="sr-only">Anterior</span>
+                                    <i class="fa-solid fa-chevron-left h-5 w-5 flex items-center justify-center"></i>
                                 </span>
                                 {% endif %}
-                    </nav>
+
+                                {% for p in range(1, total_pages + 1) %}
+                                {% if p == page %}
+                                <span aria-current="page"
+                                    class="relative z-10 inline-flex items-center bg-blue-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">{{
+                                    p }}</span>
+                                {% elif p == 1 or p == total_pages or (p >= page - 2 and p <= page + 2) %} <a
+                                    href="{{ url_for('dashboard.lista_becas', page=p, disciplina=current_filter, buscar=current_search) }}"
+                                    class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                                    {{ p }}</a>
+                                    {% elif p == page - 3 or p == page + 3 %}
+                                    <span
+                                        class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0">...</span>
+                                    {% endif %}
+                                    {% endfor %}
+
+                                    {% if page < total_pages %} <a
+                                        href="{{ url_for('dashboard.lista_becas', page=page+1, disciplina=current_filter, buscar=current_search) }}"
+                                        class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                                        <span class="sr-only">Siguiente</span>
+                                        <i
+                                            class="fa-solid fa-chevron-right h-5 w-5 flex items-center justify-center"></i>
+                                        </a>
+                                        {% else %}
+                                        <span
+                                            class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-300 ring-1 ring-inset ring-gray-300 cursor-not-allowed">
+                                            <span class="sr-only">Siguiente</span>
+                                            <i
+                                                class="fa-solid fa-chevron-right h-5 w-5 flex items-center justify-center"></i>
+                                        </span>
+                                        {% endif %}
+                            </nav>
+                        </div>
+                    </div>
                 </div>
+                {% endif %}
             </div>
         </div>
-        {% endif %}
-    </div>
+
+        <!-- ========== COLUMNA DERECHA - GALERÍA (20-25%) ========== -->
+        <div class="hidden lg:block lg:col-span-2">
+            <div class="sticky top-4 flex flex-col gap-4 gallery-parallax" data-speed="-0.3">
+                {% for i in range(1, 4) %}
+                <div
+                    class="gallery-card group relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4] bg-gradient-to-br from-slate-100 to-slate-200">
+                    <!-- Imagen -->
+                    <img src="{{ gallery_images['right_' ~ i] if gallery_images and gallery_images['right_' ~ i] else url_for('static', filename='demos/placeholder-athlete-' ~ (i + 3) ~ '.jpg') }}"
+                        alt="Atleta destacado {{ i + 3 }}"
+                        class="gallery-img w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <!-- Placeholder si no hay imagen -->
+                    <div class="absolute inset-0 flex-col items-center justify-center text-slate-400 hidden">
+                        <i class="fa-solid fa-image text-4xl mb-2"></i>
+                        <span class="text-sm font-medium">Sin imagen</span>
+                    </div>
+
+                    <!-- Overlay de edición (Solo Admins) -->
+                    {% if canEdit %}
+                    <div class="gallery-overlay absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center cursor-pointer"
+                        onclick="triggerGalleryUpload('right_{{ i }}')">
+                        <div
+                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <div
+                                class="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-3 mx-auto border-2 border-white/40">
+                                <i class="fa-solid fa-camera text-white text-xl"></i>
+                            </div>
+                            <span class="text-white font-semibold text-sm">Cambiar Foto</span>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Badge inferior -->
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
+                        <span class="text-white text-xs font-semibold uppercase tracking-wider">Atleta Destacado</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div><!-- Fin del grid 3 columnas -->
+
 </div>
+
+<!-- Input oculto para subida de imágenes -->
+<input type="file" id="galleryUploadInput" accept="image/*" class="hidden" onchange="handleGalleryUpload(this)">
+
+<!-- Estilos adicionales -->
+<style>
+    /* Animaciones suaves para las tarjetas de galería */
+    .gallery-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Efecto glassmorphism en overlay */
+    .gallery-overlay {
+        backdrop-filter: blur(2px);
+    }
+
+    /* Responsive: mostrar galería en móvil como carrusel horizontal */
+    @media (max-width: 1023px) {
+        .gallery-mobile-scroll {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 1rem;
+            padding: 1rem 0;
+        }
+
+        .gallery-mobile-scroll .gallery-card {
+            flex-shrink: 0;
+            width: 45%;
+            scroll-snap-align: start;
+        }
+    }
+</style>
+
+<!-- Script para manejo de subida de imágenes -->
+<script>
+    let currentGallerySlot = null;
+
+    function triggerGalleryUpload(slot) {
+        currentGallerySlot = slot;
+        document.getElementById('galleryUploadInput').click();
+    }
+
+    async function handleGalleryUpload(input) {
+        if (!input.files || !input.files[0]) return;
+
+        const file = input.files[0];
+        const formData = new FormData();
+        formData.append('image', file);
+        formData.append('slot', currentGallerySlot);
+
+        try {
+            // Mostrar preview inmediato
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                // Buscar la imagen correspondiente y actualizarla
+                const cards = document.querySelectorAll('.gallery-card');
+                const slotParts = currentGallerySlot.split('_');
+                const side = slotParts[0];
+                const index = parseInt(slotParts[1]) - 1;
+
+                let targetCard;
+                if (side === 'left') {
+                    targetCard = document.querySelectorAll('.lg\\:col-span-2')[0].querySelectorAll('.gallery-card')[index];
+                } else {
+                    targetCard = document.querySelectorAll('.lg\\:col-span-2')[1].querySelectorAll('.gallery-card')[index];
+                }
+
+                if (targetCard) {
+                    const img = targetCard.querySelector('img');
+                    if (img) {
+                        img.src = e.target.result;
+                        img.style.display = 'block';
+                        img.nextElementSibling.style.display = 'none';
+                    }
+                }
+            };
+            reader.readAsDataURL(file);
+
+            // Enviar al servidor (implementar endpoint)
+            const response = await fetch('/dashboard/gallery/upload', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                if (typeof showSaveToast === 'function') {
+                    showSaveToast('Imagen actualizada correctamente');
+                }
+            } else {
+                console.error('Error al subir imagen');
+                if (typeof errorAlert === 'function') {
+                    errorAlert('Error al subir la imagen. Inténtalo de nuevo.');
+                }
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+
+        // Limpiar input
+        input.value = '';
+    }
+
+    // ============================================
+    // EFECTO STICKY - Fotos fijas mientras scrolleas
+    // ============================================
+    // Las galerías usan position: sticky en CSS
+    // No se necesita JavaScript adicional, el sticky CSS
+    // mantiene las fotos visibles mientras bajas la página
+
+</script>
 {% endblock %}

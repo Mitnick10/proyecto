@@ -1,7 +1,7 @@
 import base64
 import logging
 from datetime import datetime
-from flask import Blueprint, render_template, request, redirect, url_for, flash, session, send_file
+from flask import Blueprint, render_template, request, redirect, url_for, flash, session, send_file, jsonify
 from io import BytesIO
 from openpyxl import Workbook
 from openpyxl.styles import Font, Alignment, Border, Side
@@ -173,11 +173,24 @@ def index():
             cache_contadores['data'] = contadores
             cache_contadores['timestamp'] = now
         
+        
+        
+        
+        # Cargar imágenes de galería (Slots)
+        gallery_images = {}
+        try:
+            gallery_data = supabase.table('gallery_images').select('*').execute()
+            for img in gallery_data.data:
+                gallery_images[img['slot']] = img['image_data']
+        except:
+            pass
+
         return render_template('dashboard_home.html', 
                                first_name=first_name, 
                                atletas_count=contadores['atletas'], 
                                revision_count=contadores['revision'], 
-                               medallas_count=contadores['medallas'])
+                               medallas_count=contadores['medallas'],
+                               gallery_images=gallery_images)
     except Exception as e:
         logger.error(f"Error cargando dashboard: {e}", exc_info=True)
         session.clear()
@@ -187,8 +200,9 @@ def index():
 @dashboard_blueprint.route('/becas')
 @login_required
 def lista_becas():
-    """Lista de becas con filtro por disciplina y paginación."""
+    """Lista de becas con filtro por disciplina, búsqueda por nombre y paginación."""
     filtro = request.args.get('disciplina')
+    busqueda = request.args.get('buscar', '').strip()
     page = request.args.get('page', 1, type=int)
     per_page = 20
     
@@ -197,8 +211,14 @@ def lista_becas():
         end = start + per_page - 1
         
         query = supabase.table('becas').select('*', count='exact')
+        
+        # Filtrar por disciplina
         if filtro and filtro != 'Todas':
             query = query.eq('disciplina', filtro)
+        
+        # Búsqueda por nombre o apellido (case-insensitive)
+        if busqueda:
+            query = query.or_(f"nombre.ilike.%{busqueda}%,apellido.ilike.%{busqueda}%")
         
         result = query.order('id', desc=True).range(start, end).execute()
         becas = result.data
@@ -208,17 +228,28 @@ def lista_becas():
         all_d = supabase.table('becas').select('disciplina').limit(1000).execute()
         lista_d = sorted(list(set(i['disciplina'] for i in all_d.data if i.get('disciplina'))))
         
+        # Cargar imágenes de galería
+        gallery_images = {}
+        try:
+            gallery_data = supabase.table('gallery_images').select('*').execute()
+            for img in gallery_data.data:
+                gallery_images[img['slot']] = img['image_data']
+        except:
+            pass  # Si la tabla no existe, continuar sin imágenes
+        
         return render_template('dashboard_becas.html', 
                              becas=becas, 
                              disciplinas=lista_d, 
                              current_filter=filtro,
+                             current_search=busqueda,
+                             gallery_images=gallery_images,
                              page=page,
                              total_pages=total_pages,
                              total=total)
     except Exception as e:
         logger.error(f"Error al cargar listado: {e}", exc_info=True)
         flash(f'Error al cargar listado: {e}', 'error')
-        return render_template('dashboard_becas.html', becas=[], disciplinas=[], page=1, total_pages=1, total=0)
+        return render_template('dashboard_becas.html', becas=[], disciplinas=[], page=1, total_pages=1, total=0, current_search='', gallery_images={})
 
 # --- RUTA MI CUENTA ---
 @dashboard_blueprint.route('/cuenta', methods=['GET', 'POST'])
@@ -684,3 +715,72 @@ def eliminar_usuario():
         logger.error(f"Error eliminando usuario: {e}")
         flash(f'Error al eliminar usuario: {e}', 'error')
     return redirect(url_for('dashboard.lista_usuarios'))
+
+
+# --- GESTIÓN DE GALERÍA DE IMÁGENES ---
+
+@dashboard_blueprint.route('/gallery/upload', methods=['POST'])
+@login_required
+def upload_gallery_image():
+    """Subir imagen para la galería del dashboard (Solo admins)."""
+    from flask import jsonify
+    
+    # Verificar permisos
+    role = session.get('role', 'usuario')
+    if role not in ['admin', 'superadmin']:
+        return jsonify({'error': 'No autorizado'}), 403
+    
+    try:
+        file = request.files.get('image')
+        slot = request.form.get('slot')
+        
+        if not file or not slot:
+            return jsonify({'error': 'Faltan datos'}), 400
+        
+        # Validar slot válido (becas laterales fijos, home dinámico)
+        if not (slot.startswith('home_') or slot in ['left_1', 'left_2', 'left_3', 'right_1', 'right_2', 'right_3']):
+            return jsonify({'error': 'Slot inválido'}), 400
+        
+        try:
+            import base64
+            from io import BytesIO
+            from PIL import Image
+            
+            # Procesar imagen a Base64
+            file.seek(0)
+            img = Image.open(file)
+            
+            # Convertir a RGB si es necesario
+            if img.mode in ('RGBA', 'LA', 'P'):
+                background = Image.new('RGB', img.size, (255, 255, 255))
+                if img.mode == 'P':
+                    img = img.convert('RGBA')
+                background.paste(img, mask=img.split()[-1] if img.mode == 'RGBA' else None)
+                img = background
+            
+            # Redimensionar si es muy grande (opcional pero recomendado para base64)
+            img.thumbnail((800, 800))
+            
+            buffer = BytesIO()
+            img.save(buffer, format='PNG', quality=85)
+            img_str = base64.b64encode(buffer.getvalue()).decode('utf-8')
+            img_data = f"data:image/png;base64,{img_str}"
+            
+            # Upsert en la tabla gallery_images
+            data = {
+                'slot': slot,
+                'image_data': img_data,
+                'updated_at': 'now()'
+            }
+            supabase.table('gallery_images').upsert(data).execute()
+            
+            logger.info(f"Imagen actualizada en tabla gallery_images: {slot}")
+            return jsonify({'success': True, 'message': 'Imagen actualizada'}), 200
+            
+        except Exception as save_error:
+            logger.error(f"Error procesando/guardando imagen: {save_error}")
+            return jsonify({'error': f'Error procesando imagen: {str(save_error)}'}), 500
+        
+    except Exception as e:
+        logger.error(f"Error subiendo imagen galería: {e}")
+        return jsonify({'error': str(e)}), 500

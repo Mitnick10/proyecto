@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@source "../../templates/**/*.html";
+@source "../../static/**/*.js";
+
+@theme {
+    --font-sans: "Inter", "sans-serif";
+}
+
+@layer base {
+    html {
+        font-size: 18px;
+    }
+}

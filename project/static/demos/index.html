@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEMO - Alertas Bonitas</title>
+    <link rel="stylesheet" href="css/custom-alerts.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 24px;
+            padding: 48px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e293b;
+            margin-bottom: 12px;
+            font-size: 36px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 48px;
+            font-size: 16px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 20px;
+            margin: 16px 0;
+            border: none;
+            border-radius: 16px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:active {
+            transform: translateY(-2px);
+        }
+
+        .icon {
+            font-size: 28px;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        .btn-error {
+            background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .btn-info {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .btn-question {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎨 Alertas Bonitas</h1>
+        <p class="subtitle">Haz click en cada botón para ver las alertas modernas</p>
+
+        <button class="btn btn-success" onclick="demo1()">
+            <span>Alerta de Éxito</span>
+            <span class="icon">✓</span>
+        </button>
+
+        <button class="btn btn-error" onclick="demo2()">
+            <span>Alerta de Error</span>
+            <span class="icon">✕</span>
+        </button>
+
+        <button class="btn btn-warning" onclick="demo3()">
+            <span>Alerta de Advertencia</span>
+            <span class="icon">⚠</span>
+        </button>
+
+        <button class="btn btn-info" onclick="demo4()">
+            <span>Alerta de Información</span>
+            <span class="icon">ℹ</span>
+        </button>
+
+        <button class="btn btn-question" onclick="demo5()">
+            <span>Confirmación (Sí/No)</span>
+            <span class="icon">?</span>
+        </button>
+
+        <button class="btn btn-error" onclick="demo6()">
+            <span>Confirmar Eliminación</span>
+            <span class="icon">🗑️</span>
+        </button>
+    </div>
+
+    <script src="js/custom-alerts.js"></script>
+    <script>
+        async function demo1() {
+            await successAlert(
+                "¡Los datos se guardaron correctamente!\n\nTodos los cambios fueron aplicados en el sistema.",
+                "¡Éxito!"
+            );
+        }
+
+        async function demo2() {
+            await errorAlert(
+                "No se pudo completar la operación.\n\nPor favor verifica los datos e inténtalo de nuevo.",
+                "Error"
+            );
+        }
+
+        async function demo3() {
+            await warningAlert(
+                "Tu sesión expirará en 5 minutos.\n\nGuarda tu trabajo para no perder los cambios.",
+                "¡Advertencia!"
+            );
+        }
+
+        async function demo4() {
+            await infoAlert(
+                "Hay nuevas funciones disponibles en el sistema.\n\nRevisa el menú para descubrirlas.",
+                "Información"
+            );
+        }
+
+        async function demo5() {
+            const resultado = await confirmAlert(
+                "¿Deseas continuar con esta acción?\n\nEsto puede tomar unos minutos.",
+                "Confirmar Acción"
+            );
+
+            if (resultado) {
+                await successAlert("¡Has confirmado!", "Confirmado");
+            } else {
+                await infoAlert("Acción cancelada", "Cancelado");
+            }
+        }
+
+        async function demo6() {
+            const resultado = await showCustomAlert({
+                title: '⚠️ ¿Eliminar Atleta?',
+                message: 'Se eliminará toda la información de: Juan Pérez\n\nEsta acción NO se puede deshacer.\n\n¿Estás completamente seguro?',
+                type: 'error',
+                confirmText: '🗑️ Sí, Eliminar',
+                cancelText: 'Cancelar',
+                showCancel: true
+            });
+
+            if (resultado) {
+                await successAlert("Elemento eliminado correctamente", "Eliminado");
+            } else {
+                await infoAlert("No se eliminó nada", "Cancelado");
+            }
+        }
+    </script>
+</body>
+
+</html>
