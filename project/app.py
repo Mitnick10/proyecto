@@ -8,8 +8,6 @@ from dotenv import load_dotenv
 from config.supabase_client import supabase
 from blueprints.dashboard import dashboard_blueprint
 from blueprints.auth import auth_blueprint
-from utils.decorators import login_required
-from utils.password_strength import validar_fortaleza_password, generar_sugerencias_password
 
 # --- Cargar variables de entorno ---
 load_dotenv()
