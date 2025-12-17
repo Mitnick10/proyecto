@@ -8,8 +8,7 @@ from dotenv import load_dotenv
 from config.supabase_client import supabase
 from blueprints.dashboard import dashboard_blueprint
 from blueprints.auth import auth_blueprint
-from utils.decorators import login_required
-from utils.password_strength import validar_fortaleza_password, generar_sugerencias_password
+
 
 # --- Cargar variables de entorno ---
 load_dotenv()
@@ -34,6 +33,12 @@ if not SECRET_KEY:
     logger.error("FLASK_SECRET_KEY no está configurada en el archivo .env")
     raise ValueError("FLASK_SECRET_KEY debe estar configurada en el archivo .env")
 app.config['SECRET_KEY'] = SECRET_KEY
+
+# Desactivar caché de templates para desarrollo
+app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.jinja_env.auto_reload = True
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
 logger.info("Aplicación Flask inicializada correctamente")
 
 # --- Registrar el Blueprint del Dashboard ---

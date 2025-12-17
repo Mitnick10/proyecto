@@ -7,7 +7,74 @@
     <title>{% block title %}Dashboard{% endblock %} - IRDEBG</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- SweetAlert2 for beautiful alerts -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Confirmaciones personalizadas -->
+    <script src="{{ url_for('static', filename='js/confirmaciones.js') }}"></script>
     <style>
+        /* Estilos para texto más grande y oscuro */
+        body {
+            font-size: 20px !important;
+            color: #1f2937 !important;
+        }
+
+        /* Títulos más oscuros */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #111827 !important;
+            font-weight: 700 !important;
+        }
+
+        /* Párrafos y texto general más oscuros (excepto en botones con bg) */
+        p:not(.btn):not(button *),
+        span:not(button *):not(a *),
+        div:not(button *):not(.bg-blue-600 *):not(.bg-red-600 *):not(.bg-green-600 *),
+        td:not(button):has(> :not(button)),
+        th,
+        li {
+            color: #1f2937 !important;
+        }
+
+        /* Labels más oscuros y bold */
+        label {
+            color: #374151 !important;
+            font-weight: 600 !important;
+        }
+
+        /* Inputs, selects, textareas más oscuros */
+        input,
+        select,
+        textarea {
+            color: #111827 !important;
+            font-size: 1rem !important;
+        }
+
+        /* Asegurar que los botones con bg mantengan su texto blanco */
+        button[class*="bg-"],
+        a[class*="bg-"] {
+            color: white !important;
+        }
+
+        /* Links más legibles (excepto los de navegación) */
+        a:not([class*="text-slate-"]):not([class*="text-white"]):not([class*="bg-"]) {
+            color: #1e40af !important;
+        }
+
+        /* Tablas con texto más oscuro */
+        table {
+            color: #1f2937 !important;
+        }
+
+        /* Placeholders más oscuros */
+        ::placeholder {
+            color: #6b7280 !important;
+            opacity: 0.7;
+        }
+
         @keyframes slideInRight {
             from {
                 transform: translateX(400px);
@@ -216,6 +283,7 @@
             });
         });
     </script>
+
 </body>
 
 </html>
