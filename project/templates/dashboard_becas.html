@@ -51,7 +51,8 @@
                        {{ 'border-blue-600 bg-blue-50 text-blue-700 shadow-md' if not current_filter or current_filter == 'Todas' else 'border-slate-200 bg-white text-slate-500 hover:border-blue-300 hover:shadow-sm' }}">
                         <i
                             class="fa-solid fa-layer-group text-2xl mb-2 {{ 'text-blue-600' if not current_filter or current_filter == 'Todas' else 'text-slate-400 group-hover:text-blue-500' }}"></i>
-                        <span class="text-xs font-semibold text-center leading-tight">Todas</span>
+                        <span class="text-xs font-semibold text-center leading-tight"
+                            style="color: {{ '#2563eb' if not current_filter or current_filter == 'Todas' else '#64748b' }} !important;">Todas</span>
                     </a>
 
                     {% for d in disciplinas %}
@@ -75,7 +76,8 @@
                            {{ 'border-blue-600 bg-blue-50 text-blue-700 shadow-md' if current_filter == d else 'border-slate-200 bg-white text-slate-500 hover:border-blue-300 hover:shadow-sm' }}">
                         <i
                             class="fa-solid {{ icon_class }} text-2xl mb-2 {{ 'text-blue-600' if current_filter == d else 'text-slate-400 group-hover:text-blue-500' }}"></i>
-                        <span class="text-xs font-semibold text-center leading-tight px-1 truncate w-full">{{ d
+                        <span class="text-xs font-semibold text-center leading-tight px-1 truncate w-full"
+                            style="color: {{ '#2563eb' if current_filter == d else '#64748b' }} !important;">{{ d
                             }}</span>
                     </a>
                     {% endfor %}
@@ -151,16 +153,16 @@
                         <thead class="bg-slate-50">
                             <tr>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">
                                     Nombre / Email</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">
                                     Cédula</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">
                                     Disciplina</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">
                                     Estatus</th>
                                 <th scope="col" class="relative px-6 py-3"><span class="sr-only">Acciones</span>
                                 </th>
@@ -192,10 +194,13 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600">{{ beca.disciplina }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <span class="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset 
-                                        {% if beca.estatus == 'Activo' %}bg-green-50 text-green-700 ring-green-600/20
-                                        {% elif beca.estatus == 'Inactivo' %}bg-red-50 text-red-700 ring-red-600/20
-                                        {% else %}bg-yellow-50 text-yellow-800 ring-yellow-600/20{% endif %}">
+                                    <span class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold shadow-sm transition-colors
+                                        {% if beca.estatus == 'Activo' %}bg-green-500 text-white
+                                        {% elif beca.estatus == 'Inactivo' %}bg-red-500 text-white
+                                        {% else %}bg-yellow-400 text-gray-900{% endif %}"
+                                        style="{% if beca.estatus == 'Activo' %}background-color: #22c55e !important; color: white !important;
+                                        {% elif beca.estatus == 'Inactivo' %}background-color: #ef4444 !important; color: white !important;
+                                        {% else %}background-color: #fbbf24 !important; color: #111827 !important;{% endif %}">
                                         {{ beca.estatus }}
                                     </span>
                                 </td>
@@ -203,15 +208,23 @@
                                     <div class="flex justify-end gap-3 items-center">
                                         {% if canEdit %}
                                         <a href="{{ url_for('dashboard.editar_beca', beca_id=beca.id) }}"
-                                            class="text-blue-600 hover:text-blue-900 font-semibold">Editar</a>
+                                            class="inline-flex items-center px-3 py-1.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
+                                            style="background-color: #2563eb !important; color: white !important;">
+                                            <i class="fa-solid fa-pen-to-square mr-1.5"></i>
+                                            Editar
+                                        </a>
                                         {% endif %}
 
                                         {% if user_role == 'superadmin' %}
                                         <form action="{{ url_for('dashboard.eliminar_beca', beca_id=beca.id) }}"
                                             method="POST" class="inline"
-                                            onsubmit="confirmarEliminar('atleta', '{{ beca.nombre }} {{ beca.apellido }}');">
+                                            onsubmit="return confirmarEliminar(event, 'atleta', '{{ beca.nombre }} {{ beca.apellido }}');">
                                             <button type="submit"
-                                                class="text-red-600 hover:text-red-900">Borrar</button>
+                                                class="inline-flex items-center px-3 py-1.5 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors shadow-sm"
+                                                style="background-color: #dc2626 !important; color: white !important;">
+                                                <i class="fa-solid fa-trash mr-1.5"></i>
+                                                Borrar
+                                            </button>
                                         </form>
                                         {% endif %}
                                     </div>

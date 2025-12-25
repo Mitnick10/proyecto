@@ -86,14 +86,26 @@
                 <div class="md:col-span-2 border-b border-slate-100 pb-4">
                     <h4 class="text-xs font-black text-blue-900 uppercase tracking-wider mb-3">Deportes</h4>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <select name="disciplina" class="md:col-span-2 w-full rounded border-slate-300 text-sm">
+                        <select name="disciplina_select" id="disciplinaSelect"
+                            class="md:col-span-2 w-full rounded border-slate-300 text-sm"
+                            onchange="toggleNuevaDisciplina()">
                             <option value="">Disciplina...</option>
-                            {% for d in ['Atletismo', 'Baloncesto', 'Béisbol', 'Boxeo', 'Ciclismo', 'Fútbol',
-                            'Gimnasia', 'Natación', 'Taekwondo', 'Tenis de Campo', 'Tenis de Mesa', 'Voleibol',
-                            'Otros'] %}
+                            {% for d in disciplinas_list %}
                             <option>{{ d }}</option>
                             {% endfor %}
+                            <option value="__OTRAS__">+ Agregar Nueva Disciplina</option>
                         </select>
+
+                        <!-- Campo oculto para nueva disciplina -->
+                        <div id="nuevaDisciplinaContainer" class="md:col-span-2 hidden">
+                            <input type="text" id="nuevaDisciplinaInput"
+                                placeholder="Escribe el nombre del nuevo deporte..."
+                                class="w-full rounded border-blue-400 text-sm bg-blue-50 font-medium">
+                        </div>
+
+                        <!-- Campo oculto real que se envía -->
+                        <input type="hidden" name="disciplina" id="disciplinaHidden">
+
                         <input type="text" name="especialidad" placeholder="Especialidad"
                             class="w-full rounded border-slate-300 text-sm">
                         <input type="text" name="categoria" placeholder="Categoría"
@@ -267,5 +279,44 @@
             noteCuenta.classList.add('hidden');
         }
     }
+
+    // Función para mostrar/ocultar campo de nueva disciplina
+    function toggleNuevaDisciplina() {
+        const select = document.getElementById('disciplinaSelect');
+        const container = document.getElementById('nuevaDisciplinaContainer');
+        const input = document.getElementById('nuevaDisciplinaInput');
+
+        if (select.value === '__OTRAS__') {
+            container.classList.remove('hidden');
+            input.focus();
+        } else {
+            container.classList.add('hidden');
+            input.value = '';
+        }
+    }
+
+    // Antes de enviar el formulario, sincronizar el valor correcto
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function (e) {
+            const select = document.getElementById('disciplinaSelect');
+            const hiddenInput = document.getElementById('disciplinaHidden');
+            const nuevaInput = document.getElementById('nuevaDisciplinaInput');
+
+            if (select.value === '__OTRAS__') {
+                // Si seleccionó "Otras", usar el valor del input de nueva disciplina
+                if (nuevaInput.value.trim() === '') {
+                    e.preventDefault();
+                    alert('Por favor, ingresa el nombre del nuevo deporte');
+                    nuevaInput.focus();
+                    return false;
+                }
+                hiddenInput.value = nuevaInput.value.trim();
+            } else {
+                // Usar el valor del select normal
+                hiddenInput.value = select.value;
+            }
+        });
+    });
 </script>
 {% endblock %}

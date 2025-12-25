@@ -45,37 +45,39 @@
         {% if user_role in ['admin', 'superadmin'] %}
         <a href="{{ url_for('dashboard.crear_beca') }}"
             class="inline-flex items-center rounded-md bg-blue-600 px-5 py-3 text-base font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors">
-            <svg class="mr-2 -ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                aria-hidden="true">
+            <svg class="mr-2 -ml-1 h-5 w-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                fill="currentColor">
                 <path fill-rule="evenodd"
                     d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
                     clip-rule="evenodd" />
             </svg>
-            Registrar Nueva Beca
+            <span class="whitespace-nowrap">Registrar Nueva Beca</span>
         </a>
         {% endif %}
 
         <!-- Ver Listado: VISIBLE PARA TODOS -->
         <a href="{{ url_for('dashboard.lista_becas') }}"
-            class="inline-flex items-center rounded-md bg-white border border-gray-300 px-5 py-3 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition-colors">
-            <svg class="mr-2 -ml-1 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                fill="currentColor" aria-hidden="true">
+            class="inline-flex items-center rounded-md bg-white border border-gray-300 px-5 py-3 text-base font-semibold text-gray-900 shadow-sm hover:bg-gray-50 transition-colors"
+            style="color: #111827 !important;">
+            <svg class="mr-2 -ml-1 h-5 w-5 flex-shrink-0 text-gray-600" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20" fill="currentColor">
                 <path
                     d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
             </svg>
-            Ver Listado de Atletas
+            <span class="whitespace-nowrap">Ver Listado de Atletas</span>
         </a>
 
         <!-- Botón Mi Cuenta: VISIBLE PARA TODOS -->
         <a href="{{ url_for('dashboard.mi_cuenta') }}"
-            class="inline-flex items-center rounded-md bg-white border border-gray-300 px-5 py-3 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition-colors">
-            <svg class="mr-2 -ml-1 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                fill="currentColor">
+            class="inline-flex items-center rounded-md bg-white border border-gray-300 px-5 py-3 text-base font-semibold text-gray-900 shadow-sm hover:bg-gray-50 transition-colors"
+            style="color: #111827 !important;">
+            <svg class="mr-2 -ml-1 h-5 w-5 flex-shrink-0 text-gray-600" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"
                     d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
                     clip-rule="evenodd" />
             </svg>
-            Mi Cuenta
+            <span class="whitespace-nowrap">Mi Cuenta</span>
         </a>
     </div>
 </div>
