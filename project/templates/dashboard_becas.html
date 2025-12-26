@@ -51,7 +51,8 @@
                        {{ 'border-blue-600 bg-blue-50 text-blue-700 shadow-md' if not current_filter or current_filter == 'Todas' else 'border-slate-200 bg-white text-slate-500 hover:border-blue-300 hover:shadow-sm' }}">
                         <i
                             class="fa-solid fa-layer-group text-2xl mb-2 {{ 'text-blue-600' if not current_filter or current_filter == 'Todas' else 'text-slate-400 group-hover:text-blue-500' }}"></i>
-                        <span class="text-xs font-semibold text-center leading-tight">Todas</span>
+                        <span class="text-xs font-semibold text-center leading-tight"
+                            style="color: {{ '#2563eb' if not current_filter or current_filter == 'Todas' else '#64748b' }} !important;">Todas</span>
                     </a>
 
                     {% for d in disciplinas %}
@@ -75,7 +76,8 @@
                            {{ 'border-blue-600 bg-blue-50 text-blue-700 shadow-md' if current_filter == d else 'border-slate-200 bg-white text-slate-500 hover:border-blue-300 hover:shadow-sm' }}">
                         <i
                             class="fa-solid {{ icon_class }} text-2xl mb-2 {{ 'text-blue-600' if current_filter == d else 'text-slate-400 group-hover:text-blue-500' }}"></i>
-                        <span class="text-xs font-semibold text-center leading-tight px-1 truncate w-full">{{ d
+                        <span class="text-xs font-semibold text-center leading-tight px-1 truncate w-full"
+                            style="color: {{ '#2563eb' if current_filter == d else '#64748b' }} !important;">{{ d
                             }}</span>
                     </a>
                     {% endfor %}
@@ -106,12 +108,12 @@
         <div class="hidden lg:block lg:col-span-2">
             <div class="sticky top-4 flex flex-col gap-4 gallery-parallax" data-speed="0.3">
                 {% for i in range(1, 4) %}
-                <div
-                    class="gallery-card group relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4] bg-gradient-to-br from-slate-100 to-slate-200">
+                <div class="gallery-card group relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4] bg-gradient-to-br from-slate-100 to-slate-200"
+                    data-side="left" data-index="{{ i - 1 }}">
                     <!-- Imagen -->
-                    <img src="{{ gallery_images['left_' ~ i] if gallery_images and gallery_images['left_' ~ i] else url_for('static', filename='demos/placeholder-athlete-' ~ i ~ '.jpg') }}"
+                    <img src="{{ gallery_images.left[i - 1] if gallery_images.left and (i - 1) < gallery_images.left|length else url_for('static', filename='demos/placeholder-athlete-' ~ i ~ '.jpg') }}"
                         alt="Atleta destacado {{ i }}"
-                        class="gallery-img w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        class="gallery-img w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <!-- Placeholder si no hay imagen -->
                     <div class="absolute inset-0 flex-col items-center justify-center text-slate-400 hidden">
@@ -122,7 +124,7 @@
                     <!-- Overlay de edición (Solo Admins) -->
                     {% if canEdit %}
                     <div class="gallery-overlay absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center cursor-pointer"
-                        onclick="triggerGalleryUpload('left_{{ i }}')">
+                        onclick="triggerGalleryUpload('left_{{ (gallery_images.left|length) + 1 if gallery_images.left else i }}')">
                         <div
                             class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                             <div
@@ -151,16 +153,16 @@
                         <thead class="bg-slate-50">
                             <tr>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">
                                     Nombre / Email</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">
                                     Cédula</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">
                                     Disciplina</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">
                                     Estatus</th>
                                 <th scope="col" class="relative px-6 py-3"><span class="sr-only">Acciones</span>
                                 </th>
@@ -192,10 +194,13 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600">{{ beca.disciplina }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <span class="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset 
-                                        {% if beca.estatus == 'Activo' %}bg-green-50 text-green-700 ring-green-600/20
-                                        {% elif beca.estatus == 'Inactivo' %}bg-red-50 text-red-700 ring-red-600/20
-                                        {% else %}bg-yellow-50 text-yellow-800 ring-yellow-600/20{% endif %}">
+                                    <span class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold shadow-sm transition-colors
+                                        {% if beca.estatus == 'Activo' %}bg-green-500 text-white
+                                        {% elif beca.estatus == 'Inactivo' %}bg-red-500 text-white
+                                        {% else %}bg-yellow-400 text-gray-900{% endif %}"
+                                        style="{% if beca.estatus == 'Activo' %}background-color: #22c55e !important; color: white !important;
+                                        {% elif beca.estatus == 'Inactivo' %}background-color: #ef4444 !important; color: white !important;
+                                        {% else %}background-color: #fbbf24 !important; color: #111827 !important;{% endif %}">
                                         {{ beca.estatus }}
                                     </span>
                                 </td>
@@ -203,15 +208,23 @@
                                     <div class="flex justify-end gap-3 items-center">
                                         {% if canEdit %}
                                         <a href="{{ url_for('dashboard.editar_beca', beca_id=beca.id) }}"
-                                            class="text-blue-600 hover:text-blue-900 font-semibold">Editar</a>
+                                            class="inline-flex items-center px-3 py-1.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
+                                            style="background-color: #2563eb !important; color: white !important;">
+                                            <i class="fa-solid fa-pen-to-square mr-1.5"></i>
+                                            Editar
+                                        </a>
                                         {% endif %}
 
                                         {% if user_role == 'superadmin' %}
                                         <form action="{{ url_for('dashboard.eliminar_beca', beca_id=beca.id) }}"
                                             method="POST" class="inline"
-                                            onsubmit="confirmarEliminar('atleta', '{{ beca.nombre }} {{ beca.apellido }}');">
+                                            onsubmit="return confirmarEliminar(event, 'atleta', '{{ beca.nombre }} {{ beca.apellido }}');">
                                             <button type="submit"
-                                                class="text-red-600 hover:text-red-900">Borrar</button>
+                                                class="inline-flex items-center px-3 py-1.5 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors shadow-sm"
+                                                style="background-color: #dc2626 !important; color: white !important;">
+                                                <i class="fa-solid fa-trash mr-1.5"></i>
+                                                Borrar
+                                            </button>
                                         </form>
                                         {% endif %}
                                     </div>
@@ -323,12 +336,12 @@
         <div class="hidden lg:block lg:col-span-2">
             <div class="sticky top-4 flex flex-col gap-4 gallery-parallax" data-speed="-0.3">
                 {% for i in range(1, 4) %}
-                <div
-                    class="gallery-card group relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4] bg-gradient-to-br from-slate-100 to-slate-200">
+                <div class="gallery-card group relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4] bg-gradient-to-br from-slate-100 to-slate-200"
+                    data-side="right" data-index="{{ i - 1 }}">
                     <!-- Imagen -->
-                    <img src="{{ gallery_images['right_' ~ i] if gallery_images and gallery_images['right_' ~ i] else url_for('static', filename='demos/placeholder-athlete-' ~ (i + 3) ~ '.jpg') }}"
+                    <img src="{{ gallery_images.right[i - 1] if gallery_images.right and (i - 1) < gallery_images.right|length else url_for('static', filename='demos/placeholder-athlete-' ~ (i + 3) ~ '.jpg') }}"
                         alt="Atleta destacado {{ i + 3 }}"
-                        class="gallery-img w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        class="gallery-img w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <!-- Placeholder si no hay imagen -->
                     <div class="absolute inset-0 flex-col items-center justify-center text-slate-400 hidden">
@@ -339,7 +352,7 @@
                     <!-- Overlay de edición (Solo Admins) -->
                     {% if canEdit %}
                     <div class="gallery-overlay absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center cursor-pointer"
-                        onclick="triggerGalleryUpload('right_{{ i }}')">
+                        onclick="triggerGalleryUpload('right_{{ (gallery_images.right|length) + 1 if gallery_images.right else i }}')">
                         <div
                             class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                             <div
@@ -379,6 +392,11 @@
         box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.25);
     }
 
+    /* Transición suave para rotación de imágenes */
+    .gallery-img {
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease;
+    }
+
     /* Efecto glassmorphism en overlay */
     .gallery-overlay {
         backdrop-filter: blur(2px);
@@ -402,9 +420,104 @@
     }
 </style>
 
-<!-- Script para manejo de subida de imágenes -->
+<!-- Script para manejo de subida de imágenes y rotación automática -->
 <script>
     let currentGallerySlot = null;
+
+    // ============================================
+    // ROTACIÓN AUTOMÁTICA DE GALERÍA
+    // ============================================
+
+    // Pool de imágenes desde el servidor
+    const galleryPool = {
+        left: {{ gallery_images.left | tojson | safe }},
+    right: { { gallery_images.right | tojson | safe } }
+    };
+
+    // Índices actuales de rotación para cada slot visible
+    let currentIndices = {
+        left: [0, 1, 2],
+        right: [0, 1, 2]
+    };
+
+    /**
+     * Rota las imágenes de la galería
+     */
+    function rotateGallery() {
+        ['left', 'right'].forEach(side => {
+            const pool = galleryPool[side];
+
+            // Solo rotar si hay más de 3 imágenes
+            if (!pool || pool.length <= 3) return;
+
+            const cards = document.querySelectorAll(`[data-side="${side}"]`);
+
+            cards.forEach((card, slotIdx) => {
+                // Avanzar al siguiente índice en el pool (circular)
+                currentIndices[side][slotIdx] = (currentIndices[side][slotIdx] + 1) % pool.length;
+
+                const img = card.querySelector('.gallery-img');
+                const placeholder = img.nextElementSibling;
+                const nextImage = pool[currentIndices[side][slotIdx]];
+
+                if (!nextImage) return;
+
+                // Animación fade out
+                img.style.opacity = '0';
+
+                // Cambiar imagen después del fade out
+                setTimeout(() => {
+                    img.src = nextImage;
+                    img.style.display = 'block';
+                    if (placeholder) placeholder.style.display = 'none';
+
+                    // Animación fade in
+                    setTimeout(() => {
+                        img.style.opacity = '1';
+                    }, 50);
+                }, 500); // Tiempo del fade out
+            });
+        });
+    }
+
+    /**
+     * Inicializa la galería con las primeras imágenes
+     */
+    function initGallery() {
+        ['left', 'right'].forEach(side => {
+            const pool = galleryPool[side];
+            if (!pool || pool.length === 0) return;
+
+            const cards = document.querySelectorAll(`[data-side="${side}"]`);
+
+            cards.forEach((card, idx) => {
+                const img = card.querySelector('.gallery-img');
+                const placeholder = img.nextElementSibling;
+
+                if (pool[idx]) {
+                    img.src = pool[idx];
+                    img.style.display = 'block';
+                    img.style.opacity = '1';
+                    if (placeholder) placeholder.style.display = 'none';
+                } else {
+                    // No hay suficientes imágenes para este slot
+                    img.style.display = 'none';
+                    if (placeholder) placeholder.style.display = 'flex';
+                }
+            });
+        });
+
+        // Log para debugging
+        console.log('🖼️ Galería inicializada:', {
+            left: `${galleryPool.left?.length || 0} imágenes`,
+            right: `${galleryPool.right?.length || 0} imágenes`,
+            rotationEnabled: (galleryPool.left?.length > 3 || galleryPool.right?.length > 3)
+        });
+    }
+
+    // ============================================
+    // SUBIDA DE IMÁGENES
+    // ============================================
 
     function triggerGalleryUpload(slot) {
         currentGallerySlot = slot;
@@ -423,31 +536,25 @@
             // Mostrar preview inmediato
             const reader = new FileReader();
             reader.onload = function (e) {
-                // Buscar la imagen correspondiente y actualizarla
-                const cards = document.querySelectorAll('.gallery-card');
+                // Determinar qué lado y slot
                 const slotParts = currentGallerySlot.split('_');
-                const side = slotParts[0];
-                const index = parseInt(slotParts[1]) - 1;
+                const side = slotParts[0]; // 'left' o 'right'
+                const slotNumber = parseInt(slotParts[1]); // número de slot
 
-                let targetCard;
-                if (side === 'left') {
-                    targetCard = document.querySelectorAll('.lg\\:col-span-2')[0].querySelectorAll('.gallery-card')[index];
+                // Agregar al pool si es un slot nuevo
+                if (!galleryPool[side]) galleryPool[side] = [];
+                if (slotNumber > galleryPool[side].length) {
+                    galleryPool[side].push(e.target.result);
                 } else {
-                    targetCard = document.querySelectorAll('.lg\\:col-span-2')[1].querySelectorAll('.gallery-card')[index];
+                    galleryPool[side][slotNumber - 1] = e.target.result;
                 }
 
-                if (targetCard) {
-                    const img = targetCard.querySelector('img');
-                    if (img) {
-                        img.src = e.target.result;
-                        img.style.display = 'block';
-                        img.nextElementSibling.style.display = 'none';
-                    }
-                }
+                // Actualizar vista inmediatamente
+                initGallery();
             };
             reader.readAsDataURL(file);
 
-            // Enviar al servidor (implementar endpoint)
+            // Enviar al servidor
             const response = await fetch('/dashboard/gallery/upload', {
                 method: 'POST',
                 body: formData
@@ -456,6 +563,8 @@
             if (response.ok) {
                 if (typeof showSaveToast === 'function') {
                     showSaveToast('Imagen actualizada correctamente');
+                } else {
+                    console.log('✅ Imagen actualizada correctamente');
                 }
             } else {
                 console.error('Error al subir imagen');
@@ -472,11 +581,25 @@
     }
 
     // ============================================
-    // EFECTO STICKY - Fotos fijas mientras scrolleas
+    // INICIALIZACIÓN
     // ============================================
-    // Las galerías usan position: sticky en CSS
-    // No se necesita JavaScript adicional, el sticky CSS
-    // mantiene las fotos visibles mientras bajas la página
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Inicializar galería
+        initGallery();
+
+        // Iniciar rotación automática cada 60 segundos (1 minuto)
+        const hasEnoughImagesForRotation =
+            (galleryPool.left && galleryPool.left.length > 3) ||
+            (galleryPool.right && galleryPool.right.length > 3);
+
+        if (hasEnoughImagesForRotation) {
+            setInterval(rotateGallery, 60000); // 60,000 ms = 1 minuto
+            console.log('🔄 Rotación automática activada (cada 1 minuto)');
+        } else {
+            console.log('ℹ️ Rotación desactivada (6 o menos imágenes totales)');
+        }
+    });
 
 </script>
 {% endblock %}

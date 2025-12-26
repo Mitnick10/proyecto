@@ -7,7 +7,74 @@
     <title>{% block title %}Dashboard{% endblock %} - IRDEBG</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- SweetAlert2 for beautiful alerts -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Confirmaciones personalizadas -->
+    <script src="{{ url_for('static', filename='js/confirmaciones.js') }}"></script>
     <style>
+        /* Estilos para texto más grande y oscuro */
+        body {
+            font-size: 20px !important;
+            color: #1f2937 !important;
+        }
+
+        /* Títulos más oscuros */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #111827 !important;
+            font-weight: 700 !important;
+        }
+
+        /* Párrafos y texto general más oscuros (excepto en botones con bg) */
+        p:not(.btn):not(button *),
+        span:not(button *):not(a *),
+        div:not(button *):not(.bg-blue-600 *):not(.bg-red-600 *):not(.bg-green-600 *),
+        td:not(button):has(> :not(button)),
+        th,
+        li {
+            color: #1f2937 !important;
+        }
+
+        /* Labels más oscuros y bold */
+        label {
+            color: #374151 !important;
+            font-weight: 600 !important;
+        }
+
+        /* Inputs, selects, textareas más oscuros */
+        input,
+        select,
+        textarea {
+            color: #111827 !important;
+            font-size: 1rem !important;
+        }
+
+        /* Asegurar que los botones con bg mantengan su texto blanco */
+        button[class*="bg-"],
+        a[class*="bg-"] {
+            color: white !important;
+        }
+
+        /* Links más legibles (excepto los de navegación) */
+        a:not([class*="text-slate-"]):not([class*="text-white"]):not([class*="bg-"]) {
+            color: #1e40af !important;
+        }
+
+        /* Tablas con texto más oscuro */
+        table {
+            color: #1f2937 !important;
+        }
+
+        /* Placeholders más oscuros */
+        ::placeholder {
+            color: #6b7280 !important;
+            opacity: 0.7;
+        }
+
         @keyframes slideInRight {
             from {
                 transform: translateX(400px);
@@ -91,7 +158,7 @@
 
         <!-- Navbar -->
         <nav class="bg-slate-900 border-b border-slate-800">
-            <div class="mx-auto w-full px-4 sm:px-6 lg:px-8">
+            <div class="mx-auto w-full px-2 sm:px-3 lg:px-4">
                 <div class="flex h-16 items-center justify-between">
                     <div class="flex items-center">
                         <div class="flex-shrink-0">
@@ -100,12 +167,12 @@
                         <div class="hidden md:block">
                             <div class="ml-10 flex items-baseline space-x-4">
                                 <a href="{{ url_for('dashboard.index') }}"
-                                    class="text-slate-300 hover:bg-slate-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Inicio</a>
+                                    class="text-slate-300 hover:bg-slate-700 hover:text-white rounded-md px-3 py-2 text-base font-medium">Inicio</a>
                                 <a href="{{ url_for('dashboard.lista_becas') }}"
-                                    class="text-slate-300 hover:bg-slate-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Atletas</a>
+                                    class="text-slate-300 hover:bg-slate-700 hover:text-white rounded-md px-3 py-2 text-base font-medium">Atletas</a>
                                 {% if user_role == 'superadmin' %}
                                 <a href="{{ url_for('dashboard.lista_usuarios') }}"
-                                    class="text-slate-300 hover:bg-slate-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Usuarios</a>
+                                    class="text-slate-300 hover:bg-slate-700 hover:text-white rounded-md px-3 py-2 text-base font-medium">Usuarios</a>
                                 {% endif %}
                             </div>
                         </div>
@@ -180,7 +247,7 @@
 
         <!-- Header de la Página -->
         <header class="bg-white shadow-sm">
-            <div class="mx-auto w-full px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="mx-auto w-full px-2 py-4 sm:px-3 lg:px-4 flex justify-between items-center">
                 <h1 class="text-2xl font-bold tracking-tight text-slate-900">
                     {% block header %}{% endblock %}
                 </h1>
@@ -190,7 +257,7 @@
 
         <!-- Contenido Principal -->
         <main class="flex-1">
-            <div class="mx-auto w-full py-4 px-4 sm:px-6 lg:px-8">
+            <div class="mx-auto w-full py-4 px-2 sm:px-3 lg:px-4">
                 {% block content %}{% endblock %}
             </div>
         </main>
@@ -216,6 +283,7 @@
             });
         });
     </script>
+
 </body>
 
 </html>
