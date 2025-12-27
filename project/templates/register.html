@@ -43,11 +43,17 @@
             </div>
 
             <div>
+                <label for="cedula" class="sr-only">Cédula de Identidad</label>
+                <input id="cedula" name="cedula" type="text" required pattern="V-[0-9]{6,9}"
+                    class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    placeholder="Cédula (ej: V-12345678)">
+            </div>
 
-
-
-
-
+            <div>
+                <label for="telefono" class="sr-only">Teléfono</label>
+                <input id="telefono" name="telefono" type="tel" required pattern="[0-9]{10,11}"
+                    class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    placeholder="Teléfono (ej: 04121234567)">
             </div>
 
             <div>

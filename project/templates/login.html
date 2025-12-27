@@ -13,18 +13,7 @@
 
         <!-- Contenido Principal -->
         <div class="p-8 space-y-6">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-            <div class="mb-4">
-                {% for category, message in messages %}
-                <div
-                    class="p-4 rounded-md text-sm {{ 'bg-red-100 text-red-700' if category == 'error' else 'bg-green-100 text-green-700' }}">
-                    {{ message }}
-                </div>
-                {% endfor %}
-            </div>
-            {% endif %}
-            {% endwith %}
+            <!-- Flash messages removed to avoid duplication with layout.html -->
 
             <div class="flex flex-col items-center">
                 <img class="h-28 w-auto drop-shadow-lg mb-2" src="{{ url_for('static', filename='logo.png') }}"
@@ -109,22 +98,13 @@
                 </div>
             </div>
 
-            <div class="flex justify-center gap-6">
+            <div class="flex justify-center">
                 <!-- Google -->
-                <a href="#" class="text-gray-400 hover:text-red-500 transition-colors transform hover:scale-110">
-                    <i class="fa-brands fa-google text-2xl"></i>
-                </a>
-                <!-- Facebook -->
-                <a href="#" class="text-gray-400 hover:text-blue-600 transition-colors transform hover:scale-110">
-                    <i class="fa-brands fa-facebook-f text-2xl"></i>
-                </a>
-                <!-- Twitter/X -->
-                <a href="#" class="text-gray-400 hover:text-black transition-colors transform hover:scale-110">
-                    <i class="fa-brands fa-twitter text-2xl"></i>
-                </a>
-                <!-- Github -->
-                <a href="#" class="text-gray-400 hover:text-gray-900 transition-colors transform hover:scale-110">
-                    <i class="fa-brands fa-github text-2xl"></i>
+                <a href="{{ url_for('auth.google_login') }}"
+                    class="flex items-center justify-center gap-2 px-4 py-2 bg-white border-2 border-gray-200 rounded-lg hover:border-red-500 hover:shadow-md transition-all duration-300 transform hover:scale-105 group">
+                    <i class="fa-brands fa-google text-2xl text-red-500 group-hover:text-red-600 transition-colors"></i>
+                    <span class="text-gray-700 text-sm font-medium group-hover:text-red-600 transition-colors">Continue
+                        with Google</span>
                 </a>
             </div>
 
