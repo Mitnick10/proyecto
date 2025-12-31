@@ -45,37 +45,39 @@
         {% if user_role in ['admin', 'superadmin'] %}
         <a href="{{ url_for('dashboard.crear_beca') }}"
             class="inline-flex items-center rounded-md bg-blue-600 px-5 py-3 text-base font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors">
-            <svg class="mr-2 -ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                aria-hidden="true">
+            <svg class="mr-2 -ml-1 h-5 w-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                fill="currentColor">
                 <path fill-rule="evenodd"
                     d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
                     clip-rule="evenodd" />
             </svg>
-            Registrar Nueva Beca
+            <span class="whitespace-nowrap">Registrar Nueva Beca</span>
         </a>
         {% endif %}
 
         <!-- Ver Listado: VISIBLE PARA TODOS -->
         <a href="{{ url_for('dashboard.lista_becas') }}"
-            class="inline-flex items-center rounded-md bg-white border border-gray-300 px-5 py-3 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition-colors">
-            <svg class="mr-2 -ml-1 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                fill="currentColor" aria-hidden="true">
+            class="inline-flex items-center rounded-md bg-white border border-gray-300 px-5 py-3 text-base font-semibold text-gray-900 shadow-sm hover:bg-gray-50 transition-colors"
+            style="color: #111827 !important;">
+            <svg class="mr-2 -ml-1 h-5 w-5 flex-shrink-0 text-gray-600" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20" fill="currentColor">
                 <path
                     d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
             </svg>
-            Ver Listado de Atletas
+            <span class="whitespace-nowrap">Ver Listado de Atletas</span>
         </a>
 
         <!-- Botón Mi Cuenta: VISIBLE PARA TODOS -->
         <a href="{{ url_for('dashboard.mi_cuenta') }}"
-            class="inline-flex items-center rounded-md bg-white border border-gray-300 px-5 py-3 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition-colors">
-            <svg class="mr-2 -ml-1 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                fill="currentColor">
+            class="inline-flex items-center rounded-md bg-white border border-gray-300 px-5 py-3 text-base font-semibold text-gray-900 shadow-sm hover:bg-gray-50 transition-colors"
+            style="color: #111827 !important;">
+            <svg class="mr-2 -ml-1 h-5 w-5 flex-shrink-0 text-gray-600" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"
                     d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
                     clip-rule="evenodd" />
             </svg>
-            Mi Cuenta
+            <span class="whitespace-nowrap">Mi Cuenta</span>
         </a>
     </div>
 </div>
@@ -85,50 +87,42 @@
 
 
 
-<!-- Galería de Atletas (Slots: Left 1-3, Right 1-3) -->
+<!-- Galería de Atletas (Cuadrícula Estática) -->
 <div class="mt-12">
     <div class="flex items-center justify-between mb-6">
-        <h3 class="text-xl font-semibold text-gray-800">Galería de Atletas Destacados</h3>
-        <span class="text-sm text-gray-500">Desliza para ver más &rarr;</span>
+        <h3 class="text-xl font-semibold text-gray-800">Galería de Atletas</h3>
     </div>
 
-    <!-- Contenedor Grid Full Width -->
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-        <!-- Definimos el orden de los slots a mostrar (Home independientes) -->
-        {% set slots = ['home_1', 'home_2', 'home_3', 'home_4', 'home_5', 'home_6'] %}
-
-        {% for slot in slots %}
-        <!-- Usamos variables para generar placeholders distintos segun el index -->
+    <!-- Contenedor de la Galería (Grid Estático) -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        {% for photo in carousel_photos %}
         {% set i = loop.index %}
+        <div class="gallery-item relative group/card">
+            <div
+                class="relative w-full aspect-square rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 bg-slate-100 border-2 border-slate-200">
+                <!-- Imagen -->
+                <img src="{{ photo.url if photo.url else url_for('static', filename='demos/placeholder-athlete-' ~ i ~ '.jpg') }}"
+                    alt="Galería"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
 
-        <div
-            class="relative w-full aspect-[3/4] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group bg-slate-100 border border-slate-200">
-
-            <!-- 1. Imagen Real o Placeholder -->
-            <img src="{{ gallery_images[slot] if gallery_images and gallery_images[slot] else url_for('static', filename='demos/placeholder-athlete-' ~ i ~ '.jpg') }}"
-                alt="Atleta"
-                class="gallery-img w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-
-            <!-- 2. Fallback visual -->
-            <div class="absolute inset-0 flex-col items-center justify-center text-slate-300 hidden">
-                <i class="fa-solid fa-user text-2xl mb-1"></i>
-                <span class="text-xs font-medium">Sin Foto</span>
-            </div>
-
-            <!-- 3. Overlay para Editar (Solo Admin) -->
-            {% if user_role in ['admin', 'superadmin'] %}
-            <div class="gallery-overlay absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center cursor-pointer"
-                onclick="triggerGalleryUpload('{{ slot }}')">
-                <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <div
-                        class="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-3 mx-auto border-2 border-white/40">
-                        <i class="fa-solid fa-camera text-white text-xl"></i>
-                    </div>
-                    <span class="text-white font-semibold text-sm">Cambiar Foto</span>
+                <!-- Fallback (Sin Foto) -->
+                <div class="absolute inset-0 flex-col items-center justify-center text-slate-300 hidden">
+                    <i class="fa-solid fa-user text-lg mb-1"></i>
+                    <span class="text-[8px] font-medium uppercase">Sin Foto</span>
                 </div>
+
+                <!-- Admin Overlay -->
+                {% if user_role in ['admin', 'superadmin'] %}
+                <div class="gallery-overlay absolute inset-0 bg-black/60 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center cursor-pointer"
+                    onclick="triggerGalleryUpload('{{ photo.slot }}')">
+                    <div
+                        class="transform translate-y-4 group-hover/card:translate-y-0 transition-transform duration-300">
+                        <i class="fa-solid fa-camera text-white text-base"></i>
+                    </div>
+                </div>
+                {% endif %}
             </div>
-            {% endif %}
         </div>
         {% endfor %}
     </div>
@@ -152,38 +146,35 @@
         formData.append('slot', currentGallerySlot);
 
         try {
-            // Preview
+            // Preview local inmediato
             const reader = new FileReader();
             reader.onload = function (e) {
-                // Hay que buscar la imagen correcta en el DOM
-                // Como es horizontal, podemos usar el orden del loop
-                // slots: home_1 to home_6
-                const slotsOrder = ['home_1', 'home_2', 'home_3', 'home_4', 'home_5', 'home_6'];
-                const index = slotsOrder.indexOf(currentGallerySlot);
-
-                if (index !== -1) {
-                    // Update selector to match the new grid layout structure
-                    // The cards are the children of the grid container, which we can select by a common class
-                    // or just query all elements acting as cards.
-                    // Let's rely on the unique data-slot attribute if we had added it, 
-                    // but since we rely on index, let's select the correct divs.
-                    // The easiest is to look for the group container we defined.
-                    const cards = document.querySelectorAll('.grid > .relative');
-                    if (cards[index]) {
-                        const img = cards[index].querySelector('img');
-                        img.src = e.target.result;
-                        img.style.display = 'block';
-                        if (img.nextElementSibling) img.nextElementSibling.style.display = 'none';
+                // Buscar el contenedor del slot correspondiente
+                const overlays = document.querySelectorAll('[onclick^="triggerGalleryUpload"]');
+                for (let overlay of overlays) {
+                    if (overlay.getAttribute('onclick').includes(currentGallerySlot)) {
+                        const img = overlay.closest('.gallery-item').querySelector('img');
+                        if (img) {
+                            img.src = e.target.result;
+                            img.style.display = 'block';
+                            if (img.nextElementSibling) img.nextElementSibling.style.display = 'none';
+                        }
                     }
                 }
             };
             reader.readAsDataURL(file);
 
             const res = await fetch('/dashboard/gallery/upload', { method: 'POST', body: formData });
+            const result = await res.json();
             if (res.ok) {
-                console.log('Saved');
+                if (typeof mostrarExito === 'function') mostrarExito('Imagen de inicio actualizada.');
+            } else {
+                if (typeof mostrarError === 'function') mostrarError(result.error || 'Error al guardar');
             }
-        } catch (e) { console.error(e); }
+        } catch (e) {
+            console.error(e);
+            if (typeof mostrarError === 'function') mostrarError('Error de red.');
+        }
         input.value = '';
     }
 </script>

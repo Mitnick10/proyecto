@@ -1,9 +1,13 @@
 import logging
+import os
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session, abort
 from gotrue.errors import AuthApiError
 from config.supabase_client import supabase
 from utils.decorators import login_required
 from utils.password_strength import validar_fortaleza_password, generar_sugerencias_password
+from utils.auth_helpers import get_user_role, create_user_session
+from utils.login_attempts import record_failed_login, is_account_locked, reset_login_attempts, get_lockout_time_remaining
+from utils.rate_limiter import limiter
 
 # --- Configuración de Logging ---
 logger = logging.getLogger(__name__)
@@ -13,7 +17,35 @@ auth_blueprint = Blueprint('auth', __name__)
 
 @auth_blueprint.route('/login', methods=['GET', 'POST'])
 def login():
-    """Maneja el inicio de sesión con depuración de roles."""
+    """Maneja el inicio de sesión con auto-login después de confirmación de email."""
+    
+    # Detectar si ya hay sesión activa (ej: desde confirmación de email)
+    try:
+        user = supabase.auth.get_user()
+        if user and user.user:
+            user_id = user.user.id
+            email = user.user.email
+            
+            # Crear sesión de Flask si no existe
+            if 'user_id' not in session:
+                user_role = get_user_role(user_id)
+                
+                # Crear sesión de Flask
+                session.permanent = True
+                session['user_id'] = user_id
+                session['email'] = email
+                session['role'] = user_role
+                
+                flash(f'¡Bienvenido/a {email}! Tu correo ha sido confirmado.', 'success')
+                logger.info(f"✅ Auto-login exitoso después de confirmación: {email}")
+            
+            return redirect(url_for('dashboard.index'))
+    except Exception as e:
+        # Si falla la detección de sesión, continuar con login normal
+        logger.debug(f"No hay sesión activa de Supabase: {e}")
+        pass
+    
+    # Si ya hay sesión de Flask activa, redirigir al dashboard
     if 'user_id' in session:
         return redirect(url_for('dashboard.index'))
 
@@ -37,37 +69,22 @@ def login():
             
             user_id = auth_response.session.user.id
             
-            # 2. BUSCAR ROL EN LA TABLA PROFILES
-            logger.info(f"🔍 Buscando rol para user_id: {user_id}")
-            profile_response = supabase.table('profiles').select('role').eq('id', user_id).execute()
-            
-            # Log detallado de la respuesta
-            logger.info(f"📋 Respuesta de profiles: {profile_response.data}")
-            
-            # Verificamos si encontró datos
-            if profile_response.data and len(profile_response.data) > 0:
-                user_role = profile_response.data[0]['role']
-                logger.info(f"✅ Rol encontrado en BD: {user_role} para {email}")
-            else:
-                user_role = 'usuario'
-                logger.warning(f"⚠️ No se encontró rol para {email}, asignando 'usuario' por defecto")
+            # 2. Obtener rol del usuario
+            user_role = get_user_role(user_id)
 
-            # 3. Guardar todo en la sesión de Flask
-            session['user_id'] = user_id
-            session['access_token'] = auth_response.session.access_token
-            session['refresh_token'] = auth_response.session.refresh_token
-            session['role'] = user_role
+            # 3. Crear sesión de Flask
+            create_user_session(auth_response, user_role, email)
             
-            logger.info(f"💾 Sesión guardada - user_id: {user_id}, role: {user_role}")
-            flash(f'Bienvenido/a {email}. Rol: {user_role.upper()}', 'success')
+            logger.info(f"✅ Login exitoso: {email}")
             return redirect(url_for('dashboard.index'))
 
         except AuthApiError as e:
             logger.warning(f"Intento de login fallido para email {email}: {e.message}")
+            
             if "Email not confirmed" in e.message:
                 flash('Tu correo electrónico no ha sido confirmado. Por favor revisa tu bandeja de entrada.', 'warning')
             elif "Invalid login credentials" in e.message:
-                flash('Email o contraseña incorrectos.', 'error')
+                flash(f'❌ Email o contraseña incorrectos.', 'error')
             else:
                 flash(f'Error de autenticación: {e.message}', 'error')
         except Exception as e:
@@ -125,18 +142,9 @@ def verify_otp():
 
         user_id = auth_response.session.user.id
 
-        # Buscar rol (similar al login normal)
-        profile_response = supabase.table('profiles').select('role').eq('id', user_id).execute()
-        if profile_response.data and len(profile_response.data) > 0:
-            user_role = profile_response.data[0]['role']
-        else:
-            user_role = 'usuario'
-
-        # Guardar sesión
-        session['user_id'] = user_id
-        session['access_token'] = auth_response.session.access_token
-        session['refresh_token'] = auth_response.session.refresh_token
-        session['role'] = user_role
+        # Obtener rol y crear sesión
+        user_role = get_user_role(user_id)
+        create_user_session(auth_response, user_role)
 
         flash(f'Bienvenido/a. Rol: {user_role.upper()}', 'success')
         return redirect(url_for('dashboard.index'))
@@ -162,9 +170,10 @@ def register():
         confirm_password = request.form.get('confirm_password')
         nombre = request.form.get('nombre')
         apellido = request.form.get('apellido')
+        cedula = request.form.get('cedula')
 
         # Validación de campos requeridos
-        if not email or not password or not confirm_password or not nombre or not apellido:
+        if not email or not password or not confirm_password or not nombre or not apellido or not cedula:
             flash('Todos los campos son requeridos.', 'error')
             return render_template('register.html')
         
@@ -195,19 +204,33 @@ def register():
         logger.info(f"Contraseña válida con nivel de fortaleza: {nivel}/100")
 
         try:
+            # Construir URL de redirect para confirmación de email
+            app_url = os.environ.get('APP_URL', request.url_root.rstrip('/'))
+            redirect_url = f"{app_url}/login"
+            
             auth_response = supabase.auth.sign_up({
                 "email": email,
                 "password": password,
                 "options": {
+                    "email_redirect_to": redirect_url,  # Redirige a /login después de confirmar email
                     "data": {
                         "first_name": nombre,
                         "last_name": apellido,
-                        "full_name": f"{nombre} {apellido}"
+                        "full_name": f"{nombre} {apellido}",
+                        "cedula": cedula
                     }
                 }
             })
             
             if auth_response.user:
+                # Actualizar perfil con cédula
+                try:
+                    supabase.table('profiles').update({
+                        'cedula': cedula
+                    }).eq('id', auth_response.user.id).execute()
+                except Exception as profile_error:
+                    logger.warning(f"No se pudo actualizar perfil con cedula: {profile_error}")
+                
                 flash('✅ ¡Registro exitoso! Por favor verifica tu correo electrónico.', 'success')
                 return redirect(url_for('auth.login'))
             else:
@@ -290,7 +313,30 @@ def forgot_password():
 
 @auth_blueprint.route('/reset-password', methods=['GET', 'POST'])
 def reset_password():
-    """Maneja el restablecimiento de la contraseña."""
+    """Maneja el restablecimiento de la contraseña (Soporta PKCE e Implicit Flow)."""
+    access_token = None
+    refresh_token = None
+    
+    # Manejar el flujo PKCE (cuando viene ?code=...) en GET
+    if request.method == 'GET':
+        code = request.args.get('code')
+        if code:
+            try:
+                # Intercambiar código por sesión
+                res = supabase.auth.exchange_code_for_session({"auth_code": code})
+                if res.session:
+                    access_token = res.session.access_token
+                    refresh_token = res.session.refresh_token
+                    logger.info(f"✅ Code intercambiado exitosamente por tokens para {res.user.email}")
+            except AuthApiError as e:
+                logger.error(f"Error al intercambiar code por sesión: {e.message}")
+                flash(f'El enlace de recuperación es inválido o ha expirado: {e.message}', 'error')
+                return redirect(url_for('auth.forgot_password'))
+            except Exception as e:
+                logger.error(f"Error inesperado al intercambiar code: {e}")
+                flash('Error al procesar el enlace de recuperación.', 'error')
+                return redirect(url_for('auth.forgot_password'))
+
     if request.method == 'POST':
         if not supabase: 
             abort(503)
@@ -302,19 +348,25 @@ def reset_password():
         
         if not password or not confirm_password:
             flash('Por favor ingresa y confirma tu nueva contraseña.', 'error')
-            return render_template('reset_password.html')
+            return render_template('reset_password.html', access_token=access_token, refresh_token=refresh_token)
             
         if password != confirm_password:
             flash('Las contraseñas no coinciden.', 'error')
-            return render_template('reset_password.html')
+            return render_template('reset_password.html', access_token=access_token, refresh_token=refresh_token)
             
         if not access_token:
             flash('Token de recuperación inválido o expirado. Por favor solicita uno nuevo.', 'error')
             return redirect(url_for('auth.forgot_password'))
 
         try:
-            supabase.auth.set_session(access_token, refresh_token)
+            # Opción 1: Si tenemos refresh token, usar set_session
+            if refresh_token:
+                supabase.auth.set_session(access_token, refresh_token)
+            
+            # Actualizar usuario
             supabase.auth.update_user({"password": password})
+            
+            # Cerrar sesión por seguridad y limpiar flask session
             supabase.auth.sign_out()
             session.clear()
             
@@ -328,7 +380,8 @@ def reset_password():
             logger.error(f"Error inesperado en reset_password: {e}", exc_info=True)
             flash('Error inesperado al restablecer la contraseña.', 'error')
 
-    return render_template('reset_password.html')
+    return render_template('reset_password.html', access_token=access_token, refresh_token=refresh_token)
+
 
 @auth_blueprint.route('/logout')
 @login_required 

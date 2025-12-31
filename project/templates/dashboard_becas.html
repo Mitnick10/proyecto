@@ -51,7 +51,8 @@
                        {{ 'border-blue-600 bg-blue-50 text-blue-700 shadow-md' if not current_filter or current_filter == 'Todas' else 'border-slate-200 bg-white text-slate-500 hover:border-blue-300 hover:shadow-sm' }}">
                         <i
                             class="fa-solid fa-layer-group text-2xl mb-2 {{ 'text-blue-600' if not current_filter or current_filter == 'Todas' else 'text-slate-400 group-hover:text-blue-500' }}"></i>
-                        <span class="text-xs font-semibold text-center leading-tight">Todas</span>
+                        <span class="text-xs font-semibold text-center leading-tight"
+                            style="color: {{ '#2563eb' if not current_filter or current_filter == 'Todas' else '#64748b' }} !important;">Todas</span>
                     </a>
 
                     {% for d in disciplinas %}
@@ -75,7 +76,8 @@
                            {{ 'border-blue-600 bg-blue-50 text-blue-700 shadow-md' if current_filter == d else 'border-slate-200 bg-white text-slate-500 hover:border-blue-300 hover:shadow-sm' }}">
                         <i
                             class="fa-solid {{ icon_class }} text-2xl mb-2 {{ 'text-blue-600' if current_filter == d else 'text-slate-400 group-hover:text-blue-500' }}"></i>
-                        <span class="text-xs font-semibold text-center leading-tight px-1 truncate w-full">{{ d
+                        <span class="text-xs font-semibold text-center leading-tight px-1 truncate w-full"
+                            style="color: {{ '#2563eb' if current_filter == d else '#64748b' }} !important;">{{ d
                             }}</span>
                     </a>
                     {% endfor %}
@@ -105,13 +107,13 @@
         <!-- ========== COLUMNA IZQUIERDA - GALERÍA (20-25%) ========== -->
         <div class="hidden lg:block lg:col-span-2">
             <div class="sticky top-4 flex flex-col gap-4 gallery-parallax" data-speed="0.3">
-                {% for i in range(1, 4) %}
-                <div
-                    class="gallery-card group relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4] bg-gradient-to-br from-slate-100 to-slate-200">
+                {% for photo in gallery_images.left %}
+                <div class="gallery-card group relative overflow-hidden rounded-2xl shadow-lg aspect-square bg-gradient-to-br from-slate-100 to-slate-200"
+                    data-side="left" data-index="{{ loop.index0 }}">
                     <!-- Imagen -->
-                    <img src="{{ gallery_images['left_' ~ i] if gallery_images and gallery_images['left_' ~ i] else url_for('static', filename='demos/placeholder-athlete-' ~ i ~ '.jpg') }}"
-                        alt="Atleta destacado {{ i }}"
-                        class="gallery-img w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    <img src="{{ photo.url if photo.url else url_for('static', filename='demos/placeholder-athlete-' ~ loop.index ~ '.jpg') }}"
+                        alt="Atleta destacado {{ loop.index }}"
+                        class="gallery-img w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <!-- Placeholder si no hay imagen -->
                     <div class="absolute inset-0 flex-col items-center justify-center text-slate-400 hidden">
@@ -122,7 +124,7 @@
                     <!-- Overlay de edición (Solo Admins) -->
                     {% if canEdit %}
                     <div class="gallery-overlay absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center cursor-pointer"
-                        onclick="triggerGalleryUpload('left_{{ i }}')">
+                        onclick="triggerGalleryUpload('{{ photo.slot }}')">
                         <div
                             class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                             <div
@@ -151,16 +153,16 @@
                         <thead class="bg-slate-50">
                             <tr>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">
                                     Nombre / Email</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">
                                     Cédula</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">
                                     Disciplina</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">
                                     Estatus</th>
                                 <th scope="col" class="relative px-6 py-3"><span class="sr-only">Acciones</span>
                                 </th>
@@ -172,7 +174,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="flex items-center">
                                         <div
-                                            class="h-10 w-10 flex-shrink-0 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold shadow-md">
+                                            class="h-10 w-10 flex-shrink-0 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold shadow-md">
                                             {{ beca.nombre[0] }}{{ beca.apellido[0] }}
                                         </div>
                                         <div class="ml-4">
@@ -192,10 +194,13 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600">{{ beca.disciplina }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <span class="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset 
-                                        {% if beca.estatus == 'Activo' %}bg-green-50 text-green-700 ring-green-600/20
-                                        {% elif beca.estatus == 'Inactivo' %}bg-red-50 text-red-700 ring-red-600/20
-                                        {% else %}bg-yellow-50 text-yellow-800 ring-yellow-600/20{% endif %}">
+                                    <span class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold shadow-sm transition-colors
+                                        {% if beca.estatus == 'Activo' %}bg-green-500 text-white
+                                        {% elif beca.estatus == 'Inactivo' %}bg-red-500 text-white
+                                        {% else %}bg-yellow-400 text-gray-900{% endif %}"
+                                        style="{% if beca.estatus == 'Activo' %}background-color: #22c55e !important; color: white !important;
+                                        {% elif beca.estatus == 'Inactivo' %}background-color: #ef4444 !important; color: white !important;
+                                        {% else %}background-color: #fbbf24 !important; color: #111827 !important;{% endif %}">
                                         {{ beca.estatus }}
                                     </span>
                                 </td>
@@ -203,15 +208,23 @@
                                     <div class="flex justify-end gap-3 items-center">
                                         {% if canEdit %}
                                         <a href="{{ url_for('dashboard.editar_beca', beca_id=beca.id) }}"
-                                            class="text-blue-600 hover:text-blue-900 font-semibold">Editar</a>
+                                            class="inline-flex items-center px-3 py-1.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
+                                            style="background-color: #2563eb !important; color: white !important;">
+                                            <i class="fa-solid fa-pen-to-square mr-1.5"></i>
+                                            Editar
+                                        </a>
                                         {% endif %}
 
                                         {% if user_role == 'superadmin' %}
                                         <form action="{{ url_for('dashboard.eliminar_beca', beca_id=beca.id) }}"
                                             method="POST" class="inline"
-                                            onsubmit="confirmarEliminar('atleta', '{{ beca.nombre }} {{ beca.apellido }}');">
+                                            onsubmit="return confirmarEliminar(event, 'atleta', '{{ beca.nombre }} {{ beca.apellido }}');">
                                             <button type="submit"
-                                                class="text-red-600 hover:text-red-900">Borrar</button>
+                                                class="inline-flex items-center px-3 py-1.5 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors shadow-sm"
+                                                style="background-color: #dc2626 !important; color: white !important;">
+                                                <i class="fa-solid fa-trash mr-1.5"></i>
+                                                Borrar
+                                            </button>
                                         </form>
                                         {% endif %}
                                     </div>
@@ -322,13 +335,13 @@
         <!-- ========== COLUMNA DERECHA - GALERÍA (20-25%) ========== -->
         <div class="hidden lg:block lg:col-span-2">
             <div class="sticky top-4 flex flex-col gap-4 gallery-parallax" data-speed="-0.3">
-                {% for i in range(1, 4) %}
-                <div
-                    class="gallery-card group relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4] bg-gradient-to-br from-slate-100 to-slate-200">
+                {% for photo in gallery_images.right %}
+                <div class="gallery-card group relative overflow-hidden rounded-2xl shadow-lg aspect-square bg-gradient-to-br from-slate-100 to-slate-200"
+                    data-side="right" data-index="{{ loop.index0 }}">
                     <!-- Imagen -->
-                    <img src="{{ gallery_images['right_' ~ i] if gallery_images and gallery_images['right_' ~ i] else url_for('static', filename='demos/placeholder-athlete-' ~ (i + 3) ~ '.jpg') }}"
-                        alt="Atleta destacado {{ i + 3 }}"
-                        class="gallery-img w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    <img src="{{ photo.url if photo.url else url_for('static', filename='demos/placeholder-athlete-' ~ (loop.index + 3) ~ '.jpg') }}"
+                        alt="Atleta destacado {{ loop.index + 3 }}"
+                        class="gallery-img w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <!-- Placeholder si no hay imagen -->
                     <div class="absolute inset-0 flex-col items-center justify-center text-slate-400 hidden">
@@ -339,7 +352,7 @@
                     <!-- Overlay de edición (Solo Admins) -->
                     {% if canEdit %}
                     <div class="gallery-overlay absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center cursor-pointer"
-                        onclick="triggerGalleryUpload('right_{{ i }}')">
+                        onclick="triggerGalleryUpload('{{ photo.slot }}')">
                         <div
                             class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                             <div
@@ -379,6 +392,11 @@
         box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.25);
     }
 
+    /* Transición suave para rotación de imágenes */
+    .gallery-img {
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease;
+    }
+
     /* Efecto glassmorphism en overlay */
     .gallery-overlay {
         backdrop-filter: blur(2px);
@@ -402,9 +420,49 @@
     }
 </style>
 
-<!-- Script para manejo de subida de imágenes -->
+<!-- Script para manejo de subida de imágenes y rotación automática -->
 <script>
     let currentGallerySlot = null;
+
+    // Pool de imágenes desde el servidor (Ya filtradas y aleatorizadas en el backend)
+    const galleryPool = {
+        left: {{ gallery_images.left | tojson | safe }},
+    right: { { gallery_images.right | tojson | safe } }
+    };
+
+    /**
+     * Inicializa las imágenes de la galería estática
+     */
+    function initGallery() {
+        ['left', 'right'].forEach(side => {
+            const sidePool = galleryPool[side];
+            const cards = document.querySelectorAll(`.gallery-card[data-side="${side}"]`);
+
+            cards.forEach((card, i) => {
+                const img = card.querySelector('.gallery-img');
+                const placeholder = card.querySelector('div[class*="inset-0"]');
+
+                if (sidePool && sidePool[i]) {
+                    const photo = sidePool[i];
+                    const url = photo.url;
+
+                    if (url) {
+                        img.src = url;
+                        img.style.display = 'block';
+                        img.style.opacity = '1';
+                        if (placeholder) placeholder.style.display = 'none';
+                    } else {
+                        img.style.display = 'none';
+                        if (placeholder) placeholder.style.display = 'flex';
+                    }
+                }
+            });
+        });
+    }
+
+    // ============================================
+    // SUBIDA DE IMÁGENES
+    // ============================================
 
     function triggerGalleryUpload(slot) {
         currentGallerySlot = slot;
@@ -423,31 +481,17 @@
             // Mostrar preview inmediato
             const reader = new FileReader();
             reader.onload = function (e) {
-                // Buscar la imagen correspondiente y actualizarla
-                const cards = document.querySelectorAll('.gallery-card');
-                const slotParts = currentGallerySlot.split('_');
-                const side = slotParts[0];
-                const index = parseInt(slotParts[1]) - 1;
-
-                let targetCard;
-                if (side === 'left') {
-                    targetCard = document.querySelectorAll('.lg\\:col-span-2')[0].querySelectorAll('.gallery-card')[index];
-                } else {
-                    targetCard = document.querySelectorAll('.lg\\:col-span-2')[1].querySelectorAll('.gallery-card')[index];
-                }
-
-                if (targetCard) {
-                    const img = targetCard.querySelector('img');
-                    if (img) {
-                        img.src = e.target.result;
-                        img.style.display = 'block';
-                        img.nextElementSibling.style.display = 'none';
+                const side = currentGallerySlot.split('_')[0];
+                if (galleryPool[side]) {
+                    const photoObj = galleryPool[side].find(p => p.slot === currentGallerySlot);
+                    if (photoObj) {
+                        photoObj.url = e.target.result;
                     }
                 }
+                initGallery();
             };
             reader.readAsDataURL(file);
 
-            // Enviar al servidor (implementar endpoint)
             const response = await fetch('/dashboard/gallery/upload', {
                 method: 'POST',
                 body: formData
@@ -457,26 +501,16 @@
                 if (typeof showSaveToast === 'function') {
                     showSaveToast('Imagen actualizada correctamente');
                 }
-            } else {
-                console.error('Error al subir imagen');
-                if (typeof errorAlert === 'function') {
-                    errorAlert('Error al subir la imagen. Inténtalo de nuevo.');
-                }
             }
         } catch (error) {
             console.error('Error:', error);
         }
-
-        // Limpiar input
         input.value = '';
     }
 
-    // ============================================
-    // EFECTO STICKY - Fotos fijas mientras scrolleas
-    // ============================================
-    // Las galerías usan position: sticky en CSS
-    // No se necesita JavaScript adicional, el sticky CSS
-    // mantiene las fotos visibles mientras bajas la página
-
+    document.addEventListener('DOMContentLoaded', () => {
+        initGallery();
+        console.log('🖼️ Galería estática sincronizada con éxito');
+    });
 </script>
 {% endblock %}
