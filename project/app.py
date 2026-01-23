@@ -1,15 +1,17 @@
 import os
 import logging
+from datetime import timedelta
 from flask import Flask, render_template, request, redirect, url_for, flash, session, abort, send_from_directory
 from gotrue.errors import AuthApiError
 from dotenv import load_dotenv
 
 # Importaciones de nuestros módulos
 from config.supabase_client import supabase
+from utils.rate_limiter import limiter
 from blueprints.dashboard import dashboard_blueprint
 from blueprints.auth import auth_blueprint
-from utils.decorators import login_required
-from utils.password_strength import validar_fortaleza_password, generar_sugerencias_password
+from utils.security_headers import add_security_headers
+
 
 # --- Cargar variables de entorno ---
 load_dotenv()
@@ -34,6 +36,23 @@ if not SECRET_KEY:
     logger.error("FLASK_SECRET_KEY no está configurada en el archivo .env")
     raise ValueError("FLASK_SECRET_KEY debe estar configurada en el archivo .env")
 app.config['SECRET_KEY'] = SECRET_KEY
+
+# --- Configuración de Seguridad ---
+# Session security
+app.config['SESSION_COOKIE_HTTPONLY'] = True  # Previene acceso desde JavaScript
+app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'  # Protección CSRF
+app.config['SESSION_COOKIE_SECURE'] = False  # Cambiar a True en producción (HTTPS)
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=30)  # Timeout de sesión
+
+# Desactivar caché de templates para desarrollo
+app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.jinja_env.auto_reload = True
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
+# --- Rate Limiting ---
+# Inicializar limiter con la app
+limiter.init_app(app)
+
 logger.info("Aplicación Flask inicializada correctamente")
 
 # --- Registrar el Blueprint del Dashboard ---
@@ -41,6 +60,12 @@ app.register_blueprint(dashboard_blueprint, url_prefix='/dashboard')
 
 # --- Registrar el Blueprint de Autenticación ---
 app.register_blueprint(auth_blueprint, url_prefix='/')
+
+# --- Security Headers ---
+@app.after_request
+def apply_security_headers(response):
+    """Aplica headers de seguridad HTTP a todas las respuestas."""
+    return add_security_headers(response)
 
 
 @app.route('/favicon.ico')
@@ -65,11 +90,6 @@ def page_not_found(e):
 @app.route('/')
 def index():
     """Ruta Raíz. Redirige al dashboard si hay sesión, o al login si no."""
-    # Detectar confirmación de correo (Supabase envía type=signup o recovery)
-    if request.args.get('type') == 'signup' or request.args.get('code'):
-        flash('¡Correo confirmado exitosamente! Ahora puedes iniciar sesión.', 'success')
-        return redirect(url_for('auth.login'))
-
     if 'user_id' in session:
         return redirect(url_for('dashboard.index'))
     return redirect(url_for('auth.login'))
