@@ -7,18 +7,11 @@
 
             <!-- COLUMNA 1: FOTO -->
             <div class="lg:col-span-3 flex flex-col items-center space-y-4">
-                <div>
-                    <div id="previewLabel" class="text-center mb-2 hidden">
-                        <span class="text-xs font-bold text-green-600 bg-green-50 px-3 py-1 rounded-full">
-                            <i class="fa-solid fa-check-circle mr-1"></i> Vista Previa
-                        </span>
-                    </div>
-                    <div id="previewContainer"
-                        class="w-48 h-48 rounded-lg bg-slate-100 border-4 border-slate-200 shadow-md overflow-hidden relative group transition-all duration-300">
-                        <img id="preview" alt="" class="w-full h-full object-cover hidden" style="display: none;">
-                        <div id="placeholder" class="w-full h-full flex items-center justify-center text-slate-300">
-                            <i class="fa-solid fa-user text-6xl"></i>
-                        </div>
+                <div
+                    class="w-48 h-48 rounded-lg bg-slate-100 border-4 border-white shadow-md overflow-hidden relative group">
+                    <img id="preview" src="#" class="w-full h-full object-cover hidden">
+                    <div id="placeholder" class="w-full h-full flex items-center justify-center text-slate-300">
+                        <i class="fa-solid fa-user text-6xl"></i>
                     </div>
                 </div>
                 <label
@@ -267,8 +260,6 @@
         var type = file.type;
         var output = document.getElementById('preview');
         var placeholder = document.getElementById('placeholder');
-        var previewContainer = document.getElementById('previewContainer');
-        var previewLabel = document.getElementById('previewLabel');
 
         // Simple validation
         if (!type.includes('image')) {
@@ -282,23 +273,9 @@
             URL.revokeObjectURL(output.src) // free memory
         }
 
-        // Show image
         output.classList.remove('hidden');
-        output.style.display = 'block';
-
-        // Hide placeholder
         if (placeholder) {
             placeholder.classList.add('hidden');
-            placeholder.style.display = 'none';
-        }
-
-        // Add visual feedback
-        if (previewContainer) {
-            previewContainer.classList.remove('border-slate-200');
-            previewContainer.classList.add('border-green-500');
-        }
-        if (previewLabel) {
-            previewLabel.classList.remove('hidden');
         }
     };
 

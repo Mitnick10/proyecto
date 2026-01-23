@@ -10,16 +10,22 @@ from config.supabase_client import supabase, supabase_admin
 from utils.decorators import login_required, superadmin_required
 from utils.file_handler import procesar_imagen, procesar_pdf
 from utils.excel_generator import generar_ficha_excel
-from utils.cache_helpers import get_cached_or_compute, invalidate_cache, create_cache
-from utils.form_helpers import extract_athlete_data
 
 logger = logging.getLogger(__name__)
 
-# Caché simple para contadores (TTL: 60 segundos)
-cache_contadores = create_cache(ttl=60)
+# Caché simple para contadores
+cache_contadores = {
+    'data': None,
+    'timestamp': None,
+    'ttl': 60
+}
 
 # Caché para disciplinas (TTL más largo porque cambian menos frecuentemente)
-cache_disciplinas = create_cache(ttl=300)  # 5 minutos
+cache_disciplinas = {
+    'data': None,
+    'timestamp': None,
+    'ttl': 300  # 5 minutos
+}
 
 # Definimos el Blueprint
 dashboard_blueprint = Blueprint('dashboard', __name__, template_folder='templates')
@@ -27,30 +33,99 @@ dashboard_blueprint = Blueprint('dashboard', __name__, template_folder='template
 # --- HELPER PARA OBTENER DISCIPLINAS CON CACHÉ ---
 def obtener_disciplinas_disponibles():
     """Obtiene la lista de disciplinas con caché para mejor rendimiento."""
+    now = datetime.now()
+    cache_valido = (
+        cache_disciplinas['data'] is not None and 
+        cache_disciplinas['timestamp'] is not None and
+        (now - cache_disciplinas['timestamp']).total_seconds() < cache_disciplinas['ttl']
+    )
     
-    def compute_disciplinas():
-        """Función auxiliar que calcula las disciplinas."""
+    if cache_valido:
+        return cache_disciplinas['data']
+    
+    try:
+        # Disciplinas predeterminadas
+        disciplinas_base = ['Atletismo', 'Baloncesto', 'Béisbol', 'Boxeo', 'Ciclismo', 'Fútbol',
+                           'Gimnasia', 'Natación', 'Taekwondo', 'Tenis de Campo', 'Tenis de Mesa', 'Voleibol']
+        
+        # Obtener disciplinas personalizadas de la BD (las que no están en la lista base)
         try:
-            # Disciplinas predeterminadas
-            disciplinas_base = ['Atletismo', 'Baloncesto', 'Béisbol', 'Boxeo', 'Ciclismo', 'Fútbol',
-                               'Gimnasia', 'Natación', 'Taekwondo', 'Tenis de Campo', 'Tenis de Mesa', 'Voleibol']
-            
-            # Obtener disciplinas personalizadas de la BD (las que no están en la lista base)
-            try:
-                all_disciplinas = supabase.table('becas').select('disciplina').limit(500).execute()
-                disciplinas_bd = sorted(list(set(d['disciplina'] for d in all_disciplinas.data if d.get('disciplina') and d['disciplina'] not in disciplinas_base)))
-            except:
-                disciplinas_bd = []
-            
-            # Combinar: base + personalizadas
-            return sorted(disciplinas_base) + disciplinas_bd
-        except Exception as e:
-            logger.error(f"Error obteniendo disciplinas: {e}")
-            # Fallback a lista básica
-            return ['Atletismo', 'Baloncesto', 'Béisbol', 'Boxeo', 'Ciclismo', 'Fútbol', 'Gimnasia', 'Natación', 'Taekwondo', 'Tenis de Campo', 'Tenis de Mesa', 'Voleibol']
-    
-    return get_cached_or_compute(cache_disciplinas, compute_disciplinas)
+            all_disciplinas = supabase.table('becas').select('disciplina').limit(500).execute()
+            disciplinas_bd = sorted(list(set(d['disciplina'] for d in all_disciplinas.data if d.get('disciplina') and d['disciplina'] not in disciplinas_base)))
+        except:
+            disciplinas_bd = []
+        
+        # Combinar: base + personalizadas
+        disciplinas_completas = sorted(disciplinas_base) + disciplinas_bd
+        
+        # Actualizar caché
+        cache_disciplinas['data'] = disciplinas_completas
+        cache_disciplinas['timestamp'] = now
+        
+        return disciplinas_completas
+    except Exception as e:
+        logger.error(f"Error obteniendo disciplinas: {e}")
+        # Fallback a lista básica
+        return ['Atletismo', 'Baloncesto', 'Béisbol', 'Boxeo', 'Ciclismo', 'Fútbol', 'Gimnasia', 'Natación', 'Taekwondo', 'Tenis de Campo', 'Tenis de Mesa', 'Voleibol']
 
+# --- HELPER PARA RECOLECTAR DATOS DEL FORMULARIO ---
+def obtener_datos_formulario(req):
+    """Extrae todos los campos del formulario para crear o editar."""
+    # Usamos .get() para evitar errores si el campo no existe en el form
+    datos = {
+        # Datos Básicos
+        'nombre': req.form.get('nombre'),
+        'apellido': req.form.get('apellido'),
+        'cedula': req.form.get('cedula'),
+        'edad': req.form.get('edad') or None, # Convertir vacíos a None para enteros
+        'sexo': req.form.get('sexo'),
+        'email': req.form.get('email'),
+        'telefono': req.form.get('telefono'),
+        'estatus': req.form.get('estatus'),
+        'cuenta_bancaria': req.form.get('cuenta_bancaria'),
+        
+        # Datos del Representante
+        'es_menor': True if req.form.get('es_menor') == 'on' else False,
+        'representante_nombre': req.form.get('representante_nombre'),
+        'representante_cedula': req.form.get('representante_cedula'),
+        'representante_telefono': req.form.get('representante_telefono'),
+        'representante_parentesco': req.form.get('representante_parentesco'),
+        
+        # Ubicación
+        'municipio': req.form.get('municipio'),
+        'lugar_nacimiento': req.form.get('lugar_nacimiento'),
+        'direccion': req.form.get('direccion'),
+        'fecha_nacimiento': req.form.get('fecha_nacimiento') or None,
+
+        # Datos Deportivos
+        'disciplina': req.form.get('disciplina'),
+        'especialidad': req.form.get('especialidad'),
+        'categoria': req.form.get('categoria'),
+        'tipo_beca': req.form.get('tipo_beca'),
+
+        # Antropometría
+        'sangre': req.form.get('sangre'),
+        'peso': req.form.get('peso'),
+        'estatura': req.form.get('estatura'),
+
+        # Tallas
+        'talla_zapato': req.form.get('talla_zapato'),
+        'talla_franela': req.form.get('talla_franela'),
+        'talla_short': req.form.get('talla_short'),
+        'talla_chemise': req.form.get('talla_chemise'),
+        'talla_mono': req.form.get('talla_mono'),
+        'talla_competencia': req.form.get('talla_competencia'),
+
+        # Información Médica y Otros (Selects Si/No)
+        'usa_lentes': req.form.get('usa_lentes'),
+        'usa_bucal': req.form.get('usa_bucal'),
+        'usa_munequera': req.form.get('usa_munequera'),
+        'usa_rodilleras': req.form.get('usa_rodilleras'),
+        'dieta_deportiva': req.form.get('dieta_deportiva'),
+        'control_medico': req.form.get('control_medico'),
+        'estudio_social': req.form.get('estudio_social'),
+    }
+    return datos
 
 def get_signed_url_for_doc(doc_url):
     """Genera una URL firmada válida por 1 hora para un documento."""
@@ -110,8 +185,17 @@ def index():
         user = supabase.auth.get_user().user
         first_name = user.user_metadata.get('first_name', 'Usuario')
 
-        # Usar helper de caché para obtener contadores
-        def compute_contadores():
+        # Verificar si el caché es válido
+        now = datetime.now()
+        cache_valido = (
+            cache_contadores['data'] is not None and 
+            cache_contadores['timestamp'] is not None and
+            (now - cache_contadores['timestamp']).total_seconds() < cache_contadores['ttl']
+        )
+        
+        if cache_valido:
+            contadores = cache_contadores['data']
+        else:
             atletas = supabase.table('becas').select('id', count='exact').eq('estatus', 'Activo').execute().count or 0
             revision = supabase.table('becas').select('id', count='exact').eq('estatus', 'En Revisión').execute().count or 0
             try:
@@ -119,9 +203,9 @@ def index():
             except: 
                 medallas = 0
             
-            return {'atletas': atletas, 'revision': revision, 'medallas': medallas}
-        
-        contadores = get_cached_or_compute(cache_contadores, compute_contadores)
+            contadores = {'atletas': atletas, 'revision': revision, 'medallas': medallas}
+            cache_contadores['data'] = contadores
+            cache_contadores['timestamp'] = now
         
         # Cargar imágenes independientes para el carrusel (Slots: home_1 a home_6)
         carousel_photos = []
@@ -145,7 +229,7 @@ def index():
         con_imagen = [p for p in carousel_photos if p.get('url')]
         sin_imagen = [p for p in carousel_photos if not p.get('url')]
         
-        # Mezclar ambos grupos independientemente
+        # Mezclar ambos grupos independientementes
         random.shuffle(con_imagen)
         random.shuffle(sin_imagen)
         
@@ -278,35 +362,49 @@ def mi_cuenta():
 @dashboard_blueprint.route('/becas/nueva', methods=['GET', 'POST'])
 @login_required
 def crear_beca():
+    print("="*50)
+    print("DEBUG: CREAR_BECA INICIADO")
+    print(f"DEBUG: Método: {request.method}")
+    
     if request.method == 'POST':
         try:
-            logger.debug(f"Procesando POST en crear_beca, method: {request.method}")
+            print("DEBUG: Procesando POST")
+            print(f"DEBUG: request.files: {request.files}")
+            print(f"DEBUG: request.form keys: {request.form.keys()}")
             
             # 1. Recolectar todos los datos del formulario usando el helper
-            datos = extract_athlete_data(request)
-            logger.debug(f"Datos extraídos: {list(datos.keys())}")
+            datos = obtener_datos_formulario(request)
+            print(f"DEBUG: Datos recolectados: {list(datos.keys())}")
             
             # 2. Procesar Foto
             file = request.files.get('foto')
-            if file and file.filename:
-                logger.debug(f"Procesando archivo: {file.filename}, tipo: {file.content_type}")
-                foto_url = procesar_imagen(file)
-                if foto_url:
-                    datos['foto'] = foto_url
-                    logger.debug(f"Foto procesada exitosamente")
+            print(f"DEBUG CREAR: Archivo recibido: {file}")
+            if file:
+                print(f"DEBUG CREAR: Filename: {file.filename}")
+                print(f"DEBUG CREAR: Content-Type: {file.content_type}")
+            
+            foto_url = procesar_imagen(file)
+            print(f"DEBUG CREAR: Resultado procesar_imagen: {foto_url[:100] if foto_url else 'None'}...")
+            
+            if foto_url:
+                datos['foto'] = foto_url
+                print(f"DEBUG: Foto URL: {foto_url}")
             
             # 3. Insertar en BD
-            logger.debug("Insertando datos en BD...")
+            print("DEBUG: Intentando insertar en BD...")
             result = supabase.table('becas').insert(datos).execute()
-            logger.info(f"Atleta creado exitosamente, ID: {result.data[0].get('id') if result.data else 'N/A'}")
+            print(f"DEBUG: Insert exitoso, data: {result.data}")
             
             # Invalidar caché de disciplinas si se agregó una nueva
-            invalidate_cache(cache_disciplinas)
+            cache_disciplinas['data'] = None
+            cache_disciplinas['timestamp'] = None
             
             flash('Atleta registrado exitosamente.', 'success')
             return redirect(url_for('dashboard.lista_becas'))
-        except Exception as e:
-            logger.error(f"Error en crear_beca: {e}", exc_info=True)
+        except Exception as e: 
+            print(f"ERROR en crear_beca: {e}")
+            import traceback
+            traceback.print_exc()
             flash(f'Error al registrar: {e}', 'error')
     
     # GET - Cargar disciplinas disponibles usando caché
@@ -377,27 +475,33 @@ def editar_beca(beca_id):
     if request.method == 'POST':
         try:
             # Recolectar datos actualizados
-            datos = extract_athlete_data(request)
+            datos = obtener_datos_formulario(request)
             
             # Procesar Foto Nueva (si se subió una)
             file = request.files.get('foto')
-            if file and file.filename:
-                logger.debug(f"Procesando nueva foto: {file.filename}")
-                foto_url = procesar_imagen(file)
-                if foto_url:
-                    datos['foto'] = foto_url
-                    logger.debug(f"Foto actualizada exitosamente")
+            print(f"DEBUG EDITAR: Archivo recibido: {file}")
+            if file:
+                print(f"DEBUG EDITAR: Filename: {file.filename}")
+                print(f"DEBUG EDITAR: Content-Type: {file.content_type if hasattr(file, 'content_type') else 'N/A'}")
+            
+            foto_url = procesar_imagen(file)
+            print(f"DEBUG EDITAR: Resultado procesar_imagen: {foto_url[:100] if foto_url else 'None'}")
+            
+            if foto_url:
+                datos['foto'] = foto_url
+                print(f"DEBUG EDITAR: Foto agregada a datos para update. URL: {foto_url}")
+            else:
+                print("DEBUG EDITAR: No se procesó ninguna foto nueva")
             
             supabase.table('becas').update(datos).eq('id', beca_id).execute()
-            logger.info(f"Ficha actualizada para atleta ID: {beca_id}")
             
             # Invalidar caché de disciplinas si se pudo haber cambiado
-            invalidate_cache(cache_disciplinas)
+            cache_disciplinas['data'] = None
+            cache_disciplinas['timestamp'] = None
             
             flash('Ficha actualizada correctamente.', 'success')
             return redirect(url_for('dashboard.editar_beca', beca_id=beca_id))
-        except Exception as e:
-            logger.error(f"Error al guardar cambios en atleta {beca_id}: {e}", exc_info=True)
+        except Exception as e: 
             flash(f'Error al guardar cambios: {e}', 'error')
 
     # 2. MOSTRAR (GET)
