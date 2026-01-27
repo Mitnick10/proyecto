@@ -19,30 +19,35 @@ auth_blueprint = Blueprint('auth', __name__)
 def login():
     """Maneja el inicio de sesión con auto-login después de confirmación de email."""
     
-    # Si ya hay sesión de Flask activa, redirigir al dashboard
-    if 'user_id' in session:
-        return redirect(url_for('dashboard.index'))
-    
-    # Detectar si hay sesión activa de Supabase (ej: desde confirmación de email)
+    # Detectar si ya hay sesión activa (ej: desde confirmación de email)
     try:
         user = supabase.auth.get_user()
         if user and user.user:
             user_id = user.user.id
             email = user.user.email
-            user_role = get_user_role(user_id)
             
-            # Crear sesión de Flask
-            session.permanent = True
-            session['user_id'] = user_id
-            session['email'] = email
-            session['role'] = user_role
+            # Crear sesión de Flask si no existe
+            if 'user_id' not in session:
+                user_role = get_user_role(user_id)
+                
+                # Crear sesión de Flask
+                session.permanent = True
+                session['user_id'] = user_id
+                session['email'] = email
+                session['role'] = user_role
+                
+                flash(f'¡Bienvenido/a {email}! Tu correo ha sido confirmado.', 'success')
+                logger.info(f"✅ Auto-login exitoso después de confirmación: {email}")
             
-            flash(f'¡Bienvenido/a {email}! Tu correo ha sido confirmado.', 'success')
-            logger.info(f"✅ Auto-login exitoso después de confirmación: {email}")
             return redirect(url_for('dashboard.index'))
     except Exception as e:
         # Si falla la detección de sesión, continuar con login normal
         logger.debug(f"No hay sesión activa de Supabase: {e}")
+        pass
+    
+    # Si ya hay sesión de Flask activa, redirigir al dashboard
+    if 'user_id' in session:
+        return redirect(url_for('dashboard.index'))
 
     if request.method == 'POST':
         if not supabase: 
@@ -172,7 +177,7 @@ def register():
             flash('Todos los campos son requeridos.', 'error')
             return render_template('register.html')
         
-        # Validar que las contraseñas coincidan (fail fast)
+        # Validar que las contraseñas coincidan
         if password != confirm_password:
             flash('❌ Las contraseñas no coinciden. Por favor verifícalas.', 'error')
             return render_template('register.html')
@@ -233,19 +238,11 @@ def register():
                 return redirect(url_for('auth.login'))
             
         except AuthApiError as e:
-            error_msg = e.message if hasattr(e, 'message') else str(e)
-            logger.warning(f"Error en registro para email {email}: {error_msg}")
-            
-            # Mensajes más específicos según el error
-            if "already registered" in error_msg.lower() or "already exists" in error_msg.lower():
-                flash('Este correo electrónico ya está registrado. Por favor inicia sesión.', 'error')
-            elif "invalid" in error_msg.lower() and "email" in error_msg.lower():
-                flash('El correo electrónico no es válido. Por favor verifica el formato.', 'error')
-            else:
-                flash(f'Error durante el registro: {error_msg}', 'error')
+            logger.warning(f"Error en registro para email {email}: {e.message}")
+            flash(f'Error durante el registro: {e.message}', 'error')
         except Exception as e:
             logger.error(f"Error inesperado durante el registro: {e}", exc_info=True)
-            flash('Error inesperado durante el registro. Por favor intenta nuevamente.', 'error')
+            flash(f'Error inesperado durante el registro.', 'error')
 
     return render_template('register.html')
 
