@@ -1,0 +1,8 @@
+--- DIAGNÓSTICO DE ACCESO A PDF (V4) ---
+
+2. Analizando documento de BD:
+   URL: https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/public/documentos/c398a713-5036-4059-b398-d3932f882412.pdf?
+   Suffix: documentos/c398a713-5036-4059-b398-d3932f882412.pdf
+   Hipótesis -> Bucket: 'documentos', Path: 'c398a713-5036-4059-b398-d3932f882412.pdf'
+   Firmado: https://phxqpgxydxylpfsfjfwg.supabase.co/storage/v1/object/sign/documentos/c398a713-5036-4059-b398-d3932f882412.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wNzJjOWYzZC1iMDA4LTQ5ZWMtYjc4My1hNzRkM2RjZDllYTQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJkb2N1bWVudG9zL2MzOThhNzEzLTUwMzYtNDA1OS1iMzk4LWQzOTMyZjg4MjQxMi5wZGYiLCJpYXQiOjE3NjY4NTk3NTgsImV4cCI6MTc2Njg1OTgxOH0.Li8-wTwvZPMVCzzjivnYQCtYSm044YrR-zJ-C6lizTI
+   Status HTTP: 200

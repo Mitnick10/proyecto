@@ -7,7 +7,55 @@
     <title>{% block title %}App con Supabase{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos para texto más grande y oscuro */
+        body {
+            font-size: 20px !important;
+            color: #1f2937 !important;
+        }
+
+        /* Títulos más oscuros */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #111827 !important;
+            font-weight: 700 !important;
+        }
+
+        /* Párrafos y texto general más oscuros */
+        p,
+        span,
+        div,
+        td,
+        th,
+        li {
+            color: #1f2937 !important;
+        }
+
+        /* Labels más oscuros y bold */
+        label {
+            color: #374151 !important;
+            font-weight: 600 !important;
+        }
+
+        /* Inputs, selects, textareas más oscuros */
+        input,
+        select,
+        textarea {
+            color: #111827 !important;
+            font-size: 1rem !important;
+        }
+
+        /* Placeholders más oscuros */
+        ::placeholder {
+            color: #6b7280 !important;
+            opacity: 0.7;
+        }
+    </style>
 </head>
 
 <body class="h-full font-sans">
