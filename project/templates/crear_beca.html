@@ -50,16 +50,17 @@
                     </div>
 
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div class="md:col-span-2"><input type="text" name="nombre" required placeholder="Nombres"
-                                class="w-full rounded border-slate-300 text-sm"></div>
-                        <div class="md:col-span-2"><input type="text" name="apellido" required placeholder="Apellidos"
-                                class="w-full rounded border-slate-300 text-sm"></div>
-                        <div><input type="text" name="cedula" required placeholder="Cédula Atleta"
+                        <div class="md:col-span-2"><input type="text" name="nombre" required
+                                placeholder="Ej: Juan Carlos" class="w-full rounded border-slate-300 text-sm"></div>
+                        <div class="md:col-span-2"><input type="text" name="apellido" required
+                                placeholder="Ej: Pérez Rodríguez" class="w-full rounded border-slate-300 text-sm"></div>
+                        <div><input type="text" name="cedula" required placeholder="Ej: V-12345678"
                                 class="w-full rounded border-slate-300 text-sm"></div>
                         <div><input type="date" name="fecha_nacimiento" class="w-full rounded border-slate-300 text-sm"
                                 title="Fecha de Nacimiento"></div>
                         <div class="md:col-span-2"><input type="text" name="lugar_nacimiento"
-                                placeholder="Lugar de Nacimiento" class="w-full rounded border-slate-300 text-sm">
+                                placeholder="Ej: San Juan de los Morros, Guárico"
+                                class="w-full rounded border-slate-300 text-sm">
                         </div>
                     </div>
                 </div>
@@ -72,13 +73,12 @@
                     </h4>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div class="md:col-span-3">
-                            <input type="text" name="representante_nombre"
-                                placeholder="Nombre y Apellido del Representante"
+                            <input type="text" name="representante_nombre" placeholder="Ej: María Rodríguez"
                                 class="w-full rounded border-blue-200 text-sm">
                         </div>
-                        <input type="text" name="representante_cedula" placeholder="Cédula Representante"
+                        <input type="text" name="representante_cedula" placeholder="Ej: V-9876543"
                             class="w-full rounded border-blue-200 text-sm">
-                        <input type="text" name="representante_telefono" placeholder="Teléfono Representante"
+                        <input type="text" name="representante_telefono" placeholder="Ej: 0414-1234567"
                             class="w-full rounded border-blue-200 text-sm">
                         <select name="representante_parentesco" class="w-full rounded border-blue-200 text-sm">
                             <option value="">Parentesco...</option>
@@ -115,16 +115,17 @@
                         <!-- Campo oculto real que se envía -->
                         <input type="hidden" name="disciplina" id="disciplinaHidden">
 
-                        <input type="text" name="especialidad" placeholder="Especialidad"
+                        <input type="text" name="especialidad" placeholder="Ej: 100m Planos"
                             class="w-full rounded border-slate-300 text-sm">
-                        <input type="text" name="categoria" placeholder="Categoría"
+                        <input type="text" name="categoria" placeholder="Ej: Juvenil A"
                             class="w-full rounded border-slate-300 text-sm">
                         <select name="tipo_beca" class="w-full rounded border-slate-300 text-sm">
-                            <option value="">Tipo Beca...</option>
-                            <option>Alto Rendimiento</option>
-                            <option>Talento Deportivo</option>
-                            <option>Apoyo Económico</option>
-                            <option>Otro</option>
+                            <option value="">Programa de Beca...</option>
+                            <option>Esperanza Olímpica Guariqueña</option>
+                            <option>Elite Internacional</option>
+                            <option>Proyección a Selección Nacional</option>
+                            <option>Elite Nacional</option>
+                            <option>Talento Deportivo Guariqueño</option>
                         </select>
                         <select name="estatus"
                             class="w-full rounded border-slate-300 text-sm font-medium text-blue-600">
@@ -146,11 +147,11 @@
                             <option>Masculino</option>
                             <option>Femenino</option>
                         </select>
-                        <input type="text" name="sangre" placeholder="G. Sangre"
+                        <input type="text" name="sangre" placeholder="Ej: O+"
                             class="w-full rounded border-slate-300 text-sm">
-                        <input type="text" name="peso" placeholder="Peso (kg)"
+                        <input type="text" name="peso" placeholder="Ej: 65.5 kg"
                             class="w-full rounded border-slate-300 text-sm">
-                        <input type="text" name="estatura" placeholder="Estatura (m)"
+                        <input type="text" name="estatura" placeholder="Ej: 1.75 m"
                             class="w-full rounded border-slate-300 text-sm">
                     </div>
                 </div>
@@ -160,17 +161,17 @@
                     <h4 class="text-xs font-black text-blue-900 uppercase tracking-wider mb-3">Tallas / Uniformidad
                     </h4>
                     <div class="grid grid-cols-3 md:grid-cols-6 gap-2">
-                        <input type="text" name="talla_zapato" placeholder="Zapato"
+                        <input type="text" name="talla_zapato" placeholder="Ej: 42"
                             class="rounded border-slate-300 text-xs text-center">
-                        <input type="text" name="talla_franela" placeholder="Franela"
+                        <input type="text" name="talla_franela" placeholder="Ej: M"
                             class="rounded border-slate-300 text-xs text-center">
-                        <input type="text" name="talla_short" placeholder="Short"
+                        <input type="text" name="talla_short" placeholder="Ej: M"
                             class="rounded border-slate-300 text-xs text-center">
-                        <input type="text" name="talla_chemise" placeholder="Chemise"
+                        <input type="text" name="talla_chemise" placeholder="Ej: M"
                             class="rounded border-slate-300 text-xs text-center">
-                        <input type="text" name="talla_mono" placeholder="Mono"
+                        <input type="text" name="talla_mono" placeholder="Ej: M"
                             class="rounded border-slate-300 text-xs text-center">
-                        <input type="text" name="talla_competencia" placeholder="Competencia"
+                        <input type="text" name="talla_competencia" placeholder="Ej: M"
                             class="rounded border-slate-300 text-xs text-center">
                     </div>
                 </div>
@@ -229,11 +230,11 @@
                             <option>{{ m }}</option>
                             {% endfor %}
                         </select>
-                        <input type="text" name="direccion" placeholder="Dirección de Habitación"
+                        <input type="text" name="direccion" placeholder="Ej: Urb. Los Morros, Calle 3, Casa 15"
                             class="w-full rounded border-slate-300 text-sm">
-                        <input type="text" name="telefono" placeholder="Teléfono"
+                        <input type="text" name="telefono" placeholder="Ej: 0414-1234567"
                             class="w-full rounded border-slate-300 text-sm">
-                        <input type="email" name="email" placeholder="Correo Electrónico"
+                        <input type="email" name="email" placeholder="Ej: usuario@gmail.com"
                             class="w-full rounded border-slate-300 text-sm">
 
                         <!-- CUENTA BANCARIA DINÁMICA -->

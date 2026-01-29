@@ -87,7 +87,7 @@ def extract_athlete_data(request: Request) -> Dict[str, Any]:
         'email': get_text('email'),
         'telefono': get_text('telefono'),
         'estatus': get_text('estatus'),
-        'cuenta_bancaria': get_text('cuenta_bancaria'),
+        'cuenta_bancaria': get_text('cuenta_bancaria', '').replace('-', '').replace(' ', '') or None,
         
         # Datos del Representante
         'es_menor': get_bool('es_menor'),

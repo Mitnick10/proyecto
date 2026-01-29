@@ -55,16 +55,18 @@
 
                                 <div>
                                     <label class="form-label">Nombres</label>
-                                    <input type="text" name="nombre" value="{{ beca.nombre }}" class="form-input">
+                                    <input type="text" name="nombre" value="{{ beca.nombre }}"
+                                        placeholder="Ej: Juan Carlos" class="form-input">
                                 </div>
                                 <div>
                                     <label class="form-label">Apellidos</label>
-                                    <input type="text" name="apellido" value="{{ beca.apellido }}" class="form-input">
+                                    <input type="text" name="apellido" value="{{ beca.apellido }}"
+                                        placeholder="Ej: Pérez Rodríguez" class="form-input">
                                 </div>
                                 <div>
                                     <label class="form-label">Cédula de Identidad</label>
                                     <input type="text" name="cedula" value="{{ beca.cedula }}"
-                                        class="form-input font-mono bg-slate-50">
+                                        placeholder="Ej: V-12345678" class="form-input font-mono bg-slate-50">
                                 </div>
                                 <div>
                                     <label class="form-label">Fecha de Nacimiento</label>
@@ -74,7 +76,7 @@
                                 <div class="md:col-span-2">
                                     <label class="form-label">Lugar de Nacimiento</label>
                                     <input type="text" name="lugar_nacimiento" value="{{ beca.lugar_nacimiento }}"
-                                        class="form-input">
+                                        placeholder="Ej: San Juan de los Morros, Guárico" class="form-input">
                                 </div>
                             </div>
 
@@ -89,21 +91,21 @@
                                         <label class="block text-xs font-bold text-blue-700/70 mb-1">Nombre
                                             Completo</label>
                                         <input type="text" name="representante_nombre"
-                                            value="{{ beca.representante_nombre }}"
+                                            value="{{ beca.representante_nombre }}" placeholder="Ej: María Pérez"
                                             class="w-full rounded-lg border-blue-200 text-sm focus:border-blue-500 focus:ring-blue-500">
                                     </div>
                                     <div class="grid grid-cols-3 gap-4">
                                         <div>
                                             <label class="block text-xs font-bold text-blue-700/70 mb-1">Cédula</label>
                                             <input type="text" name="representante_cedula"
-                                                value="{{ beca.representante_cedula }}"
+                                                value="{{ beca.representante_cedula }}" placeholder="Ej: V-9876543"
                                                 class="w-full rounded-lg border-blue-200 text-sm focus:border-blue-500 focus:ring-blue-500">
                                         </div>
                                         <div>
                                             <label
                                                 class="block text-xs font-bold text-blue-700/70 mb-1">Teléfono</label>
                                             <input type="text" name="representante_telefono"
-                                                value="{{ beca.representante_telefono }}"
+                                                value="{{ beca.representante_telefono }}" placeholder="Ej: 0414-1234567"
                                                 class="w-full rounded-lg border-blue-200 text-sm focus:border-blue-500 focus:ring-blue-500">
                                         </div>
                                         <div>
@@ -165,21 +167,23 @@
                                 <div>
                                     <label class="form-label">Especialidad</label>
                                     <input type="text" name="especialidad" value="{{ beca.especialidad }}"
-                                        class="form-input">
+                                        placeholder="Ej: 100m Planos" class="form-input">
                                 </div>
                                 <div>
                                     <label class="form-label">Categoría</label>
-                                    <input type="text" name="categoria" value="{{ beca.categoria }}" class="form-input">
+                                    <input type="text" name="categoria" value="{{ beca.categoria }}"
+                                        placeholder="Ej: Juvenil A" class="form-input">
                                 </div>
                                 <div>
-                                    <label class="form-label">Tipo de Beca</label>
+                                    <label class="form-label">Programa de Beca</label>
                                     <select name="tipo_beca"
                                         class="form-select w-full rounded-lg border-slate-300 text-sm focus:border-blue-500 focus:ring-blue-500">
                                         <option>{{ beca.tipo_beca }}</option>
-                                        <option>Alto Rendimiento</option>
-                                        <option>Talento Deportivo</option>
-                                        <option>Apoyo Económico</option>
-                                        <option>Otro</option>
+                                        <option>Esperanza Olímpica Guariqueña</option>
+                                        <option>Elite Internacional</option>
+                                        <option>Proyección a Selección Nacional</option>
+                                        <option>Elite Nacional</option>
+                                        <option>Talento Deportivo Guariqueño</option>
                                     </select>
                                 </div>
                                 <div>
@@ -215,7 +219,7 @@
                             <div class="p-6">
                                 <div class="grid grid-cols-2 gap-4 mb-6">
                                     <div><label class="form-label">Edad</label><input type="number" name="edad"
-                                            value="{{ beca.edad }}" class="form-input"></div>
+                                            value="{{ beca.edad }}" placeholder="Ej: 18" class="form-input"></div>
                                     <div>
                                         <label class="form-label">Sexo</label>
                                         <select name="sexo"
@@ -226,11 +230,13 @@
                                         </select>
                                     </div>
                                     <div><label class="form-label">Peso (Kg)</label><input type="text" name="peso"
-                                            value="{{ beca.peso }}" class="form-input"></div>
+                                            value="{{ beca.peso }}" placeholder="Ej: 65,5" class="form-input"></div>
                                     <div><label class="form-label">Estatura (m)</label><input type="text"
-                                            name="estatura" value="{{ beca.estatura }}" class="form-input"></div>
+                                            name="estatura" value="{{ beca.estatura }}" placeholder="Ej: 1,75"
+                                            class="form-input"></div>
                                     <div class="col-span-2"><label class="form-label">Tipo de Sangre</label><input
-                                            type="text" name="sangre" value="{{ beca.sangre }}" class="form-input">
+                                            type="text" name="sangre" value="{{ beca.sangre }}" placeholder="Ej: O+"
+                                            class="form-input">
                                     </div>
                                 </div>
 
@@ -241,15 +247,15 @@
                                     <div class="text-center"><label
                                             class="text-[10px] uppercase font-bold text-slate-400">Zapato</label><input
                                             type="text" name="talla_zapato" value="{{ beca.talla_zapato }}"
-                                            class="form-input text-center"></div>
+                                            placeholder="Ej: 42" class="form-input text-center"></div>
                                     <div class="text-center"><label
                                             class="text-[10px] uppercase font-bold text-slate-400">Franela</label><input
                                             type="text" name="talla_franela" value="{{ beca.talla_franela }}"
-                                            class="form-input text-center"></div>
+                                            placeholder="Ej: M" class="form-input text-center"></div>
                                     <div class="text-center"><label
                                             class="text-[10px] uppercase font-bold text-slate-400">Mono</label><input
                                             type="text" name="talla_mono" value="{{ beca.talla_mono }}"
-                                            class="form-input text-center"></div>
+                                            placeholder="Ej: M" class="form-input text-center"></div>
                                 </div>
                             </div>
                         </div>
@@ -326,11 +332,12 @@
                                 <div class="md:col-span-2">
                                     <label class="form-label">Dirección de Habitación</label>
                                     <input type="text" name="direccion" value="{{ beca.direccion }}" class="form-input"
-                                        placeholder="Sector, Calle, Casa...">
+                                        placeholder="Ej: Urb. Los Morros, Calle 3, Casa 15">
                                 </div>
                                 <div class="md:col-span-2">
                                     <label class="form-label">Correo Electrónico</label>
-                                    <input type="email" name="email" value="{{ beca.email }}" class="form-input">
+                                    <input type="email" name="email" value="{{ beca.email }}"
+                                        placeholder="Ej: usuario@gmail.com" class="form-input">
                                 </div>
                                 <div class="md:col-span-2 pt-4 bg-slate-50 p-4 rounded-lg border border-slate-100">
                                     <label id="labelCuenta"
@@ -345,8 +352,6 @@
                                             <i class="fa-solid fa-money-check text-slate-400"></i>
                                         </div>
                                         <input type="text" name="cuenta_bancaria" value="{{ beca.cuenta_bancaria }}"
-                                            pattern="\d{4}-\d{4}-\d{2}-\d{10}"
-                                            title="Formato: 0000-0000-00-0000000000 (20 dígitos separados por guiones)"
                                             placeholder="0000-0000-00-0000000000"
                                             class="form-input pl-10 font-mono bg-white">
                                     </div>

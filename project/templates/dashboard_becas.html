@@ -22,10 +22,10 @@
                 <input type="hidden" name="disciplina" value="{{ current_filter }}">
                 {% endif %}
 
-                <!-- Dropdown Tipo de Beca -->
+                <!-- Dropdown Programas de Becas -->
                 <select name="tipo_beca" onchange="this.form.submit()"
                     class="block w-full md:w-40 rounded-md border-0 py-1.5 pl-3 pr-8 text-slate-900 ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
-                    <option value="Todas">Todas las Becas</option>
+                    <option value="Todas">Todos los Programas</option>
                     {% for tipo in tipos_beca %}
                     <option value="{{ tipo }}" {% if current_tipo_beca==tipo %}selected{% endif %}>{{ tipo }}</option>
                     {% endfor %}
@@ -176,7 +176,7 @@
                             <tr>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">
-                                    Nombre / Tipo de Beca</th>
+                                    Nombre / Programa</th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">
                                     Cédula</th>
@@ -185,7 +185,28 @@
                                     Disciplina</th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">
-                                    Estatus</th>
+                                    <form action="{{ url_for('dashboard.lista_becas') }}" method="GET"
+                                        class="inline-block">
+                                        {% if current_filter %}<input type="hidden" name="disciplina"
+                                            value="{{ current_filter }}">{% endif %}
+                                        {% if current_search %}<input type="hidden" name="buscar"
+                                            value="{{ current_search }}">{% endif %}
+                                        {% if current_tipo_beca %}<input type="hidden" name="tipo_beca"
+                                            value="{{ current_tipo_beca }}">{% endif %}
+
+                                        <select name="estatus" onchange="this.form.submit()"
+                                            class="text-xs font-bold text-slate-500 uppercase tracking-wider border-0 bg-transparent py-0 pl-0 pr-6 focus:ring-0 cursor-pointer">
+                                            <option value="Activo" {% if current_estatus=='Activo' %}selected{% endif
+                                                %}>ACTIVO</option>
+                                            <option value="En Revisión" {% if current_estatus=='En Revisión'
+                                                %}selected{% endif %}>EN REVISIÓN</option>
+                                            <option value="Inactivo" {% if current_estatus=='Inactivo' %}selected{%
+                                                endif %}>INACTIVO</option>
+                                            <option value="Todos" {% if current_estatus=='Todos' %}selected{% endif %}>
+                                                TODOS</option>
+                                        </select>
+                                    </form>
+                                </th>
                                 <th scope="col" class="relative px-6 py-3"><span class="sr-only">Acciones</span>
                                 </th>
                             </tr>
@@ -426,6 +447,8 @@
     .gallery-overlay {
         backdrop-filter: blur(2px);
     }
+
+
 
     /* Responsive: mostrar galería en móvil como carrusel horizontal */
     @media (max-width: 1023px) {
