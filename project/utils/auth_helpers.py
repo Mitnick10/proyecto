@@ -18,6 +18,7 @@ def get_user_role(user_id: str) -> str:
         user_id: ID del usuario en Supabase Auth
         
     Returns:
+<<<<<<< HEAD
         str: Rol del usuario ('admin', 'usuario', etc.). 
              Retorna 'usuario' por defecto si no se encuentra.
     """
@@ -26,6 +27,16 @@ def get_user_role(user_id: str) -> str:
         
         if profile_response.data and len(profile_response.data) > 0:
             user_role = profile_response.data[0]['role']
+=======
+        str: Rol del usuario ('admin', 'superadmin', 'usuario'). 
+             Retorna 'usuario' por defecto si no se encuentra.
+    """
+    try:
+        profile_response = supabase.table('profiles').select('role').eq('id', user_id).single().execute()
+        
+        if profile_response.data:
+            user_role = profile_response.data.get('role', 'usuario')
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
             logger.info(f"✅ Rol encontrado: {user_role} para user_id: {user_id}")
             return user_role
         else:
@@ -82,11 +93,19 @@ def get_or_create_profile(user_id: str, email: str, user_metadata: dict = None) 
     """
     try:
         # Intentar obtener perfil existente
+<<<<<<< HEAD
         profile_response = supabase.table('profiles').select('role').eq('id', user_id).execute()
         
         if profile_response.data and len(profile_response.data) > 0:
             # Usuario existente
             user_role = profile_response.data[0]['role']
+=======
+        profile_response = supabase.table('profiles').select('role').eq('id', user_id).single().execute()
+        
+        if profile_response.data:
+            # Usuario existente
+            user_role = profile_response.data.get('role', 'usuario')
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
             logger.info(f"👤 Usuario existente encontrado con rol: {user_role}")
             return user_role
         else:

@@ -24,6 +24,8 @@
 
 
 
+
+
     </div>
 
     <!-- FICHA TÉCNICA (Diseño Oficial) -->
@@ -410,6 +412,15 @@
 
     @media print {
 
+<<<<<<< HEAD
+=======
+        /* Fuerza la impresión de colores de fondo exactos */
+        * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
         /* Ocultar elementos de navegación */
         .no-print,
         nav,
@@ -424,6 +435,11 @@
             background: white;
             margin: 0;
             padding: 0;
+<<<<<<< HEAD
+=======
+            font-size: 12pt;
+            /* Base font size boost */
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
         }
 
         /* Contenedor principal */
@@ -431,23 +447,79 @@
             margin: 0 !important;
             padding: 0 !important;
             max-width: 100% !important;
+<<<<<<< HEAD
+=======
+            width: 100% !important;
+        }
+
+        .max-w-5xl {
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+
+        /* Estabilización de GRID */
+        .grid {
+            display: grid !important;
+        }
+
+        /* Evita que los hijos del grid expandan las columnas */
+        .grid>* {
+            min-width: 0;
+        }
+
+        /* Forzar WRAPPING de texto para evitar desbordes */
+        .truncate,
+        .block,
+        span,
+        p,
+        div {
+            white-space: normal !important;
+            word-break: break-word !important;
+            overflow-wrap: anywhere !important;
+        }
+
+        /* Ajuste de leading para ahorrar espacio vertical si envuelve */
+        .block {
+            line-height: 1.1 !important;
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
         }
 
         /* Ficha técnica */
         #ficha-tecnica {
             box-shadow: none !important;
+<<<<<<< HEAD
             border: 1px solid #000 !important;
             page-break-after: auto;
         }
 
+=======
+            border: 2px solid #1e293b !important;
+            /* Slate 800 */
+            page-break-after: auto;
+        }
+
+        /* Bordes más definidos para impresión */
+        .border-slate-400 {
+            border-color: #94a3b8 !important;
+            /* Slate 400 forced */
+            border-width: 1px !important;
+        }
+
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
         /* Ocultar sección de documentos digitales */
         #documentos-section {
             display: none !important;
         }
 
+<<<<<<< HEAD
         /* Salto de página para Tallas y Médica */
         .print-page-break {
             page-break-before: always;
+=======
+        /* Salto de página para Tallas y Médica si es necesario */
+        .print-page-break {
+            page-break-inside: avoid;
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
         }
 
         /* Impresión selectiva: solo ficha + documentos */
@@ -462,7 +534,11 @@
         /* Ajustes de tamaño de página */
         @page {
             size: letter landscape;
+<<<<<<< HEAD
             margin: 1cm;
+=======
+            margin: 0.5cm;
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
         }
     }
 </style>

@@ -55,16 +55,18 @@
 
                                 <div>
                                     <label class="form-label">Nombres</label>
-                                    <input type="text" name="nombre" value="{{ beca.nombre }}" class="form-input">
+                                    <input type="text" name="nombre" value="{{ beca.nombre }}"
+                                        placeholder="Ej: Juan Carlos" class="form-input">
                                 </div>
                                 <div>
                                     <label class="form-label">Apellidos</label>
-                                    <input type="text" name="apellido" value="{{ beca.apellido }}" class="form-input">
+                                    <input type="text" name="apellido" value="{{ beca.apellido }}"
+                                        placeholder="Ej: Pérez Rodríguez" class="form-input">
                                 </div>
                                 <div>
                                     <label class="form-label">Cédula de Identidad</label>
                                     <input type="text" name="cedula" value="{{ beca.cedula }}"
-                                        class="form-input font-mono bg-slate-50">
+                                        placeholder="Ej: V-12345678" class="form-input font-mono bg-slate-50">
                                 </div>
                                 <div>
                                     <label class="form-label">Fecha de Nacimiento</label>
@@ -74,7 +76,7 @@
                                 <div class="md:col-span-2">
                                     <label class="form-label">Lugar de Nacimiento</label>
                                     <input type="text" name="lugar_nacimiento" value="{{ beca.lugar_nacimiento }}"
-                                        class="form-input">
+                                        placeholder="Ej: San Juan de los Morros, Guárico" class="form-input">
                                 </div>
                             </div>
 
@@ -89,21 +91,21 @@
                                         <label class="block text-xs font-bold text-blue-700/70 mb-1">Nombre
                                             Completo</label>
                                         <input type="text" name="representante_nombre"
-                                            value="{{ beca.representante_nombre }}"
+                                            value="{{ beca.representante_nombre }}" placeholder="Ej: María Pérez"
                                             class="w-full rounded-lg border-blue-200 text-sm focus:border-blue-500 focus:ring-blue-500">
                                     </div>
                                     <div class="grid grid-cols-3 gap-4">
                                         <div>
                                             <label class="block text-xs font-bold text-blue-700/70 mb-1">Cédula</label>
                                             <input type="text" name="representante_cedula"
-                                                value="{{ beca.representante_cedula }}"
+                                                value="{{ beca.representante_cedula }}" placeholder="Ej: V-9876543"
                                                 class="w-full rounded-lg border-blue-200 text-sm focus:border-blue-500 focus:ring-blue-500">
                                         </div>
                                         <div>
                                             <label
                                                 class="block text-xs font-bold text-blue-700/70 mb-1">Teléfono</label>
                                             <input type="text" name="representante_telefono"
-                                                value="{{ beca.representante_telefono }}"
+                                                value="{{ beca.representante_telefono }}" placeholder="Ej: 0414-1234567"
                                                 class="w-full rounded-lg border-blue-200 text-sm focus:border-blue-500 focus:ring-blue-500">
                                         </div>
                                         <div>
@@ -165,21 +167,23 @@
                                 <div>
                                     <label class="form-label">Especialidad</label>
                                     <input type="text" name="especialidad" value="{{ beca.especialidad }}"
-                                        class="form-input">
+                                        placeholder="Ej: 100m Planos" class="form-input">
                                 </div>
                                 <div>
                                     <label class="form-label">Categoría</label>
-                                    <input type="text" name="categoria" value="{{ beca.categoria }}" class="form-input">
+                                    <input type="text" name="categoria" value="{{ beca.categoria }}"
+                                        placeholder="Ej: Juvenil A" class="form-input">
                                 </div>
                                 <div>
-                                    <label class="form-label">Tipo de Beca</label>
+                                    <label class="form-label">Programa de Beca</label>
                                     <select name="tipo_beca"
                                         class="form-select w-full rounded-lg border-slate-300 text-sm focus:border-blue-500 focus:ring-blue-500">
                                         <option>{{ beca.tipo_beca }}</option>
-                                        <option>Alto Rendimiento</option>
-                                        <option>Talento Deportivo</option>
-                                        <option>Apoyo Económico</option>
-                                        <option>Otro</option>
+                                        <option>Esperanza Olímpica Guariqueña</option>
+                                        <option>Elite Internacional</option>
+                                        <option>Proyección a Selección Nacional</option>
+                                        <option>Elite Nacional</option>
+                                        <option>Talento Deportivo Guariqueño</option>
                                     </select>
                                 </div>
                                 <div>
@@ -215,7 +219,7 @@
                             <div class="p-6">
                                 <div class="grid grid-cols-2 gap-4 mb-6">
                                     <div><label class="form-label">Edad</label><input type="number" name="edad"
-                                            value="{{ beca.edad }}" class="form-input"></div>
+                                            value="{{ beca.edad }}" placeholder="Ej: 18" class="form-input"></div>
                                     <div>
                                         <label class="form-label">Sexo</label>
                                         <select name="sexo"
@@ -226,11 +230,13 @@
                                         </select>
                                     </div>
                                     <div><label class="form-label">Peso (Kg)</label><input type="text" name="peso"
-                                            value="{{ beca.peso }}" class="form-input"></div>
+                                            value="{{ beca.peso }}" placeholder="Ej: 65,5" class="form-input"></div>
                                     <div><label class="form-label">Estatura (m)</label><input type="text"
-                                            name="estatura" value="{{ beca.estatura }}" class="form-input"></div>
+                                            name="estatura" value="{{ beca.estatura }}" placeholder="Ej: 1,75"
+                                            class="form-input"></div>
                                     <div class="col-span-2"><label class="form-label">Tipo de Sangre</label><input
-                                            type="text" name="sangre" value="{{ beca.sangre }}" class="form-input">
+                                            type="text" name="sangre" value="{{ beca.sangre }}" placeholder="Ej: O+"
+                                            class="form-input">
                                     </div>
                                 </div>
 
@@ -241,15 +247,15 @@
                                     <div class="text-center"><label
                                             class="text-[10px] uppercase font-bold text-slate-400">Zapato</label><input
                                             type="text" name="talla_zapato" value="{{ beca.talla_zapato }}"
-                                            class="form-input text-center"></div>
+                                            placeholder="Ej: 42" class="form-input text-center"></div>
                                     <div class="text-center"><label
                                             class="text-[10px] uppercase font-bold text-slate-400">Franela</label><input
                                             type="text" name="talla_franela" value="{{ beca.talla_franela }}"
-                                            class="form-input text-center"></div>
+                                            placeholder="Ej: M" class="form-input text-center"></div>
                                     <div class="text-center"><label
                                             class="text-[10px] uppercase font-bold text-slate-400">Mono</label><input
                                             type="text" name="talla_mono" value="{{ beca.talla_mono }}"
-                                            class="form-input text-center"></div>
+                                            placeholder="Ej: M" class="form-input text-center"></div>
                                 </div>
                             </div>
                         </div>
@@ -326,11 +332,12 @@
                                 <div class="md:col-span-2">
                                     <label class="form-label">Dirección de Habitación</label>
                                     <input type="text" name="direccion" value="{{ beca.direccion }}" class="form-input"
-                                        placeholder="Sector, Calle, Casa...">
+                                        placeholder="Ej: Urb. Los Morros, Calle 3, Casa 15">
                                 </div>
                                 <div class="md:col-span-2">
                                     <label class="form-label">Correo Electrónico</label>
-                                    <input type="email" name="email" value="{{ beca.email }}" class="form-input">
+                                    <input type="email" name="email" value="{{ beca.email }}"
+                                        placeholder="Ej: usuario@gmail.com" class="form-input">
                                 </div>
                                 <div class="md:col-span-2 pt-4 bg-slate-50 p-4 rounded-lg border border-slate-100">
                                     <label id="labelCuenta"
@@ -345,8 +352,13 @@
                                             <i class="fa-solid fa-money-check text-slate-400"></i>
                                         </div>
                                         <input type="text" name="cuenta_bancaria" value="{{ beca.cuenta_bancaria }}"
+                                            placeholder="0000-0000-00-0000000000"
                                             class="form-input pl-10 font-mono bg-white">
                                     </div>
+                                    <p class="mt-2 text-xs text-slate-500">
+                                        <i class="fa-solid fa-circle-info text-blue-400 mr-1"></i>
+                                        Formato: 0000-0000-00-0000000000 (20 dígitos)
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -477,13 +489,23 @@
                                     <p class="text-xs font-bold text-slate-800 truncate">{{ doc.nombre }}</p>
                                 </div>
                                 <div class="flex gap-2">
-                                    <a href="{{ doc.archivo }}" download class="text-blue-400 hover:text-blue-600"><i
-                                            class="fa-solid fa-download"></i></a>
+                                    <!-- Ver PDF en modal -->
+                                    <button onclick="openPdfModal('{{ doc.archivo }}', '{{ doc.nombre }}')"
+                                        class="text-indigo-400 hover:text-indigo-600" title="Ver PDF">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                    <!-- Descargar PDF -->
+                                    <a href="{{ doc.archivo }}" download class="text-blue-400 hover:text-blue-600"
+                                        title="Descargar">
+                                        <i class="fa-solid fa-download"></i>
+                                    </a>
+                                    <!-- Eliminar -->
                                     <form action="{{ url_for('dashboard.eliminar_documento', doc_id=doc.id) }}"
                                         method="POST" onsubmit="return confirmarEliminar('documento');">
                                         <input type="hidden" name="atleta_id" value="{{ beca.id }}">
-                                        <button class="text-slate-300 hover:text-red-500"><i
-                                                class="fa-solid fa-trash-can"></i></button>
+                                        <button class="text-slate-300 hover:text-red-500" title="Eliminar">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </button>
                                     </form>
                                 </div>
                             </div>
@@ -507,15 +529,22 @@
                     </h3>
                 </div>
                 <div class="p-4">
+                    <!-- Preview Label (only shown when NEW image selected) -->
+                    <div id="previewLabel" class="text-center mb-2 hidden">
+                        <span class="text-xs font-bold text-green-600 bg-green-50 px-3 py-1 rounded-full">
+                            <i class="fa-solid fa-check-circle mr-1"></i> Vista Previa
+                        </span>
+                    </div>
+
                     <!-- Photo Display -->
                     <div class="flex justify-center">
                         <!-- Preview Image (always in DOM) -->
                         <div id="galeria_container"
-                            class="relative group {% if not galeria_fotos or galeria_fotos|length == 0 %}hidden{% endif %}">
+                            class="relative group transition-all duration-300 {% if not galeria_fotos or galeria_fotos|length == 0 %}hidden{% endif %}">
                             <img id="galeria_preview"
                                 src="{% if galeria_fotos and galeria_fotos|length > 0 %}{{ galeria_fotos[0].url }}{% endif %}"
                                 alt="Foto atleta"
-                                class="w-[40px] h-[50px] rounded border-2 border-indigo-300 shadow-md object-cover">
+                                class="w-[40px] h-[50px] rounded border-2 border-indigo-300 shadow-md object-cover transition-all">
                             <button type="button" onclick="document.getElementById('fileInput').click()"
                                 class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center transition-all rounded">
                                 <i
@@ -605,6 +634,7 @@
             var galeriaPreview = document.getElementById('galeria_preview');
             var galeriaContainer = document.getElementById('galeria_container');
             var galeriaPlaceholder = document.getElementById('galeria_placeholder');
+            var previewLabel = document.getElementById('previewLabel');
 
             // Update gallery preview
             if (galeriaPreview) {
@@ -612,6 +642,9 @@
                 galeriaPreview.onload = function () {
                     URL.revokeObjectURL(galeriaPreview.src); // free memory
                 }
+                // Change border to green
+                galeriaPreview.classList.remove('border-indigo-300');
+                galeriaPreview.classList.add('border-green-500');
             }
 
             // Show container, hide placeholder
@@ -620,6 +653,11 @@
             }
             if (galeriaPlaceholder) {
                 galeriaPlaceholder.classList.add('hidden');
+            }
+
+            // Show preview label
+            if (previewLabel) {
+                previewLabel.classList.remove('hidden');
             }
         }
     };
@@ -682,4 +720,109 @@
     });
 </script>
 <script src="{{ url_for('static', filename='js/confirmaciones.js') }}"></script>
+
+<!-- Modal para Ver PDFs -->
+<div id="pdfModal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center">
+    <div class="bg-white w-full h-full flex flex-col">
+        <!-- Header -->
+        <div class="flex justify-between items-center p-4 border-b border-gray-200">
+            <h3 id="pdfModalTitle" class="text-lg font-bold text-gray-900">
+                <i class="fa-solid fa-file-pdf text-red-500 mr-2"></i>
+                Documento
+            </h3>
+            <button onclick="closePdfModal()" class="text-gray-400 hover:text-gray-600 transition-colors">
+                <i class="fa-solid fa-times text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- PDF Viewer -->
+        <div class="flex-1 overflow-hidden">
+            <iframe id="pdfViewer" class="w-full h-full" frameborder="0"></iframe>
+        </div>
+
+        <!-- Footer -->
+        <div class="p-4 border-t border-gray-200 flex justify-end gap-3">
+            <button onclick="closePdfModal()"
+                class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors">
+                <i class="fa-solid fa-times mr-2"></i>Cerrar
+            </button>
+            <a id="pdfDownloadLink" href="#" download
+                class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
+                <i class="fa-solid fa-download mr-2"></i>Descargar
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Función para abrir el modal de PDF
+    function openPdfModal(pdfUrl, pdfName) {
+        const modal = document.getElementById('pdfModal');
+        const iframe = document.getElementById('pdfViewer');
+        const title = document.getElementById('pdfModalTitle');
+        const downloadLink = document.getElementById('pdfDownloadLink');
+
+        // Agregar parámetro para mejor visualización en iframe
+        // #view=FitH ajusta el PDF al ancho del iframe
+        const pdfUrlWithView = pdfUrl + (pdfUrl.includes('#') ? '&' : '#') + 'view=FitH&toolbar=0';
+
+        // Configurar el modal
+        iframe.src = pdfUrlWithView;
+        title.innerHTML = `<i class="fa-solid fa-file-pdf text-red-500 mr-2"></i>${pdfName}`;
+        downloadLink.href = pdfUrl;
+        downloadLink.download = pdfName;
+
+        // Mostrar el modal
+        modal.classList.remove('hidden');
+
+        // Prevenir scroll del body
+        document.body.style.overflow = 'hidden';
+
+        // Detectar si el navegador no puede mostrar PDFs
+        iframe.onload = function () {
+            // Si el iframe tiene contenido pero muestra error
+            setTimeout(() => {
+                try {
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    if (iframeDoc.body && iframeDoc.body.innerText.includes('no puede visualizar')) {
+                        // Mostrar mensaje alternativo
+                        console.warn('El navegador no soporta PDFs en iframe');
+                    }
+                } catch (e) {
+                    // Cross-origin, normal para Supabase
+                }
+            }, 500);
+        };
+    }
+
+    // Función para cerrar el modal
+    function closePdfModal() {
+        const modal = document.getElementById('pdfModal');
+        const iframe = document.getElementById('pdfViewer');
+
+        // Ocultar el modal
+        modal.classList.add('hidden');
+
+        // Limpiar el iframe
+        iframe.src = '';
+
+        // Restaurar scroll del body
+        document.body.style.overflow = 'auto';
+    }
+
+    // Cerrar modal con tecla Escape
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            closePdfModal();
+        }
+    });
+
+    // Cerrar modal al hacer click fuera de él
+    document.getElementById('pdfModal')?.addEventListener('click', function (e) {
+        if (e.target === this) {
+            closePdfModal();
+        }
+    });
+</script>
+
 {% endblock %}

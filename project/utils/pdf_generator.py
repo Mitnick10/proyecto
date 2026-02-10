@@ -1,9 +1,16 @@
 from io import BytesIO
 from reportlab.lib.pagesizes import landscape, letter
 from reportlab.lib import colors
+<<<<<<< HEAD
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_CENTER
+=======
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer, Image
+import os
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_RIGHT
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
 from reportlab.lib.units import inch
 from datetime import datetime
 
@@ -48,6 +55,27 @@ def generar_listado_pdf(becas):
         textColor=colors.grey,
         spaceAfter=20
     )
+<<<<<<< HEAD
+=======
+
+    cell_style = ParagraphStyle(
+        'CellStyle',
+        parent=styles['Normal'],
+        fontSize=9,
+        leading=11,
+        alignment=TA_LEFT
+    )
+    
+    header_style = ParagraphStyle(
+        'HeaderStyle',
+        parent=styles['Normal'],
+        fontSize=10,
+        leading=12,
+        alignment=TA_CENTER,
+        textColor=colors.white,
+        fontName='Helvetica-Bold'
+    )
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
     
     # --- ENCABEZADO ---
     elements.append(Paragraph("REPUBLICA BOLIVARIANA DE VENEZUELA", title_style))
@@ -61,7 +89,17 @@ def generar_listado_pdf(becas):
     
     # --- TABLA ---
     # Encabezados
+<<<<<<< HEAD
     headers = ["Nombre Completo", "Cédula", "Cuenta Bancaria", "Tipo de Beca", "Disciplina"]
+=======
+    headers = [
+        Paragraph("Nombre Completo", header_style),
+        Paragraph("Cédula", header_style),
+        Paragraph("Cuenta Bancaria", header_style),
+        Paragraph("Tipo de Beca", header_style),
+        Paragraph("Disciplina", header_style)
+    ]
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
     
     # Datos
     data = [headers]
@@ -73,11 +111,28 @@ def generar_listado_pdf(becas):
         tipo = b.get('tipo_beca', '') or "Sin asignar"
         disciplina = b.get('disciplina', '')
         
+<<<<<<< HEAD
         row = [nombre_completo, cedula, cuenta, tipo, disciplina]
         data.append(row)
         
     if not becas:
         data.append(["No se encontraron registros para este filtro.", "", "", "", ""])
+=======
+        row = [
+            Paragraph(nombre_completo, cell_style),
+            Paragraph(cedula, cell_style),
+            Paragraph(cuenta, cell_style),
+            Paragraph(tipo, cell_style),
+            Paragraph(disciplina, cell_style)
+        ]
+        data.append(row)
+        
+    if not becas:
+        data.append([
+            Paragraph("No se encontraron registros para este filtro.", cell_style),
+            "", "", "", ""
+        ])
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
 
     # Crear Tabla
     # Ajustar anchos de columna (Total ancho aprox page width - margins = ~10 inches = ~720 pts)
@@ -123,3 +178,8 @@ def generar_listado_pdf(becas):
     
     buffer.seek(0)
     return buffer
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc

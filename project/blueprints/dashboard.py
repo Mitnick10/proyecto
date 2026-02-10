@@ -10,15 +10,20 @@ from config.supabase_client import supabase, supabase_admin
 from utils.decorators import login_required, superadmin_required
 from utils.file_handler import procesar_imagen, procesar_pdf
 from utils.excel_generator import generar_ficha_excel
+<<<<<<< HEAD
+=======
+from utils.pdf_generator import generar_listado_pdf
+from utils.cache_helpers import get_cached_or_compute, invalidate_cache, create_cache
+from utils.form_helpers import extract_athlete_data
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
 
 logger = logging.getLogger(__name__)
 
-# Caché simple para contadores
-cache_contadores = {
-    'data': None,
-    'timestamp': None,
-    'ttl': 60
-}
+# Caché simple para contadores (TTL: 60 segundos)
+cache_contadores = create_cache(ttl=60)
+
+# Caché para disciplinas (TTL más largo porque cambian menos frecuentemente)
+cache_disciplinas = create_cache(ttl=300)  # 5 minutos
 
 # Caché para disciplinas (TTL más largo porque cambian menos frecuentemente)
 cache_disciplinas = {
@@ -30,6 +35,7 @@ cache_disciplinas = {
 # Definimos el Blueprint
 dashboard_blueprint = Blueprint('dashboard', __name__, template_folder='templates')
 
+<<<<<<< HEAD
 # --- HELPER PARA OBTENER DISCIPLINAS CON CACHÉ ---
 def obtener_disciplinas_disponibles():
     """Obtiene la lista de disciplinas con caché para mejor rendimiento."""
@@ -126,6 +132,108 @@ def obtener_datos_formulario(req):
         'estudio_social': req.form.get('estudio_social'),
     }
     return datos
+=======
+# --- ERROR HANDLING HELPER ---
+def handle_db_error(e):
+    """
+    Traduce errores de base de datos a mensajes amigables para el usuario.
+    """
+    msg = str(e)
+    logger.error(f"DB Error Details: {msg}") # Log always useful
+    
+    if "23505" in msg or "unique constraint" in msg:
+        if "cedula" in msg:
+            return "Ya existe un atleta registrado con esta cédula de identidad."
+        if "email" in msg:
+            return "Este correo electrónico ya está registrado."
+        return "Ya existe un registro con estos datos en el sistema."
+    
+    if "23514" in msg or "check constraint" in msg:
+        return "Uno de los campos no cumple con el formato requerido. Verifique los datos."
+        
+    if "23502" in msg or "not-null" in msg:
+        return "Todos los campos marcados como obligatorios deben ser completados."
+        
+    if "23503" in msg or "foreign key constraint" in msg:
+        return "No se puede realizar esta acción porque el registro está relacionado con otros datos."
+
+    if "PGRST" in msg: # Supabase/PostgREST errors
+        return f"Error de conexión con la base de datos. Intente nuevamente."
+
+    # Fallback genérico pero limpio, evitando mostrar código SQL/Python
+    return f"Ocurrió un error inesperado. Si persiste, contacte a soporte."
+
+# --- HELPER PARA OBTENER DISCIPLINAS CON CACHÉ ---
+def obtener_disciplinas_disponibles():
+    """Obtiene la lista de disciplinas con caché para mejor rendimiento."""
+    
+    def compute_disciplinas():
+        """Función auxiliar que calcula las disciplinas."""
+        try:
+            # Disciplinas predeterminadas
+            disciplinas_base = ['Atletismo', 'Baloncesto', 'Béisbol', 'Boxeo', 'Ciclismo', 'Fútbol',
+                               'Gimnasia', 'Natación', 'Taekwondo', 'Tenis de Campo', 'Tenis de Mesa', 'Voleibol']
+            
+            # Obtener disciplinas personalizadas de la BD (las que no están en la lista base)
+            try:
+                all_disciplinas = supabase.table('becas').select('disciplina').limit(500).execute()
+                disciplinas_bd = sorted(list(set(d['disciplina'] for d in all_disciplinas.data if d.get('disciplina') and d['disciplina'] not in disciplinas_base)))
+            except:
+                disciplinas_bd = []
+            
+            # Combinar: base + personalizadas
+            return sorted(disciplinas_base) + disciplinas_bd
+        except Exception as e:
+            logger.error(f"Error obteniendo disciplinas: {e}")
+            # Fallback a lista básica
+            return ['Atletismo', 'Baloncesto', 'Béisbol', 'Boxeo', 'Ciclismo', 'Fútbol', 'Gimnasia', 'Natación', 'Taekwondo', 'Tenis de Campo', 'Tenis de Mesa', 'Voleibol']
+    
+    return get_cached_or_compute(cache_disciplinas, compute_disciplinas)
+
+
+def get_signed_url_for_doc(doc_url):
+    """Genera una URL firmada válida por 1 hora para un documento."""
+    try:
+        if not doc_url: return doc_url
+        
+        # Normalizar URL y quitar query params si existen
+        decoded_url = unquote(doc_url).split('?')[0]
+        
+        # Regex para extraer bucket y path
+        # Soporta: .../object/public/<bucket>/<filepath>
+        match = re.search(r'/object/public/([^/]+)/(.*)', decoded_url)
+        
+        if match:
+            bucket_name = match.group(1)
+            file_path = match.group(2)
+
+            print(f"DEBUG SIGN: Bucket detected: '{bucket_name}', Path: '{file_path}'")
+            
+            # Generar Signed URL
+            res = supabase_admin.storage.from_(bucket_name).create_signed_url(file_path, 3600)
+            
+            signed_url = None
+            if isinstance(res, dict):
+                 signed_url = res.get('signedURL')
+            elif hasattr(res, 'signedURL'):
+                 signed_url = res.signedURL
+            elif isinstance(res, str):
+                 signed_url = res
+            
+            if signed_url:
+                return signed_url
+            else:
+                 logger.error(f"Error signing URL: {res}")
+                 return doc_url
+        else:
+            # Fallback para URLs que no siguen el patrón standard de Supabase
+            # o si es un bucket privado con otra estructura
+            return doc_url
+            
+    except Exception as e:
+        logger.warning(f"Error generanda signed URL para {doc_url}: {e}")
+        return doc_url
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
 
 def get_signed_url_for_doc(doc_url):
     """Genera una URL firmada válida por 1 hora para un documento."""
@@ -185,17 +293,8 @@ def index():
         user = supabase.auth.get_user().user
         first_name = user.user_metadata.get('first_name', 'Usuario')
 
-        # Verificar si el caché es válido
-        now = datetime.now()
-        cache_valido = (
-            cache_contadores['data'] is not None and 
-            cache_contadores['timestamp'] is not None and
-            (now - cache_contadores['timestamp']).total_seconds() < cache_contadores['ttl']
-        )
-        
-        if cache_valido:
-            contadores = cache_contadores['data']
-        else:
+        # Usar helper de caché para obtener contadores
+        def compute_contadores():
             atletas = supabase.table('becas').select('id', count='exact').eq('estatus', 'Activo').execute().count or 0
             revision = supabase.table('becas').select('id', count='exact').eq('estatus', 'En Revisión').execute().count or 0
             try:
@@ -203,10 +302,13 @@ def index():
             except: 
                 medallas = 0
             
-            contadores = {'atletas': atletas, 'revision': revision, 'medallas': medallas}
-            cache_contadores['data'] = contadores
-            cache_contadores['timestamp'] = now
+            return {'atletas': atletas, 'revision': revision, 'medallas': medallas}
         
+<<<<<<< HEAD
+=======
+        contadores = get_cached_or_compute(cache_contadores, compute_contadores)
+        
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
         # Cargar imágenes independientes para el carrusel (Slots: home_1 a home_6)
         carousel_photos = []
         try:
@@ -229,7 +331,11 @@ def index():
         con_imagen = [p for p in carousel_photos if p.get('url')]
         sin_imagen = [p for p in carousel_photos if not p.get('url')]
         
+<<<<<<< HEAD
         # Mezclar ambos grupos independientementes
+=======
+        # Mezclar ambos grupos independientemente
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
         random.shuffle(con_imagen)
         random.shuffle(sin_imagen)
         
@@ -253,6 +359,8 @@ def index():
 def lista_becas():
     """Lista de becas con filtro por disciplina, búsqueda por nombre y paginación."""
     filtro = request.args.get('disciplina')
+    filtro_tipo = request.args.get('tipo_beca')
+    filtro_estatus = request.args.get('estatus', 'Activo') # Default to Activo
     busqueda = request.args.get('buscar', '').strip()
     page = request.args.get('page', 1, type=int)
     per_page = 10
@@ -263,13 +371,21 @@ def lista_becas():
         
         query = supabase.table('becas').select('*', count='exact')
         
+        # Filtro de Estatus (Default: Activo, si es 'Todos' no filtra)
+        if filtro_estatus != 'Todos':
+            query = query.eq('estatus', filtro_estatus)
+        
         # Filtrar por disciplina
         if filtro and filtro != 'Todas':
             query = query.eq('disciplina', filtro)
+            
+        # Filtrar por Tipo de Beca
+        if filtro_tipo and filtro_tipo != 'Todas':
+            query = query.eq('tipo_beca', filtro_tipo)
         
         # Búsqueda por nombre o apellido (case-insensitive)
         if busqueda:
-            query = query.or_(f"nombre.ilike.%{busqueda}%,apellido.ilike.%{busqueda}%")
+            query = query.or_(f"nombre.ilike.%{busqueda}%,apellido.ilike.%{busqueda}%,cedula.ilike.%{busqueda}%")
         
         result = query.order('id', desc=True).range(start, end).execute()
         becas = result.data
@@ -279,6 +395,25 @@ def lista_becas():
         # Usar disciplinas cacheadas en lugar de consulta directa
         lista_d = obtener_disciplinas_disponibles()
         
+<<<<<<< HEAD
+=======
+        # Obtener lista de Tipos de Beca (Distinct)
+        # Nota: Supabase no tiene un 'distinct' directo fácil en el cliente, traemos todos y filtramos en python
+        # o usamos una RPC si fuera muy grande. Por ahora, fetch ligero de columna.
+        # Lista estándar de nuevos programas (Solo las solicitadas)
+        tipos_beca = [
+            "Esperanza Olímpica Guariqueña",
+            "Elite Internacional",
+            "Proyección a Selección Nacional",
+            "Elite Nacional",
+            "Talento Deportivo Guariqueño"
+        ]
+        
+        # Ordenar lista (opcional, si se desea alfabético, o dejar el orden de importancia)
+        # tipos_beca.sort() 
+
+        
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
         # Cargar imágenes de galería para los laterales (hasta 6 slots por lado)
         gallery_images = {'left': [], 'right': []}
         try:
@@ -317,7 +452,10 @@ def lista_becas():
         return render_template('dashboard_becas.html', 
                              becas=becas, 
                              disciplinas=lista_d, 
+                             tipos_beca=tipos_beca,
                              current_filter=filtro,
+                             current_tipo_beca=filtro_tipo,
+                             current_estatus=filtro_estatus,
                              current_search=busqueda,
                              gallery_images=gallery_images,
                              page=page,
@@ -327,6 +465,47 @@ def lista_becas():
         logger.error(f"Error al cargar listado: {e}", exc_info=True)
         flash(f'Error al cargar listado: {e}', 'error')
         return render_template('dashboard_becas.html', becas=[], disciplinas=[], page=1, total_pages=1, total=0, current_search='', gallery_images={})
+
+@dashboard_blueprint.route('/becas/exportar_pdf')
+@login_required
+def exportar_pdf_becas():
+    """Genera y descarga un PDF con el listado de atletas filtrado."""
+    filtro = request.args.get('disciplina')
+    filtro_tipo = request.args.get('tipo_beca')
+    busqueda = request.args.get('buscar', '').strip()
+    
+    try:
+        query = supabase.table('becas').select('*').eq('estatus', 'Activo')
+        
+        # Aplicar mismos filtros que en el listado
+        if filtro and filtro != 'Todas':
+            query = query.eq('disciplina', filtro)
+            
+        if filtro_tipo and filtro_tipo != 'Todas':
+            query = query.eq('tipo_beca', filtro_tipo)
+        
+        if busqueda:
+            query = query.or_(f"nombre.ilike.%{busqueda}%,apellido.ilike.%{busqueda}%,cedula.ilike.%{busqueda}%")
+            
+        # Ejecutar consulta (sin paginación para exportar todo)
+        result = query.order('apellido', desc=False).execute()
+        becas = result.data
+        
+        # Generar PDF
+        pdf_buffer = generar_listado_pdf(becas)
+        
+        filename = f"Listado_Atletas_{datetime.now().strftime('%Y%m%d_%H%M')}.pdf"
+        
+        return send_file(
+            pdf_buffer,
+            mimetype='application/pdf',
+            as_attachment=True,
+            download_name=filename
+        )
+    except Exception as e:
+        logger.error(f"Error exportando PDF: {e}", exc_info=True)
+        flash(f'Error al generar PDF: {e}', 'error')
+        return redirect(url_for('dashboard.lista_becas'))
 
 # --- RUTA MI CUENTA ---
 @dashboard_blueprint.route('/cuenta', methods=['GET', 'POST'])
@@ -354,7 +533,10 @@ def mi_cuenta():
             return redirect(url_for('dashboard.mi_cuenta'))
 
         return render_template('dashboard_cuenta.html', first_name=user.user_metadata.get('first_name'), last_name=user.user_metadata.get('last_name'), email=user.email)
-    except: return redirect(url_for('dashboard.index'))
+
+    except Exception as e:
+        flash(handle_db_error(e), 'error')
+        return redirect(url_for('dashboard.index'))
 
 
 # --- GESTIÓN DE ATLETAS (CRUD) ---
@@ -362,22 +544,17 @@ def mi_cuenta():
 @dashboard_blueprint.route('/becas/nueva', methods=['GET', 'POST'])
 @login_required
 def crear_beca():
-    print("="*50)
-    print("DEBUG: CREAR_BECA INICIADO")
-    print(f"DEBUG: Método: {request.method}")
-    
     if request.method == 'POST':
         try:
-            print("DEBUG: Procesando POST")
-            print(f"DEBUG: request.files: {request.files}")
-            print(f"DEBUG: request.form keys: {request.form.keys()}")
+            logger.debug(f"Procesando POST en crear_beca, method: {request.method}")
             
             # 1. Recolectar todos los datos del formulario usando el helper
-            datos = obtener_datos_formulario(request)
-            print(f"DEBUG: Datos recolectados: {list(datos.keys())}")
+            datos = extract_athlete_data(request)
+            logger.debug(f"Datos extraídos: {list(datos.keys())}")
             
             # 2. Procesar Foto
             file = request.files.get('foto')
+<<<<<<< HEAD
             print(f"DEBUG CREAR: Archivo recibido: {file}")
             if file:
                 print(f"DEBUG CREAR: Filename: {file.filename}")
@@ -389,11 +566,22 @@ def crear_beca():
             if foto_url:
                 datos['foto'] = foto_url
                 print(f"DEBUG: Foto URL: {foto_url}")
+=======
+            if file and file.filename:
+                logger.debug(f"Procesando archivo: {file.filename}, tipo: {file.content_type}")
+                foto_url = procesar_imagen(file)
+                if foto_url:
+                    datos['foto'] = foto_url
+                    logger.debug(f"Foto procesada exitosamente")
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
             
             # 3. Insertar en BD
-            print("DEBUG: Intentando insertar en BD...")
+            logger.debug("Insertando datos en BD...")
             result = supabase.table('becas').insert(datos).execute()
-            print(f"DEBUG: Insert exitoso, data: {result.data}")
+            logger.info(f"Atleta creado exitosamente, ID: {result.data[0].get('id') if result.data else 'N/A'}")
+            
+            # Invalidar caché de disciplinas si se agregó una nueva
+            invalidate_cache(cache_disciplinas)
             
             # Invalidar caché de disciplinas si se agregó una nueva
             cache_disciplinas['data'] = None
@@ -401,11 +589,17 @@ def crear_beca():
             
             flash('Atleta registrado exitosamente.', 'success')
             return redirect(url_for('dashboard.lista_becas'))
+<<<<<<< HEAD
         except Exception as e: 
             print(f"ERROR en crear_beca: {e}")
             import traceback
             traceback.print_exc()
             flash(f'Error al registrar: {e}', 'error')
+=======
+        except Exception as e:
+            logger.error(f"Error en crear_beca: {e}", exc_info=True)
+            flash(handle_db_error(e), 'error')
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
     
     # GET - Cargar disciplinas disponibles usando caché
     disciplinas_completas = obtener_disciplinas_disponibles()
@@ -438,7 +632,7 @@ def ver_beca(beca_id):
 
         return render_template('ver_beca.html', beca=beca, medallas=medallas, documentos=documentos)
     except Exception as e: 
-        flash(f'Error al cargar ficha: {e}', 'error')
+        flash(handle_db_error(e), 'error')
         return redirect(url_for('dashboard.lista_becas'))
 
 @dashboard_blueprint.route('/becas/descargar/<int:beca_id>')
@@ -463,8 +657,10 @@ def descargar_ficha(beca_id):
             download_name=filename
         )
     except Exception as e:
-        flash(f'Error al generar ficha: {e}', 'error')
+        flash(handle_db_error(e), 'error')
         return redirect(url_for('dashboard.ver_beca', beca_id=beca_id))
+
+
 
 @dashboard_blueprint.route('/becas/editar/<int:beca_id>', methods=['GET', 'POST'])
 @login_required
@@ -475,10 +671,11 @@ def editar_beca(beca_id):
     if request.method == 'POST':
         try:
             # Recolectar datos actualizados
-            datos = obtener_datos_formulario(request)
+            datos = extract_athlete_data(request)
             
             # Procesar Foto Nueva (si se subió una)
             file = request.files.get('foto')
+<<<<<<< HEAD
             print(f"DEBUG EDITAR: Archivo recibido: {file}")
             if file:
                 print(f"DEBUG EDITAR: Filename: {file.filename}")
@@ -498,11 +695,26 @@ def editar_beca(beca_id):
             # Invalidar caché de disciplinas si se pudo haber cambiado
             cache_disciplinas['data'] = None
             cache_disciplinas['timestamp'] = None
+=======
+            if file and file.filename:
+                logger.debug(f"Procesando nueva foto: {file.filename}")
+                foto_url = procesar_imagen(file)
+                if foto_url:
+                    datos['foto'] = foto_url
+                    logger.debug(f"Foto actualizada exitosamente")
+            
+            supabase.table('becas').update(datos).eq('id', beca_id).execute()
+            logger.info(f"Ficha actualizada para atleta ID: {beca_id}")
+            
+            # Invalidar caché de disciplinas si se pudo haber cambiado
+            invalidate_cache(cache_disciplinas)
+>>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
             
             flash('Ficha actualizada correctamente.', 'success')
             return redirect(url_for('dashboard.editar_beca', beca_id=beca_id))
-        except Exception as e: 
-            flash(f'Error al guardar cambios: {e}', 'error')
+        except Exception as e:
+            logger.error(f"Error al guardar cambios en atleta {beca_id}: {e}", exc_info=True)
+            flash(handle_db_error(e), 'error')
 
     # 2. MOSTRAR (GET)
     try:
@@ -538,7 +750,7 @@ def eliminar_beca(beca_id):
     try:
         supabase.table('becas').delete().eq('id', beca_id).execute()
         flash('Atleta eliminado.', 'success')
-    except Exception as e: flash(f'Error: {e}', 'error')
+    except Exception as e: flash(handle_db_error(e), 'error')
     return redirect(url_for('dashboard.lista_becas'))
 
 # --- GESTIÓN DE MEDALLAS (Rutas Auxiliares) ---
@@ -554,7 +766,8 @@ def agregar_medalla(beca_id):
             'fecha': request.form.get('fecha') or None
         }).execute()
         flash('Medalla agregada.', 'success')
-    except Exception as e: flash(f'Error al agregar medalla: {e}', 'error')
+
+    except Exception as e: flash(handle_db_error(e), 'error')
     # Volver a la misma página de edición
     return redirect(url_for('dashboard.editar_beca', beca_id=beca_id))
 
@@ -565,7 +778,7 @@ def eliminar_medalla(medalla_id):
     try:
         supabase.table('medallas').delete().eq('id', medalla_id).execute()
         flash('Medalla eliminada.', 'success')
-    except: flash('Error al eliminar.', 'error')
+    except Exception as e: flash(handle_db_error(e), 'error')
     return redirect(url_for('dashboard.editar_beca', beca_id=atleta_id))
 
 # --- GESTIÓN DE DOCUMENTOS (Rutas Auxiliares) ---
@@ -591,7 +804,7 @@ def subir_documento(beca_id):
             else:
                 flash('Error al procesar el archivo PDF.', 'error')
     except Exception as e: 
-        flash(f'Error al subir: {e}', 'error')
+        flash(handle_db_error(e), 'error')
     
     return redirect(url_for('dashboard.editar_beca', beca_id=beca_id))
 
@@ -602,7 +815,7 @@ def eliminar_documento(doc_id):
     try:
         supabase.table('documentos').delete().eq('id', doc_id).execute()
         flash('Documento eliminado.', 'success')
-    except: flash('Error al eliminar.', 'error')
+    except Exception as e: flash(handle_db_error(e), 'error')
     return redirect(url_for('dashboard.editar_beca', beca_id=atleta_id))
 
 
@@ -755,3 +968,24 @@ def upload_gallery_image():
     except Exception as e:
         logger.error(f"Error subiendo imagen galería: {e}")
         return jsonify({'error': str(e)}), 500
+
+@dashboard_blueprint.route('/beca/cambiar_estatus/<int:beca_id>', methods=['POST'])
+@login_required
+def cambiar_estatus_beca(beca_id):
+    if session.get('role') not in ['admin', 'superadmin']:
+        flash('No tienes permiso para realizar esta acción.', 'danger')
+        return redirect(url_for('dashboard.lista_becas'))
+
+    nuevo_estatus = request.form.get('estatus')
+    if not nuevo_estatus:
+        flash('Estatus no válido.', 'warning')
+        return redirect(url_for('dashboard.lista_becas'))
+
+    try:
+        supabase.table('becas').update({'estatus': nuevo_estatus}).eq('id', beca_id).execute()
+        flash(f'Estatus actualizado a "{nuevo_estatus}".', 'success')
+    except Exception as e:
+        logger.error(f"Error actualizando estatus de beca {beca_id}: {e}")
+        flash('Error al actualizar el estatus.', 'danger')
+
+    return redirect(request.referrer or url_for('dashboard.lista_becas'))
