@@ -32,11 +32,6 @@ class SupabaseManager:
         self._initialized = True
     
     def _initialize_clients(self):
-<<<<<<< HEAD
-        try:
-            if not self.url or not self.key:
-                raise ValueError("SUPABASE_URL y SUPABASE_KEY son requeridas en .env")
-=======
         """Inicializa los clientes de Supabase con validación mejorada."""
         try:
             if not self.url or not self.key:
@@ -49,35 +44,24 @@ class SupabaseManager:
             # Validar que las keys no estén vacías después del strip
             if not self.url.strip() or not self.key.strip():
                 raise ValueError("SUPABASE_URL y SUPABASE_KEY no pueden estar vacías")
->>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
                 
             # 1. Cliente Standard (Anon Key)
             self._client = create_client(self.url, self.key)
             logger.info("✅ Cliente Supabase (Anon) inicializado.")
             
             # 2. Cliente Admin (Service Role Key)
-<<<<<<< HEAD
-            if self.service_key:
-=======
             if self.service_key and self.service_key.strip():
->>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
                 self._admin = create_client(self.url, self.service_key)
                 logger.info("✅ Cliente Supabase Admin (Service Role) inicializado.")
             else:
                 logger.warning("⚠️ Cliente Supabase Admin NO inicializado (Falta Service Key).")
                 
-<<<<<<< HEAD
-        except Exception as e:
-            logger.critical(f"❌ Error fatal inicializando SupabaseManager: {e}")
-            # No relanzamos para no crashear la app entera al importar, 
-=======
         except ValueError as ve:
             logger.critical(f"❌ Error de configuración: {ve}")
             raise  # Re-lanzar para que la aplicación falle rápido si la config es inválida
         except Exception as e:
             logger.critical(f"❌ Error fatal inicializando SupabaseManager: {e}")
             # No relanzamos para no crashear la app entera al importar,
->>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
             # pero los clientes quedarán como None
             
     @property

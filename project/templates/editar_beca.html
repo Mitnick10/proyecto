@@ -5,10 +5,86 @@
 
 {% block content %}
 <div class="max-w-7xl mx-auto pb-12">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Lateral Photo Gallery Column (1/3 width) -->
+        <div class="md:col-span-1">
+            <div
+                class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden sticky top-4 lg:relative lg:top-auto h-fit z-10">
+                <div class="px-4 py-3 border-b border-slate-100 bg-gradient-to-r from-indigo-50 to-purple-50">
+                    <h3 class="font-bold text-indigo-700 flex items-center gap-2">
+                        <i class="fa-solid fa-image"></i> Foto del Atleta
+                    </h3>
+                </div>
+                <div class="p-4">
+                    <!-- Preview Label (only shown when NEW image selected) -->
+                    <div id="previewLabel" class="text-center mb-2 hidden">
+                        <span class="text-xs font-bold text-green-600 bg-green-50 px-3 py-1 rounded-full">
+                            <i class="fa-solid fa-check-circle mr-1"></i> Vista Previa
+                        </span>
+                    </div>
+
+                    <!-- Photo Display -->
+                    <div class="flex justify-center mb-4">
+                        <!-- Preview Image (always in DOM) -->
+                        <div id="galeria_container"
+                            class="relative group transition-all duration-300 {% if not galeria_fotos or galeria_fotos|length == 0 %}hidden{% endif %}">
+                            <img id="galeria_preview"
+                                src="{% if galeria_fotos and galeria_fotos|length > 0 %}{{ galeria_fotos[0].url }}{% endif %}"
+                                alt="Foto atleta"
+                                class="w-[150px] h-[180px] rounded-lg border-4 border-white shadow-lg object-cover transition-all bg-slate-100">
+                            <button type="button" onclick="document.getElementById('fileInput').click()"
+                                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-end flex-col pb-4 transition-all rounded-lg">
+                                <span
+                                    class="bg-black/50 text-white text-xs px-2 py-1 rounded-full backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <i class="fa-solid fa-camera mr-1"></i> Cambiar
+                                </span>
+                            </button>
+                        </div>
+
+                        <!-- Upload Button (shown when no photo) -->
+                        <button type="button" id="galeria_placeholder"
+                            onclick="document.getElementById('fileInput').click()"
+                            class="text-center py-8 px-4 border-2 border-dashed border-indigo-200 rounded-lg hover:border-indigo-400 hover:bg-indigo-50 transition-all cursor-pointer w-full {% if galeria_fotos and galeria_fotos|length > 0 %}hidden{% endif %}">
+                            <i class="fa-solid fa-camera text-4xl text-indigo-300 mb-2"></i>
+                            <p class="text-sm text-slate-600 font-semibold">Subir Foto</p>
+                            <p class="text-xs text-slate-400 mt-1">Click para seleccionar</p>
+                        </button>
+                    </div>
+
+                    <!-- Profile Info (Read Only) -->
+                    {% if beca.id %}
+                    <div class="px-2 text-center border-t border-slate-100 pt-4">
+                        <h2 class="font-bold text-slate-800 text-lg leading-tight mb-1">{{ beca.nombre }} {{
+                            beca.apellido
+                            }}</h2>
+                        <p class="text-xs text-slate-500 font-mono mb-3">{{ beca.cedula }}</p>
+
+                        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold
+                             {% if beca.estatus == 'Activo' %} bg-emerald-100 text-emerald-700
+                             {% elif beca.estatus == 'Inactivo' %} bg-red-100 text-red-700
+                             {% else %} bg-amber-100 text-amber-700 {% endif %}">
+                            <i class="fa-solid fa-circle text-[6px]"></i>
+                            {{ beca.estatus }}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Save Button (Sidebar) -->
+                    <div class="pt-6">
+                        <button type="submit" form="mainForm"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow-lg shadow-blue-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-0.5 mb-2">
+                            <i class="fa-solid fa-save"></i> Guardar Cambios
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- End Photo Gallery Column -->
 
         <!-- Main Form Column (2/3 width) -->
-        <div class="lg:col-span-2 space-y-8">
+        <div class="md:col-span-2 space-y-8">
 
 
 
@@ -364,28 +440,7 @@
                         </div>
                     </div>
 
-                    <!-- SAVE BUTTON BAR -->
-                    <div class="sticky bottom-4 z-40">
-                        <div
-                            class="bg-slate-900/90 backdrop-blur text-white px-6 py-4 rounded-2xl shadow-xl flex justify-between items-center max-w-2xl mx-auto border border-white/10">
-                            <span class="text-sm font-medium opacity-90 hidden sm:block">
-                                <i class="fa-solid fa-circle-check mr-2 text-green-400"></i>
-                                Revisa los datos antes de guardar
-                            </span>
-                            <div class="flex gap-3 w-full sm:w-auto">
-                                <a href="{{ url_for('dashboard.ver_beca', beca_id=beca.id) }}" target="_blank"
-                                    class="bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-6 rounded-xl shadow-lg transition-all">
-                                    <i class="fa-solid fa-print mr-2"></i>Imprimir
-                                </a>
-                                <button type="submit"
-                                    class="flex-1 sm:flex-initial bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-8 rounded-xl shadow-lg shadow-blue-600/30 transition-all transform hover:-translate-y-0.5">
-                                    Guardar Cambios
-                                </button>
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
             </form>
             <!-- END MAIN FORM -->
 
@@ -406,9 +461,9 @@
                         <form action="{{ url_for('dashboard.agregar_medalla', beca_id=beca.id) }}" method="POST"
                             class="mb-4" onsubmit="confirmarGuardar(this, 'medalla')">
                             <div class="flex flex-col gap-2">
-                                <div class="grid grid-cols-3 gap-2">
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
                                     <select name="tipo_medalla"
-                                        class="rounded border-slate-300 text-xs font-bold col-span-2">
+                                        class="rounded border-slate-300 text-xs font-bold col-span-1 sm:col-span-2">
                                         <option>Oro</option>
                                         <option>Plata</option>
                                         <option>Bronce</option>
@@ -518,55 +573,10 @@
             </div>
 
         </div>
-        <!-- End Main Form Column -->
-
-        <!-- Lateral Photo Gallery Column (1/3 width) -->
-        <div class="lg:col-span-1">
-            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden sticky top-4">
-                <div class="px-4 py-3 border-b border-slate-100 bg-gradient-to-r from-indigo-50 to-purple-50">
-                    <h3 class="font-bold text-indigo-700 flex items-center gap-2">
-                        <i class="fa-solid fa-image"></i> Foto del Atleta
-                    </h3>
-                </div>
-                <div class="p-4">
-                    <!-- Preview Label (only shown when NEW image selected) -->
-                    <div id="previewLabel" class="text-center mb-2 hidden">
-                        <span class="text-xs font-bold text-green-600 bg-green-50 px-3 py-1 rounded-full">
-                            <i class="fa-solid fa-check-circle mr-1"></i> Vista Previa
-                        </span>
-                    </div>
-
-                    <!-- Photo Display -->
-                    <div class="flex justify-center">
-                        <!-- Preview Image (always in DOM) -->
-                        <div id="galeria_container"
-                            class="relative group transition-all duration-300 {% if not galeria_fotos or galeria_fotos|length == 0 %}hidden{% endif %}">
-                            <img id="galeria_preview"
-                                src="{% if galeria_fotos and galeria_fotos|length > 0 %}{{ galeria_fotos[0].url }}{% endif %}"
-                                alt="Foto atleta"
-                                class="w-[40px] h-[50px] rounded border-2 border-indigo-300 shadow-md object-cover transition-all">
-                            <button type="button" onclick="document.getElementById('fileInput').click()"
-                                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center transition-all rounded">
-                                <i
-                                    class="fa-solid fa-camera text-white opacity-0 group-hover:opacity-100 transition-opacity text-xs"></i>
-                            </button>
-                        </div>
-
-                        <!-- Upload Button (shown when no photo) -->
-                        <button type="button" id="galeria_placeholder"
-                            onclick="document.getElementById('fileInput').click()"
-                            class="text-center py-8 px-4 border-2 border-dashed border-indigo-200 rounded-lg hover:border-indigo-400 hover:bg-indigo-50 transition-all cursor-pointer {% if galeria_fotos and galeria_fotos|length > 0 %}hidden{% endif %}">
-                            <i class="fa-solid fa-camera text-4xl text-indigo-300 mb-2"></i>
-                            <p class="text-sm text-slate-600 font-semibold">Agregar Foto</p>
-                            <p class="text-xs text-slate-400 mt-1">Click para subir</p>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Photo Gallery Column -->
-
     </div>
+</div>
+<!-- End Main Form Column -->
+</div>
 </div>
 
 <!-- COMMON STYLES -->

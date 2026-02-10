@@ -19,35 +19,6 @@ auth_blueprint = Blueprint('auth', __name__)
 def login():
     """Maneja el inicio de sesión con auto-login después de confirmación de email."""
     
-<<<<<<< HEAD
-    # Detectar si ya hay sesión activa (ej: desde confirmación de email)
-    try:
-        user = supabase.auth.get_user()
-        if user and user.user:
-            user_id = user.user.id
-            email = user.user.email
-            
-            # Crear sesión de Flask si no existe
-            if 'user_id' not in session:
-                user_role = get_user_role(user_id)
-                
-                # Crear sesión de Flask
-                session.permanent = True
-                session['user_id'] = user_id
-                session['email'] = email
-                session['role'] = user_role
-                
-                flash(f'¡Bienvenido/a {email}! Tu correo ha sido confirmado.', 'success')
-                logger.info(f"✅ Auto-login exitoso después de confirmación: {email}")
-            
-            return redirect(url_for('dashboard.index'))
-    except Exception as e:
-        # Si falla la detección de sesión, continuar con login normal
-        logger.debug(f"No hay sesión activa de Supabase: {e}")
-        pass
-    
-=======
->>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
     # Si ya hay sesión de Flask activa, redirigir al dashboard
     if 'user_id' in session:
         return redirect(url_for('dashboard.index'))

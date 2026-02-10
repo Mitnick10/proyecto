@@ -80,8 +80,6 @@
                             class="w-full rounded border-blue-200 text-sm">
                         <input type="text" name="representante_telefono" placeholder="Ej: 0414-1234567"
                             class="w-full rounded border-blue-200 text-sm">
-                        <input type="text" name="representante_telefono" placeholder="Teléfono Representante"
-                            class="w-full rounded border-blue-200 text-sm">
                         <select name="representante_parentesco" class="w-full rounded border-blue-200 text-sm">
                             <option value="">Parentesco...</option>
                             <option>Madre</option>
@@ -117,11 +115,7 @@
                         <!-- Campo oculto real que se envía -->
                         <input type="hidden" name="disciplina" id="disciplinaHidden">
 
-<<<<<<< HEAD
-                        <input type="text" name="especialidad" placeholder="Especialidad"
-=======
                         <input type="text" name="especialidad" placeholder="Ej: 100m Planos"
->>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
                             class="w-full rounded border-slate-300 text-sm">
                         <input type="text" name="categoria" placeholder="Ej: Juvenil A"
                             class="w-full rounded border-slate-300 text-sm">
@@ -274,11 +268,8 @@
         var type = file.type;
         var output = document.getElementById('preview');
         var placeholder = document.getElementById('placeholder');
-<<<<<<< HEAD
-=======
         var previewContainer = document.getElementById('previewContainer');
         var previewLabel = document.getElementById('previewLabel');
->>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
 
         // Simple validation
         if (!type.includes('image')) {
@@ -292,11 +283,6 @@
             URL.revokeObjectURL(output.src) // free memory
         }
 
-<<<<<<< HEAD
-        output.classList.remove('hidden');
-        if (placeholder) {
-            placeholder.classList.add('hidden');
-=======
         // Show image
         output.classList.remove('hidden');
         output.style.display = 'block';
@@ -314,7 +300,6 @@
         }
         if (previewLabel) {
             previewLabel.classList.remove('hidden');
->>>>>>> 19bc0b42141dc9139c457364af8c7d05a8913cbc
         }
     };
 
